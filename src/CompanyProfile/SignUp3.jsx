@@ -15,7 +15,7 @@ const SignUp3 = () => {
         borderRadius: "8px",
         width: "800px",
         height: "500px",
-        marginTop: "90px",
+        marginTop: "30px",
         marginLeft: "300px"
       }}
     >

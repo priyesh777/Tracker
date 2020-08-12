@@ -15,7 +15,7 @@ const SignUp1 = () => {
         boxSizing: "border-box",
         borderRadius: "8px",
         width: "1000px",
-        marginTop: "90px",
+        marginTop: "30px",
         marginLeft: "200px"
       }}
     >
@@ -79,7 +79,7 @@ const SignUp1 = () => {
                 <img src={BackArrow} alt="back-arrow-left" /> Back
               </Button>
               <p>
-                Need Help?
+                Need Help?{" "}
                 <Link to="##" style={{ color: "#AD77C0" }}>
                   Contact Support
                 </Link>

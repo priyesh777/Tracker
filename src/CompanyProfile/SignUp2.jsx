@@ -20,7 +20,7 @@ const SignUp2 = () => {
         boxSizing: "border-box",
         borderRadius: "8px",
         width: "800px",
-        height: "665px",
+        height: "635px",
         marginTop: "20px",
         marginLeft: "300px"
       }}
@@ -30,7 +30,8 @@ const SignUp2 = () => {
         style={{
           display: "flex",
           justifyContent: "space-between",
-          padding: "30px"
+          padding: "30px",
+          marginTop: "-7px"
         }}
       >
         <Button
@@ -61,7 +62,8 @@ const SignUp2 = () => {
           display: "flex",
           justifyContent: "space-between",
           marginLeft: "34px",
-          marginRight: "34px"
+          marginRight: "34px",
+          marginTop: "-20px"
         }}
       >
         <p
