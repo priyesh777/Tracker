@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "antd/dist/antd.css";
+//components
+// import AdminPanel from "./Dashboard/AdminPanel";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import SignUp1 from "./CompanyProfile/SignUp1";
+import SignUp2 from "./CompanyProfile/SignUp2";
+import SignUp3 from "./CompanyProfile/SignUp3";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={SignUp1} />
+          <Route path="/register_step2" component={SignUp2} />
+          <Route path="/register_step3" component={SignUp3} />
+        </Switch>
+      </Router>
+    </>
   );
-}
+};
 
 export default App;
