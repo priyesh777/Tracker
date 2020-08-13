@@ -15,7 +15,7 @@ const SignUp1 = () => {
         boxSizing: "border-box",
         borderRadius: "8px",
         width: "1000px",
-        marginTop: "30px",
+        marginTop: "85px",
         marginLeft: "200px"
       }}
     >

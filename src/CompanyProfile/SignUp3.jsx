@@ -1,10 +1,17 @@
 import React from "react";
-import { Button, Input, Row, Col } from "antd";
+import { Button, Input, Row, Col, Select } from "antd";
 import BackArrow from "../images/arrow-left.svg";
 import { Link, useHistory } from "react-router-dom";
+import { CaretDownOutlined } from "@ant-design/icons";
 
 const SignUp3 = () => {
   const history = useHistory();
+  const { Option } = Select;
+
+  const handleSelectAuthority = () => {
+    console.log("selected an authority");
+  };
+
   return (
     <div
       className="signUp-3-container"
@@ -13,10 +20,10 @@ const SignUp3 = () => {
         border: "2px solid #F3F3F3",
         boxSizing: "border-box",
         borderRadius: "8px",
-        width: "800px",
+        width: "600px",
         height: "500px",
-        marginTop: "30px",
-        marginLeft: "300px"
+        marginTop: "85px",
+        marginLeft: "360px"
       }}
     >
       <div
@@ -132,13 +139,131 @@ const SignUp3 = () => {
                 }}
               />
               <br />
+              <Button
+                type="text"
+                style={{
+                  color: "#AD77C0",
+                  fontFamily: "Karla",
+                  fontWeight: "bold"
+                }}
+              >
+                + Add new field
+              </Button>
             </div>
           </Col>
 
           <Col span={12}>
-            <div className="authority"></div>
+            <div className="authority" style={{ marginLeft: "85px" }}>
+              <Select
+                defaultValue="Admin"
+                style={{
+                  width: "181px",
+                  background: "#FFFFFF",
+                  border: "2px solid #E6E6E6",
+                  boxSizing: "border-box",
+                  borderRadius: "5px",
+                  fontFamily: "Karla",
+                  fontWeight: "bold",
+                  marginTop: "-2px"
+                }}
+                onChange={handleSelectAuthority}
+                suffixIcon={<CaretDownOutlined />}
+              >
+                <Option
+                  value="admin"
+                  style={{
+                    color: "#000000",
+                    fontFamily: "Karla",
+                    fontWeight: "bold"
+                  }}
+                >
+                  Admin
+                </Option>
+                <Option
+                  value="moderator"
+                  style={{
+                    color: "#000000",
+                    fontFamily: "Karla",
+                    fontWeight: "bold"
+                  }}
+                >
+                  Moderator
+                </Option>
+              </Select>
+
+              <Select
+                defaultValue="Admin"
+                style={{
+                  width: "181px",
+                  background: "#FFFFFF",
+                  border: "2px solid #E6E6E6",
+                  boxSizing: "border-box",
+                  borderRadius: "5px",
+                  fontFamily: "Karla",
+                  fontWeight: "bold",
+                  marginTop: "18px"
+                }}
+                onChange={handleSelectAuthority}
+                suffixIcon={<CaretDownOutlined />}
+              >
+                <Option
+                  value="admin"
+                  style={{
+                    color: "#000000",
+                    fontFamily: "Karla",
+                    fontWeight: "bold"
+                  }}
+                >
+                  Admin
+                </Option>
+                <Option
+                  value="moderator"
+                  style={{
+                    color: "#000000",
+                    fontFamily: "Karla",
+                    fontWeight: "bold"
+                  }}
+                >
+                  Moderator
+                </Option>
+              </Select>
+            </div>
           </Col>
         </Row>
+      </div>
+      <div
+        className="footer-invite-button"
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          marginTop: "66px"
+        }}
+      >
+        <Button
+          style={{
+            marginRight: "24%",
+            width: "170px",
+            border: "2px solid #AD77C0",
+            borderRadius: "5px",
+            background: "#FFFFFF",
+            color: "#AD77C0",
+            fontWeight: "bold"
+          }}
+        >
+          Do this Later
+        </Button>
+        <Button
+          style={{
+            width: "170px",
+            border: "2px solid #AD77C0",
+            borderRadius: "5px",
+            background: "#AD77C0",
+            color: "#FFFFFF"
+          }}
+          onClick={() => history.push("/register_step4")}
+        >
+          Invite
+        </Button>
       </div>
     </div>
   );
