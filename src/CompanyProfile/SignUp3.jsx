@@ -1,8 +1,9 @@
 import React from "react";
-import { Button, Input, Row, Col, Select } from "antd";
+import { Button, Input, Select } from "antd";
 import BackArrow from "../images/arrow-left.svg";
 import { Link, useHistory } from "react-router-dom";
 import { CaretDownOutlined } from "@ant-design/icons";
+import { Container, Row, Col } from "react-bootstrap";
 
 const SignUp3 = () => {
   const history = useHistory();
@@ -13,8 +14,7 @@ const SignUp3 = () => {
   };
 
   return (
-    <div
-      className="signUp-3-container"
+    <Container
       style={{
         background: "#f6eeee",
         border: "2px solid #F3F3F3",
@@ -22,12 +22,12 @@ const SignUp3 = () => {
         borderRadius: "8px",
         width: "600px",
         height: "500px",
-        marginTop: "85px",
-        marginLeft: "360px"
+        marginTop: "100px",
+        marginLeft: "500px"
       }}
     >
       <div
-        className="contact-support-button-sectiom"
+        className="support-button-section"
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -35,13 +35,7 @@ const SignUp3 = () => {
         }}
       >
         <Button
-          style={{
-            fontSize: "15px",
-            fontFamily: "Karla",
-            color: "#1C0025",
-            border: "2px solid #F3F3F3",
-            borderRadius: "5px"
-          }}
+          className="cps-form-backButton"
           onClick={() => {
             history.push("/register_step2");
           }}
@@ -253,6 +247,7 @@ const SignUp3 = () => {
           Do this Later
         </Button>
         <Button
+          className="launch-program-button"
           style={{
             width: "170px",
             border: "2px solid #AD77C0",
@@ -265,7 +260,7 @@ const SignUp3 = () => {
           Invite
         </Button>
       </div>
-    </div>
+    </Container>
   );
 };
 export default SignUp3;

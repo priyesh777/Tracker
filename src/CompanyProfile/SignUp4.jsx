@@ -3,12 +3,12 @@ import { Button } from "antd";
 import BackArrow from "../images/arrow-left.svg";
 import { Link, useHistory } from "react-router-dom";
 
-const SignUp3 = () => {
+const SignUp4 = () => {
   const history = useHistory();
 
   return (
     <div
-      className="signUp-3-container"
+      className="container"
       style={{
         background: "#f6eeee",
         border: "2px solid #F3F3F3",
@@ -16,12 +16,12 @@ const SignUp3 = () => {
         borderRadius: "8px",
         width: "595px",
         height: "265px",
-        marginTop: "85px",
-        marginLeft: "360px"
+        marginTop: "191px",
+        marginLeft: "472px"
       }}
     >
       <div
-        className="contact-support-button-sectiom"
+        className="support-button-section"
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -29,13 +29,7 @@ const SignUp3 = () => {
         }}
       >
         <Button
-          style={{
-            fontSize: "15px",
-            fontFamily: "Karla",
-            color: "#1C0025",
-            border: "2px solid #F3F3F3",
-            borderRadius: "5px"
-          }}
+          className="cps-form-backButton"
           onClick={() => {
             history.push("/register_step3");
           }}
@@ -78,7 +72,7 @@ const SignUp3 = () => {
           }}
         >
           <a href="###" style={{ color: "#AD77C0" }}>
-            3
+            4
           </a>
           /4
         </p>
@@ -106,6 +100,7 @@ const SignUp3 = () => {
           Do this Later
         </Button>
         <Button
+          className="launch-program-button"
           style={{
             width: "170px",
             border: "2px solid #AD77C0",
@@ -113,7 +108,7 @@ const SignUp3 = () => {
             background: "#AD77C0",
             color: "#FFFFFF"
           }}
-          onClick={() => history.push("/register_step4")}
+          onClick={() => history.push("/program_details")}
         >
           Launch Program
         </Button>
@@ -121,4 +116,4 @@ const SignUp3 = () => {
     </div>
   );
 };
-export default SignUp3;
+export default SignUp4;

@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fugaz+One&family=Karla&display=swap");
+@import "~react-bulma-components/src/index.sass";
+
+body {
+  margin: 0;
+  font-family: "Karla", "Fugaz One", "-apple-system", " BlinkMacSystemFont",
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    "Fugaz One", "Karla", monospace;
+}
+
+/* ---------------Company Profile Setup------------*/
+
+.sign-up-button {
+  transition: 300ms;
+}
+.sign-up-button:hover {
+  transform: translateY(-5px);
+}
+
+.support-button-section {
+  padding: 30px;
+}
+
+.support-button-section .cps-form-backButton {
+  transition: 300ms;
+  height: 40px;
+  font-size: 18px;
+  font-family: Karla;
+  color: rgba(0, 0, 0, 0.6);
+  border: 2px solid #f3f3f3;
+  border-radius: 5px;
+  font-weight: "bold";
+}
+.support-button-section .cps-form-backButton:hover {
+  transform: translateY(-5px);
+}
+
+.signUp-form-wrapper .account-details {
+  margin-left: 31px;
+}
+
+.launch-program-button {
+  transition: 300ms;
+}
+.launch-program-button:hover {
+  transform: translateY(-5px);
+}
+/*---------------------------------------*/
+
+/* ------Program launching procedures ----- */
+
+.program-container {
+  background: #f6eeee;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 70px;
+  width: 980px;
+  border: 2px solid #a69ea9;
+  border-radius: 11px;
+}
+
+.program-container .cps-form-backButton {
+  margin-left: 104px;
+}
+
+.program-container .footer-button {
+  margin-left: 670px;
+  margin-bottom: 20px;
+  margin-top: 26px;
+}
+
+.program-container .footer-button .program-continue {
+  width: 170px;
+  border: 2px solid #ad77c0;
+  border-radius: 5px;
+  background: #ad77c0;
+  color: #ffffff;
+}
+
+.program-container .footer-button .program-continue .program-button-group {
+  background: #ad77c0 !important;
+}
+
+.program-container .tabs-list .nav-tabs {
+  border: 2px solid #a79dad;
+  border-radius: 5px;
+  height: 38px;
+  align-items: center;
+}
+
+.program-container .nav-tabs .nav-link {
+  border: none;
+  color: #a69ea9;
+  font-weight: bold;
+  font-family: Karla;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  height: 34px;
+  color: #495057;
+  background-color: #ad77c0 !important;
+  margin-bottom: 4px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.agreement-details .terms-list {
+  color: #000000;
+  font-family: Karla;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.instruction {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Karla;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.program-container .tabs-list {
+  margin-left: 135px;
+  width: 705px;
+}
+
+.set-scope-tables {
+  margin-top: 20px;
+}
+
+.set-scope-tables .scope-table {
+  margin-left: -31px;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Karla;
+}
+
+.set-scope-tables .scope-table .Table {
+  width: 75%;
+  margin-left: 31px;
+}
+
+.set-scope-tables .add-scope .Add-new {
+  width: 120px;
+  border: 2px solid #ad77c0;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #ad77c0;
+  font-weight: bold;
+  transition: 300ms;
+}
+.set-scope-tables .add-scope .Add-new:hover {
+  transform: translateY(-5px);
+}
+
+.set-scope-tables .scope-table .scope-table-header {
+  color: #000000;
+  font-family: Karla;
+  font-weight: bold;
+  margin-left: 32px;
+  margin-top: 20px;
+}
+
+/* ------------------------------------------ */

@@ -13,20 +13,20 @@ const SignUp2 = () => {
 
   return (
     <div
-      className="signUp-2-container"
+      className="container"
       style={{
         background: "#f6eeee",
         border: "2px solid #F3F3F3",
         boxSizing: "border-box",
         borderRadius: "8px",
         width: "800px",
-        height: "635px",
-        marginTop: "20px",
-        marginLeft: "300px"
+        height: "663px",
+        marginTop: "80px",
+        marginLeft: "400px"
       }}
     >
       <div
-        className="contact-support-button-sectiom"
+        className="support-button-section"
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -35,13 +35,7 @@ const SignUp2 = () => {
         }}
       >
         <Button
-          style={{
-            fontSize: "15px",
-            fontFamily: "Karla",
-            color: "#1C0025",
-            border: "2px solid #F3F3F3",
-            borderRadius: "5px"
-          }}
+          className="cps-form-backButton"
           onClick={() => {
             history.push("/");
           }}
@@ -95,7 +89,8 @@ const SignUp2 = () => {
           color: "rgba(0, 0, 0, 0.6)",
           fontFamily: "Karla",
           fontWeight: "bold",
-          marginLeft: "34px"
+          marginLeft: "34px",
+          marginTop: "5px"
         }}
       >
         Please setup your company profile to continue
@@ -110,7 +105,7 @@ const SignUp2 = () => {
           justifyContent: "space-evenly"
         }}
       >
-        <Row style={{ width: "100%" }}>
+        <Row style={{ width: "100%", marginTop: "15px" }}>
           <Col span={12}>
             <div className="input-fields" style={{ width: "100%" }}>
               <Input

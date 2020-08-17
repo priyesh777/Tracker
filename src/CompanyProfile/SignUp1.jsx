@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row, Button, Input } from "antd";
+import { Col, Row, Input, Button } from "antd";
 import BackArrow from "../images/arrow-left.svg";
 import { Link, useHistory } from "react-router-dom";
 
@@ -15,12 +15,21 @@ const SignUp1 = () => {
         boxSizing: "border-box",
         borderRadius: "8px",
         width: "1000px",
-        marginTop: "85px",
-        marginLeft: "200px"
+        marginTop: "100px",
+        marginLeft: "300px"
       }}
     >
       <Row style={{ height: "500px" }}>
-        <Col span={8} style={{ background: "#AD77C0" }}>
+        <Col
+          span={8}
+          style={{
+            background: "#AD77C0",
+            height: "490px",
+            border: " 2px solid #AD77C0",
+            borderRadius: "5px",
+            marginTop: "5px"
+          }}
+        >
           <p
             style={{
               fontSize: "20px",
@@ -52,7 +61,7 @@ const SignUp1 = () => {
                 fontFamily: "Karla",
                 fontWeight: "normal",
                 fontSize: "14px",
-                marginTop: "-11px",
+                marginTop: "28px",
                 marginLeft: "50px"
               }}
             >
@@ -62,20 +71,12 @@ const SignUp1 = () => {
           </div>
         </Col>
         <Col span={16}>
-          <div className="signUp-form-wrapper" style={{ padding: "34px" }}>
+          <div className="signUp-form-wrapper">
             <div
-              className="contact-support-button-sectiom"
+              className="support-button-section"
               style={{ display: "flex", justifyContent: "space-between" }}
             >
-              <Button
-                style={{
-                  fontSize: "15px",
-                  fontFamily: "Karla",
-                  color: "#1C0025",
-                  border: "2px solid #F3F3F3",
-                  borderRadius: "5px"
-                }}
-              >
+              <Button className="cps-form-backButton">
                 <img src={BackArrow} alt="back-arrow-left" /> Back
               </Button>
               <p>
@@ -85,7 +86,7 @@ const SignUp1 = () => {
                 </Link>
               </p>
             </div>
-            <div className="account-details" style={{ marginTop: "16px" }}>
+            <div className="account-details">
               <div
                 className="Set-up-account"
                 style={{ display: "flex", justifyContent: "space-between" }}
