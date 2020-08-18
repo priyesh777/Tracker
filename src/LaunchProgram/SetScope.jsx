@@ -17,7 +17,7 @@ const SetScope = () => {
       </div>
       <div className="scope-table">
         <p className="scope-table-header">In-Scope</p>
-        <Table className="Table" striped bordered hover>
+        <Table striped bordered hover className="Table">
           <thead>
             <tr>
               <th

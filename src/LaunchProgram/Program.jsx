@@ -4,7 +4,7 @@ import Terms from "./Terms";
 import SetScope from "./SetScope";
 import BackArrow from "../images/arrow-left.svg";
 import { Button } from "antd";
-import { Container, Tab, Tabs, Col, Row } from "react-bootstrap";
+import { Tab, Tabs, Col, Row } from "react-bootstrap";
 import Rewards from "./Rewards";
 import Review from "./Review";
 import NameDetails from "./NameDetails";
@@ -13,7 +13,7 @@ const Program = () => {
   const history = useHistory();
 
   return (
-    <Container>
+    <div className="flex-container">
       <div className="program-container">
         <Col>
           <Row>
@@ -32,10 +32,10 @@ const Program = () => {
           <Row>
             <div className="tabs-list">
               <Tabs defaultActiveKey="active-tab" id="uncontrolled-tab-example">
-                <Tab eventKey="details" title="Name & Details">
+                <Tab eventKey="active-tab" title="Name & Details">
                   <NameDetails />
                 </Tab>
-                <Tab eventKey="active-tab" title="Set Scope">
+                <Tab eventKey="set-scope" title="Set Scope">
                   <SetScope />
                 </Tab>
                 <Tab eventKey="terms" title="Terms and Conditions">
@@ -63,7 +63,7 @@ const Program = () => {
           </Row>
         </Col>
       </div>
-    </Container>
+    </div>
   );
 };
 export default Program;

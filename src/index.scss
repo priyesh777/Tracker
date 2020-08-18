@@ -135,10 +135,10 @@ code {
 /* ------Program launching procedures ----- */
 
 .program-container {
-  background: #f6eeee;
+  background: #fdf8f8;
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-left: 70px;
+  margin-left: 300px;
   width: 980px;
   border: 2px solid #a69ea9;
   border-radius: 11px;
@@ -304,6 +304,30 @@ code {
 
 .name-details .add-program-details {
   width: 400px;
+}
+
+.Rewards .instruction-header {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Karla;
+  font-weight: bold;
+}
+
+.Rewards .radio-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  width: 200px;
+}
+
+.radio-buttons .radio-option {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Karla;
+  font-weight: bold;
+}
+
+.Rewards .reward-table {
+  margin-top: 10px;
 }
 
 /* ------------------------------------------ */
