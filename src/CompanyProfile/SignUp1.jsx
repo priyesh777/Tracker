@@ -8,56 +8,20 @@ const SignUp1 = () => {
   const history = useHistory();
 
   return (
-    <div className="container" id="Sign-up-1">
+    <div className="container">
       <Row className="row-one">
         <div className="Form-1-div">
-          <div
-            className="left-col"
-            style={{
-              background: "#AD77C0",
-              height: "490px",
-              width: "340px",
-              border: " 2px solid #AD77C0",
-              borderRadius: "5px"
-            }}
-          >
+          <div className="left-col">
             <div>
-              <p
-                style={{
-                  fontSize: "20px",
-                  color: "#FFFFFF",
-                  marginTop: "26px",
-                  marginLeft: "30px",
-                  fontFamily: "Fugaz One"
-                }}
-              >
-                BugNas
-              </p>
+              <p className="Bugnas-text">BugNas</p>
             </div>
 
             <div className="text-container">
-              <p
-                style={{
-                  color: "#FFFFFF",
-                  fontFamily: "Karla",
-                  fontSize: "18px",
-                  marginTop: "70px",
-                  fontWeight: "bold",
-                  marginLeft: "50px"
-                }}
-              >
+              <p className="para-one">
                 70% of companies say they <br />
                 have benefitted from us
               </p>
-              <p
-                style={{
-                  color: "#FFFFFF",
-                  fontFamily: "Karla",
-                  fontSize: "14px",
-                  marginTop: "28px",
-                  marginLeft: "50px"
-                }}
-              >
+              <p className="para-two">
                 You’ll have a wide array of programs to <br />
                 choose from
               </p>

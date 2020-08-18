@@ -33,8 +33,7 @@ const Rewards = () => {
                     color: "rgba(0, 0, 0, 0.6)",
                     fontFamily: "Karla",
                     fontWeight: "bold",
-                    width: "200px",
-                    fontSize: "18px"
+                    width: "200px"
                   }}
                 >
                   Technical Severity
@@ -44,8 +43,7 @@ const Rewards = () => {
                     color: "rgba(0, 0, 0, 0.6)",
                     fontFamily: "Karla",
                     fontWeight: "bold",
-                    width: "380px",
-                    fontSize: "18px"
+                    width: "380px"
                   }}
                 >
                   Reward Range

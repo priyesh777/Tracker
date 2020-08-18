@@ -22,8 +22,16 @@ code {
 
 /* ---------------Company Profile Setup------------*/
 
+.Bugnas-text {
+  font-size: 20px;
+  color: #ffffff;
+  margin-top: 26px;
+  margin-left: 30px;
+  font-family: Fugaz One;
+}
+
 .Form-1-div {
-  background: #f6eeee;
+  background: #f7f7f7;
   border: 2px solid #f3f3f3;
   box-sizing: border-box;
   border-radius: 8px;
@@ -34,6 +42,43 @@ code {
 }
 .Form-1-div .signUp-form-wrapper {
   width: 550px;
+}
+
+.Form-2-div {
+  background: #f7f7f7;
+  border: 2px solid #f3f3f3;
+  box-sizing: border-box;
+  border-radius: 8px;
+  width: 800px;
+  margin: 7%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Form-1-div .left-col {
+  background: #ad77c0;
+  height: 490px;
+  width: 340px;
+  border: 2px solid #ad77c0;
+  border-radius: 5px;
+}
+
+.Form-1-div .text-container .para-one {
+  color: #ffffff;
+  font-family: Karla;
+  font-size: 18px;
+  margin-top: 28px;
+  font-weight: bold;
+  margin-left: 50px;
+}
+
+.Form-1-div .text-container .para-two {
+  color: #ffffff;
+  font-family: Karla;
+  font-size: 14px;
+  margin-top: 70px;
+  font-weight: bold;
+  margin-left: 50px;
 }
 
 .Form-1-div .instruction {
@@ -75,6 +120,25 @@ code {
   transform: translateY(-5px);
   background: #ad77c0;
   width: 50%;
+  color: #f3f3f3;
+  border: 2px solid #ad77c0;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.Form-2-div .sign-up-button {
+  background: #ad77c0;
+  width: 93%;
+  color: #f3f3f3;
+  border: 2px solid #ad77c0;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 300ms;
+}
+.Form-2-div .sign-up-button:hover {
+  transform: translateY(-5px);
+  background: #ad77c0;
+  width: 93%;
   color: #f3f3f3;
   border: 2px solid #ad77c0;
   border-radius: 5px;
@@ -135,7 +199,7 @@ code {
 /* ------Program launching procedures ----- */
 
 .program-container {
-  background: #fdf8f8;
+  background: #f7f7f7;
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 300px;
@@ -146,6 +210,7 @@ code {
 
 .program-container .cps-form-backButton {
   margin-left: 104px;
+  font-family: Karla;
 }
 
 .name-details .Form-input {
@@ -157,7 +222,7 @@ code {
 }
 
 .program-container .footer-button {
-  margin-left: 670px;
+  margin-left: 597px;
   margin-bottom: 20px;
   margin-top: 26px;
 }
@@ -177,7 +242,7 @@ code {
 .program-container .tabs-list .nav-tabs {
   border: 2px solid #a79dad;
   border-radius: 5px;
-  height: 38px;
+  height: 34px;
   align-items: center;
 }
 
@@ -186,15 +251,17 @@ code {
   color: #a69ea9;
   font-weight: bold;
   font-family: Karla;
+  height: 30px;
+  font-size: 14px;
 }
 
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
-  height: 34px;
+  height: 30px;
   color: #495057;
   background-color: #ad77c0 !important;
-  margin-bottom: 4px;
   font-weight: bold;
+  padding: 14px;
   display: flex;
   align-items: center;
 }
@@ -242,7 +309,7 @@ code {
 
 .program-container .tabs-list {
   margin-left: 135px;
-  width: 705px;
+  width: 632px;
 }
 
 .set-scope-tables {
@@ -328,6 +395,59 @@ code {
 
 .Rewards .reward-table {
   margin-top: 10px;
+}
+
+.Review .agreement-points {
+  width: 850px;
+  margin-top: 40px;
+}
+
+.Review .terms-list {
+  color: #000000;
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 0.5rem;
+}
+
+.Review .details {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Karla;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.Review .program-name {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.Review .topics {
+  color: #a69ea9;
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.Review .upload-pic {
+  margin-bottom: 20px;
+}
+
+.Review .reward-section .instruction-header {
+  color: #000000;
+  font-family: Karla;
+  font-weight: bold;
+}
+
+.Review .radio-buttons {
+  margin-bottom: 10px;
+}
+
+.Review .reward-section {
+  margin-top: 40px;
 }
 
 /* ------------------------------------------ */

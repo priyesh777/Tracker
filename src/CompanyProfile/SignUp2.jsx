@@ -14,26 +14,12 @@ const SignUp2 = () => {
 
   return (
     <Container>
-      <div
-        className="Form-2-div"
-        style={{
-          background: "#f6eeee",
-          border: "2px solid #F3F3F3",
-          boxSizing: "border-box",
-          borderRadius: "8px",
-          width: "800px",
-          height: "663px",
-          marginTop: "53px",
-          marginLeft: "161px"
-        }}
-      >
+      <div className="Form-2-div">
         <div
           className="support-button-section"
           style={{
             display: "flex",
-            justifyContent: "space-between",
-            padding: "30px",
-            marginTop: "-7px"
+            justifyContent: "space-between"
           }}
         >
           <Button
@@ -218,23 +204,9 @@ const SignUp2 = () => {
                 </p>
                 <Button
                   className="sign-up-button"
-                  style={{
-                    width: "93%",
-                    background: "#AD77C0",
-                    border: "2px solid #AD77C0",
-                    borderRadius: "5px"
-                  }}
                   onClick={() => history.push("/register_step3")}
                 >
-                  <p
-                    style={{
-                      color: "#FFFFFF",
-                      fontFamily: "Karla",
-                      fontWeight: "bold"
-                    }}
-                  >
-                    Sign Up
-                  </p>
+                  Sign Up
                 </Button>
               </div>
             </Col>
