@@ -79,35 +79,16 @@ const SignUp4 = () => {
       </div>
 
       <div
-        className="footer-invite-button"
+        className="footer-button"
         style={{
           display: "flex",
           justifyContent: "space-evenly",
           marginTop: "66px"
         }}
       >
+        <Button className="white-button">Do this Later</Button>
         <Button
-          style={{
-            marginRight: "24%",
-            width: "170px",
-            border: "2px solid #AD77C0",
-            borderRadius: "5px",
-            background: "#FFFFFF",
-            color: "#AD77C0",
-            fontWeight: "bold"
-          }}
-        >
-          Do this Later
-        </Button>
-        <Button
-          className="launch-program-button"
-          style={{
-            width: "170px",
-            border: "2px solid #AD77C0",
-            borderRadius: "5px",
-            background: "#AD77C0",
-            color: "#FFFFFF"
-          }}
+          className="Purple-button"
           onClick={() => history.push("/program_details")}
         >
           Launch Program

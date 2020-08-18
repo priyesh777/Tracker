@@ -10,7 +10,7 @@ import SignUp1 from "./CompanyProfile/SignUp1";
 import SignUp2 from "./CompanyProfile/SignUp2";
 import SignUp3 from "./CompanyProfile/SignUp3";
 import SignUp4 from "./CompanyProfile/SignUp4";
-import Details from "./LaunchProgram/Details";
+import Program from "./LaunchProgram/Program";
 import Terms from "./LaunchProgram/Terms";
 
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/register_step2" component={SignUp2} />
           <Route path="/register_step3" component={SignUp3} />
           <Route path="/register_step4" component={SignUp4} />
-          <Route path="/program_details" component={Details} />
+          <Route path="/program_details" component={Program} />
           <Route path="/terms" component={Terms} />
         </Switch>
       </Router>
