@@ -44,17 +44,6 @@ code {
   width: 550px;
 }
 
-.Form-2-div {
-  background: #f7f7f7;
-  border: 2px solid #f3f3f3;
-  box-sizing: border-box;
-  border-radius: 8px;
-  width: 800px;
-  margin: 7%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .Form-1-div .left-col {
   background: #ad77c0;
   height: 490px;
@@ -84,6 +73,69 @@ code {
 .Form-1-div .instruction {
   color: rgba(0, 0, 0, 0.6);
   font-family: Karla;
+  font-weight: bold;
+}
+
+.Form-2-div {
+  background: #f7f7f7;
+  border: 2px solid #f3f3f3;
+  box-sizing: border-box;
+  border-radius: 8px;
+  width: 800px;
+  margin: 5%;
+}
+
+.Form-2-div .support-button-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Form-2-div .set-up-account {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 34px;
+  margin-right: 34px;
+  margin-top: -20px;
+}
+
+.Form-2-div .instruction {
+  color: #000000;
+  font-family: Karla;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.Form-2-div .instruction-1 {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Karla;
+  font-weight: bold;
+  margin-left: 34px;
+  margin-top: 5px;
+}
+
+.Form-2-div .instruction-2 {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Karla;
+  font-weight: bold;
+  margin-bottom: "10px";
+}
+
+.Form-2-div .form-content {
+  margin-left: 48px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Form-2-div .input-box {
+  width: 93%;
+  background: #f3f3f3;
+  border: 2px solid #c4c4c4;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.Form-1-div .link-words {
+  color: #ad77c0;
   font-weight: bold;
 }
 
@@ -134,6 +186,7 @@ code {
   border-radius: 5px;
   font-weight: bold;
   transition: 300ms;
+  margin-bottom: 25px;
 }
 .Form-2-div .sign-up-button:hover {
   transform: translateY(-5px);
@@ -143,6 +196,7 @@ code {
   border: 2px solid #ad77c0;
   border-radius: 5px;
   font-weight: bold;
+  margin-bottom: 25px;
 }
 
 .support-button-section {
@@ -193,6 +247,28 @@ code {
   border: 2px solid #ad77c0;
   border-radius: 5px;
   color: #ffffff;
+}
+
+.invite-friends {
+  background: #f7f7f7;
+  border: 2px solid #f3f3f3;
+  box-sizing: border-box;
+  border-radius: 8px;
+  width: 600px;
+  height: 500px;
+  margin-top: 60px;
+  margin-left: 256px;
+}
+
+.add-first-program {
+  background: #f7f7f7;
+  border: 2px solid #f3f3f3;
+  box-sizing: border-box;
+  border-radius: 8px;
+  width: 595px;
+  height: 265px;
+  margin-top: 191px;
+  margin-left: 272px;
 }
 /*---------------------------------------*/
 

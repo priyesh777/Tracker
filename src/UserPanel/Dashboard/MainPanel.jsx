@@ -1,11 +1,11 @@
 import React from "react";
 import { Row, Col } from "antd";
-import Question from "../images/question-mark.svg";
+import Question from "../../images/question-mark.svg";
 import SideBar from "./SideBar";
 import Researchers from "./Researchers";
 import Statistics from "./Statistics";
 
-const AdminPanel = () => {
+const MainPanel = () => {
   return (
     <>
       <div className="container" style={{ marginLeft: "70px" }}>
@@ -37,4 +37,4 @@ const AdminPanel = () => {
     </>
   );
 };
-export default AdminPanel;
+export default MainPanel;
