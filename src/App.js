@@ -12,7 +12,7 @@ import SignUp3 from "./CompanyProfile/SignUp3";
 import SignUp4 from "./CompanyProfile/SignUp4";
 import Program from "./LaunchProgram/Program";
 import Terms from "./LaunchProgram/Terms";
-import MainPanel from "./UserPanel/Dashboard/MainPanel";
+import MainPanel from "./UserPanel/MainPanel";
 
 const App = () => {
   return (

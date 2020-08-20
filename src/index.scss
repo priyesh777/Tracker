@@ -2,10 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Fugaz+One&family=Karla&display=swap");
 @import "~react-bulma-components/src/index.sass";
 
-* {
-  margin: 0;
-}
-
 body {
   margin: 0;
   font-family: "Karla", "Fugaz One", "-apple-system", " BlinkMacSystemFont",
@@ -270,6 +266,7 @@ code {
   margin-top: 191px;
   margin-left: 272px;
 }
+
 /*---------------------------------------*/
 
 /* ------Program launching procedures ----- */
@@ -527,3 +524,21 @@ code {
 }
 
 /* ------------------------------------------ */
+
+/* ------Dashboard Section : Main Panel ------ */
+.side-menu-section .Bugnas-text {
+  font-size: 20px;
+  color: #000000;
+  margin-top: 26px;
+  margin-left: 30px;
+  font-family: Fugaz One;
+}
+
+.side-menu-section .side-menu-options {
+  font-size: 16px;
+  color: #a69ea9;
+  font-family: Karla;
+  font-weight: bold;
+}
+
+/*-------------------------------------------- */
