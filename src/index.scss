@@ -286,14 +286,6 @@ code {
   font-family: Karla;
 }
 
-.name-details .Form-input {
-  width: 76%;
-  background: #f3f3f3;
-  border: 2px solid #c4c4c4;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-
 .program-container .footer-button {
   margin-left: 597px;
   margin-bottom: 20px;
@@ -420,6 +412,13 @@ code {
   margin-left: 32px;
   margin-top: 20px;
 }
+.ant-input:placeholder-shown {
+  width: 76%;
+  background: #f3f3f3;
+  border: 2px solid #c4c4c4;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
 
 .name-details .input-instruction {
   margin-top: 0px;
@@ -440,6 +439,13 @@ code {
   font-family: Karla;
   font-weight: bold;
   margin-bottom: 10px;
+}
+.name-details .Form-input {
+  width: 76%;
+  background: #f3f3f3;
+  border: 2px solid #c4c4c4;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 .name-details .add-program-details {
@@ -525,7 +531,7 @@ code {
 
 /* ------------------------------------------ */
 
-/* ------Dashboard Section : Main Panel ------ */
+/* ------Dashboard Section : Side-Bar  ------ */
 .side-menu-section .Bugnas-text {
   font-size: 20px;
   color: #000000;
@@ -534,11 +540,79 @@ code {
   font-family: Fugaz One;
 }
 
+.ant-dropdown-menu-item {
+  color: #a69ea9;
+  font-family: Karla;
+  font-weight: bold;
+}
+
 .side-menu-section .side-menu-options {
   font-size: 16px;
   color: #a69ea9;
   font-family: Karla;
   font-weight: bold;
 }
+.side-menu-section .ant-menu-item-selected {
+  color: #ad77c0;
+}
+.side-menu-section .ant-menu-inline .ant-menu-item::after {
+  border-right: 3px solid #ad77c0;
+}
 
+.side-menu-section .menu-list {
+  margin-top: 10%;
+}
+.side-menu-section .profile-dropdown .user-name {
+  display: flex;
+  margin-left: 10%;
+}
+.side-menu-section .profile-dropdown .dropdown-button {
+  margin-left: 10px;
+  color: #000000;
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+/*-------------------------------------------- */
+
+/* ------Dashboard Section : Program-menu  ------ */
+.programs-content .header {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 22px;
+  margin-top: 2%;
+}
+.programs-content .filter-programs {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2%;
+}
+
+.programs-content .button-group {
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.programs-content .filter-programs .filter-buttons {
+  background: #f3f3f3;
+  border: 2px solid #c4c4c4;
+  border-radius: 5px;
+  color: #a69ea9;
+  font-weight: bold;
+  font-size: 9px;
+  font-family: Karla;
+  height: 25px;
+}
+
+.ant-input-affix-wrapper {
+  border: 1px solid #d9d9d9;
+  border-radius: 9px;
+}
+
+.ant-input:placeholder-shown {
+  margin-bottom: 0px;
+  width: 80%;
+}
 /*-------------------------------------------- */

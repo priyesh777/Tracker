@@ -6,7 +6,7 @@ import "react-bulma-components/dist/react-bulma-components.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 /* ------- */
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SignUp1 from "./CompanyProfile/SignUp1";
+// import SignUp1 from "./CompanyProfile/SignUp1";
 import SignUp2 from "./CompanyProfile/SignUp2";
 import SignUp3 from "./CompanyProfile/SignUp3";
 import SignUp4 from "./CompanyProfile/SignUp4";
