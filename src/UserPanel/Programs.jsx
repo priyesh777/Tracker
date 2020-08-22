@@ -22,7 +22,7 @@ const Programs = () => {
                 <Button className="filter-buttons">Rewards</Button>
                 <Button className="filter-buttons">Bounty</Button>
               </div>
-              <div className="search-box">
+              <div className="search-box" style={{ marginRight: "20%" }}>
                 <Search
                   placeholder="search"
                   onSearch={value => console.log(value)}
