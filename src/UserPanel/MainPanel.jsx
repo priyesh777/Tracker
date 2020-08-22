@@ -20,7 +20,7 @@ const MainPanel = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container-fluid">
         <Row sm={2} md={2}>
           <Col lg={3}>
             <SideBar

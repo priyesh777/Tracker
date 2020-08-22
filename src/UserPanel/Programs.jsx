@@ -6,31 +6,45 @@ const Programs = () => {
   const { Search } = Input;
   return (
     <>
-      <div className="container">
-        <Row>
-          <Col>
-            <div className="programs-content">
-              <div className="header">Available programs</div>
-              <div className="filter-programs">
-                <div className="button-group">
-                  <Button className="filter-buttons">Points</Button>
-                  <Button className="filter-buttons">Rewards</Button>
-                  <Button className="filter-buttons">Bounty</Button>
-                </div>
-                <div className="search-box">
-                  <Search
-                    placeholder="search"
-                    onSearch={value => console.log(value)}
-                  />
-                </div>
+      <Row>
+        <Col>
+          <div className="programs-content">
+            <div className="header">Available programs</div>
+            <div className="filter-programs">
+              <div className="button-group">
+                <Button className="filter-buttons">Points</Button>
+                <Button className="filter-buttons">Rewards</Button>
+                <Button className="filter-buttons">Bounty</Button>
               </div>
-              <Row>
-                <Card></Card>
-              </Row>
+              <div className="search-box">
+                <Search
+                  placeholder="search"
+                  onSearch={value => console.log(value)}
+                />
+              </div>
             </div>
-          </Col>
-        </Row>
-      </div>
+          </div>
+          <div className="card-list">
+            <Row gutter={16}>
+              <Col span={8}>
+                <Card title="Card title" bordered={false}>
+                  Card content
+                </Card>
+              </Col>
+              <Col span={8}>
+                <Card title="Card title" bordered={false}>
+                  Card content
+                </Card>
+              </Col>
+              <Col span={8}>
+                <Card title="Card title" bordered={false}>
+                  Card content
+                </Card>
+              </Col>
+            </Row>
+          </div>
+        </Col>
+      </Row>
     </>
   );
 };
