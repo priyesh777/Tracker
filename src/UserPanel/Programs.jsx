@@ -1,9 +1,15 @@
 import React from "react";
-import { Input, Card } from "antd";
+import { Link, useHistory } from "react-router-dom";
+
+import { Input, Card, Avatar } from "antd";
 import { Row, Button, Col } from "react-bootstrap";
 
 const Programs = () => {
+  const history = useHistory();
+
   const { Search } = Input;
+  const { Meta } = Card;
+
   return (
     <>
       <Row>
@@ -23,25 +29,46 @@ const Programs = () => {
                 />
               </div>
             </div>
-          </div>
-          <div className="card-list">
-            <Row gutter={16}>
-              <Col span={8}>
-                <Card title="Card title" bordered={false}>
-                  Card content
+
+            <div className="card-list">
+              <Row gutter={16}>
+                <Card style={{ width: 300, marginLeft: "2%" }}>
+                  <div className="title-description">
+                    <Meta
+                      avatar={<Avatar src="random.png" />}
+                      title="Program Name"
+                      description="21 March 2019  4:42PM"
+                    />
+                    <Meta
+                      style={{ marginTop: "10px", fontFamily: "Karla" }}
+                      description="Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor"
+                    />
+                  </div>
+
+                  <div className="reward-levels" style={{ marginTop: "10px" }}>
+                    <p className="instruction">Bounty Per Reward</p>
+                    <p
+                      style={{
+                        fontFamily: "Karla",
+                        fontWeight: "bold",
+                        fontSize: "20px"
+                      }}
+                    >
+                      $100 - $200
+                    </p>
+                  </div>
                 </Card>
-              </Col>
-              <Col span={8}>
-                <Card title="Card title" bordered={false}>
-                  Card content
-                </Card>
-              </Col>
-              <Col span={8}>
-                <Card title="Card title" bordered={false}>
-                  Card content
-                </Card>
-              </Col>
-            </Row>
+              </Row>
+            </div>
+
+            <div className="footer-button">
+              <Button
+                className="Purple-button"
+                onClick={() => history.push("/program_details")}
+              >
+                Launch a new Program
+              </Button>
+            </div>
           </div>
         </Col>
       </Row>

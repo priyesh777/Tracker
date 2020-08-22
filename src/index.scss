@@ -616,7 +616,16 @@ code {
   width: 80%;
 }
 
-.programs-content .card-list {
-  margin-top: 8%;
+.card-list {
+  margin-top: 3%;
+}
+
+.ant-card-body .ant-card-meta .ant-card-meta-detail .ant-card-meta-title {
+  margin-bottom: 0px;
+}
+
+.programs-content .footer-button .Purple-button {
+  margin-top: 20px;
+  width: 20%;
 }
 /*-------------------------------------------- */
