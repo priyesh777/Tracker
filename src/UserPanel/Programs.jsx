@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { Input, Card, Avatar } from "antd";
 import { Row, Button, Col } from "react-bootstrap";
@@ -9,6 +9,41 @@ const Programs = () => {
 
   const { Search } = Input;
   const { Meta } = Card;
+
+  const cardData = [
+    {
+      title: "Program One",
+      date: "21-03-2019",
+      description:
+        "Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor",
+      reward: "$100-$200"
+    },
+    {
+      title: "Program One",
+      date: "21-03-2019",
+      description:
+        "Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor",
+      reward: "$100-$200"
+    },
+    {
+      title: "Program One",
+      date: "21-03-2019",
+      description:
+        "Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor",
+      reward: "$100-$200"
+    },
+    {
+      title: "Program One",
+      date: "21-03-2019",
+      description:
+        "Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor",
+      reward: "$100-$200"
+    }
+  ];
+
+  const handleCard = () => {
+    console.log("clicked card item ::");
+  };
 
   return (
     <>
@@ -32,32 +67,40 @@ const Programs = () => {
 
             <div className="card-list">
               <Row gutter={16}>
-                <Card style={{ width: 300, marginLeft: "2%" }}>
-                  <div className="title-description">
-                    <Meta
-                      avatar={<Avatar src="random.png" />}
-                      title="Program Name"
-                      description="21 March 2019  4:42PM"
-                    />
-                    <Meta
-                      style={{ marginTop: "10px", fontFamily: "Karla" }}
-                      description="Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor"
-                    />
-                  </div>
+                {cardData.map(data => (
+                  <Card
+                    style={{ width: 300, marginLeft: "2%", marginTop: "1%" }}
+                    onClick={handleCard}
+                  >
+                    <div className="title-description">
+                      <Meta
+                        avatar={<Avatar src="random.png" />}
+                        title={data.title}
+                        description={data.date}
+                      />
+                      <Meta
+                        style={{ marginTop: "10px", fontFamily: "Karla" }}
+                        description={data.description}
+                      />
+                    </div>
 
-                  <div className="reward-levels" style={{ marginTop: "10px" }}>
-                    <p className="instruction">Bounty Per Reward</p>
-                    <p
-                      style={{
-                        fontFamily: "Karla",
-                        fontWeight: "bold",
-                        fontSize: "20px"
-                      }}
+                    <div
+                      className="reward-levels"
+                      style={{ marginTop: "10px" }}
                     >
-                      $100 - $200
-                    </p>
-                  </div>
-                </Card>
+                      <p className="instruction">Bounty Per Reward</p>
+                      <p
+                        style={{
+                          fontFamily: "Karla",
+                          fontWeight: "bold",
+                          fontSize: "20px"
+                        }}
+                      >
+                        {data.reward}
+                      </p>
+                    </div>
+                  </Card>
+                ))}
               </Row>
             </div>
 
