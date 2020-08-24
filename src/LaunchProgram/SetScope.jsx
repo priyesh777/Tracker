@@ -81,6 +81,7 @@ const SetScope = () => {
           </div>
         </Modal>
       </div>
+
       <div className="scope-table">
         <p className="scope-table-header">In-Scope</p>
         <Table striped bordered hover className="Table">
