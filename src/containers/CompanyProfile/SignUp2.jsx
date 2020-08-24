@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, Input } from "antd";
 import { Container, Row } from "react-bootstrap";
-import BackArrow from "../images/arrow-left.svg";
-import PhotoUpload from "../images/pic_upload.png";
+import BackArrow from "../../images/arrow-left.svg";
+import PhotoUpload from "../../images/pic_upload.png";
 import { Link, useHistory } from "react-router-dom";
 
 const SignUp2 = () => {

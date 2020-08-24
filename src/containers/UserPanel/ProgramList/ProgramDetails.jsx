@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import thumbnail from "../../images/pic_upload.png";
+import thumbnail from "../../../images/pic_upload.png";
 import { Button, Card, Input } from "antd";
 import { Row, Col, Table } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import BackArrow from "../../images/arrow-left.svg";
+import BackArrow from "../../../images/arrow-left.svg";
 
 const ProgramDetails = () => {
   const history = useHistory();

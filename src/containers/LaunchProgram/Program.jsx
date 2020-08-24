@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import Terms from "./Terms";
 import SetScope from "./SetScope";
-import BackArrow from "../images/arrow-left.svg";
+import BackArrow from "../../images/arrow-left.svg";
 import { Button } from "antd";
 import { Tab, Tabs, Col, Row } from "react-bootstrap";
 import Rewards from "./Rewards";

@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Input, Select } from "antd";
-import BackArrow from "../images/arrow-left.svg";
+import BackArrow from "../../images/arrow-left.svg";
 import { Link, useHistory } from "react-router-dom";
 import { CaretDownOutlined } from "@ant-design/icons";
 import { Container, Row, Col } from "react-bootstrap";

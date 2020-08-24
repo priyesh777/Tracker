@@ -304,6 +304,11 @@ code {
   background: #ad77c0 !important;
 }
 
+.program-container .tabs-list {
+  margin-left: 135px;
+  width: 632px;
+}
+
 .program-container .tabs-list .nav-tabs {
   border: 2px solid #a79dad;
   border-radius: 5px;
@@ -370,11 +375,6 @@ code {
   font-family: Karla;
   font-weight: bold;
   margin-top: 20px;
-}
-
-.program-container .tabs-list {
-  margin-left: 135px;
-  width: 632px;
 }
 
 .set-scope-tables {
@@ -661,7 +661,7 @@ code {
   width: 20%;
 }
 
-/*--program details --*/
+/*-----------------program details ---------------*/
 
 .back-button .user-back-button {
   transition: 300ms;
@@ -841,5 +841,81 @@ code {
   padding: 7%;
   border: 2px solid #e6e6e6;
   border-radius: 5px;
+}
+/*-------------------------------------------- */
+
+/*----------DASHBOARD : SUBMISSIONS -----------------*/
+
+.submissions-content {
+  margin-top: 3%;
+}
+
+.submissions-content .tab-content {
+  margin-top: 3%;
+  margin-left: 39px;
+  width: 90%;
+}
+.submissions-content .nav-tabs {
+  border: 2px solid #e6e6e6;
+  border-radius: 5px;
+  height: 35px;
+  margin-left: 20px;
+}
+
+.submissions-content .nav-tabs .nav-link {
+  border: 1px solid #a79dad;
+  border-radius: 0px;
+  color: #000000;
+  font-weight: bold;
+  font-family: Karla;
+  height: 34px;
+  font-size: 16px;
+  width: 170px;
+}
+
+.all-submissions .ant-card-body {
+  padding: 7%;
+  border: 2px solid #e6e6e6;
+  border-radius: 5px;
+}
+
+.all-submissions .card-box {
+  width: 300px;
+  margin-left: 2%;
+  margin-top: 2%;
+  transition: 300ms;
+}
+.all-submissions .card-box:hover {
+  transform: translateY(-5px);
+  width: 300;
+  margin-left: 2%;
+  margin-top: 2%;
+}
+.all-submissions .card-box .card-title {
+  font-family: Karla;
+  font-weight: bold;
+  color: #000000;
+}
+.all-submissions .card-box .company-name {
+  font-family: Karla;
+  font-weight: bold;
+  color: #c2c2c2;
+}
+
+.all-submissions .ant-card-actions {
+  background: #ffffff;
+  border: 2px solid #e6e6e6;
+}
+.all-submissions .card-box .reward {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 20px;
+  color: #ad77c0;
+}
+.all-submissions .card-box .points {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 20px;
+  color: #000000;
 }
 /*-------------------------------------------- */

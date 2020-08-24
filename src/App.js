@@ -7,12 +7,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 /* ------- */
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import SignUp1 from "./CompanyProfile/SignUp1";
-import SignUp2 from "./CompanyProfile/SignUp2";
-import SignUp3 from "./CompanyProfile/SignUp3";
-import SignUp4 from "./CompanyProfile/SignUp4";
-import Program from "./LaunchProgram/Program";
-import Terms from "./LaunchProgram/Terms";
-import MainPanel from "./UserPanel/MainPanel";
+import SignUp2 from "./containers/CompanyProfile/SignUp2";
+import SignUp3 from "./containers/CompanyProfile/SignUp3";
+import SignUp4 from "./containers/CompanyProfile/SignUp4";
+import Program from "./containers/LaunchProgram/Program";
+import Terms from "./containers/LaunchProgram/Terms";
+import MainPanel from "./containers/UserPanel/MainPanel";
 
 const App = () => {
   return (

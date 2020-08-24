@@ -2,7 +2,7 @@ import React from "react";
 // import { Link, useHistory } from "react-router-dom";
 import { Input } from "antd";
 import { Card, Button } from "react-bootstrap";
-import thumbnail from "../images/thumbnail.png";
+import thumbnail from "../../images/thumbnail.png";
 
 const NameDetails = () => {
   const { TextArea } = Input;

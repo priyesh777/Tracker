@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import SideBar from "./SideBar";
 import UserPanel from "./Dashboard/Main";
-import Submissions from "./Submissions";
+import Submissions from "./SubmissionTabs/Submissions";
 import Researchers from "./Researchers";
 import Rewards from "./Rewards";
 import Programs from "./ProgramList/Programs";
