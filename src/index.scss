@@ -583,7 +583,7 @@ code {
 /*-------------------------------------------- */
 
 /* ------Dashboard Section : Program-menu  ------ */
-.programs-content .header {
+.programs-content .content-header {
   font-family: Karla;
   font-weight: bold;
   font-size: 22px;
@@ -596,7 +596,7 @@ code {
 }
 
 .programs-content .button-group {
-  width: 25%;
+  width: 18%;
   display: flex;
   justify-content: space-between;
 }
@@ -626,6 +626,32 @@ code {
   margin-top: 3%;
 }
 
+.programs-content .ant-card-body {
+  padding: 7%;
+  border: 2px solid #e6e6e6;
+  border-radius: 5px;
+}
+
+.programs-content .card-list .card-box {
+  width: 300px;
+  margin-left: 2%;
+  margin-top: 1%;
+  transition: 300ms;
+}
+.programs-content .card-list .card-box:hover {
+  transform: translateY(-5px);
+  width: 300;
+  margin-left: 2%;
+  margin-top: 1%;
+}
+
+.programs-content .card-list .card-number-data {
+  color: #000000;
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 30px;
+}
+
 .ant-card-body .ant-card-meta .ant-card-meta-detail .ant-card-meta-title {
   margin-bottom: 0px;
 }
@@ -633,5 +659,84 @@ code {
 .programs-content .footer-button .Purple-button {
   margin-top: 20px;
   width: 20%;
+}
+
+/*--program details --*/
+.reward-range {
+  margin-top: 20%;
+}
+.reward-range .content-header {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 22px;
+  margin-top: 2%;
+}
+.reward-range .ant-card {
+  height: 122px;
+}
+.reward-range .ant-card-body {
+  padding: 5%;
+  border: 2px solid #e6e6e6;
+  border-radius: 5px;
+  height: 122px;
+}
+.reward-range .bounty {
+  width: 70%;
+  margin-top: 5%;
+}
+.reward-range .card-number-data {
+  color: #000000;
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.reward-range .bounty .instruction {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Karla;
+  font-weight: bold;
+  margin-top: 0px;
+}
+
+/*----*/
+
+/*-------------------------------------------- */
+
+/*----------DASHBOARD : USERS -----------------*/
+.users-content .content-header {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 22px;
+  margin-top: 2%;
+}
+
+.users-content .card-list .card-box {
+  width: 300px;
+  margin-left: 2%;
+  margin-top: 1%;
+  transition: 300ms;
+}
+.users-content .card-list .card-box:hover {
+  transform: translateY(-5px);
+  width: 300;
+  margin-left: 2%;
+  margin-top: 1%;
+}
+
+.users-content .card-list .card-number-data {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.users-content .footer-button .Purple-button {
+  margin-top: 20px;
+  width: 20%;
+}
+
+.users-content .ant-card-body {
+  padding: 7%;
+  border: 2px solid #e6e6e6;
+  border-radius: 5px;
 }
 /*-------------------------------------------- */

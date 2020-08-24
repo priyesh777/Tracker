@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Input, Card, Avatar } from "antd";
 import { Row, Button, Col } from "react-bootstrap";
 
-const Programs = () => {
+const Programs = props => {
   const history = useHistory();
 
   const { Search } = Input;
@@ -16,41 +16,45 @@ const Programs = () => {
       date: "21-03-2019",
       description:
         "Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor",
-      reward: "$100-$200"
+      reward: "$100-$200",
+      id: "2001"
     },
     {
-      title: "Program One",
+      title: "Program Two",
       date: "21-03-2019",
       description:
         "Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor",
-      reward: "$100-$200"
+      reward: "$100-$200",
+      id: "2002"
     },
     {
-      title: "Program One",
+      title: "Program Three",
       date: "21-03-2019",
       description:
         "Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor",
-      reward: "$100-$200"
+      reward: "$100-$200",
+      id: "2003"
     },
     {
-      title: "Program One",
+      title: "Program four",
       date: "21-03-2019",
       description:
         "Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor",
-      reward: "$100-$200"
+      reward: "$100-$200",
+      id: "2004"
     }
   ];
 
-  const handleCard = () => {
-    console.log("clicked card item ::");
-  };
+  // const handleCard = e => {
+  //   console.log("clicked card item ::", e);
+  // };
 
   return (
     <>
       <Row>
         <Col>
           <div className="programs-content">
-            <div className="header">Available programs</div>
+            <div className="content-header">Available programs</div>
             <div className="filter-programs">
               <div className="button-group">
                 <Button className="filter-buttons">Points</Button>
@@ -69,8 +73,9 @@ const Programs = () => {
               <Row gutter={16}>
                 {cardData.map(data => (
                   <Card
-                    style={{ width: 300, marginLeft: "2%", marginTop: "1%" }}
-                    onClick={handleCard}
+                    hoverable
+                    className="card-box"
+                    onClick={props.handleOpenCard}
                   >
                     <div className="title-description">
                       <Meta
@@ -89,15 +94,7 @@ const Programs = () => {
                       style={{ marginTop: "10px" }}
                     >
                       <p className="instruction">Bounty Per Reward</p>
-                      <p
-                        style={{
-                          fontFamily: "Karla",
-                          fontWeight: "bold",
-                          fontSize: "20px"
-                        }}
-                      >
-                        {data.reward}
-                      </p>
+                      <p className="card-number-data">{data.reward}</p>
                     </div>
                   </Card>
                 ))}
