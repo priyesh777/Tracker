@@ -72,64 +72,6 @@ code {
   font-weight: bold;
 }
 
-.Form-2-div {
-  background: #f7f7f7;
-  border: 2px solid #f3f3f3;
-  box-sizing: border-box;
-  border-radius: 8px;
-  width: 800px;
-  margin: 5%;
-}
-
-.Form-2-div .support-button-section {
-  display: flex;
-  justify-content: space-between;
-}
-
-.Form-2-div .set-up-account {
-  display: flex;
-  justify-content: space-between;
-  margin-left: 34px;
-  margin-right: 34px;
-  margin-top: -20px;
-}
-
-.Form-2-div .instruction {
-  color: #000000;
-  font-family: Karla;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.Form-2-div .instruction-1 {
-  color: rgba(0, 0, 0, 0.6);
-  font-family: Karla;
-  font-weight: bold;
-  margin-left: 34px;
-  margin-top: 5px;
-}
-
-.Form-2-div .instruction-2 {
-  color: rgba(0, 0, 0, 0.6);
-  font-family: Karla;
-  font-weight: bold;
-  margin-bottom: "10px";
-}
-
-.Form-2-div .form-content {
-  margin-left: 48px;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.Form-2-div .input-box {
-  width: 93%;
-  background: #f3f3f3;
-  border: 2px solid #c4c4c4;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-
 .Form-1-div .link-words {
   color: #ad77c0;
   font-weight: bold;
@@ -141,11 +83,11 @@ code {
 }
 
 .Form-1-div .Form-input {
-  width: 50%;
+  width: 80% !important;
   background: #f3f3f3;
   border: 2px solid #c4c4c4;
   border-radius: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
 }
 
 .form-header {
@@ -174,6 +116,95 @@ code {
   font-weight: bold;
 }
 
+.Form-2-div {
+  background: #f7f7f7;
+  border: 2px solid #f3f3f3;
+  box-sizing: border-box;
+  border-radius: 8px;
+  width: 800px;
+  margin-top: 3%;
+  margin-left: 14%;
+}
+
+.support-button-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.set-up-account {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 34px;
+  margin-right: 34px;
+  margin-top: -20px;
+}
+
+.support-button-section {
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.support-button-section .cps-form-backButton {
+  height: 40px;
+  font-size: 18px;
+  font-family: Karla;
+  color: rgba(0, 0, 0, 0.6);
+  border: 2px solid #f3f3f3;
+  border-radius: 5px;
+  font-weight: "bold";
+  transition: 300ms;
+}
+.support-button-section .cps-form-backButton:hover {
+  transform: translateY(-5px);
+  height: 40px;
+  font-size: 18px;
+  font-family: Karla;
+  color: rgba(0, 0, 0, 0.6);
+  border: 2px solid #f3f3f3;
+  border-radius: 5px;
+  font-weight: "bold";
+}
+
+.Form-2-div .instruction {
+  color: #000000;
+  font-family: Karla;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.Form-2-div .instruction-1 {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Karla;
+  font-weight: bold;
+  margin-left: 34px;
+  margin-top: 5px;
+}
+
+.Form-2-div .instruction-2 {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Karla;
+  font-weight: bold;
+  margin-bottom: "10px";
+}
+
+.Form-2-div .form-content {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Form-2-div .form-content .input-fields {
+  margin-right: 25%;
+}
+
+.Form-2-div .input-box {
+  width: 100% !important;
+  background: #f3f3f3;
+  border: 2px solid #c4c4c4;
+  border-radius: 5px;
+  margin-bottom: 20px !important;
+}
+
 .Form-2-div .sign-up-button {
   background: #ad77c0;
   width: 93%;
@@ -193,26 +224,6 @@ code {
   border-radius: 5px;
   font-weight: bold;
   margin-bottom: 25px;
-}
-
-.support-button-section {
-  padding: 30px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.support-button-section .cps-form-backButton {
-  transition: 300ms;
-  height: 40px;
-  font-size: 18px;
-  font-family: Karla;
-  color: rgba(0, 0, 0, 0.6);
-  border: 2px solid #f3f3f3;
-  border-radius: 5px;
-  font-weight: "bold";
-}
-.support-button-section .cps-form-backButton:hover {
-  transform: translateY(-5px);
 }
 
 .signUp-form-wrapper .account-details {
@@ -254,6 +265,81 @@ code {
   height: 500px;
   margin-top: 60px;
   margin-left: 256px;
+}
+.invite-friends .instruction {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Karla;
+  font-weight: bold;
+  margin-left: 34px;
+}
+.invite-friends .set-up-account {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 34px;
+  margin-right: 34px;
+  height: 34px;
+}
+.invite-friends .set-up-account .great-job {
+  color: #000000;
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 20px;
+}
+.invite-friends .invite-emails .input-fields {
+  margin-left: 7%;
+  width: 100%;
+}
+.invite-friends .invite-emails .input-box {
+  width: 60%;
+  background: #f3f3f3;
+  border: 2px solid #c4c4c4;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  margin-top: 3%;
+}
+.invite-friends .invite-emails .input-fields .select-authority {
+  width: 150px;
+  background: #ffffff;
+  border: 2px solid #e6e6e6;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-family: Karla;
+  font-weight: bold;
+  margin-left: 5%;
+}
+.invite-friends .invite-emails .white-button {
+  border: 2px solid #c4c4c4;
+  color: #ad77c0;
+  font-family: Karla;
+  font-weight: bold;
+}
+.invite-friends .footer-button {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 66px;
+}
+.invite-friends .footer-button .white-button {
+  width: 170px;
+  border: 2px solid #ad77c0;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #ad77c0;
+  font-weight: bold;
+}
+.invite-friends .footer-button .Purple-button {
+  width: 170px;
+  border: 2px solid #ad77c0;
+  border-radius: 5px;
+  background: #ad77c0;
+  color: #ffffff;
+  transition: 300ms;
+}
+.invite-friends .footer-button .Purple-button:hover {
+  transform: translateY(-5px);
+  background: #ad77c0;
+  border: 2px solid #ad77c0;
+  border-radius: 5px;
+  color: #ffffff;
 }
 
 .add-first-program {
@@ -327,7 +413,7 @@ code {
 
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
-  height: 30px;
+  height: 32px;
   color: #495057;
   background-color: #ad77c0 !important;
   font-weight: bold;
@@ -813,6 +899,12 @@ code {
   margin-top: 2%;
 }
 
+.users-content .ant-card-body {
+  padding: 7%;
+  border: 2px solid #e6e6e6;
+  border-radius: 5px;
+}
+
 .users-content .card-list .card-box {
   width: 300px;
   margin-left: 2%;
@@ -835,12 +927,6 @@ code {
 .users-content .footer-button .Purple-button {
   margin-top: 20px;
   width: 20%;
-}
-
-.users-content .ant-card-body {
-  padding: 7%;
-  border: 2px solid #e6e6e6;
-  border-radius: 5px;
 }
 /*-------------------------------------------- */
 
@@ -918,4 +1004,56 @@ code {
   font-size: 20px;
   color: #000000;
 }
+/*-------------------------------------------- */
+
+/*----------DASHBOARD : RESEARCHERS -----------------*/
+.researchers .content-header {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 22px;
+  margin-top: 2%;
+}
+
+.researchers .ant-card-body {
+  padding: 7%;
+  border: 2px solid #e6e6e6;
+  border-radius: 5px;
+}
+
+.researchers .card-list .card-box {
+  width: 250px;
+  margin-left: 2%;
+  margin-top: 1%;
+  transition: 300ms;
+}
+.researchers .card-list .card-box:hover {
+  transform: translateY(-5px);
+  width: 250;
+  margin-left: 2%;
+  margin-top: 1%;
+}
+
+.researchers .card-list .card-number-data {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.researchers .ant-card-actions {
+  background: #ffffff;
+  border: 2px solid #e6e6e6;
+}
+.researchers .card-box .reward {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 20px;
+  color: #ad77c0;
+}
+.researchers .card-box .points {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 20px;
+  color: #000000;
+}
+
 /*-------------------------------------------- */

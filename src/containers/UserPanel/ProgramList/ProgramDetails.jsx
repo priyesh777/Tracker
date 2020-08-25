@@ -294,6 +294,7 @@ const ProgramDetails = () => {
               ))}
             </Table>
           </div>
+
           <div className="range-table">
             <p className="table-head">Out-Scope</p>
             <Table className="strip-table" striped hover>

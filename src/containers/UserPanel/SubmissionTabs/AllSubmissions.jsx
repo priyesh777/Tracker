@@ -56,7 +56,10 @@ const AllSubmissions = () => {
                       </p>
                       <p>
                         Status :{" "}
-                        <a style={{ fontWeight: "bold", color: "#ad77c0" }}>
+                        <a
+                          href="##"
+                          style={{ fontWeight: "bold", color: "#ad77c0" }}
+                        >
                           {data.status}
                         </a>
                       </p>

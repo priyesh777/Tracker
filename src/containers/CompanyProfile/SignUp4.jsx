@@ -27,7 +27,7 @@ const SignUp4 = () => {
           </Button>
           <p>
             Need Help?{" "}
-            <Link to="##" style={{ color: "#AD77C0" }}>
+            <Link to="##" className="link-words">
               Contact Support
             </Link>
           </p>

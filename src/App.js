@@ -6,7 +6,7 @@ import "react-bulma-components/dist/react-bulma-components.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 /* ------- */
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import SignUp1 from "./CompanyProfile/SignUp1";
+import SignUp1 from "./containers/CompanyProfile/SignUp1";
 import SignUp2 from "./containers/CompanyProfile/SignUp2";
 import SignUp3 from "./containers/CompanyProfile/SignUp3";
 import SignUp4 from "./containers/CompanyProfile/SignUp4";
@@ -19,7 +19,7 @@ const App = () => {
     <>
       <Router>
         <Switch>
-          <Route exact path="/" component={MainPanel} />
+          <Route exact path="/" component={SignUp1} />
           <Route path="/register_step2" component={SignUp2} />
           <Route path="/register_step3" component={SignUp3} />
           <Route path="/register_step4" component={SignUp4} />
