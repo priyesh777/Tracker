@@ -26,7 +26,7 @@ const Researchers = () => {
       title: "Name",
       dataIndex: "name",
       key: "name",
-      render: text => <a>{text}</a>
+      render: text => <p>{text}</p>
     },
     {
       title: "Points",

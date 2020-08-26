@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Input, Form } from "antd";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import BackArrow from "../../images/arrow-left.svg";
 import PhotoUpload from "../../images/pic_upload.png";
 import { Link, useHistory } from "react-router-dom";
@@ -58,7 +58,7 @@ const SignUp2 = () => {
                 <Input
                   name="company_name"
                   className="input-box"
-                  type="name"
+                  type="text"
                   placeholder="Company Name"
                 />
                 <br />

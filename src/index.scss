@@ -789,24 +789,25 @@ code {
 .program-name-card {
   margin-top: 3%;
 }
-.program-name-card .title-description .card-title {
+.program-name-card .card-title {
   color: #000000;
   font-family: Karla;
   font-weight: bold;
   font-size: 16px;
+  margin-bottom: 0px;
 }
 .program-name-card .ant-card-meta {
   margin: 0px;
 }
 .program-name-card .ant-card {
-  width: 61%;
-  height: 160px;
+  width: 100%;
+  height: 162px;
 }
 .program-name-card .ant-card-body {
-  padding: 3%;
+  width: 100%;
   border: 2px solid #e6e6e6;
   border-radius: 5px;
-  height: 160px;
+  height: 162px;
 }
 
 .program-name-card .edit-button {
@@ -837,9 +838,10 @@ code {
   font-family: Karla;
   font-weight: bold;
   font-size: 16px;
+  margin-bottom: 0px;
 }
 .program-details-card .ant-card {
-  width: 75%;
+  width: 100%;
 }
 .program-details-card .ant-card-body {
   padding: 3%;
@@ -849,7 +851,7 @@ code {
 
 .range-table {
   margin-top: 3%;
-  width: 75%;
+  width: 100%;
 }
 .range-table .strip-table {
   border: 2px solid #e6e6e6;
@@ -874,12 +876,13 @@ code {
 }
 
 .reward-range {
-  margin-top: 20%;
+  margin-top: 5%;
+  width: 75%;
 }
 .reward-range .content-header {
   font-family: Karla;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 18px;
   margin-top: 2%;
 }
 .reward-range .ant-card {
@@ -1026,6 +1029,143 @@ code {
   font-size: 20px;
   color: #000000;
 }
+/*-------------------------------------------- */
+
+/*-------- SUBMISSION - DETAILS---------------- */
+.approve-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5%;
+}
+.approve-button .white-button {
+  width: 250px;
+  border: 2px solid #ad77c0;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #ad77c0;
+  font-family: Karla;
+  font-weight: bold;
+}
+
+.approve-button .Purple-button {
+  width: 250px;
+  font-family: Karla;
+  font-weight: bold;
+  border: 2px solid #ad77c0;
+  border-radius: 5px;
+  background: #ad77c0;
+  color: #ffffff;
+  transition: 300ms;
+}
+.approve-button .Purple-button:hover {
+  transform: translateY(-5px);
+  width: 250px;
+  font-family: Karla;
+  font-weight: bold;
+  background: #ad77c0;
+  border: 2px solid #ad77c0;
+  border-radius: 5px;
+  color: #ffffff;
+}
+.submission-reward {
+  margin-top: 4%;
+  width: 100%;
+}
+.submission-reward .content-header {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 2%;
+}
+.submission-reward .ant-card {
+  height: 122px;
+}
+.submission-reward .ant-card-body {
+  padding: 5%;
+  border: 2px solid #e6e6e6;
+  border-radius: 5px;
+  height: 122px;
+}
+.submission-reward .bounty {
+  margin-top: 5%;
+  display: flex;
+}
+.submission-reward .card-number-data {
+  color: #000000;
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.submission-reward .bounty .instruction {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Karla;
+  font-weight: bold;
+  margin-top: 0px;
+}
+
+.recent-activity {
+  margin-top: 5%;
+}
+.recent-activity .header {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 18px;
+}
+.recent-activity .ant-card-body {
+  padding: 12px;
+}
+.recent-activity .activity-card {
+  border: 2px solid #c3c3c3;
+  border-radius: 5px;
+  width: 75%;
+  margin-top: 2%;
+}
+
+.comment-section {
+  margin-top: 12%;
+  width: 90%;
+}
+
+.comment-section .header {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 18px;
+}
+.comment-section .comment-card .ant-card-body {
+  padding: 2px;
+}
+.comment-section .comment-card {
+  border: 2px solid #c3c3c3;
+  border-radius: 5px;
+  width: 75%;
+  margin-top: 2%;
+}
+.comment-section .ant-comment-avatar {
+  margin-left: 10px;
+}
+.comment-section .comment-card .author {
+  color: #000000;
+  font-weight: bold;
+  font-family: Karla;
+  font-size: 14px;
+}
+.comment-section .comment-card .comment-input {
+  height: 50px;
+  width: 75%;
+}
+.comment-section .comment-card .Purple-button {
+  width: 60px;
+  margin-left: 4%;
+  height: 42px;
+  font-family: Karla;
+  font-weight: bold;
+  border: 2px solid #ad77c0;
+  border-radius: 5px;
+  background: #ad77c0;
+}
+
 /*-------------------------------------------- */
 
 /*----------DASHBOARD : RESEARCHERS -----------------*/

@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import thumbnail from "../../../images/pic_upload.png";
-import { Button, Card, Input } from "antd";
-import { Row, Col, Table } from "react-bootstrap";
+import { Button, Card, Avatar, Comment, Tooltip, Input } from "antd";
+import { Row, Col } from "react-bootstrap";
 // import { useHistory } from "react-router-dom";
 import BackArrow from "../../../images/arrow-left.svg";
+import RightArrow from "../../../images/arrow-right.svg";
+import moment from "moment";
 
 const SubmissionDetail = props => {
   const { Meta } = Card;
-
-  const TableData = [
-    { name: "Active", type: "website" },
-    { name: "Radio", type: "website" },
-    { name: "Radio", type: "other" }
-  ];
 
   const [programData] = useState({
     title: "Program one",
@@ -24,9 +20,22 @@ const SubmissionDetail = props => {
       " ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium"
   });
 
-  const handleCard = () => {
-    console.log("clicke me ::::");
-  };
+  const activity = [
+    { user_name: "James Witwicky", detail: "Created Report in June 11" },
+    { user_name: "Janet Joplin", detail: "Changed Status to Approved" }
+  ];
+
+  const comments = [
+    {
+      author: "Janet Doe",
+      content: "We supply a series of design principles, practical patterns"
+    },
+    {
+      author: "James Regal",
+      content:
+        " perspiciatis unde omnis iste natus error sit voluptatem accusantium"
+    }
+  ];
 
   const handleBackButton = () => {
     props.closeSubmission();
@@ -35,7 +44,7 @@ const SubmissionDetail = props => {
   return (
     <>
       <Row>
-        <Col lg={8}>
+        <Col lg={6}>
           <div className="back-button">
             <Button className="user-back-button" onClick={handleBackButton}>
               <img src={BackArrow} alt="back-arrow-left" /> Back
@@ -49,43 +58,18 @@ const SubmissionDetail = props => {
                     <img
                       src={thumbnail}
                       alt="program-thumbnail"
-                      style={{ height: "120px" }}
+                      style={{ height: "100px" }}
                     />
                   }
                   title={<p className="card-title">{programData.title}</p>}
                   description={
                     <>
                       <p>{programData.description}</p>
-                      <Button className="edit-button" onClick={handleCard}>
-                        Edit Program
-                      </Button>
-                    </>
-                  }
-                />
-              </div>
-            </Card>
-          </div>
-
-          <div className="program-details-card">
-            <Card hoverable>
-              <div className="title-description">
-                <Meta
-                  title={<p className="card-title">Program Details</p>}
-                  description={
-                    <>
                       <p>
-                        ed ut perspiciatis unde omnis iste natus error sit
-                        voluptatem accusantium doloremque laudantium, totam rem
-                        aperiam, eaque ipsa quae ab illo inventore veritatis et
-                        quasi architecto beatae vitae dicta sunt explicabo. Nemo
-                        enim ipsam voluptatem quia voluptas sit aspernatur aut
-                        odit aut fugit, sed quia consequuntur magni dolores eos
-                        qui ratione voluptatem sequi nesciunt. Neque porro
-                        quisquam est, qui dolorem i ed ut perspiciatis unde
-                        omnis iste natus error sit voluptatem accusantium
-                        doloremque laudantium, totam rem aperiam, eaque ipsa
-                        quae ab illo inventore veritatis et quasi architecto
-                        beatae vitae dicta sunt explicabo. Nemo enim ipsam
+                        Submitted by{" "}
+                        <text style={{ color: "#ad77c0", fontWeight: "bold" }}>
+                          Jane Doe
+                        </text>
                       </p>
                     </>
                   }
@@ -94,246 +78,125 @@ const SubmissionDetail = props => {
             </Card>
           </div>
 
-          <div className="range-table">
-            <p className="table-head">Reward Range</p>
-            <Table className="strip-table" striped hover>
-              <thead>
-                <tr>
-                  <th className="table-header">Technical Severity</th>
-                  <th
-                    className="table-header"
-                    style={{
-                      width: "380px"
-                    }}
-                  >
-                    Reward Range
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="table-topic">Critical</td>
-                  <td>
-                    <div
-                      className="reward-amt"
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-evenly"
-                      }}
-                    >
-                      <Input
-                        type="number"
-                        placeholder="Min"
-                        style={{
-                          background: "#f3f3f3",
-                          border: " 2px solid #c4c4c4",
-                          borderRadius: "5px",
-                          marginRight: "10px",
-                          width: "150px"
-                        }}
-                      />
-                      <Input
-                        type="number"
-                        placeholder="Max"
-                        style={{
-                          background: "#f3f3f3",
-                          border: " 2px solid #c4c4c4",
-                          borderRadius: "5px",
-                          marginRight: "10px",
-                          width: "150px"
-                        }}
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="table-topic">High</td>
-                  <td>
-                    <div
-                      className="reward-amt"
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-evenly"
-                      }}
-                    >
-                      <Input
-                        type="number"
-                        placeholder="Min"
-                        style={{
-                          background: "#f3f3f3",
-                          border: " 2px solid #c4c4c4",
-                          borderRadius: "5px",
-                          marginRight: "10px",
-                          width: "150px"
-                        }}
-                      />
-                      <Input
-                        type="number"
-                        placeholder="Max"
-                        style={{
-                          background: "#f3f3f3",
-                          border: " 2px solid #c4c4c4",
-                          borderRadius: "5px",
-                          marginRight: "10px",
-                          width: "150px"
-                        }}
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="table-topic">Medium</td>
-                  <td>
-                    <div
-                      className="reward-amt"
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-evenly"
-                      }}
-                    >
-                      <Input
-                        type="number"
-                        placeholder="Min"
-                        style={{
-                          background: "#f3f3f3",
-                          border: " 2px solid #c4c4c4",
-                          borderRadius: "5px",
-                          marginRight: "10px",
-                          width: "150px"
-                        }}
-                      />
-                      <Input
-                        type="number"
-                        placeholder="Max"
-                        style={{
-                          background: "#f3f3f3",
-                          border: " 2px solid #c4c4c4",
-                          borderRadius: "5px",
-                          marginRight: "10px",
-                          width: "150px"
-                        }}
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="table-topic">Low</td>
-                  <td>
-                    <div
-                      className="reward-amt"
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-evenly"
-                      }}
-                    >
-                      <Input
-                        type="number"
-                        placeholder="Min"
-                        style={{
-                          background: "#f3f3f3",
-                          border: " 2px solid #c4c4c4",
-                          borderRadius: "5px",
-                          marginRight: "10px",
-                          width: "150px"
-                        }}
-                      />
-                      <Input
-                        type="number"
-                        placeholder="Max"
-                        style={{
-                          background: "#f3f3f3",
-                          border: " 2px solid #c4c4c4",
-                          borderRadius: "5px",
-                          marginRight: "10px",
-                          width: "150px"
-                        }}
-                      />
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </Table>
+          <div className="approve-button">
+            <Button className="Purple-button">Approve Bug Report</Button>
+            <Button className="white-button">Disapprove Bug Report</Button>
           </div>
 
-          <div className="range-table">
-            <p className="table-head">In-Scope</p>
-            <Table className="strip-table" striped hover>
-              <thead>
-                <tr>
-                  <th
-                    style={{
-                      color: "rgba(0, 0, 0, 0.6)",
-                      fontFamily: "Karla",
-                      fontWeight: "bold",
-                      width: "360px"
-                    }}
-                  >
-                    Target Name
-                  </th>
-                  <th
-                    style={{
-                      color: "rgba(0, 0, 0, 0.6)",
-                      fontFamily: "Karla",
-                      fontWeight: "bold"
-                    }}
-                  >
-                    Target Type
-                  </th>
-                </tr>
-              </thead>
-              {TableData.map(data => (
-                <tbody>
-                  <tr>
-                    <td style={{ fontFamily: "Karla" }}>{data.name}</td>
-                    <td style={{ fontFamily: "Karla" }}>{data.type}</td>
-                  </tr>
-                </tbody>
-              ))}
-            </Table>
-          </div>
-
-          <div className="range-table">
-            <p className="table-head">Out-Scope</p>
-            <Table className="strip-table" striped hover>
-              <thead>
-                <tr>
-                  <th
-                    style={{
-                      color: "rgba(0, 0, 0, 0.6)",
-                      fontFamily: "Karla",
-                      fontWeight: "bold",
-                      width: "360px"
-                    }}
-                  >
-                    Target Name
-                  </th>
-                  <th
-                    style={{
-                      color: "rgba(0, 0, 0, 0.6)",
-                      fontFamily: "Karla",
-                      fontWeight: "bold"
-                    }}
-                  >
-                    Target Type
-                  </th>
-                </tr>
-              </thead>
-              {TableData.map(data => (
-                <tbody>
-                  <tr>
-                    <td style={{ fontFamily: "Karla" }}>{data.name}</td>
-                    <td style={{ fontFamily: "Karla" }}>{data.type}</td>
-                  </tr>
-                </tbody>
-              ))}
-            </Table>
+          <div className="program-name-card">
+            <Card hoverable>
+              <div
+                className="title-description"
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <Meta
+                  title={<p className="card-title">Status</p>}
+                  description={
+                    <>
+                      <p>Approved</p>
+                    </>
+                  }
+                />
+                <Meta
+                  title={<p className="card-title">Target Severity</p>}
+                  description={
+                    <>
+                      <p>High</p>
+                    </>
+                  }
+                />
+              </div>
+              <div className="title-description">
+                <Meta
+                  title={<p className="card-title">Submitted On</p>}
+                  description={
+                    <>
+                      <p> 21-03-2019</p>
+                    </>
+                  }
+                />
+              </div>
+            </Card>
           </div>
 
           <div className="program-details-card">
             <Card hoverable>
               <div className="title-description">
                 <Meta
-                  title={<p className="card-title">Program Rules</p>}
+                  title={<p className="card-title">Report ID</p>}
+                  description={
+                    <>
+                      <p> sdfsf9e8sn9d8fs98 fmgt9er8tw9et87e9au9we8r</p>
+                    </>
+                  }
+                />
+              </div>
+              <div className="title-description" style={{ marginTop: "2%" }}>
+                <Meta
+                  title={<p className="card-title">Vulnerability Title</p>}
+                  description={
+                    <>
+                      <p> XSS Vulnerability</p>
+                    </>
+                  }
+                />
+              </div>
+              <div className="title-description" style={{ marginTop: "2%" }}>
+                <Meta
+                  title={<p className="card-title">Target</p>}
+                  description={
+                    <>
+                      <a
+                        href="### https://website.com/abc/abc/api/more"
+                        style={{ color: "#ad77c0", fontWeight: "bold" }}
+                      >
+                        https://website.com/abc/abc/api/more
+                      </a>
+                    </>
+                  }
+                />
+              </div>
+              <div className="title-description" style={{ marginTop: "2%" }}>
+                <Meta
+                  title={<p className="card-title">Target Category</p>}
+                  description={
+                    <>
+                      <p> XSS Vulnerability</p>
+                    </>
+                  }
+                />
+              </div>
+              <div className="title-description" style={{ marginTop: "2%" }}>
+                <Meta
+                  title={<p className="card-title">Vulnerability Category</p>}
+                  description={
+                    <>
+                      <p> XSS Vulnerability</p>
+                    </>
+                  }
+                />
+              </div>
+
+              <div className="title-description" style={{ marginTop: "2%" }}>
+                <Meta
+                  title={<p className="card-title">URL</p>}
+                  description={
+                    <>
+                      <a
+                        href="### https://website.com/abc/abc/api/more"
+                        style={{ color: "#ad77c0", fontWeight: "bold" }}
+                      >
+                        https://website.com/abc/abc/api/more
+                      </a>
+                    </>
+                  }
+                />
+              </div>
+              <div className="title-description" style={{ marginTop: "2%" }}>
+                <Meta
+                  title={
+                    <p className="card-title">Vulnerability Description</p>
+                  }
                   description={
                     <>
                       <p>
@@ -357,21 +220,78 @@ const SubmissionDetail = props => {
             </Card>
           </div>
         </Col>
-        <Col lg={4}>
-          <div className="reward-range">
+
+        <Col lg={6}>
+          <div className="submission-reward">
             <div className="content-header">Reward range vulnerability</div>
             <div className="bounty">
-              <Card hoverable>
+              <Card hoverable className="bounty-price" style={{ width: "40%" }}>
                 <p className="instruction">Bounty</p>
                 <p className="card-number-data">$25 - $100</p>
               </Card>
-            </div>
-            <div className="bounty">
-              <Card hoverable>
+              <Card
+                hoverable
+                className="points"
+                style={{ width: "28%", marginLeft: "3%" }}
+              >
                 <p className="instruction">Points</p>
                 <p className="card-number-data">1 - 200</p>
               </Card>
             </div>
+          </div>
+
+          <div className="recent-activity">
+            <div className="header">Recent Activity</div>
+            {activity.map(data => (
+              <>
+                <Card hoverable className="activity-card">
+                  <Meta
+                    avatar={<Avatar src="random.png" />}
+                    title={<p className="card-title">{data.user_name}</p>}
+                    description={<text>{data.detail}</text>}
+                  />
+                </Card>
+              </>
+            ))}
+          </div>
+
+          <div className="comment-section">
+            <div className="header">Recent Comments</div>
+            <Card className="comment-card">
+              {comments.map(data => (
+                <Comment
+                  className="each-comment"
+                  // actions={actions}
+                  author={
+                    <a href="##" className="author">
+                      {data.author}
+                    </a>
+                  }
+                  avatar={
+                    <Avatar
+                      src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                      alt="user-pic"
+                    />
+                  }
+                  content={<p>{data.content}</p>}
+                  datetime={
+                    <Tooltip title={moment().format("YYYY-MM-DD HH:mm:ss")}>
+                      <span>{moment().fromNow()}</span>
+                    </Tooltip>
+                  }
+                />
+              ))}
+            </Card>
+            <Card className="comment-card">
+              <Input
+                type="text"
+                className="comment-input"
+                placeholder="Write a comment"
+              />
+              <Button className="Purple-button">
+                <img src={RightArrow} alt="arrow-right" />
+              </Button>
+            </Card>
           </div>
         </Col>
       </Row>

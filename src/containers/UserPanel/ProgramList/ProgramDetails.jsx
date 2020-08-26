@@ -33,7 +33,7 @@ const ProgramDetails = () => {
   return (
     <>
       <Row>
-        <Col lg={8}>
+        <Col lg={6}>
           <div className="back-button">
             <Button
               className="user-back-button"
@@ -360,7 +360,7 @@ const ProgramDetails = () => {
             </Card>
           </div>
         </Col>
-        <Col lg={4}>
+        <Col lg={6}>
           <div className="reward-range">
             <div className="content-header">Reward range vulnerability</div>
             <div className="bounty">
