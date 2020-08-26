@@ -29,13 +29,13 @@ const MainPanel = () => {
     <>
       <div className="container-fluid">
         <Row sm={2} md={2}>
-          <Col lg={3}>
+          <Col lg={2}>
             <SideBar
               activeMenu={activeMenu}
               handleMenuClick={handleMenuClick}
             />
           </Col>
-          <Col lg={9}>
+          <Col lg={10}>
             {activeMenu === "1" && <UserPanel />}
             {activeMenu === "2" && <Researchers />}
             {activeMenu === "3" && <Submissions />}

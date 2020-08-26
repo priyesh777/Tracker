@@ -116,16 +116,6 @@ code {
   font-weight: bold;
 }
 
-.Form-2-div {
-  background: #f7f7f7;
-  border: 2px solid #f3f3f3;
-  box-sizing: border-box;
-  border-radius: 8px;
-  width: 800px;
-  margin-top: 3%;
-  margin-left: 14%;
-}
-
 .support-button-section {
   display: flex;
   justify-content: space-between;
@@ -166,6 +156,17 @@ code {
   font-weight: "bold";
 }
 
+/*---sign Up 2 ---*/
+.Form-2-div {
+  background: #f7f7f7;
+  border: 2px solid #f3f3f3;
+  box-sizing: border-box;
+  border-radius: 8px;
+  width: 650px;
+  margin-top: 3%;
+  margin-left: 14%;
+  text-align: center;
+}
 .Form-2-div .instruction {
   color: #000000;
   font-family: Karla;
@@ -192,11 +193,6 @@ code {
   display: flex;
   justify-content: space-evenly;
 }
-
-.Form-2-div .form-content .input-fields {
-  margin-right: 25%;
-}
-
 .Form-2-div .input-box {
   width: 100% !important;
   background: #f3f3f3;
@@ -255,6 +251,8 @@ code {
   border-radius: 5px;
   color: #ffffff;
 }
+
+/* --signUp-3 --*/
 
 .invite-friends {
   background: #f7f7f7;
@@ -342,6 +340,7 @@ code {
   color: #ffffff;
 }
 
+/*-- signUp-4 --*/
 .add-first-program {
   background: #f7f7f7;
   border: 2px solid #f3f3f3;
@@ -349,8 +348,31 @@ code {
   border-radius: 8px;
   width: 595px;
   height: 265px;
-  margin-top: 191px;
-  margin-left: 272px;
+  margin-top: 15%;
+  margin-left: 20%;
+}
+.add-first-program .support-button-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
+.add-first-program .set-up-account {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 34px;
+  margin-right: 34px;
+  height: 34px;
+}
+.add-first-program .set-up-account .header {
+  color: #000000;
+  font-family: Karla;
+  font-size: 20px;
+  font-weight: bold;
+}
+.add-first-program .footer-button {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 66px;
 }
 
 /*---------------------------------------*/
@@ -938,7 +960,7 @@ code {
 
 .submissions-content .tab-content {
   margin-top: 3%;
-  margin-left: 39px;
+  margin-left: 20px;
   width: 90%;
 }
 .submissions-content .nav-tabs {
@@ -946,6 +968,7 @@ code {
   border-radius: 5px;
   height: 35px;
   margin-left: 20px;
+  margin-bottom: 75px;
 }
 
 .submissions-content .nav-tabs .nav-link {
@@ -963,19 +986,18 @@ code {
   padding: 7%;
   border: 2px solid #e6e6e6;
   border-radius: 5px;
+  height: 240px;
 }
 
 .all-submissions .card-box {
   width: 300px;
   margin-left: 2%;
-  margin-top: 2%;
   transition: 300ms;
 }
 .all-submissions .card-box:hover {
   transform: translateY(-5px);
   width: 300;
   margin-left: 2%;
-  margin-top: 2%;
 }
 .all-submissions .card-box .card-title {
   font-family: Karla;

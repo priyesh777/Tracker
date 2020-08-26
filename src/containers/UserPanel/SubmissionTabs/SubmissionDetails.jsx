@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import thumbnail from "../../../images/pic_upload.png";
 import { Button, Card, Input } from "antd";
 import { Row, Col, Table } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import BackArrow from "../../../images/arrow-left.svg";
 
-const ProgramDetails = () => {
-  const history = useHistory();
-
+const SubmissionDetail = props => {
   const { Meta } = Card;
 
   const TableData = [
@@ -30,17 +28,16 @@ const ProgramDetails = () => {
     console.log("clicke me ::::");
   };
 
+  const handleBackButton = () => {
+    props.closeSubmission();
+  };
+
   return (
     <>
       <Row>
         <Col lg={8}>
           <div className="back-button">
-            <Button
-              className="user-back-button"
-              onClick={() => {
-                history.push("###back to programList");
-              }}
-            >
+            <Button className="user-back-button" onClick={handleBackButton}>
               <img src={BackArrow} alt="back-arrow-left" /> Back
             </Button>
           </div>
@@ -381,4 +378,4 @@ const ProgramDetails = () => {
     </>
   );
 };
-export default ProgramDetails;
+export default SubmissionDetail;

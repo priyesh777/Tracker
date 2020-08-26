@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Avatar } from "antd";
 import { Row } from "react-bootstrap";
 
-const AllSubmissions = () => {
+const AllSubmissions = props => {
   const { Meta } = Card;
 
   const cardData = [
@@ -34,6 +34,7 @@ const AllSubmissions = () => {
             <Card
               hoverable
               className="card-box"
+              onClick={props.openSubmission}
               actions={[
                 <p className="reward">$23</p>,
                 <p className="points">10 Pts</p>
@@ -48,7 +49,7 @@ const AllSubmissions = () => {
                   }
                 />
                 <Meta
-                  style={{ marginTop: "10px", fontFamily: "Karla" }}
+                  style={{ fontFamily: "Karla" }}
                   description={
                     <>
                       <p>

@@ -25,6 +25,7 @@ const App = () => {
           <Route path="/register_step4" component={SignUp4} />
           <Route path="/program_details" component={Program} />
           <Route path="/terms" component={Terms} />
+          <Route path="/main_panel" component={MainPanel} />
         </Switch>
       </Router>
     </>
