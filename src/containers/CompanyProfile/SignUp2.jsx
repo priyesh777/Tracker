@@ -1,6 +1,6 @@
-import React from "react";
-import { Button, Input, Form } from "antd";
-import { Container, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Input } from "antd";
+import { Container, Row, Form } from "react-bootstrap";
 import BackArrow from "../../images/arrow-left.svg";
 import PhotoUpload from "../../images/pic_upload.png";
 import { Link, useHistory } from "react-router-dom";
@@ -8,12 +8,28 @@ import { Link, useHistory } from "react-router-dom";
 const SignUp2 = () => {
   const history = useHistory();
 
-  const handleUpload = () => {
-    console.log("clicked photo upload");
+  const [formData, setFormData] = useState({
+    company_name: "",
+    company_type: "",
+    company_phone: "",
+    company_website: "",
+    user_name: "",
+    email: "",
+    password: ""
+  });
+
+  const handleInput = e => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    console.log("Input handled::", formData);
   };
 
-  const handleForm = () => {
-    console.log("handling form section");
+  const handleSubmit = values => {
+    console.log("form:::", values);
+  };
+
+  const handleUpload = () => {
+    console.log("clicked photo upload");
   };
 
   return (
@@ -54,12 +70,13 @@ const SignUp2 = () => {
 
           <div className="form-content">
             <div className="input-fields">
-              <Form onFinish={handleForm}>
+              <Form onSubmit={handleSubmit}>
                 <Input
                   name="company_name"
                   className="input-box"
                   type="text"
                   placeholder="Company Name"
+                  onChange={handleInput}
                 />
                 <br />
                 <Input
@@ -67,13 +84,15 @@ const SignUp2 = () => {
                   className="input-box"
                   type="text"
                   placeholder="Company Type"
+                  onChange={handleInput}
                 />
                 <br />
                 <Input
-                  name="company_name"
+                  name="company_website"
                   className="input-box"
                   type="text"
                   placeholder="Company Website"
+                  onChange={handleInput}
                 />
                 <br />
                 <Input
@@ -81,6 +100,7 @@ const SignUp2 = () => {
                   className="input-box"
                   type="number"
                   placeholder="Company Phone Number"
+                  onChange={handleInput}
                 />
                 <br />
                 <Input
@@ -88,13 +108,15 @@ const SignUp2 = () => {
                   className="input-box"
                   type="text"
                   placeholder="Your full Name"
+                  onChange={handleInput}
                 />
                 <br />
                 <Input
-                  name="company_name"
+                  name="email"
                   className="input-box"
                   type="email"
                   placeholder="Your Email Address"
+                  onChange={handleInput}
                 />
                 <br />
                 <Input
@@ -102,6 +124,7 @@ const SignUp2 = () => {
                   className="input-box"
                   type="password"
                   placeholder="Password"
+                  onChange={handleInput}
                 />
 
                 <p className="instruction-2">

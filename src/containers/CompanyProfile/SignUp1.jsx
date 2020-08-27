@@ -3,6 +3,8 @@ import { Input, Button } from "antd";
 import BackArrow from "../../images/arrow-left.svg";
 import { Link, useHistory } from "react-router-dom";
 import { Row, Form } from "react-bootstrap";
+import { PostApi } from "../../api/callapi";
+import { CompanySignUpLink } from "../../api/endpoints";
 
 const SignUp1 = () => {
   const history = useHistory();
@@ -13,13 +15,31 @@ const SignUp1 = () => {
   });
 
   const handleInput = e => {
-    const user_name = e.target.value;
-    setFormData({ user_name });
-    console.log("Input::", e.target.value);
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleForm = values => {
-    console.log("form:::", values);
+  const handleSubmit = async e => {
+    console.log("form:::", formData);
+
+    e.preventDefault();
+    console.log(formData);
+    var form_values = new FormData();
+
+    for (var key in formData) {
+      form_values.append(key, formData[key]);
+    }
+
+    var response = await PostApi(CompanySignUpLink, form_values);
+    // console.log(response)
+    var data = response.data;
+    if (response.status === 200) {
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("data", data);
+      history.push("/register_step2");
+    } else {
+      console.log("error in process::");
+    }
   };
 
   return (
@@ -73,9 +93,9 @@ const SignUp1 = () => {
                 Please enter the following details to continue
               </p>
               <div className="input-form">
-                <Form onFinish={handleForm}>
+                <Form onSubmit={handleSubmit}>
                   <Input
-                    name="UserName"
+                    name="user_name"
                     type="text"
                     placeholder="UserName"
                     className="Form-input"
