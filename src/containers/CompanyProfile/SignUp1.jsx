@@ -17,12 +17,14 @@ const SignUp1 = () => {
   const handleInput = e => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    console.log('aaa')
   };
 
   const handleSubmit = async e => {
+    // e.preventDefault();
+
     console.log("form:::", formData);
 
-    e.preventDefault();
     console.log(formData);
     var form_values = new FormData();
 
@@ -130,7 +132,7 @@ const SignUp1 = () => {
                   <Button
                     type="submit"
                     className="sign-up-button"
-                    onClick={() => history.push("/register_step2")}
+                    onClick={() => handleSubmit()}
                   >
                     Sign Up
                   </Button>
