@@ -1,4 +1,4 @@
-const url = "http://54.254.199.20/";
+const url = "http://54.254.199.20";
 // const url = 'http://127.0.0.1:8000/'
 // {/* /account/verify?token= */}
 

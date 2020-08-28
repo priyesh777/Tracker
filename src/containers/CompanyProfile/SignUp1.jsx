@@ -18,9 +18,12 @@ const SignUp1 = () => {
   const handleInput = e => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    console.log("aaa");
   };
 
   const handleSubmit = async e => {
+    // e.preventDefault();
+
     console.log("form:::", formData);
 
     e.preventDefault();
@@ -131,7 +134,7 @@ const SignUp1 = () => {
                   <Button
                     type="submit"
                     className="sign-up-button"
-                    onClick={handleSubmit}
+                    onClick={() => handleSubmit()}
                   >
                     Sign Up
                   </Button>
