@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import thumbnail from "../../../images/pic_upload.png";
-import { Button, Card, Avatar, Comment, Tooltip, Input } from "antd";
+import {
+  Button,
+  Card,
+  Avatar,
+  Comment,
+  Tooltip,
+  Input,
+  Divider,
+  Tag
+} from "antd";
+import { ArrowUpOutlined } from "@ant-design/icons";
 import { Row, Col } from "react-bootstrap";
 // import { useHistory } from "react-router-dom";
 import BackArrow from "../../../images/arrow-left.svg";
@@ -93,7 +103,7 @@ const SubmissionDetail = props => {
                   title={<p className="card-title">Status</p>}
                   description={
                     <>
-                      <p>Approved</p>
+                      <Tag color="green">Approved</Tag>
                     </>
                   }
                 />
@@ -101,17 +111,19 @@ const SubmissionDetail = props => {
                   title={<p className="card-title">Target Severity</p>}
                   description={
                     <>
-                      <p>High</p>
+                      <Tag color="red">
+                        <ArrowUpOutlined /> High
+                      </Tag>
                     </>
                   }
                 />
               </div>
-              <div className="title-description">
+              <div className="title-description" style={{ marginTop: "3%" }}>
                 <Meta
                   title={<p className="card-title">Submitted On</p>}
                   description={
                     <>
-                      <p> 21-03-2019</p>
+                      <p style={{ fontWeight: "bold" }}>21-03-2019</p>
                     </>
                   }
                 />
@@ -248,7 +260,9 @@ const SubmissionDetail = props => {
                   <Meta
                     avatar={<Avatar src="random.png" />}
                     title={<p className="card-title">{data.user_name}</p>}
-                    description={<text>{data.detail}</text>}
+                    description={
+                      <text style={{ fontWeight: "bold" }}>{data.detail}</text>
+                    }
                   />
                 </Card>
               </>
@@ -259,27 +273,30 @@ const SubmissionDetail = props => {
             <div className="header">Recent Comments</div>
             <Card className="comment-card">
               {comments.map(data => (
-                <Comment
-                  className="each-comment"
-                  // actions={actions}
-                  author={
-                    <a href="##" className="author">
-                      {data.author}
-                    </a>
-                  }
-                  avatar={
-                    <Avatar
-                      src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                      alt="user-pic"
-                    />
-                  }
-                  content={<p>{data.content}</p>}
-                  datetime={
-                    <Tooltip title={moment().format("YYYY-MM-DD HH:mm:ss")}>
-                      <span>{moment().fromNow()}</span>
-                    </Tooltip>
-                  }
-                />
+                <>
+                  <Comment
+                    className="each-comment"
+                    // actions={actions}
+                    author={
+                      <a href="##" className="author">
+                        {data.author}
+                      </a>
+                    }
+                    avatar={
+                      <Avatar
+                        src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                        alt="user-pic"
+                      />
+                    }
+                    content={<p>{data.content}</p>}
+                    datetime={
+                      <Tooltip title={moment().format("YYYY-MM-DD HH:mm:ss")}>
+                        <span>{moment().fromNow()}</span>
+                      </Tooltip>
+                    }
+                  />
+                  <Divider />
+                </>
               ))}
             </Card>
             <Card className="comment-card">

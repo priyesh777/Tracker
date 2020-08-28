@@ -6,4 +6,5 @@ export const VerifyLink = `${url}account/verify?token=`;
 
 // http://127.0.0.1:8000/account/change_password/
 // Company
-export const CompanySignUpLink = `${url}/account/setup`;
+export const CompanySignUpLink = `${url}account/setup/`;
+export const CompanyProfileLink = `${url}account/details/`;

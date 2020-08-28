@@ -9,9 +9,10 @@ import { CompanySignUpLink } from "../../api/endpoints";
 const SignUp1 = () => {
   const history = useHistory();
   const [formData, setFormData] = useState({
-    user_name: "",
+    username: "",
     email: "",
-    password: ""
+    password: "",
+    type: "Admin"
   });
 
   const handleInput = e => {
@@ -23,7 +24,7 @@ const SignUp1 = () => {
     console.log("form:::", formData);
 
     e.preventDefault();
-    console.log(formData);
+
     var form_values = new FormData();
 
     for (var key in formData) {
@@ -95,7 +96,7 @@ const SignUp1 = () => {
               <div className="input-form">
                 <Form onSubmit={handleSubmit}>
                   <Input
-                    name="user_name"
+                    name="username"
                     type="text"
                     placeholder="UserName"
                     className="Form-input"
@@ -130,7 +131,7 @@ const SignUp1 = () => {
                   <Button
                     type="submit"
                     className="sign-up-button"
-                    onClick={() => history.push("/register_step2")}
+                    onClick={handleSubmit}
                   >
                     Sign Up
                   </Button>

@@ -4,28 +4,44 @@ import { Container, Row, Form } from "react-bootstrap";
 import BackArrow from "../../images/arrow-left.svg";
 import PhotoUpload from "../../images/pic_upload.png";
 import { Link, useHistory } from "react-router-dom";
+import { AuthPostApi } from "../../api/callapi";
+import { CompanyProfileLink } from "../../api/endpoints";
 
 const SignUp2 = () => {
   const history = useHistory();
 
-  const [formData, setFormData] = useState({
+  const [companyData, setCompanyData] = useState({
     company_name: "",
     company_type: "",
-    company_phone: "",
-    company_website: "",
-    user_name: "",
-    email: "",
-    password: ""
+    phone: "",
+    website: "",
+    representative_name: ""
   });
 
   const handleInput = e => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    console.log("Input handled::", formData);
+    setCompanyData({ ...companyData, [name]: value });
+    console.log("Input handled::", companyData);
   };
 
-  const handleSubmit = values => {
-    console.log("form:::", values);
+  const handleSubmit = async e => {
+    e.preventDefault();
+    console.log("form values:::", companyData);
+
+    var form_values = new FormData();
+
+    for (var key in companyData) {
+      form_values.append(key, companyData[key]);
+    }
+
+    var response = await AuthPostApi(CompanyProfileLink, form_values);
+    console.log("latest response::", response);
+    if (response.status === 201) {
+      history.push("/register_step3");
+      alert("done the job");
+    } else {
+      console.log("error in process::");
+    }
   };
 
   const handleUpload = () => {
@@ -88,7 +104,7 @@ const SignUp2 = () => {
                 />
                 <br />
                 <Input
-                  name="company_website"
+                  name="website"
                   className="input-box"
                   type="text"
                   placeholder="Company Website"
@@ -96,7 +112,7 @@ const SignUp2 = () => {
                 />
                 <br />
                 <Input
-                  name="company_phone"
+                  name="phone"
                   className="input-box"
                   type="number"
                   placeholder="Company Phone Number"
@@ -104,28 +120,13 @@ const SignUp2 = () => {
                 />
                 <br />
                 <Input
-                  name="user_name"
+                  name="representative_name"
                   className="input-box"
                   type="text"
                   placeholder="Your full Name"
                   onChange={handleInput}
                 />
                 <br />
-                <Input
-                  name="email"
-                  className="input-box"
-                  type="email"
-                  placeholder="Your Email Address"
-                  onChange={handleInput}
-                />
-                <br />
-                <Input
-                  name="password"
-                  className="input-box"
-                  type="password"
-                  placeholder="Password"
-                  onChange={handleInput}
-                />
 
                 <p className="instruction-2">
                   By signing up, you agree to{" "}
@@ -140,7 +141,7 @@ const SignUp2 = () => {
                 <Button
                   type="submit"
                   className="sign-up-button"
-                  onClick={() => history.push("/register_step3")}
+                  onClick={handleSubmit}
                 >
                   Sign Up
                 </Button>
