@@ -5,7 +5,12 @@ import "antd/dist/antd.css";
 import "react-bulma-components/dist/react-bulma-components.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 /* ------- */
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 import SignUp1 from "./containers/CompanyProfile/SignUp1";
 import SignUp2 from "./containers/CompanyProfile/SignUp2";
 import SignUp3 from "./containers/CompanyProfile/SignUp3";
@@ -31,23 +36,29 @@ const App = () => {
     </>
   );
 };
+
 export const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
-      <Route {...rest} render={props => (
-          isLogin() ? <>
-              <Component {...props} />
+    <Route
+      {...rest}
+      render={props =>
+        isLogin() ? (
+          <>
+            <Component {...props} />
           </>
-
-              : <Redirect to="/login" />
-      )} />
+        ) : (
+          <Redirect to="/login" />
+        )
+      }
+    />
   );
-}
+};
 export const isLogin = () => {
-  if (localStorage.getItem('token') != null) {
-      return true
+  if (localStorage.getItem("token") != null) {
+    return true;
   } else {
-      return false
+    return false;
   }
-}
+};
 
 export default App;
