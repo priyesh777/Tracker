@@ -18,10 +18,13 @@ import SignUp4 from "./containers/CompanyProfile/SignUp4";
 import Program from "./containers/LaunchProgram/Program";
 import Terms from "./containers/LaunchProgram/Terms";
 import MainPanel from "./containers/UserPanel/MainPanel";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
     <>
+      <ToastContainer />
       <Router>
         <Switch>
           <Route exact path="/" component={SignUp1} />

@@ -1,6 +1,7 @@
 import React from "react";
-import { Card, Avatar } from "antd";
+import { Card, Avatar, Tag } from "antd";
 import { Row } from "react-bootstrap";
+import { ArrowUpOutlined } from "@ant-design/icons";
 
 const AllSubmissions = props => {
   const { Meta } = Card;
@@ -45,7 +46,12 @@ const AllSubmissions = props => {
                   avatar={<Avatar src="random.png" />}
                   title={<p className="card-title">{data.title}</p>}
                   description={
-                    <p className="company-name">{data.company_name}</p>
+                    <>
+                      <p className="company-name">{data.company_name}</p>
+                      <p>
+                        <Tag color="green">New</Tag>
+                      </p>
+                    </>
                   }
                 />
                 <Meta

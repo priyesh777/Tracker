@@ -4,6 +4,7 @@ import BackArrow from "../../images/arrow-left.svg";
 import { Link, useHistory } from "react-router-dom";
 import { CaretDownOutlined } from "@ant-design/icons";
 import { Container, Row } from "react-bootstrap";
+// import InviteEmail from "./InviteEmail";
 
 const SignUp3 = () => {
   const history = useHistory();
@@ -46,47 +47,46 @@ const SignUp3 = () => {
 
           <div className="invite-emails">
             <Row>
-              <div className="input-fields">
-                <Input
-                  className="input-box"
-                  type="name"
-                  placeholder="Email Address"
-                />
+              <Input
+                className="input-box"
+                type="name"
+                placeholder="Email Address"
+              />
 
-                <Select
-                  className="select-authority"
-                  defaultValue="Admin"
-                  onChange={handleSelectAuthority}
-                  suffixIcon={<CaretDownOutlined />}
-                >
-                  <Option value="admin" className="option">
-                    Admin
-                  </Option>
-                  <Option value="moderator" className="option">
-                    Moderator
-                  </Option>
-                </Select>
+              <Select
+                className="select-authority"
+                defaultValue="Admin"
+                onChange={handleSelectAuthority}
+                suffixIcon={<CaretDownOutlined />}
+              >
+                <Option value="admin" className="option">
+                  Admin
+                </Option>
+                <Option value="moderator" className="option">
+                  Moderator
+                </Option>
+              </Select>
 
-                <Input
-                  className="input-box"
-                  type="name"
-                  placeholder="Email Address"
-                />
+              <Input
+                className="input-box"
+                type="name"
+                placeholder="Email Address"
+              />
 
-                <Select
-                  className="select-authority"
-                  defaultValue="Admin"
-                  onChange={handleSelectAuthority}
-                  suffixIcon={<CaretDownOutlined />}
-                >
-                  <Option value="admin">Admin</Option>
-                  <Option value="moderator">Moderator</Option>
-                </Select>
+              <Select
+                className="select-authority"
+                defaultValue="Admin"
+                onChange={handleSelectAuthority}
+                suffixIcon={<CaretDownOutlined />}
+              >
+                <Option value="admin">Admin</Option>
+                <Option value="moderator">Moderator</Option>
+              </Select>
+              {/* <InviteEmail /> */}
 
-                <Button className="white-button" type="submit">
-                  + Add new field
-                </Button>
-              </div>
+              <Button className="white-button" type="submit">
+                + Add new field
+              </Button>
             </Row>
           </div>
 

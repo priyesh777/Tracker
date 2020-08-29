@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Avatar, Table } from "antd";
 import { Row, Col } from "react-bootstrap";
+import { left, right } from "@popperjs/core";
 
 const Researchers = () => {
   const { Meta } = Card;
@@ -13,25 +14,36 @@ const Researchers = () => {
     {
       researcher: "Maggie Doyne",
       location: "kathmandu"
+    },
+    {
+      researcher: "James Doyne",
+      location: "Bhaktapur"
     }
   ];
 
   const columns = [
     {
-      title: "Rank",
+      title: <text className="table-title"> Rank</text>,
       dataIndex: "rank",
-      key: "rank"
+      key: "rank",
+      render: number => <p className="table-names">{number}</p>
     },
     {
-      title: "Name",
+      title: <text className="table-title"> Researcher</text>,
       dataIndex: "name",
       key: "name",
-      render: text => <p>{text}</p>
+      render: text => (
+        <p className="table-names">
+          <Avatar src="random.png" style={{ marginRight: "5%" }} />
+          {text}
+        </p>
+      )
     },
     {
-      title: "Points",
+      title: <text className="table-title"> Points</text>,
       dataIndex: "points",
-      key: "points"
+      key: "points",
+      render: number => <p className="table-names">{number} Pts</p>
     }
   ];
 
@@ -39,20 +51,32 @@ const Researchers = () => {
     {
       key: "1",
       name: "John Brown",
-      rank: 32,
+      rank: 1,
       points: 10
     },
     {
       key: "2",
-      name: "Jim Green",
-      rank: 42,
+      name: "Jim kennedy",
+      rank: 2,
       points: 12
     },
     {
       key: "3",
-      name: "Joe Black",
-      rank: 32,
+      name: "Joe mckenly",
+      rank: 3,
       points: 15
+    },
+    {
+      key: "4",
+      name: "Jack Black",
+      rank: 4,
+      points: 40
+    },
+    {
+      key: "5",
+      name: "Simmone Smith",
+      rank: 5,
+      points: 50
     }
   ];
 
@@ -88,8 +112,21 @@ const Researchers = () => {
 
             <div className="range-table">
               <div className="content-header">Latest Report</div>
-              <div className="table" style={{ marginTop: "2%" }}>
-                <Table columns={columns} dataSource={data} bordered="true" />
+              <div
+                className="table"
+                style={{
+                  marginTop: "2%",
+                  width: "70%",
+                  border: "2px solid #c3c3c3",
+                  borderRadius: "5px"
+                }}
+              >
+                <Table
+                  columns={columns}
+                  size="small"
+                  dataSource={data}
+                  bordered="true"
+                />
               </div>
             </div>
           </div>

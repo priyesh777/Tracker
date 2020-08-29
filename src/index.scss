@@ -1218,5 +1218,87 @@ code {
   font-size: 20px;
   color: #000000;
 }
+.table-title {
+  font-weight: bold;
+  font-family: Karla;
+  color: #a69ea9;
+  font-size: 14px;
+}
+.table-names {
+  color: #000000;
+  font-weight: bold;
+  font-family: Karla;
+  font-size: 16px;
+}
 
+/*-------------------------------------------- */
+
+/*---------------------DASHBOARD: REWARDS----------------------- */
+
+.rewards-overview {
+  width: 100%;
+}
+.rewards-overview .content-header {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.rewards-overview .ant-card {
+  height: 122px;
+}
+.rewards-overview .ant-card-body {
+  padding-left: 14%;
+  padding-top: 0px;
+  border: 2px solid #e6e6e6;
+  border-radius: 5px;
+  height: 122px;
+}
+.rewards-overview .bounty {
+  margin-top: 2%;
+  display: flex;
+
+  width: 100%;
+}
+.rewards-overview .card-number-data {
+  color: #000000;
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 30px;
+}
+/*-------------------------------------------- */
+
+/*-----------DASHBOARD: Dashboard-main-panel------------- */
+
+.dashboard-overview {
+  width: 100%;
+}
+.dashboard-overview .content-header {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.dashboard-overview .ant-card {
+  height: 122px;
+}
+.dashboard-overview .ant-card-body {
+  padding-left: 14%;
+  padding-top: 0px;
+  border: 2px solid #e6e6e6;
+  border-radius: 5px;
+  height: 122px;
+}
+.dashboard-overview .bounty {
+  margin-top: 2%;
+  display: flex;
+
+  width: 100%;
+}
+.dashboard-overview .card-number-data {
+  color: #000000;
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 30px;
+}
 /*-------------------------------------------- */

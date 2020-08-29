@@ -6,6 +6,7 @@ import PhotoUpload from "../../images/pic_upload.png";
 import { Link, useHistory } from "react-router-dom";
 import { AuthPostApi } from "../../api/callapi";
 import { CompanyProfileLink } from "../../api/endpoints";
+import { toast } from "react-toastify";
 
 const SignUp2 = () => {
   const history = useHistory();
@@ -38,7 +39,7 @@ const SignUp2 = () => {
     console.log("latest response::", response);
     if (response.status === 201) {
       history.push("/register_step3");
-      alert("done the job");
+      toast.success("Profile Setup Completed");
     } else {
       console.log("error in process::");
     }

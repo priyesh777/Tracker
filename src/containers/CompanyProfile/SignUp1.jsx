@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import { Row, Form } from "react-bootstrap";
 import { PostApi } from "../../api/callapi";
 import { CompanySignUpLink } from "../../api/endpoints";
+import { toast } from "react-toastify";
 
 const SignUp1 = () => {
   const history = useHistory();
@@ -41,6 +42,7 @@ const SignUp1 = () => {
       localStorage.setItem("token", data.token);
       localStorage.setItem("data", data);
       history.push("/register_step2");
+      toast.success("Signed Up successfully.");
     } else {
       console.log("error in process::");
     }
@@ -134,7 +136,7 @@ const SignUp1 = () => {
                   <Button
                     type="submit"
                     className="sign-up-button"
-                    onClick={() => handleSubmit()}
+                    onClick={handleSubmit}
                   >
                     Sign Up
                   </Button>
