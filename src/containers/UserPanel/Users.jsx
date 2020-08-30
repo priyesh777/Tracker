@@ -51,7 +51,7 @@ const Users = () => {
                         avatar={<Avatar src="random.png" />}
                         title={data.user_name}
                         description={
-                          <p>
+                          <p style={{ color: "#9834bb" }}>
                             <SafetyCertificateOutlined
                               style={{ color: "#9834bb" }}
                             />{" "}

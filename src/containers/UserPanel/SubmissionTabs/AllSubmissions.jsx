@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, Avatar, Tag } from "antd";
 import { Row } from "react-bootstrap";
-import { ArrowUpOutlined } from "@ant-design/icons";
 
 const AllSubmissions = props => {
   const { Meta } = Card;
@@ -48,7 +47,7 @@ const AllSubmissions = props => {
                   description={
                     <>
                       <p className="company-name">{data.company_name}</p>
-                      <p>
+                      <p style={{ marginBottom: "4%" }}>
                         <Tag color="green">New</Tag>
                       </p>
                     </>
@@ -58,10 +57,10 @@ const AllSubmissions = props => {
                   style={{ fontFamily: "Karla" }}
                   description={
                     <>
-                      <p>
+                      <p style={{ marginBottom: "4%" }}>
                         Submitted On : <strong>{data.submitted}</strong>
                       </p>
-                      <p>
+                      <p style={{ marginBottom: "4%" }}>
                         Status :{" "}
                         <a
                           href="##"
@@ -70,8 +69,8 @@ const AllSubmissions = props => {
                           {data.status}
                         </a>
                       </p>
-                      <p>{data.comments}</p>
-                      <p>Rewards given :</p>
+                      <p style={{ marginBottom: "4%" }}>{data.comments}</p>
+                      <p style={{ marginBottom: "4%" }}>Rewards given :</p>
                     </>
                   }
                 />

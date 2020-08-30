@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, Avatar, Table } from "antd";
 import { Row, Col } from "react-bootstrap";
-import { left, right } from "@popperjs/core";
 
 const Researchers = () => {
   const { Meta } = Card;
@@ -112,15 +111,7 @@ const Researchers = () => {
 
             <div className="range-table">
               <div className="content-header">Latest Report</div>
-              <div
-                className="table"
-                style={{
-                  marginTop: "2%",
-                  width: "70%",
-                  border: "2px solid #c3c3c3",
-                  borderRadius: "5px"
-                }}
-              >
+              <div className="table">
                 <Table
                   columns={columns}
                   size="small"

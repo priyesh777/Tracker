@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import thumbnail from "../../../images/pic_upload.png";
 import { Button, Card, Input } from "antd";
 import { Row, Col, Table } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
 import BackArrow from "../../../images/arrow-left.svg";
 
-const ProgramDetails = () => {
-  const history = useHistory();
-
+const ProgramDetails = props => {
   const { Meta } = Card;
 
   const TableData = [
@@ -37,9 +34,7 @@ const ProgramDetails = () => {
           <div className="back-button">
             <Button
               className="user-back-button"
-              onClick={() => {
-                history.push("###back to programList");
-              }}
+              onClick={props.handleCloseCard}
             >
               <img src={BackArrow} alt="back-arrow-left" /> Back
             </Button>

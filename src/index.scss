@@ -647,6 +647,12 @@ code {
 /* ------------------------------------------ */
 
 /* ------Dashboard Section : Side-Bar  ------ */
+
+.side-menu-section {
+  height: 750px;
+  border: 1px solid #eaeaea;
+  border-radius: 5px;
+}
 .side-menu-section .Bugnas-text {
   font-size: 20px;
   color: #000000;
@@ -660,6 +666,10 @@ code {
   font-family: Karla;
   font-weight: bold;
 }
+
+// .side-menu-section .menu-list .ant-menu-root.ant-menu-inline {
+//   background: #eaeaea;
+// }
 
 .side-menu-section .side-menu-options {
   font-size: 16px;
@@ -675,7 +685,7 @@ code {
 }
 
 .side-menu-section .menu-list {
-  margin-top: 10%;
+  margin-top: 2%;
 }
 .side-menu-section .profile-dropdown .user-name {
   display: flex;
@@ -691,7 +701,7 @@ code {
 
 /*-------------------------------------------- */
 
-/* ------Dashboard Section : Program-menu  ------ */
+/* ------Dashboard Section : Program  ------ */
 .programs-content .content-header {
   font-family: Karla;
   font-weight: bold;
@@ -703,7 +713,9 @@ code {
   justify-content: space-between;
   margin-top: 2%;
 }
-
+.programs-content .filter-programs .search-box .ant-input:placeholder-shown {
+  background: #ffffff;
+}
 .programs-content .button-group {
   width: 18%;
   display: flex;
@@ -770,7 +782,7 @@ code {
   width: 20%;
 }
 
-/*-----------------program details ---------------*/
+/*----------DASHBOARD : program details ---------------*/
 
 .back-button .user-back-button {
   transition: 300ms;
@@ -1007,6 +1019,7 @@ code {
   font-family: Karla;
   font-weight: bold;
   color: #000000;
+  margin-bottom: 4%;
 }
 .all-submissions .card-box .company-name {
   font-family: Karla;
@@ -1118,7 +1131,7 @@ code {
   padding: 12px;
 }
 .recent-activity .activity-card {
-  border: 2px solid #c3c3c3;
+  border: 2px solid #e6e6e6;
   border-radius: 5px;
   width: 75%;
   margin-top: 2%;
@@ -1230,13 +1243,20 @@ code {
   font-family: Karla;
   font-size: 16px;
 }
+.researchers .range-table .table {
+  margin-top: 2%;
+  width: 70%;
+  border: 2px solid #c3c3c3;
+  border-radius: 5px;
+}
 
 /*-------------------------------------------- */
 
 /*---------------------DASHBOARD: REWARDS----------------------- */
 
 .rewards-overview {
-  width: 100%;
+  width: 80%;
+  margin-top: 3%;
 }
 .rewards-overview .content-header {
   font-family: Karla;
@@ -1257,7 +1277,6 @@ code {
 .rewards-overview .bounty {
   margin-top: 2%;
   display: flex;
-
   width: 100%;
 }
 .rewards-overview .card-number-data {
@@ -1265,6 +1284,34 @@ code {
   font-family: Karla;
   font-weight: bold;
   font-size: 30px;
+}
+.graph-chart {
+  width: 100%;
+}
+.graph-chart .content-header {
+  font-weight: bold;
+  font-family: Karla;
+  font-size: 18px;
+  margin-top: 5%;
+}
+.graph-chart .ant-card-bordered {
+  border: 2px solid #e6e6e6;
+  border-radius: 5px;
+}
+.rewards-history {
+  width: 80%;
+}
+.rewards-history .content-header {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 5%;
+}
+.rewards-history .table {
+  margin-top: 2%;
+  width: 100%;
+  border: 2px solid #e6e6e6;
+  border-radius: 5px;
 }
 /*-------------------------------------------- */
 
@@ -1277,13 +1324,14 @@ code {
   font-family: Karla;
   font-weight: bold;
   font-size: 18px;
+  margin-top: 3%;
+  margin-left: 1%;
 }
 
 .dashboard-overview .ant-card {
   height: 122px;
 }
 .dashboard-overview .ant-card-body {
-  padding-left: 14%;
   padding-top: 0px;
   border: 2px solid #e6e6e6;
   border-radius: 5px;
@@ -1291,14 +1339,63 @@ code {
 }
 .dashboard-overview .bounty {
   margin-top: 2%;
-  display: flex;
-
   width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 .dashboard-overview .card-number-data {
   color: #000000;
   font-family: Karla;
   font-weight: bold;
   font-size: 30px;
+}
+
+.graph-tabs
+  .ant-tabs-card.ant-tabs-top
+  > .ant-tabs-nav
+  .ant-tabs-tab:not(:last-of-type) {
+  margin-right: 0px;
+  width: 135px;
+}
+
+// .graph-tabs .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list {
+//   margin-left: 10%;
+// }
+
+.graph-tabs
+  .ant-tabs-nav-list
+  .ant-tabs-tab.ant-tabs-tab-active
+  .ant-tabs-tab-btn {
+  color: #989898;
+}
+.graph-tabs .ant-tabs-tab .ant-tabs-tab-active {
+  background: #ad77c0;
+}
+
+.researchers-card .content-header {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 3%;
+}
+
+.researchers-card .ant-card-body {
+  padding: 4%;
+}
+.researchers-card .name-list {
+  border: 2px solid #e6e6e6;
+  border-radius: 5px;
+  margin-top: 5%;
+}
+
+.available-programs .content-header {
+  font-family: Karla;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 5%;
+  margin-left: 1%;
+}
+.available-programs .cards {
+  margin-top: 5%;
 }
 /*-------------------------------------------- */

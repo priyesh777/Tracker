@@ -47,16 +47,15 @@ const SubmissionDetail = props => {
     }
   ];
 
-  const handleBackButton = () => {
-    props.closeSubmission();
-  };
-
   return (
     <>
       <Row>
         <Col lg={6}>
           <div className="back-button">
-            <Button className="user-back-button" onClick={handleBackButton}>
+            <Button
+              className="user-back-button"
+              onClick={props.closeSubmission}
+            >
               <img src={BackArrow} alt="back-arrow-left" /> Back
             </Button>
           </div>

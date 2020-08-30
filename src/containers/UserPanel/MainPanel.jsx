@@ -22,7 +22,11 @@ const MainPanel = () => {
   const handleOpenCard = () => {
     setActiveMenu("0");
     setOpenCard(true);
-    console.log("invoked this function ::::", openCard);
+  };
+
+  const handleCloseCard = () => {
+    setOpenCard(false);
+    setActiveMenu("5");
   };
 
   return (
@@ -35,7 +39,7 @@ const MainPanel = () => {
               handleMenuClick={handleMenuClick}
             />
           </Col>
-          <Col lg={9}>
+          <Col lg={9} style={{ background: "#f7f7f7" }}>
             {activeMenu === "1" && <UserPanel />}
             {activeMenu === "2" && <Researchers />}
             {activeMenu === "3" && <Submissions />}
@@ -46,7 +50,9 @@ const MainPanel = () => {
             {activeMenu === "6" && <Users />}
             {activeMenu === "7" && <Settings />}
             {activeMenu === "8" && <Support />}
-            {activeMenu === "0" && openCard && <ProgramDetails />}
+            {activeMenu === "0" && openCard && (
+              <ProgramDetails handleCloseCard={handleCloseCard} />
+            )}
           </Col>
         </Row>
       </div>
