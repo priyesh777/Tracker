@@ -125,10 +125,7 @@ const UserPanel = props => {
           </Row>
 
           <Row>
-            <div
-              className="graph-tabs"
-              style={{ marginTop: "10%", width: "100%" }}
-            >
+            <div className="graph-tabs">
               <Tabs
                 defaultActiveKey="valid_bugs"
                 id="uncontrolled-tab-example"
@@ -171,10 +168,12 @@ const UserPanel = props => {
                       <Meta
                         avatar={<Avatar src="random.png" />}
                         title={data.researcher}
+                        description={<p>{data.location}</p>}
+                      />
+                      <Meta
                         description={
                           <>
-                            <p>{data.location}</p>
-                            <p style={{ marginTop: "3%" }}>{data.rewards}</p>
+                            <p>{data.rewards}</p>
                           </>
                         }
                       />
