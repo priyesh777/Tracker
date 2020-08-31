@@ -1,10 +1,10 @@
 import React from "react";
-import { Card, List, Avatar, Tabs } from "antd";
+import { Card, List, Avatar } from "antd";
 import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Tabs, Tab } from "react-bootstrap";
 
 const UserPanel = props => {
-  const { TabPane } = Tabs;
+  // const { TabPane } = Tabs;
   const { Meta } = Card;
 
   const cardData = [
@@ -121,57 +121,53 @@ const UserPanel = props => {
               className="graph-tabs"
               style={{ marginTop: "3%", width: "100%" }}
             >
-              <Tabs defaultActiveKey="1" type="card" size="small">
-                <TabPane tab="Bugs Submitted" key="1">
-                  Content of Bugs Submitted
-                </TabPane>
-                <TabPane tab=" Valid Bugs" key="2">
-                  Content of Valid Bugs
-                </TabPane>
-                <TabPane tab="Invalid Bugs" key="3">
-                  Content of Invalid Bugs
-                </TabPane>
-                <TabPane tab="Bugs solved" key="4">
-                  Content of Bugs solved
-                </TabPane>
-                <TabPane tab="Bugs unsolved" key="5">
-                  Content of Bugs unsolved
-                </TabPane>
+              <Tabs defaultActiveKey="valid_bugs" id="uncontrolled-tab-example">
+                <Tab eventKey="bugs_found" title="Bugs Found">
+                  <h1>Bugs Found</h1>
+                </Tab>
+                <Tab eventKey="valid_bugs" title="Valid Bugs">
+                  <h1>Valid Bugs</h1>
+                </Tab>
+                <Tab eventKey="invalid_bugs" title="Invalid Bugs">
+                  <h1>Invalid Bugs</h1>
+                </Tab>
+                <Tab eventKey="bugs_unsolved" title="Bugs unsolved">
+                  <h1>Bugs Unsolved</h1>
+                </Tab>
+                <Tab eventKey="bugs_solved" title="Bugs Solved">
+                  <h1>Bugs Solved</h1>
+                </Tab>
               </Tabs>
             </div>
           </Row>
 
           <Row>
-            <div className="available-programs">
+            <div className="available-programs" style={{ width: "100%" }}>
               <div className="content-header">Available programs</div>
-              <div className="cards">
-                <Row gutter={12}>
-                  <Col span={2}>
-                    {cardData.map(data => (
-                      <Card
-                        hoverable
-                        className="card-box"
-                        actions={[
-                          <p className="reward">$23</p>,
-                          <p className="points">10 Pts</p>
-                        ]}
-                      >
-                        <div className="title-description">
-                          <Meta
-                            avatar={<Avatar src="random.png" />}
-                            title={data.researcher}
-                            description={
-                              <>
-                                <p>{data.location}</p>
-                                <p>{data.rewards}</p>
-                              </>
-                            }
-                          />
-                        </div>
-                      </Card>
-                    ))}
-                  </Col>
-                </Row>
+              <div className="card-list" style={{ width: "100%" }}>
+                {cardData.map(data => (
+                  <Card
+                    hoverable
+                    className="card-box"
+                    actions={[
+                      <p className="reward">$23</p>,
+                      <p className="points">10 Pts</p>
+                    ]}
+                  >
+                    <div className="title-description">
+                      <Meta
+                        avatar={<Avatar src="random.png" />}
+                        title={data.researcher}
+                        description={
+                          <>
+                            <p>{data.location}</p>
+                            <p style={{ marginTop: "3%" }}>{data.rewards}</p>
+                          </>
+                        }
+                      />
+                    </div>
+                  </Card>
+                ))}
               </div>
             </div>
           </Row>
