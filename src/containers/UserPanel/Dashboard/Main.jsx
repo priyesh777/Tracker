@@ -5,7 +5,6 @@ import { Row, Col, Tabs, Tab } from "react-bootstrap";
 import BugGraph from "./BugGraph";
 
 const UserPanel = props => {
-  // const { TabPane } = Tabs;
   const { Meta } = Card;
 
   const [tabKey, setTabKey] = useState("valid_bugs");
@@ -54,11 +53,6 @@ const UserPanel = props => {
       ratings: 2
     }
   ];
-
-  // const handleTab = eventKey => {
-  //   setTabKey(eventKey);
-  //   console.log("Tab key :::", tabKey);
-  // };
 
   return (
     <>

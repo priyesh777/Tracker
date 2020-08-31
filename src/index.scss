@@ -259,10 +259,10 @@ code {
   border: 2px solid #f3f3f3;
   box-sizing: border-box;
   border-radius: 8px;
-  width: 600px;
-  height: 500px;
+  width: 540px;
+  height: auto;
   margin-top: 5%;
-  margin-left: 20%;
+  margin-left: 30%;
 }
 .invite-friends .instruction {
   color: rgba(0, 0, 0, 0.6);
@@ -287,15 +287,23 @@ code {
   margin-left: 7%;
   width: 100%;
 }
-.invite-friends .invite-emails .input-box {
-  width: 60%;
+// .invite-friends .invite-emails .input-box {
+//   width: 60%;
+//   background: #f3f3f3;
+//   border: 2px solid #c4c4c4;
+//   border-radius: 5px;
+//   margin-bottom: 20px;
+//   margin-top: 3%;
+// }
+.invite-row .email-box .input-box {
+  width: 100%;
   background: #f3f3f3;
   border: 2px solid #c4c4c4;
   border-radius: 5px;
   margin-bottom: 20px;
   margin-top: 3%;
 }
-.invite-friends .invite-emails .input-fields .select-authority {
+.invite-row .select-box .select-authority {
   width: 150px;
   background: #ffffff;
   border: 2px solid #e6e6e6;
@@ -303,8 +311,18 @@ code {
   border-radius: 5px;
   font-family: Karla;
   font-weight: bold;
-  margin-left: 5%;
+  margin-top: 5%;
 }
+// .invite-friends .invite-emails .input-fields .select-authority {
+//   width: 150px;
+//   background: #ffffff;
+//   border: 2px solid #e6e6e6;
+//   box-sizing: border-box;
+//   border-radius: 5px;
+//   font-family: Karla;
+//   font-weight: bold;
+//   margin-left: 5%;
+// }
 .invite-friends .invite-emails .white-button {
   border: 2px solid #c4c4c4;
   color: #ad77c0;
@@ -314,7 +332,8 @@ code {
 .invite-friends .footer-button {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 66px;
+  margin-top: 15%;
+  margin-bottom: 5%;
 }
 .invite-friends .footer-button .white-button {
   width: 170px;

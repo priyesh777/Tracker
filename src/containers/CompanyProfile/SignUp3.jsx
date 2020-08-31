@@ -1,22 +1,31 @@
-import React from "react";
-import { Button, Input, Select } from "antd";
+import React, { useState } from "react";
+import { Button } from "antd";
 import BackArrow from "../../images/arrow-left.svg";
 import { Link, useHistory } from "react-router-dom";
-import { CaretDownOutlined } from "@ant-design/icons";
-import { Container, Row } from "react-bootstrap";
-// import InviteEmail from "./InviteEmail";
+import { Row, Col } from "react-bootstrap";
+import InviteEmail from "./InviteEmail";
 
 const SignUp3 = () => {
   const history = useHistory();
-  const { Option } = Select;
 
-  const handleSelectAuthority = () => {
-    console.log("selected an authority");
+  const [inputList, setInputList] = useState([
+    { email: "", role: "Moderator" }
+  ]);
+
+  const handleAddEmail = () => {
+    setInputList([...inputList, { email: "", role: "" }]);
+  };
+
+  const onChangeEmail = (e, i) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[i][name] = value;
+    setInputList(list);
   };
 
   return (
-    <Container>
-      <Row>
+    <Row>
+      <Col>
         <div className="invite-friends">
           <div className="support-button-section">
             <Button
@@ -47,46 +56,21 @@ const SignUp3 = () => {
 
           <div className="invite-emails">
             <Row>
-              <Input
-                className="input-box"
-                type="name"
-                placeholder="Email Address"
-              />
-
-              <Select
-                className="select-authority"
-                defaultValue="Admin"
-                onChange={handleSelectAuthority}
-                suffixIcon={<CaretDownOutlined />}
-              >
-                <Option value="admin" className="option">
-                  Admin
-                </Option>
-                <Option value="moderator" className="option">
-                  Moderator
-                </Option>
-              </Select>
-
-              <Input
-                className="input-box"
-                type="name"
-                placeholder="Email Address"
-              />
-
-              <Select
-                className="select-authority"
-                defaultValue="Admin"
-                onChange={handleSelectAuthority}
-                suffixIcon={<CaretDownOutlined />}
-              >
-                <Option value="admin">Admin</Option>
-                <Option value="moderator">Moderator</Option>
-              </Select>
-              {/* <InviteEmail /> */}
-
-              <Button className="white-button" type="submit">
-                + Add new field
-              </Button>
+              <div className="input-area" style={{ width: "100%" }}>
+                <InviteEmail
+                  inputList={inputList}
+                  onChangeEmail={onChangeEmail}
+                />
+              </div>
+              <div className="add-button" style={{ marginLeft: "8%" }}>
+                <Button
+                  className="white-button"
+                  type="submit"
+                  onClick={handleAddEmail}
+                >
+                  + Add new field
+                </Button>
+              </div>
             </Row>
           </div>
 
@@ -100,8 +84,8 @@ const SignUp3 = () => {
             </Button>
           </div>
         </div>
-      </Row>
-    </Container>
+      </Col>
+    </Row>
   );
 };
 export default SignUp3;
