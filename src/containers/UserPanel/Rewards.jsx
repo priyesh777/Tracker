@@ -5,6 +5,7 @@ import { Line } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
 
 const Rewards = () => {
+  // Graph-Data
   const [chart] = useState({
     dataLine: {
       labels: ["January", "February", "March", "April"],

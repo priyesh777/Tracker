@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, List, Avatar } from "antd";
 import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
 import { Row, Col, Tabs, Tab } from "react-bootstrap";
+import BugGraph from "./BugGraph";
 
 const UserPanel = props => {
   // const { TabPane } = Tabs;
   const { Meta } = Card;
+
+  const [tabKey, setTabKey] = useState("valid_bugs");
 
   const cardData = [
     {
@@ -51,6 +54,11 @@ const UserPanel = props => {
       ratings: 2
     }
   ];
+
+  // const handleTab = eventKey => {
+  //   setTabKey(eventKey);
+  //   console.log("Tab key :::", tabKey);
+  // };
 
   return (
     <>
@@ -119,23 +127,27 @@ const UserPanel = props => {
           <Row>
             <div
               className="graph-tabs"
-              style={{ marginTop: "3%", width: "100%" }}
+              style={{ marginTop: "10%", width: "100%" }}
             >
-              <Tabs defaultActiveKey="valid_bugs" id="uncontrolled-tab-example">
+              <Tabs
+                defaultActiveKey="valid_bugs"
+                id="uncontrolled-tab-example"
+                onSelect={e => setTabKey(e)}
+              >
                 <Tab eventKey="bugs_found" title="Bugs Found">
-                  <h1>Bugs Found</h1>
+                  <BugGraph tabKey={tabKey} />
                 </Tab>
                 <Tab eventKey="valid_bugs" title="Valid Bugs">
-                  <h1>Valid Bugs</h1>
+                  <BugGraph tabKey={tabKey} />
                 </Tab>
                 <Tab eventKey="invalid_bugs" title="Invalid Bugs">
-                  <h1>Invalid Bugs</h1>
+                  <BugGraph tabKey={tabKey} />
                 </Tab>
                 <Tab eventKey="bugs_unsolved" title="Bugs unsolved">
-                  <h1>Bugs Unsolved</h1>
+                  <BugGraph tabKey={tabKey} />
                 </Tab>
                 <Tab eventKey="bugs_solved" title="Bugs Solved">
-                  <h1>Bugs Solved</h1>
+                  <BugGraph tabKey={tabKey} />
                 </Tab>
               </Tabs>
             </div>
@@ -145,7 +157,7 @@ const UserPanel = props => {
             <div className="available-programs" style={{ width: "100%" }}>
               <div className="content-header">Available programs</div>
               <div className="card-list" style={{ width: "100%" }}>
-                {cardData.map(data => (
+                {cardData.map((data, index) => (
                   <Card
                     hoverable
                     className="card-box"
@@ -153,6 +165,7 @@ const UserPanel = props => {
                       <p className="reward">$23</p>,
                       <p className="points">10 Pts</p>
                     ]}
+                    key={`programCard-${index}`}
                   >
                     <div className="title-description">
                       <Meta
@@ -189,21 +202,27 @@ const UserPanel = props => {
                         }
                         description={
                           <>
-                            <text>{item.description}</text>
-                            <text style={{ marginLeft: "10%" }}>
+                            <a href="##" disabled>
+                              {item.description}
+                            </a>
+                            <a href="##" disabled style={{ marginLeft: "10%" }}>
                               {item.points}pts
-                            </text>
-                            <text style={{ float: "right" }}>
+                            </a>
+                            <a href="##" disabled style={{ float: "right" }}>
                               {item.ratings && item.ratings >= 3 ? (
-                                <text style={{ color: "green" }}>
+                                <a
+                                  href="##"
+                                  disabled
+                                  style={{ color: "green" }}
+                                >
                                   <ArrowUpOutlined /> {item.ratings}
-                                </text>
+                                </a>
                               ) : (
-                                <text style={{ color: "red" }}>
+                                <a href="##" disabled style={{ color: "red" }}>
                                   <ArrowDownOutlined /> {item.ratings}
-                                </text>
+                                </a>
                               )}
-                            </text>
+                            </a>
                           </>
                         }
                       />
