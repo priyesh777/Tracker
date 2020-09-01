@@ -8,6 +8,7 @@ const InviteEmail = props => {
   // const handleSelectAuthority = () => {
   //   console.log("selected an authority");
   // };
+  console.log("input state values ::", props.inputList);
   return (
     <>
       {props.inputList &&

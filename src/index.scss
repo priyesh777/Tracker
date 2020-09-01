@@ -401,12 +401,12 @@ code {
 
 .program-container {
   background: #f7f7f7;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 1%;
+  margin-bottom: 1%;
   margin-left: 300px;
-  width: 980px;
-  border: 2px solid #a69ea9;
-  border-radius: 11px;
+  width: 880px;
+  border: 1px solid #c4c4c4;
+  border-radius: 8px;
 }
 
 .program-container .cps-form-backButton {
@@ -434,14 +434,15 @@ code {
 
 .program-container .tabs-list {
   margin-left: 135px;
-  width: 632px;
+  width: 634px;
+  margin-top: 1%;
 }
 
 .program-container .tabs-list .nav-tabs {
-  border: 2px solid #a79dad;
+  border: 1px solid #c4c4c4;
   border-radius: 5px;
   height: 34px;
-  align-items: center;
+  width: 630px;
 }
 
 .program-container .nav-tabs .nav-link {

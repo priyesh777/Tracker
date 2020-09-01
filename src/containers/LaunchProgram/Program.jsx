@@ -13,11 +13,11 @@ const Program = () => {
   const history = useHistory();
 
   return (
-    <div className="flex-container">
-      <div className="program-container">
+    <div className="program-container">
+      <Row>
         <Col>
           <Row>
-            <div className="support-button-section">
+            <div className="support-button-section" style={{ width: "100%" }}>
               <Button
                 className="cps-form-backButton"
                 onClick={() => {
@@ -27,9 +27,6 @@ const Program = () => {
                 <img src={BackArrow} alt="back-arrow-left" /> Back
               </Button>
             </div>
-          </Row>
-
-          <Row>
             <div className="tabs-list">
               <Tabs defaultActiveKey="active-tab" id="uncontrolled-tab-example">
                 <Tab eventKey="active-tab" title="Name & Details">
@@ -49,10 +46,7 @@ const Program = () => {
                 </Tab>
               </Tabs>
             </div>
-          </Row>
-
-          <Row>
-            <div className="footer-button">
+            <div className="footer-button" style={{ width: "100%" }}>
               <Button
                 className="program-continue"
                 onClick={() => history.push("###")}
@@ -62,7 +56,7 @@ const Program = () => {
             </div>
           </Row>
         </Col>
-      </div>
+      </Row>
     </div>
   );
 };

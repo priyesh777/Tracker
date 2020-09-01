@@ -8,18 +8,16 @@ import InviteEmail from "./InviteEmail";
 const SignUp3 = () => {
   const history = useHistory();
 
-  const [inputList, setInputList] = useState([
-    { email: "", role: "Moderator" }
-  ]);
+  const [inputList, setInputList] = useState([{ email: "", role: "" }]);
 
   const handleAddEmail = () => {
     setInputList([...inputList, { email: "", role: "" }]);
   };
 
-  const onChangeEmail = (e, i) => {
+  const onChangeEmail = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
-    list[i][name] = value;
+    list[index][name] = value;
     setInputList(list);
   };
 
