@@ -48,25 +48,26 @@ const SignUp2 = () => {
     reader.readAsDataURL(img);
   };
 
-  //-------
-
-  const handleInput = e => {
-    const { name, value } = e.target;
-
-    //Conditional for image-upload
-    if (e.file.status === "uploading") {
+  const handleUpload = info => {
+    console.log("Upload info ::", info);
+    if (info.file.status === "uploading") {
       setLoading(true);
       return;
     }
-    if (e.file.status === "done") {
-      // Get this url from response.
+    if (info.file.status === "done") {
+      // Get this url from response
       getBase(
-        e.file.originFileObj,
+        info.file.originFileObj,
         imageUrl => setImageUrl(imageUrl),
         setLoading(false)
       );
     }
+  };
 
+  //-------
+
+  const handleInput = e => {
+    const { name, value } = e.target;
     setCompanyData({ ...companyData, [name]: value });
     console.log("Input handled::", companyData);
   };
@@ -198,7 +199,7 @@ const SignUp2 = () => {
                 showUploadList={false}
                 action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                 beforeUpload={beforeUpload}
-                onChange={handleInput}
+                onChange={handleUpload}
               >
                 {imageUrl ? (
                   <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />
