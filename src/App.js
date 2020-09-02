@@ -20,6 +20,8 @@ import Terms from "./containers/LaunchProgram/Terms";
 import MainPanel from "./containers/UserPanel/MainPanel";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import UserLogin from "./containers/User_Profile/UserLogin";
+import UserRegister from "./containers/User_Profile/UserRegister";
 
 const App = () => {
   return (
@@ -34,6 +36,8 @@ const App = () => {
           <Route path="/program_details" component={Program} />
           <Route path="/terms" component={Terms} />
           <Route path="/main_panel" component={MainPanel} />
+          <Route path="/user_login" component={UserLogin} />
+          <Route path="/user_register" component={UserRegister} />
         </Switch>
       </Router>
     </>

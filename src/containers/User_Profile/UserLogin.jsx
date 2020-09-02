@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import { Input, Button } from "antd";
-import BackArrow from "../../images/arrow-left.svg";
 import { Link, useHistory } from "react-router-dom";
 import { Row, Form } from "react-bootstrap";
 import { PostApi } from "../../api/callapi";
-import { CompanySignUpLink } from "../../api/endpoints";
+import { UserLoginLink } from "../../api/endpoints";
 import { toast } from "react-toastify";
 
-const SignUp1 = () => {
+const UserLogin = () => {
   const history = useHistory();
   const [formData, setFormData] = useState({
     username: "",
-    email: "",
-    password: "",
-    type: "Admin"
+    password: ""
   });
 
   const handleInput = e => {
@@ -31,14 +28,14 @@ const SignUp1 = () => {
       form_values.append(key, formData[key]);
     }
 
-    var response = await PostApi(CompanySignUpLink, form_values);
+    var response = await PostApi(UserLoginLink, form_values);
     // console.log(response)
     var data = response.data;
     if (response.status === 200) {
       localStorage.setItem("token", data.token);
       localStorage.setItem("data", data);
-      history.push("/register_step2");
-      toast.success("Signed Up successfully.");
+      history.push("/main_panel");
+      toast.success("Logged in successfully");
     } else {
       console.log("error in process::");
     }
@@ -67,9 +64,6 @@ const SignUp1 = () => {
 
           <div className="signUp-form-wrapper">
             <div className="support-button-section">
-              <Button className="cps-form-backButton">
-                <img src={BackArrow} alt="back-arrow-left" /> Back
-              </Button>
               <p>
                 Need Help?{" "}
                 <Link to="##" className="link-words">
@@ -82,18 +76,11 @@ const SignUp1 = () => {
                 className="Set-up-account"
                 style={{ display: "flex", justifyContent: "space-evenly" }}
               >
-                <p className="form-header">Set up your account</p>
-
                 <p className="form-header">
-                  <a className="link-words" href="###">
-                    1
-                  </a>
-                  /4
+                  Please enter your Login Credentials
                 </p>
               </div>
-              <p className="instruction">
-                Please enter the following details to continue
-              </p>
+
               <div className="input-form">
                 <Form onSubmit={handleSubmit}>
                   <Input
@@ -104,14 +91,7 @@ const SignUp1 = () => {
                     onChange={handleInput}
                   />
                   <br />
-                  <Input
-                    name="email"
-                    type="email"
-                    placeholder="Email Address"
-                    className="Form-input"
-                    onChange={handleInput}
-                  />
-                  <br />
+
                   <Input
                     name="password"
                     type="password"
@@ -120,13 +100,8 @@ const SignUp1 = () => {
                     onChange={handleInput}
                   />
                   <p className="instruction">
-                    By signing up, you agree to{" "}
                     <a className="link-words" href="###">
-                      terms
-                    </a>{" "}
-                    and{" "}
-                    <a className="link-words" href="###">
-                      policies
+                      Forgot Password?
                     </a>
                   </p>
                   <Button
@@ -134,7 +109,7 @@ const SignUp1 = () => {
                     className="sign-up-button"
                     onClick={handleSubmit}
                   >
-                    Sign Up
+                    Log in
                   </Button>
                 </Form>
               </div>
@@ -145,4 +120,4 @@ const SignUp1 = () => {
     </div>
   );
 };
-export default SignUp1;
+export default UserLogin;

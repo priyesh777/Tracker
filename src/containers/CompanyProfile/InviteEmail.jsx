@@ -1,14 +1,14 @@
 import React from "react";
-import { Input, Select } from "antd";
-import { CaretDownOutlined } from "@ant-design/icons";
+import { Input } from "antd";
 
 const InviteEmail = props => {
-  const { Option } = Select;
+  const onDataChange = (e, i) => {
+    const { name, value } = e.target;
+    const list = [...props.inputList];
+    list[i][name] = value;
+    props.onInputChange(list);
+  };
 
-  // const handleSelectAuthority = () => {
-  //   console.log("selected an authority");
-  // };
-  console.log("input state values ::", props.inputList);
   return (
     <>
       {props.inputList &&
@@ -29,25 +29,24 @@ const InviteEmail = props => {
                     placeholder="Email Address"
                     name="email"
                     value={data && data.email}
-                    onChange={e => props.onChangeEmail(e, i)}
+                    onChange={e => onDataChange(e, i)}
                   />
                 </div>
                 <div className="select-box" style={{ marginRight: "5%" }}>
-                  <Select
+                  <select
                     className="select-authority"
-                    defaultValue="Admin"
                     name="role"
                     value={data && data.role}
-                    onChange={e => props.onChangeEmail(e, i)}
-                    suffixIcon={<CaretDownOutlined />}
+                    onChange={e => onDataChange(e, i)}
                   >
-                    <Option value="admin" className="option">
+                    <option value="">-- Select Role --</option>
+                    <option value="admin" className="option">
                       Admin
-                    </Option>
-                    <Option value="moderator" className="option">
+                    </option>
+                    <option value="moderator" className="option">
                       Moderator
-                    </Option>
-                  </Select>
+                    </option>
+                  </select>
                 </div>
               </div>
             </>

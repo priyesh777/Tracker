@@ -305,13 +305,14 @@ code {
 }
 .invite-row .select-box .select-authority {
   width: 150px;
+  height: 32px;
   background: #ffffff;
   border: 2px solid #e6e6e6;
   box-sizing: border-box;
   border-radius: 5px;
   font-family: Karla;
   font-weight: bold;
-  margin-top: 5%;
+  margin-top: 6%;
 }
 // .invite-friends .invite-emails .input-fields .select-authority {
 //   width: 150px;
@@ -403,7 +404,7 @@ code {
   background: #f7f7f7;
   margin-top: 1%;
   margin-bottom: 1%;
-  margin-left: 300px;
+  margin-left: 21%;
   width: 880px;
   border: 1px solid #c4c4c4;
   border-radius: 8px;
@@ -990,10 +991,6 @@ code {
 
 /*----------DASHBOARD : SUBMISSIONS -----------------*/
 
-.submissions-content {
-  margin-top: 3%;
-}
-
 .submissions-content .tab-content {
   margin-top: 3%;
   margin-left: 20px;
@@ -1003,7 +1000,7 @@ code {
   border: 2px solid #e6e6e6;
   border-radius: 3px;
   height: 35px;
-  margin-left: 20px;
+  margin-top: 2%;
 }
 
 .submissions-content .nav-tabs .nav-link {
@@ -1275,7 +1272,7 @@ code {
 
 .rewards-overview {
   width: 80%;
-  margin-top: 3%;
+  margin-top: 2%;
 }
 .rewards-overview .content-header {
   font-family: Karla;
@@ -1395,7 +1392,6 @@ code {
   font-family: Karla;
   font-weight: bold;
   font-size: 18px;
-  margin-top: 3%;
 }
 
 .researchers-card .ant-card-body {

@@ -179,7 +179,7 @@ const UserPanel = props => {
           </Row>
         </Col>
         <Col lg={4}>
-          <div className="researchers-card">
+          <div className="researchers-card" style={{ marginTop: "6%" }}>
             <div className="content-header">Researchers</div>
             <div className="name-list">
               <Card hoverable>

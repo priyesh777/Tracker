@@ -4,6 +4,9 @@ import BackArrow from "../../images/arrow-left.svg";
 import { Link, useHistory } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import InviteEmail from "./InviteEmail";
+import { AuthPostApi } from "../../api/callapi";
+import { InvitationLink } from "../../api/endpoints";
+import { toast } from "react-toastify";
 
 const SignUp3 = () => {
   const history = useHistory();
@@ -14,11 +17,29 @@ const SignUp3 = () => {
     setInputList([...inputList, { email: "", role: "" }]);
   };
 
-  const onChangeEmail = (e, index) => {
-    const { name, value } = e.target;
-    const list = [...inputList];
-    list[index][name] = value;
+  const onInputChange = list => {
+    console.log("Data from Invite-Email  :::", list);
     setInputList(list);
+  };
+
+  const handleInvite = async e => {
+    e.preventDefault();
+    console.log("Input values:::", inputList);
+
+    var input_values = new FormData();
+
+    for (var key in inputList) {
+      input_values.append(key, inputList[key]);
+    }
+
+    var response = await AuthPostApi(InvitationLink, input_values);
+    console.log("latest response::", response);
+    if (response.status === 201) {
+      history.push("/register_step4");
+      toast.success("Invitation has been sent");
+    } else {
+      console.log("error in process::");
+    }
   };
 
   return (
@@ -57,7 +78,7 @@ const SignUp3 = () => {
               <div className="input-area" style={{ width: "100%" }}>
                 <InviteEmail
                   inputList={inputList}
-                  onChangeEmail={onChangeEmail}
+                  onInputChange={onInputChange}
                 />
               </div>
               <div className="add-button" style={{ marginLeft: "8%" }}>
@@ -74,10 +95,7 @@ const SignUp3 = () => {
 
           <div className="footer-button">
             <Button className="white-button">Do this Later</Button>
-            <Button
-              className="Purple-button"
-              onClick={() => history.push("/register_step4")}
-            >
+            <Button className="Purple-button" onClick={handleInvite}>
               Invite
             </Button>
           </div>
