@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 const SignUp2 = () => {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl] = useState("");
 
   const [companyData, setCompanyData] = useState({
     company_name: "",
@@ -24,6 +24,13 @@ const SignUp2 = () => {
   });
 
   //--- For upload-image
+
+  const dummyRequest = ({ file, onSuccess }) => {
+    setTimeout(() => {
+      onSuccess("ok");
+    }, 0);
+  };
+
   const uploadButton = (
     <div>
       {loading ? <LoadingOutlined /> : <PlusOutlined />}
@@ -43,12 +50,6 @@ const SignUp2 = () => {
     return isJpgOrPng && isLt2M;
   };
 
-  const getBase = (img, callback) => {
-    const reader = new FileReader();
-    reader.addEventListener("load", () => callback(reader.result));
-    reader.readAsDataURL(img);
-  };
-
   const handleUpload = info => {
     console.log("Uploaded info ::", info);
     const tempState = info.file;
@@ -58,12 +59,7 @@ const SignUp2 = () => {
       return;
     }
     if (info.file.status === "done") {
-      // Get this url from response
-      // getBase(
-      //   info.file.originFileObj,
-      //   imageUrl => setImageUrl(imageUrl),
-      //   setLoading(false)
-      // );
+      setLoading(false);
       message.success("file uploaded");
     } else if (info.file.status === "error") {
       setLoading(false);
@@ -72,7 +68,6 @@ const SignUp2 = () => {
 
     setCompanyData({ logo: tempState });
   };
-
   //-------
 
   const handleInput = e => {
@@ -204,8 +199,9 @@ const SignUp2 = () => {
               <Upload
                 name="logo"
                 listType="picture-card"
+                customRequest={dummyRequest}
                 className="avatar-uploader"
-                showUploadList={false}
+                showUploadList={true}
                 beforeUpload={beforeUpload}
                 onChange={handleUpload}
               >
