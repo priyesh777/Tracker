@@ -17,6 +17,7 @@ const SignUp2 = () => {
   const [companyData, setCompanyData] = useState({
     company_name: "",
     company_type: "",
+    logo: {},
     phone: "",
     website: "",
     representative_name: ""
@@ -49,19 +50,27 @@ const SignUp2 = () => {
   };
 
   const handleUpload = info => {
-    console.log("Upload info ::", info);
+    console.log("Uploaded info ::", info);
+    const tempState = info.file;
+
     if (info.file.status === "uploading") {
       setLoading(true);
       return;
     }
     if (info.file.status === "done") {
       // Get this url from response
-      getBase(
-        info.file.originFileObj,
-        imageUrl => setImageUrl(imageUrl),
-        setLoading(false)
-      );
+      // getBase(
+      //   info.file.originFileObj,
+      //   imageUrl => setImageUrl(imageUrl),
+      //   setLoading(false)
+      // );
+      message.success("file uploaded");
+    } else if (info.file.status === "error") {
+      setLoading(false);
+      message.error("file upload failed");
     }
+
+    setCompanyData({ logo: tempState });
   };
 
   //-------
@@ -197,7 +206,6 @@ const SignUp2 = () => {
                 listType="picture-card"
                 className="avatar-uploader"
                 showUploadList={false}
-                action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                 beforeUpload={beforeUpload}
                 onChange={handleUpload}
               >

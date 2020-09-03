@@ -26,12 +26,6 @@ const SignUp3 = () => {
     e.preventDefault();
     console.log("Input values:::", inputList);
 
-    // var input_values = new FormData();
-
-    // for (var key in inputList) {
-    //   input_values.append(key, inputList[key]);
-    // }
-
     var response = await AuthPostApi(InvitationLink, inputList);
     console.log("latest response::", response);
     if (response.status === 201) {

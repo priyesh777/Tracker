@@ -22,17 +22,9 @@ const SignUp1 = () => {
   };
 
   const handleSubmit = async e => {
-    console.log("form:::", formData);
-
     e.preventDefault();
-    var form_values = new FormData();
 
-    for (var key in formData) {
-      form_values.append(key, formData[key]);
-    }
-
-    var response = await PostApi(CompanySignUpLink, form_values);
-    // console.log(response)
+    var response = await PostApi(CompanySignUpLink, formData);
     var data = response.data;
     if (response.status === 200) {
       localStorage.setItem("token", data.token);
