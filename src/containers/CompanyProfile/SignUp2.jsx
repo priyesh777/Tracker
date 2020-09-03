@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 const SignUp2 = () => {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
-  const [imageUrl] = useState("");
+  const [uploaded, setUploaded] = useState(false);
 
   const [companyData, setCompanyData] = useState({
     company_name: "",
@@ -23,8 +23,7 @@ const SignUp2 = () => {
     representative_name: ""
   });
 
-  //--- For upload-image
-
+  //------------- For upload-image
   const dummyRequest = ({ file, onSuccess }) => {
     setTimeout(() => {
       onSuccess("ok");
@@ -60,6 +59,7 @@ const SignUp2 = () => {
     }
     if (info.file.status === "done") {
       setLoading(false);
+      setUploaded(true);
       message.success("file uploaded");
     } else if (info.file.status === "error") {
       setLoading(false);
@@ -68,7 +68,7 @@ const SignUp2 = () => {
 
     setCompanyData({ logo: tempState });
   };
-  //-------
+  //-----------------------------------------//
 
   const handleInput = e => {
     const { name, value } = e.target;
@@ -205,11 +205,7 @@ const SignUp2 = () => {
                 beforeUpload={beforeUpload}
                 onChange={handleUpload}
               >
-                {imageUrl ? (
-                  <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />
-                ) : (
-                  uploadButton
-                )}
+                {uploaded ? null : uploadButton}
               </Upload>
             </div>
           </div>
