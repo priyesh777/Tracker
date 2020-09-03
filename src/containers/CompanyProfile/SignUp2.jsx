@@ -23,7 +23,7 @@ const SignUp2 = () => {
     representative_name: ""
   });
 
-  //------------- For upload-image
+  //------------- For upload-image------//
   const dummyRequest = ({ file, onSuccess }) => {
     setTimeout(() => {
       onSuccess("ok");
