@@ -11,16 +11,14 @@ import { toast } from "react-toastify";
 
 const SignUp2 = () => {
   const history = useHistory();
+
   const [loading, setLoading] = useState(false);
   const [uploaded, setUploaded] = useState(false);
-  var form_values = new FormData();
-  const [img, setImg] = useState()
-
+  const [img, setImg] = useState();
 
   const [companyData, setCompanyData] = useState({
     company_name: "",
     company_type: "",
-    // logo: "",
     phone: "",
     website: "",
     representative_name: ""
@@ -51,52 +49,45 @@ const SignUp2 = () => {
     }
     return isJpgOrPng && isLt2M;
   };
-  let tempImage;
+
   const handleUpload = info => {
-    // console.log(info.file.originFileObj)
-    setImg(info.file.originFileObj)
+    setImg(info.file.originFileObj);
     if (info.file.status === "uploading") {
       setLoading(true);
       return;
     }
+
     if (info.file.status === "done") {
       setLoading(false);
       setUploaded(true);
-      tempImage = info.file.originFileObj;
-
+      // let tempImage = info.file.originFileObj;
       message.success("file uploaded");
     } else if (info.file.status === "error") {
       setLoading(false);
       message.error("file upload failed");
     }
-    // console.log("Uploaded info ::", info);
-
-
-
-    // setCompanyData({ logo: tempState });
   };
   //-----------------------------------------//
 
   const handleInput = e => {
     const { name, value } = e.target;
     setCompanyData({ ...companyData, [name]: value });
-    console.log("Input handled::", companyData);
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log("image::",img)
+    console.log("companyData state:::", companyData);
+    console.log("Image handled::", img);
 
-    console.log("form values:::", companyData);
-
+    var form_values = new FormData();
 
     for (var key in companyData) {
       form_values.append(key, companyData[key]);
     }
-    form_values.append('logo', img);
+    form_values.append("Appended logo", img);
+    console.log("form values::", form_values);
 
     var response = await AuthPostApi(CompanyProfileLink, form_values);
-    console.log("latest response::", response);
     if (response.status === 201) {
       history.push("/register_step3");
       toast.success("Profile Setup Completed");
@@ -206,7 +197,7 @@ const SignUp2 = () => {
             </div>
             <div className="upload-div">
               <Upload
-                type='file'
+                type="file"
                 name="logo"
                 listType="picture-card"
                 customRequest={dummyRequest}
