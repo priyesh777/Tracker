@@ -10,6 +10,7 @@ import ProgramDetails from "./ProgramList/ProgramDetails";
 import Users from "./Users";
 import Settings from "./Settings";
 import Support from "./Support";
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const MainPanel = () => {
   const [activeMenu, setActiveMenu] = useState("1");
@@ -33,7 +34,7 @@ const MainPanel = () => {
     <>
       <div className="container-fluid">
         <Row sm={2} md={2}>
-          <Col lg={3}>
+          <Col lg={3} style={{ padding: "0px" }}>
             <SideBar
               activeMenu={activeMenu}
               handleMenuClick={handleMenuClick}

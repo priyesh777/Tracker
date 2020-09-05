@@ -50,7 +50,7 @@ const SubmissionDetail = props => {
   return (
     <>
       <Row>
-        <Col lg={6}>
+        <Col md={6} style={{ paddingLeft: "3%" }}>
           <div className="back-button">
             <Button
               className="user-back-button"
@@ -232,7 +232,7 @@ const SubmissionDetail = props => {
           </div>
         </Col>
 
-        <Col lg={6}>
+        <Col md={6}>
           <div className="submission-reward">
             <div className="content-header">Reward range vulnerability</div>
             <div className="bounty">

@@ -5,7 +5,7 @@ import { Card } from "react-bootstrap";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import Editor from "../components/Editor";
 
-const NameDetails = () => {
+const NameDetails = props => {
   const [programData, setProgramData] = useState({
     program_name: "",
     tagline: "",

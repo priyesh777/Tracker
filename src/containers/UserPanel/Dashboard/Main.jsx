@@ -67,7 +67,7 @@ const UserPanel = props => {
                     <Card
                       hoverable
                       className="reward"
-                      style={{ width: "100%" }}
+                      style={{ width: "100%", marginLeft: "7%" }}
                     >
                       <p className="instruction">Bugs-Found</p>
                       <p className="card-number-data">18</p>

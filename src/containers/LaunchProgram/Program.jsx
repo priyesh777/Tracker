@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Terms from "./Terms";
 import SetScope from "./SetScope";
@@ -11,6 +11,20 @@ import NameDetails from "./NameDetails";
 
 const Program = () => {
   const history = useHistory();
+
+  const [launchData, setLaunchData] = useState({
+    name: "",
+    logo: "",
+    tag_line: "",
+    created_at: "",
+    description: "",
+    program_target: [],
+    program_reward: []
+  });
+
+  const onInputChange = () => {
+    setLaunchData();
+  };
 
   return (
     <Row>
@@ -28,10 +42,10 @@ const Program = () => {
         <div className="tabs-list">
           <Tabs defaultActiveKey="active-tab" id="uncontrolled-tab-example">
             <Tab eventKey="active-tab" title="Name & Details">
-              <NameDetails />
+              <NameDetails launchData={launchData} />
             </Tab>
             <Tab eventKey="set-scope" title="Set Scope">
-              <SetScope />
+              <SetScope launchData={launchData} />
             </Tab>
             <Tab eventKey="terms" title="Terms and Conditions">
               <Terms />

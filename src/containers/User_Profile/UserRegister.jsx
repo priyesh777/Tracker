@@ -7,7 +7,7 @@ import { PostApi } from "../../api/callapi";
 import { UserRegisterLink } from "../../api/endpoints";
 import { toast } from "react-toastify";
 
-const UserRegister = () => {
+const UserRegister = props => {
   const history = useHistory();
   const [formData, setFormData] = useState({
     username: "",
