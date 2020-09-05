@@ -11,22 +11,23 @@ import { toast } from "react-toastify";
 const SignUp3 = () => {
   const history = useHistory();
 
-  const [inputList, setInputList] = useState([{ email: "", role: "" }]);
+  const [inputList, setInputList] = useState([{ email: "", type: "" }]);
 
   const handleAddEmail = () => {
-    setInputList([...inputList, { email: "", role: "" }]);
+    setInputList([...inputList, { email: "", type: "" }]);
   };
 
   const onInputChange = list => {
     console.log("Data from Invite-Email  :::", list);
     setInputList(list);
   };
-
   const handleInvite = async e => {
     e.preventDefault();
     console.log("Input values:::", inputList);
+    const data = {}
+    data['users'] = inputList
 
-    var response = await AuthPostApi(InvitationLink, inputList);
+    var response = await AuthPostApi(InvitationLink, data);
     console.log("latest response::", response);
     if (response.status === 201) {
       history.push("/register_step4");

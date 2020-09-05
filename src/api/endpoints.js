@@ -18,3 +18,8 @@ export const CompanyProfileLink = `${url}account/details/`;
 export const InvitationLink = `${url}account/many_users_invite/`;
 
 //........//
+
+//Programs ::
+export const AllProgramsLink = `${url}app/programs/`;
+
+//........//

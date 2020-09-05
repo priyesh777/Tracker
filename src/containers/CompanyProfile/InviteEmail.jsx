@@ -35,7 +35,7 @@ const InviteEmail = props => {
                 <div className="select-box" style={{ marginRight: "5%" }}>
                   <select
                     className="select-authority"
-                    name="role"
+                    name="type"
                     value={data && data.role}
                     onChange={e => onDataChange(e, i)}
                   >
