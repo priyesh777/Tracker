@@ -4,6 +4,8 @@ import "./index.scss";
 import "antd/dist/antd.css";
 import "react-bulma-components/dist/react-bulma-components.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 /* ------- */
 import {
   BrowserRouter as Router,
@@ -18,11 +20,10 @@ import SignUp4 from "./containers/CompanyProfile/SignUp4";
 import Program from "./containers/LaunchProgram/Program";
 import Terms from "./containers/LaunchProgram/Terms";
 import MainPanel from "./containers/UserPanel/MainPanel";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import UserLogin from "./containers/User_Profile/UserLogin";
 import UserRegister from "./containers/User_Profile/UserRegister";
-import Programs from "./containers/UserPanel/ProgramList/Programs"
+import Programs from "./containers/UserPanel/ProgramList/Programs";
+import SubmissionForm from "./containers/UserPanel/SubmissionTabs/SubmissionForm";
 
 const App = () => {
   return (
@@ -40,6 +41,8 @@ const App = () => {
           <Route path="/main_panel" component={MainPanel} />
           <Route path="/user_login" component={UserLogin} />
           <Route path="/user_register" component={UserRegister} />
+
+          <Route path="/submission_form" component={SubmissionForm} />
         </Switch>
       </Router>
     </>

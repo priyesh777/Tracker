@@ -10,7 +10,7 @@ import ProgramDetails from "./ProgramList/ProgramDetails";
 import Users from "./Users";
 import Settings from "./Settings";
 import Support from "./Support";
-// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const MainPanel = () => {
   const [activeMenu, setActiveMenu] = useState("1");
@@ -35,13 +35,11 @@ const MainPanel = () => {
       <div className="container-fluid">
         <Row sm={2} md={2}>
           <Col lg={3} style={{ padding: "0px" }}>
-            <SideBar
-              activeMenu={activeMenu}
-              handleMenuClick={handleMenuClick}
-            />
+            <SideBar handleMenuClick={handleMenuClick} />
           </Col>
+
           <Col lg={9} style={{ background: "#f7f7f7" }}>
-            {activeMenu === "1" && <UserPanel />}
+            {/* {activeMenu === "1" && <UserPanel />}
             {activeMenu === "2" && <Researchers />}
             {activeMenu === "3" && <Submissions />}
             {activeMenu === "4" && <Rewards />}
@@ -53,7 +51,23 @@ const MainPanel = () => {
             {activeMenu === "8" && <Support />}
             {activeMenu === "0" && openCard && (
               <ProgramDetails handleCloseCard={handleCloseCard} />
-            )}
+            )} */}
+            <Router>
+              <Switch>
+                <Route exact path="/main_panel/" component={UserPanel} />
+                <Route path="/main_panel/researchers" component={Researchers} />
+                <Route path="/main_panel/submissions" component={Submissions} />
+                <Route path="/main_panel/rewards" component={Rewards} />
+                <Route path="/main_panel/programs" component={Programs} />
+                <Route
+                  path="/main_panel/programs/:id"
+                  component={ProgramDetails}
+                />
+                <Route path="/main_panel/users" component={Users} />
+                <Route path="/main_panel/settings" component={Settings} />
+                <Route path="/main_panel/support" component={Support} />
+              </Switch>
+            </Router>
           </Col>
         </Row>
       </div>

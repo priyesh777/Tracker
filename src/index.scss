@@ -287,14 +287,7 @@ code {
   margin-left: 7%;
   width: 100%;
 }
-// .invite-friends .invite-emails .input-box {
-//   width: 60%;
-//   background: #f3f3f3;
-//   border: 2px solid #c4c4c4;
-//   border-radius: 5px;
-//   margin-bottom: 20px;
-//   margin-top: 3%;
-// }
+
 .invite-row .email-box .input-box {
   width: 100%;
   background: #f3f3f3;
@@ -314,16 +307,7 @@ code {
   font-weight: bold;
   margin-top: 6%;
 }
-// .invite-friends .invite-emails .input-fields .select-authority {
-//   width: 150px;
-//   background: #ffffff;
-//   border: 2px solid #e6e6e6;
-//   box-sizing: border-box;
-//   border-radius: 5px;
-//   font-family: Karla;
-//   font-weight: bold;
-//   margin-left: 5%;
-// }
+
 .invite-friends .invite-emails .white-button {
   border: 2px solid #c4c4c4;
   color: #ad77c0;
@@ -415,21 +399,31 @@ code {
   font-family: Karla;
 }
 
-.program-container .footer-button {
-  margin-left: 597px;
-  margin-bottom: 5%;
+.footer-button {
+  margin-bottom: 14%;
   margin-top: 26px;
 }
 
-.program-container .footer-button .program-continue {
+.footer-button .program-continue {
   width: 170px;
+  height: 36px;
   border: 2px solid #ad77c0;
   border-radius: 5px;
   background: #ad77c0;
   color: #ffffff;
+  transition: 300ms;
+}
+.footer-button .program-continue:hover {
+  width: 170px;
+  height: 36px;
+  border: 2px solid #ad77c0;
+  border-radius: 5px;
+  background: #ad77c0;
+  color: #ffffff;
+  transform: translateY(-5px);
 }
 
-.program-container .footer-button .program-continue .program-button-group {
+.footer-button .program-continue .program-button-group {
   background: #ad77c0 !important;
 }
 
@@ -1491,6 +1485,37 @@ code {
 }
 .graph-tabs .ant-tabs-tab .ant-tabs-tab-active {
   background: #ad77c0;
+}
+
+/*-------------------------------------------- */
+
+/*-----------DASHBOARD: Submission : FORM------------- */
+.details-form-tab .nav-tabs .nav-link {
+  border: 1px solid #e6e6e6;
+  border-radius: 3px;
+  color: #000000;
+  font-weight: bold;
+  font-family: Karla;
+  height: 34px;
+  font-size: 16px;
+  width: 190px;
+  background: #ffffff;
+}
+
+.details-form-tab .nav-tabs {
+  border-bottom: 0px;
+}
+
+//Submission-Card
+.program-details-card .title-description .select-box .select-authority {
+  width: 150px;
+  height: 32px;
+  background: #ffffff;
+  border: 2px solid #e6e6e6;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-family: Karla;
+  font-weight: bold;
 }
 
 /*-------------------------------------------- */

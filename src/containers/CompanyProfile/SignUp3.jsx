@@ -21,11 +21,12 @@ const SignUp3 = () => {
     console.log("Data from Invite-Email  :::", list);
     setInputList(list);
   };
+
   const handleInvite = async e => {
     e.preventDefault();
     console.log("Input values:::", inputList);
-    const data = {}
-    data['users'] = inputList
+    const data = {};
+    data["users"] = inputList;
 
     var response = await AuthPostApi(InvitationLink, data);
     console.log("latest response::", response);

@@ -12,18 +12,30 @@ import NameDetails from "./NameDetails";
 const Program = () => {
   const history = useHistory();
 
-  const [launchData, setLaunchData] = useState({
-    name: "",
-    logo: "",
-    tag_line: "",
-    created_at: "",
+  const [tabKey, setTabKey] = useState(1);
+
+  const handleTab = num => {
+    setTabKey(num);
+    console.log("tab key ::", num);
+  };
+
+  const handleTabSelect = () => {};
+
+  const [nameData, setNameData] = useState({
+    program_name: "",
+    tagline: "",
     description: "",
-    program_target: [],
-    program_reward: []
+    logo: {}
   });
 
-  const onInputChange = () => {
-    setLaunchData();
+  const [scopeData, setScopeData] = useState();
+
+  const handleScope = info => {
+    setScopeData(info);
+  };
+
+  const handleNameDetails = info => {
+    setNameData(info);
   };
 
   return (
@@ -40,32 +52,45 @@ const Program = () => {
           </Button>
         </div>
         <div className="tabs-list">
-          <Tabs defaultActiveKey="active-tab" id="uncontrolled-tab-example">
-            <Tab eventKey="active-tab" title="Name & Details">
-              <NameDetails launchData={launchData} />
+          <Tabs
+            activeKey={tabKey}
+            onSelect={handleTabSelect}
+            id="controlled-tab-example"
+          >
+            <Tab eventKey={1} title="Name & Details">
+              <NameDetails
+                nameData={nameData}
+                handleNameDetails={handleNameDetails}
+                handleTab={handleTab}
+              />
+              <Button>back</Button>
             </Tab>
-            <Tab eventKey="set-scope" title="Set Scope">
-              <SetScope launchData={launchData} />
+            <Tab eventKey={2} title="Set Scope">
+              <SetScope
+                scopeData={scopeData}
+                handleScope={handleScope}
+                handleTab={handleTab}
+              />
             </Tab>
-            <Tab eventKey="terms" title="Terms and Conditions">
-              <Terms />
+            <Tab eventKey={3} title="Terms and Conditions">
+              <Terms handleTab={handleTab} />
             </Tab>
-            <Tab eventKey="rewards" title="Rewards">
+            <Tab eventKey={4} title="Rewards">
               <Rewards />
             </Tab>
-            <Tab eventKey="review" title="Review & Submit">
+            <Tab eventKey={5} title="Review & Submit">
               <Review />
             </Tab>
           </Tabs>
         </div>
-        <div className="footer-button" style={{ width: "100%" }}>
+        {/* <div className="footer-button" style={{ width: "100%" }}>
           <Button
             className="program-continue"
             onClick={() => history.push("###")}
           >
             Continue
           </Button>
-        </div>
+        </div> */}
       </div>
     </Row>
   );

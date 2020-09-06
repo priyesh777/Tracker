@@ -12,6 +12,7 @@ import {
   FormOutlined
 } from "@ant-design/icons";
 import { Menu, Dropdown, Avatar } from "antd";
+import { Link } from "react-router-dom";
 
 const SideBar = props => {
   const handleProfileEdit = () => {
@@ -51,57 +52,73 @@ const SideBar = props => {
       <div className="menu-list">
         <Menu
           className="side-menu-options"
-          onClick={e => props.handleMenuClick(e)}
-          defaultSelectedKeys={["1"]}
+          // onClick={e => props.handleMenuClick(e)}
+          // defaultSelectedKeys={["1"]}
           mode="inline"
         >
           <Menu.Item key="1">
-            <span>
-              <AppstoreOutlined className="side-menu-options" />
-              <span>Dashboard</span>
-            </span>
+            <Link to="/main_panel/">
+              <span>
+                <AppstoreOutlined className="side-menu-options" />
+                <span>Dashboard</span>
+              </span>
+            </Link>
           </Menu.Item>
           <Menu.Item key="2">
-            <span>
-              <UserOutlined className="side-menu-options" />
-              <span>Researchers</span>
-            </span>
+            <Link to="/main_panel/researchers">
+              <span>
+                <UserOutlined className="side-menu-options" />
+                <span>Researchers</span>
+              </span>
+            </Link>
           </Menu.Item>
           <Menu.Item key="3">
-            <span>
-              <FileDoneOutlined className="side-menu-options" />
-              <span>Submissions</span>
-            </span>
+            <Link to="/main_panel/submissions">
+              <span>
+                <FileDoneOutlined className="side-menu-options" />
+                <span>Submissions</span>
+              </span>
+            </Link>
           </Menu.Item>
           <Menu.Item key="4">
-            <span>
-              <TrophyOutlined className="side-menu-options" />
-              <span>Rewards</span>
-            </span>
+            <Link to="/main_panel/rewards">
+              <span>
+                <TrophyOutlined className="side-menu-options" />
+                <span>Rewards</span>
+              </span>
+            </Link>
           </Menu.Item>
           <Menu.Item key="5">
-            <span>
-              <ProjectOutlined className="side-menu-options" />
-              <span>Programs</span>
-            </span>
+            <Link to="/main_panel/programs">
+              <span>
+                <ProjectOutlined className="side-menu-options" />
+                <span>Programs</span>
+              </span>
+            </Link>
           </Menu.Item>
           <Menu.Item key="6">
-            <span>
-              <IdcardOutlined className="side-menu-options" />
-              <span>Users</span>
-            </span>
+            <Link to="/main_panel/users">
+              <span>
+                <IdcardOutlined className="side-menu-options" />
+                <span>Users</span>
+              </span>
+            </Link>
           </Menu.Item>
           <Menu.Item key="7" style={{ marginTop: "100px" }}>
-            <span>
-              <ToolOutlined className="side-menu-options" />
-              <span>Settings</span>
-            </span>
+            <Link to="/main_panel/settings">
+              <span>
+                <ToolOutlined className="side-menu-options" />
+                <span>Settings</span>
+              </span>
+            </Link>
           </Menu.Item>
           <Menu.Item key="8">
-            <span>
-              <QuestionCircleOutlined className="side-menu-options" />
-              <span>Support</span>
-            </span>
+            <Link to="/main_panel/support">
+              <span>
+                <QuestionCircleOutlined className="side-menu-options" />
+                <span>Support</span>
+              </span>
+            </Link>
           </Menu.Item>
         </Menu>
       </div>
