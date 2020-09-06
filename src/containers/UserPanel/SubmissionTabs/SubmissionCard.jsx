@@ -1,14 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Card, Input, Upload, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import Editor from "../../components/Editor";
 
 const SubmissionCard = () => {
-  const [loading, setLoading] = useState(false);
-  const [uploaded, setUploaded] = useState(false);
-  const [file, setFile] = useState();
-
   // For Uploading file ......//
 
   const dummyRequest = ({ file, onSuccess }) => {
@@ -18,19 +14,9 @@ const SubmissionCard = () => {
   };
 
   const handleUpload = info => {
-    setFile(info.file.originFileObj);
-    if (info.file.status === "uploading") {
-      setLoading(true);
-      return;
-    }
-
     if (info.file.status === "done") {
-      setLoading(false);
-      setUploaded(true);
-      // let tempImage = info.file.originFileObj;
       message.success("file uploaded");
     } else if (info.file.status === "error") {
-      setLoading(false);
       message.error("file upload failed");
     }
   };
