@@ -85,7 +85,6 @@ const SignUp2 = () => {
       form_values.append(key, companyData[key]);
     }
     form_values.append("Appended logo", img);
-    console.log("form values::", form_values);
 
     var response = await AuthPostApi(CompanyProfileLink, form_values);
     if (response.status === 201) {

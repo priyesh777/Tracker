@@ -10,12 +10,6 @@ const SetScope = props => {
     { name: "Radio", type: "other" }
   ];
 
-  const [radioState, setRadioState] = useState({ value: 1 });
-
-  const handleRadio = e => {
-    setRadioState({ value: e.target.value });
-  };
-
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
@@ -30,8 +24,11 @@ const SetScope = props => {
     setShowModal(false);
   };
 
-  const handleContinue = () => {
-    props.handleTab(3);
+  const handleChange = e => {
+    const { name, value } = e.target;
+    const dataList = [...props.scopeData];
+    dataList[name] = value;
+    props.handleScope(dataList);
   };
 
   return (
@@ -44,19 +41,21 @@ const SetScope = props => {
           <Button className="Add-new" onClick={openModal}>
             Add new
           </Button>
+
           <Modal
             title="Adding Target"
             visible={showModal}
             onOk={handleModal}
             onCancel={closeModal}
+            destroyOnClose={true}
           >
             <p className="instruction">Target Type</p>
             <div className="radio-buttons">
-              <Radio.Group onChange={handleRadio} value={radioState.value}>
-                <Radio className="radio-option" value={1}>
+              <Radio.Group name="scope" onChange={e => handleChange(e)}>
+                <Radio className="radio-option" value={true}>
                   In-Scope
                 </Radio>
-                <Radio className="radio-option" value={2}>
+                <Radio className="radio-option" value={false}>
                   Out-of-Scope
                 </Radio>
               </Radio.Group>
@@ -66,23 +65,31 @@ const SetScope = props => {
                 className="input-instruction"
                 style={{ fontFamily: "Karla", fontWeight: "bold" }}
               >
-                Write the name of your program
+                Target Name
               </p>
               <Input
                 className="Form-input"
-                type="email"
+                name="name"
+                type="text"
                 placeholder="Eg. vulnerability spot"
+                onChange={e => handleChange(e)}
               />
               <p
                 className="input-instruction"
-                style={{ fontFamily: "Karla", fontWeight: "bold" }}
+                style={{
+                  fontFamily: "Karla",
+                  fontWeight: "bold",
+                  marginTop: "2%"
+                }}
               >
-                Add a Tagline
+                Target Type
               </p>
               <Input
                 className="Form-input"
-                type="email"
+                name="type"
+                type="text"
                 placeholder="Eg. Securing out cloud services"
+                onChange={e => handleChange(e)}
               />
             </div>
           </Modal>
@@ -160,15 +167,6 @@ const SetScope = props => {
             ))}
           </Table>
         </div>
-      </div>
-      <div className="footer-button" style={{ width: "100%" }}>
-        <Button
-          className="program-continue"
-          onClick={handleContinue}
-          style={{ float: "right" }}
-        >
-          Continue
-        </Button>
       </div>
     </>
   );

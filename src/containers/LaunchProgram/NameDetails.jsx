@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input, Upload, message, Button } from "antd";
+import { Input, Upload, message } from "antd";
 import { Card } from "react-bootstrap";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import Editor from "../components/Editor";
@@ -35,9 +35,7 @@ const NameDetails = props => {
   };
 
   const handleUpload = info => {
-    console.log("Uploaded info ::", info);
-    const tempState = info.file;
-
+    props.handleImage(info.file.originFileObj);
     if (info.file.status === "uploading") {
       setLoading(true);
       return;
@@ -55,13 +53,9 @@ const NameDetails = props => {
 
   const handleInput = e => {
     const { name, value } = e.target;
-    const info = [...props.nameData];
+    const info = props.nameData;
     info[name] = value;
     props.handleNameDetails(info);
-  };
-
-  const handleContinue = () => {
-    props.handleTab(2);
   };
 
   return (
@@ -86,6 +80,12 @@ const NameDetails = props => {
               onChange={e => handleInput(e)}
             />
           </div>
+
+          <div className="add-program-details">
+            <p className="input-instruction">Add Program details</p>
+            <Editor name="description" onChange={e => handleInput(e)} />
+          </div>
+
           <div className="upload-section">
             <div className="upload-pic">
               <Upload
@@ -107,20 +107,7 @@ const NameDetails = props => {
           <p className="instruction">
             JPG & PNG Only --- Ideal Resolution 400x400
           </p>
-          <div className="add-program-details">
-            <p className="input-instruction">Add a Program details</p>
-            <Editor name="description" onChange={e => handleInput(e)} />
-          </div>
         </Card>
-      </div>
-      <div className="footer-button" style={{ width: "100%" }}>
-        <Button
-          className="program-continue"
-          onClick={handleContinue}
-          style={{ float: "right" }}
-        >
-          Continue
-        </Button>
       </div>
     </>
   );

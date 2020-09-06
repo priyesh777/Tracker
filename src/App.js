@@ -35,7 +35,7 @@ const App = () => {
           <Route path="/register_step2" component={SignUp2} />
           <PrivateRoute path="/register_step3" component={SignUp3} />
           <Route path="/register_step4" component={SignUp4} />
-          <Route path="/program_details" component={Program} />
+          <Route path="/launch_program" component={Program} />
           <Route path="/all_program" component={Programs} />
           <Route path="/terms" component={Terms} />
           <Route path="/main_panel" component={MainPanel} />

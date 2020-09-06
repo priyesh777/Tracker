@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Radio, Input, Button } from "antd";
+import { Radio, Input } from "antd";
 import { Card, Table } from "react-bootstrap";
 
 const Rewards = () => {
@@ -7,10 +7,6 @@ const Rewards = () => {
 
   const handleRadio = e => {
     setRadioState({ value: e.target.value });
-  };
-
-  const handleContinue = () => {
-    console.log("clicked continue");
   };
 
   return (
@@ -235,15 +231,6 @@ const Rewards = () => {
             </Table>
           </div>
         </Card>
-      </div>
-      <div className="footer-button" style={{ width: "100%" }}>
-        <Button
-          className="program-continue"
-          onClick={handleContinue}
-          style={{ float: "right" }}
-        >
-          Continue
-        </Button>
       </div>
     </>
   );

@@ -1,12 +1,7 @@
 import React from "react";
-import { Button } from "antd";
 import { Card } from "react-bootstrap";
 
 const Terms = props => {
-  const handleContinue = () => {
-    props.handleTab(4);
-  };
-
   return (
     <>
       <div className="agreement-details" style={{ marginTop: "20px" }}>
@@ -39,15 +34,6 @@ const Terms = props => {
         <p className="instruction">
           By contuining, you agree to our terms and conditions above.
         </p>
-      </div>
-      <div className="footer-button" style={{ width: "100%" }}>
-        <Button
-          className="program-continue"
-          onClick={handleContinue}
-          style={{ float: "right" }}
-        >
-          Continue
-        </Button>
       </div>
     </>
   );

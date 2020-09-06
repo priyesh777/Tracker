@@ -18,7 +18,6 @@ const SignUp3 = () => {
   };
 
   const onInputChange = list => {
-    console.log("Data from Invite-Email  :::", list);
     setInputList(list);
   };
 

@@ -1,6 +1,6 @@
 import React from "react";
 // import { Link, useHistory } from "react-router-dom";
-import { Input, Radio, Button } from "antd";
+import { Input, Radio } from "antd";
 import { Card, Table } from "react-bootstrap";
 import thumbnail from "../../images/thumbnail.png";
 
@@ -10,10 +10,6 @@ const Review = () => {
     { name: "Radio", type: "website" },
     { name: "Radio", type: "other" }
   ];
-
-  const handleLaunch = () => {
-    console.log("clicked continue");
-  };
 
   return (
     <>
@@ -327,15 +323,6 @@ const Review = () => {
             </Table>
           </div>
         </div>
-      </div>
-      <div className="footer-button" style={{ width: "100%" }}>
-        <Button
-          className="program-continue"
-          onClick={handleLaunch}
-          style={{ float: "right" }}
-        >
-          Submit
-        </Button>
       </div>
     </>
   );
