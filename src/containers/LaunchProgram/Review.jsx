@@ -1,10 +1,13 @@
 import React from "react";
-// import { Link, useHistory } from "react-router-dom";
-import { Input, Radio } from "antd";
+import BackArrow from "../../images/arrow-left.svg";
+import { useHistory } from "react-router-dom";
+import { Input, Radio, Button } from "antd";
 import { Card, Table } from "react-bootstrap";
 import thumbnail from "../../images/thumbnail.png";
 
 const Review = () => {
+  const history = useHistory();
+
   const TableData = [
     { name: "Active", type: "website" },
     { name: "Radio", type: "website" },
@@ -14,6 +17,19 @@ const Review = () => {
   return (
     <>
       <div className="Review" style={{ marginTop: "20px" }}>
+        <div
+          className="support-button-section"
+          style={{ width: "100%", padding: "0px" }}
+        >
+          <Button
+            className="cps-form-backButton"
+            onClick={() => {
+              history.push("/register_step4");
+            }}
+          >
+            <img src={BackArrow} alt="back-arrow-left" /> Back
+          </Button>
+        </div>
         <Card className="agreement-points" body>
           <p className="terms-list">Name of the program</p>
           <p className="program-name">My Awesome Program</p>
@@ -322,6 +338,19 @@ const Review = () => {
               </tbody>
             </Table>
           </div>
+        </div>
+
+        <div
+          className="footer-button"
+          style={{ width: "100%", float: "right" }}
+        >
+          <Button
+            className="program-continue"
+            style={{ float: "right" }}
+            onClick={() => history.push("###")}
+          >
+            SUBMIT
+          </Button>
         </div>
       </div>
     </>

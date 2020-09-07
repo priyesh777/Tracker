@@ -24,6 +24,10 @@ import UserLogin from "./containers/User_Profile/UserLogin";
 import UserRegister from "./containers/User_Profile/UserRegister";
 import Programs from "./containers/UserPanel/ProgramList/Programs";
 import SubmissionForm from "./containers/UserPanel/SubmissionTabs/SubmissionForm";
+import NameDetails from "./containers/LaunchProgram/NameDetails";
+import SetScope from "./containers/LaunchProgram/SetScope";
+import Rewards from "./containers/UserPanel/Rewards";
+import Review from "./containers/LaunchProgram/Review";
 
 const App = () => {
   return (
@@ -35,7 +39,14 @@ const App = () => {
           <Route path="/register_step2" component={SignUp2} />
           <PrivateRoute path="/register_step3" component={SignUp3} />
           <Route path="/register_step4" component={SignUp4} />
-          <Route path="/launch_program" component={Program} />
+
+          <Route path="/program_details" component={Program} />
+          <Route path="/program_details/name_details" component={NameDetails} />
+          <Route path="/program_details/set_scope" component={SetScope} />
+          <Route path="/program_details/terms" component={Terms} />
+          <Route path="/program_details/rewards" component={Rewards} />
+          <Route path="/program_details/review" component={Review} />
+
           <Route path="/all_program" component={Programs} />
           <Route path="/terms" component={Terms} />
           <Route path="/main_panel" component={MainPanel} />

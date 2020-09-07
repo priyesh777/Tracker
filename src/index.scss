@@ -395,8 +395,8 @@ code {
 }
 
 .program-container .cps-form-backButton {
-  margin-left: 104px;
   font-family: Karla;
+  margin-bottom: 1%;
 }
 
 .footer-button {
@@ -430,7 +430,7 @@ code {
 .program-container .tabs-list {
   margin-left: 135px;
   width: 634px;
-  margin-top: 1%;
+  margin-top: 5%;
 }
 
 .program-container .tabs-list .nav-tabs {
@@ -536,6 +536,11 @@ code {
   margin-left: 32px;
   margin-top: 20px;
 }
+.set-scope-tables .scope-table .table-head {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Karla;
+  font-weight: bold;
+}
 .ant-input:placeholder-shown {
   width: 76%;
   background: #f3f3f3;
@@ -605,10 +610,27 @@ code {
 .Rewards .reward-table {
   margin-top: 10px;
 }
+.Rewards .reward-table .table-head {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Karla;
+  font-weight: bold;
+}
+.Rewards .reward-table .row-head {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Karla;
+  font-weight: bold;
+  justify-content: center;
+}
+.Rewards .reward-table .input-amount {
+  background: #f3f3f3;
+  border: 2px solid #c4c4c4;
+  border-radius: 5px;
+  margin-right: 10px;
+  width: 150px;
+}
 
 .Review .agreement-points {
   width: 850px;
-  margin-top: 40px;
 }
 
 .Review .terms-list {

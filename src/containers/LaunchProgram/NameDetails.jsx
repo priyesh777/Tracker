@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { Input, Upload, message } from "antd";
+import { useHistory } from "react-router-dom";
+import BackArrow from "../../images/arrow-left.svg";
+import { Input, Upload, message, Button } from "antd";
 import { Card } from "react-bootstrap";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import Editor from "../components/Editor";
 
 const NameDetails = props => {
+  const history = useHistory();
+
   const [loading, setLoading] = useState(false);
   const [uploaded, setUploaded] = useState(false);
 
@@ -51,7 +55,7 @@ const NameDetails = props => {
   };
   //-----------------------------------------//
 
-  const handleInput = e => {
+  const handleChange = e => {
     const { name, value } = e.target;
     const info = props.nameData;
     info[name] = value;
@@ -61,6 +65,19 @@ const NameDetails = props => {
   return (
     <>
       <div className="name-details" style={{ marginTop: "20px" }}>
+        <div
+          className="support-button-section"
+          style={{ width: "100%", padding: "0px" }}
+        >
+          <Button
+            className="cps-form-backButton"
+            onClick={() => {
+              history.push("/register_step4");
+            }}
+          >
+            <img src={BackArrow} alt="back-arrow-left" /> Back
+          </Button>
+        </div>
         <Card style={{ width: "850px" }} body>
           <div className="input-form">
             <p className="input-instruction">Write the name of your program</p>
@@ -69,7 +86,7 @@ const NameDetails = props => {
               className="Form-input"
               type="name"
               placeholder="Eg. vulnerability spot"
-              onChange={e => handleInput(e)}
+              onChange={e => handleChange(e)}
             />
             <p className="input-instruction">Add a Tagline</p>
             <Input
@@ -77,13 +94,13 @@ const NameDetails = props => {
               className="Form-input"
               type="name"
               placeholder="Eg. Securing out cloud services"
-              onChange={e => handleInput(e)}
+              onChange={e => handleChange(e)}
             />
           </div>
 
           <div className="add-program-details">
             <p className="input-instruction">Add Program details</p>
-            <Editor name="description" onChange={e => handleInput(e)} />
+            <Editor name="description" onChange={e => handleChange(e)} />
           </div>
 
           <div className="upload-section">
@@ -108,6 +125,18 @@ const NameDetails = props => {
             JPG & PNG Only --- Ideal Resolution 400x400
           </p>
         </Card>
+        <div
+          className="footer-button"
+          style={{ width: "100%", float: "right" }}
+        >
+          <Button
+            className="program-continue"
+            style={{ float: "right" }}
+            onClick={() => history.push("###")}
+          >
+            Continue
+          </Button>
+        </div>
       </div>
     </>
   );

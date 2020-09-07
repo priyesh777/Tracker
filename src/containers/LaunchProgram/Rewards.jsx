@@ -1,236 +1,208 @@
 import React, { useState } from "react";
-import { Radio, Input } from "antd";
+import { useHistory } from "react-router-dom";
+import BackArrow from "../../images/arrow-left.svg";
+import { Radio, Input, Button } from "antd";
 import { Card, Table } from "react-bootstrap";
 
-const Rewards = () => {
-  const [radioState, setRadioState] = useState({ value: 1 });
+const Rewards = props => {
+  const history = useHistory();
+
+  const [radioState, setRadioState] = useState(true);
 
   const handleRadio = e => {
-    setRadioState({ value: e.target.value });
+    setRadioState(e.target.value);
+  };
+
+  const handleChange = e => {
+    const { name, value, id } = e.target;
+    const list = props.rewardData;
+    for (var i in list) {
+      if (list[i]["severity"] === id) {
+        if (name === "max_amount") {
+          list[i]["max_amount"] = value;
+        } else {
+          list[i]["min_amount"] = value;
+        }
+      }
+    }
+    props.handleReward(list);
   };
 
   return (
     <>
       <div className="Rewards" style={{ marginTop: "20px" }}>
+        <div
+          className="support-button-section"
+          style={{ width: "100%", padding: "0px" }}
+        >
+          <Button
+            className="cps-form-backButton"
+            onClick={() => {
+              history.push("/register_step4");
+            }}
+          >
+            <img src={BackArrow} alt="back-arrow-left" /> Back
+          </Button>
+        </div>
         <Card style={{ width: "850px" }} body>
           <p className="instruction-header">Reward Type</p>
           <div className="radio-buttons">
-            <Radio.Group onChange={handleRadio} value={radioState.value}>
-              <Radio className="radio-option" value={1}>
+            <Radio.Group onChange={handleRadio} value={radioState}>
+              <Radio className="radio-option" value={true}>
                 Bounty
               </Radio>
-              <Radio className="radio-option" value={2}>
+              <Radio className="radio-option" value={false}>
                 Points
               </Radio>
             </Radio.Group>
           </div>
-          <div className="reward-table">
-            <Table striped bordered hover>
-              <thead>
-                <tr>
-                  <th
-                    style={{
-                      color: "rgba(0, 0, 0, 0.6)",
-                      fontFamily: "Karla",
-                      fontWeight: "bold",
-                      width: "200px"
-                    }}
-                  >
-                    Technical Severity
-                  </th>
-                  <th
-                    style={{
-                      color: "rgba(0, 0, 0, 0.6)",
-                      fontFamily: "Karla",
-                      fontWeight: "bold",
-                      width: "380px"
-                    }}
-                  >
-                    Reward Range
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td
-                    style={{
-                      color: "rgba(0, 0, 0, 0.6)",
-                      fontFamily: "Karla",
-                      fontWeight: "bold",
-                      justifyContent: "center"
-                    }}
-                  >
-                    Critical
-                  </td>
-                  <td>
-                    <div
-                      className="reward-amt"
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-evenly"
-                      }}
-                    >
-                      <Input
-                        type="number"
-                        placeholder="Min"
+          {radioState ? (
+            <div className="reward-table">
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th className="table-head" style={{ width: "200px" }}>
+                      Technical Severity
+                    </th>
+                    <th className="table-head" style={{ width: "380px" }}>
+                      Reward Range
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="row-head">Critical</td>
+                    <td>
+                      <div
+                        className="reward-amt"
                         style={{
-                          background: "#f3f3f3",
-                          border: " 2px solid #c4c4c4",
-                          borderRadius: "5px",
-                          marginRight: "10px",
-                          width: "150px"
+                          display: "flex",
+                          justifyContent: "space-evenly"
                         }}
-                      />
-                      <Input
-                        type="number"
-                        placeholder="Max"
+                      >
+                        <Input
+                          id="Critical"
+                          className="input-amount"
+                          name="min_amount"
+                          type="number"
+                          placeholder="Min"
+                          onChange={e => handleChange(e)}
+                        />
+                        <Input
+                          id="Critical"
+                          className="input-amount"
+                          name="max_amount"
+                          type="number"
+                          placeholder="Max"
+                          onChange={e => handleChange(e)}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="row-head">High</td>
+                    <td>
+                      <div
+                        className="reward-amt"
                         style={{
-                          background: "#f3f3f3",
-                          border: " 2px solid #c4c4c4",
-                          borderRadius: "5px",
-                          marginRight: "10px",
-                          width: "150px"
+                          display: "flex",
+                          justifyContent: "space-evenly"
                         }}
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    style={{
-                      color: "rgba(0, 0, 0, 0.6)",
-                      fontFamily: "Karla",
-                      fontWeight: "bold",
-                      justifyContent: "center"
-                    }}
-                  >
-                    High
-                  </td>
-                  <td>
-                    <div
-                      className="reward-amt"
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-evenly"
-                      }}
-                    >
-                      <Input
-                        type="number"
-                        placeholder="Min"
+                      >
+                        <Input
+                          id="High"
+                          className="input-amount"
+                          type="number"
+                          name="min_amount"
+                          placeholder="Min"
+                          onChange={e => handleChange(e)}
+                        />
+                        <Input
+                          id="High"
+                          className="input-amount"
+                          type="number"
+                          name="max_amount"
+                          placeholder="Max"
+                          onChange={e => handleChange(e)}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="row-head">Medium</td>
+                    <td>
+                      <div
+                        className="reward-amt"
                         style={{
-                          background: "#f3f3f3",
-                          border: " 2px solid #c4c4c4",
-                          borderRadius: "5px",
-                          marginRight: "10px",
-                          width: "150px"
+                          display: "flex",
+                          justifyContent: "space-evenly"
                         }}
-                      />
-                      <Input
-                        type="number"
-                        placeholder="Max"
+                      >
+                        <Input
+                          id="Medium"
+                          className="input-amount"
+                          type="number"
+                          name="min_amount"
+                          placeholder="Min"
+                          onChange={e => handleChange(e)}
+                        />
+                        <Input
+                          id="Medium"
+                          className="input-amount"
+                          type="number"
+                          name="max_amount"
+                          placeholder="Max"
+                          onChange={e => handleChange(e)}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="row-head">Low</td>
+                    <td>
+                      <div
+                        className="reward-amt"
                         style={{
-                          background: "#f3f3f3",
-                          border: " 2px solid #c4c4c4",
-                          borderRadius: "5px",
-                          marginRight: "10px",
-                          width: "150px"
+                          display: "flex",
+                          justifyContent: "space-evenly"
                         }}
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    style={{
-                      color: "rgba(0, 0, 0, 0.6)",
-                      fontFamily: "Karla",
-                      fontWeight: "bold",
-                      justifyContent: "center"
-                    }}
-                  >
-                    Medium
-                  </td>
-                  <td>
-                    <div
-                      className="reward-amt"
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-evenly"
-                      }}
-                    >
-                      <Input
-                        type="number"
-                        placeholder="Min"
-                        style={{
-                          background: "#f3f3f3",
-                          border: " 2px solid #c4c4c4",
-                          borderRadius: "5px",
-                          marginRight: "10px",
-                          width: "150px"
-                        }}
-                      />
-                      <Input
-                        type="number"
-                        placeholder="Max"
-                        style={{
-                          background: "#f3f3f3",
-                          border: " 2px solid #c4c4c4",
-                          borderRadius: "5px",
-                          marginRight: "10px",
-                          width: "150px"
-                        }}
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    style={{
-                      color: "rgba(0, 0, 0, 0.6)",
-                      fontFamily: "Karla",
-                      fontWeight: "bold",
-                      justifyContent: "center"
-                    }}
-                  >
-                    Low
-                  </td>
-                  <td>
-                    <div
-                      className="reward-amt"
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-evenly"
-                      }}
-                    >
-                      <Input
-                        type="number"
-                        placeholder="Min"
-                        style={{
-                          background: "#f3f3f3",
-                          border: " 2px solid #c4c4c4",
-                          borderRadius: "5px",
-                          marginRight: "10px",
-                          width: "150px"
-                        }}
-                      />
-                      <Input
-                        type="number"
-                        placeholder="Max"
-                        style={{
-                          background: "#f3f3f3",
-                          border: " 2px solid #c4c4c4",
-                          borderRadius: "5px",
-                          marginRight: "10px",
-                          width: "150px"
-                        }}
-                      />
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </Table>
-          </div>
+                      >
+                        <Input
+                          id="Low"
+                          className="input-amount"
+                          type="number"
+                          name="min_amount"
+                          placeholder="Min"
+                          onChange={e => handleChange(e)}
+                        />
+                        <Input
+                          id="Low"
+                          className="input-amount"
+                          type="number"
+                          name="max_amount"
+                          placeholder="Max"
+                          onChange={e => handleChange(e)}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
+          ) : null}
         </Card>
+        <div
+          className="footer-button"
+          style={{ width: "100%", float: "right" }}
+        >
+          <Button
+            className="program-continue"
+            style={{ float: "right" }}
+            onClick={() => history.push("###")}
+          >
+            Continue
+          </Button>
+        </div>
       </div>
     </>
   );

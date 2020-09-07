@@ -12,7 +12,7 @@ import NameDetails from "./NameDetails";
 const Program = () => {
   const history = useHistory();
 
-  //------State for Name & Details - section
+  //------State for "NAME & DETAILS"-----------//
   const [nameData, setNameData] = useState({
     program_name: "",
     tagline: "",
@@ -30,31 +30,48 @@ const Program = () => {
   };
   //------------------------------------------//
 
-  //--------State for Set Scope -section------//
-  const [scopeData, setScopeData] = useState([
-    { name: "", type: "", scope: "" }
-  ]);
+  //--------State for "SET-SCOPE"------//
+  const [scopeData, setScopeData] = useState([]);
 
   const handleScope = info => {
     setScopeData(info);
     console.log("Scope data ::", info);
   };
+  //----------------------------------------//
 
+  //--------State for "REWARDS"------//
+  const [rewardData, setRewardData] = useState([
+    {
+      severity: "Critical",
+      min_amount: "",
+      max_amount: ""
+    },
+    {
+      severity: "High",
+      min_amount: "",
+      max_amount: ""
+    },
+    {
+      severity: "Medium",
+      min_amount: "",
+      max_amount: ""
+    },
+    {
+      severity: "Low",
+      min_amount: "",
+      max_amount: ""
+    }
+  ]);
+
+  const handleReward = info => {
+    setRewardData(info);
+    console.log("reward data ::::", rewardData);
+  };
   //----------------------------------------//
 
   return (
     <Row>
       <div className="program-container">
-        <div className="support-button-section" style={{ width: "100%" }}>
-          <Button
-            className="cps-form-backButton"
-            onClick={() => {
-              history.push("/register_step4");
-            }}
-          >
-            <img src={BackArrow} alt="back-arrow-left" /> Back
-          </Button>
-        </div>
         <div className="tabs-list">
           <Tabs defaultActiveKey="1" id="uncontrolled-tab-example">
             <Tab eventKey={1} title="Name & Details">
@@ -71,24 +88,12 @@ const Program = () => {
               <Terms />
             </Tab>
             <Tab eventKey={4} title="Rewards">
-              <Rewards />
+              <Rewards rewardData={rewardData} handleReward={handleReward} />
             </Tab>
             <Tab eventKey={5} title="Review & Submit">
               <Review programLogo={programLogo} />
             </Tab>
           </Tabs>
-          <div
-            className="footer-button"
-            style={{ width: "100%", float: "right" }}
-          >
-            <Button
-              className="program-continue"
-              style={{ float: "right" }}
-              onClick={() => history.push("###")}
-            >
-              Continue
-            </Button>
-          </div>
         </div>
       </div>
     </Row>

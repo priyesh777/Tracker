@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Modal, Radio, Input } from "antd";
 import { Table, Button } from "react-bootstrap";
+import BackArrow from "../../images/arrow-left.svg";
 
 const SetScope = props => {
-  const TableData = [
-    { name: "Active", type: "website" },
-    { name: "Radio", type: "website" },
-    { name: "Radio", type: "other" }
-  ];
+  const history = useHistory();
+
+  const [tempTarget, setTempTarget] = useState({});
+  const [targetList, setTargetList] = useState([]);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -17,7 +17,10 @@ const SetScope = props => {
   };
 
   const handleModal = () => {
+    targetList.push(tempTarget);
+    setTargetList(targetList);
     setShowModal(false);
+    console.log("targetlist values :::", targetList);
   };
 
   const closeModal = () => {
@@ -26,14 +29,27 @@ const SetScope = props => {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    const dataList = [...props.scopeData];
-    dataList[name] = value;
-    props.handleScope(dataList);
+    setTempTarget({ ...tempTarget, [name]: value });
+    console.log("handled changeeee data::", tempTarget);
   };
 
   return (
     <>
       <div className="set-scope-tables">
+        <div
+          className="support-button-section"
+          style={{ width: "100%", padding: "0px" }}
+        >
+          <Button
+            className="cps-form-backButton"
+            onClick={() => {
+              history.push("/register_step4");
+            }}
+            style={{ background: "#ffffff" }}
+          >
+            <img src={BackArrow} alt="back-arrow-left" /> Back
+          </Button>
+        </div>
         <p className="instruction">
           Define targets that are eligible and non-eligible for your program
         </p>
@@ -100,33 +116,20 @@ const SetScope = props => {
           <Table striped bordered hover className="Table">
             <thead>
               <tr>
-                <th
-                  style={{
-                    color: "rgba(0, 0, 0, 0.6)",
-                    fontFamily: "Karla",
-                    fontWeight: "bold",
-                    width: "360px"
-                  }}
-                >
+                <th className="table-head" style={{ width: "360px" }}>
                   Target Name
                 </th>
-                <th
-                  style={{
-                    color: "rgba(0, 0, 0, 0.6)",
-                    fontFamily: "Karla",
-                    fontWeight: "bold"
-                  }}
-                >
-                  Target Type
-                </th>
+                <th className="table-head">Target Type</th>
               </tr>
             </thead>
-            {TableData.map(data => (
+            {targetList.map(data => (
               <tbody>
-                <tr>
-                  <td style={{ fontFamily: "Karla" }}>{data.name}</td>
-                  <td style={{ fontFamily: "Karla" }}>{data.type}</td>
-                </tr>
+                {data.scope && data.scope === true && (
+                  <tr>
+                    <td style={{ fontFamily: "Karla" }}>{data.name}</td>
+                    <td style={{ fontFamily: "Karla" }}>{data.type}</td>
+                  </tr>
+                )}
               </tbody>
             ))}
           </Table>
@@ -136,36 +139,35 @@ const SetScope = props => {
           <Table className="Table" striped bordered hover>
             <thead>
               <tr>
-                <th
-                  style={{
-                    color: "rgba(0, 0, 0, 0.6)",
-                    fontFamily: "Karla",
-                    fontWeight: "bold",
-                    width: "360px"
-                  }}
-                >
+                <th className="table-head" style={{ width: "360px" }}>
                   Target Name
                 </th>
-                <th
-                  style={{
-                    color: "rgba(0, 0, 0, 0.6)",
-                    fontFamily: "Karla",
-                    fontWeight: "bold"
-                  }}
-                >
-                  Target Type
-                </th>
+                <th className="table-head">Target Type</th>
               </tr>
             </thead>
-            {TableData.map(data => (
+            {targetList.map(data => (
               <tbody>
-                <tr>
-                  <td style={{ fontFamily: "Karla" }}>{data.name}</td>
-                  <td style={{ fontFamily: "Karla" }}>{data.type}</td>
-                </tr>
+                {data.scope && data.scope === false && (
+                  <tr>
+                    <td style={{ fontFamily: "Karla" }}>{data.name}</td>
+                    <td style={{ fontFamily: "Karla" }}>{data.type}</td>
+                  </tr>
+                )}
               </tbody>
             ))}
           </Table>
+        </div>
+        <div
+          className="footer-button"
+          style={{ width: "100%", float: "right" }}
+        >
+          <Button
+            className="program-continue"
+            style={{ float: "right" }}
+            onClick={() => history.push("###")}
+          >
+            Continue
+          </Button>
         </div>
       </div>
     </>
