@@ -12,7 +12,7 @@ import {
   FormOutlined
 } from "@ant-design/icons";
 import { Menu, Dropdown, Avatar } from "antd";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const SideBar = props => {
   const handleProfileEdit = () => {
@@ -52,73 +52,73 @@ const SideBar = props => {
       <div className="menu-list">
         <Menu
           className="side-menu-options"
+          mode="inline"
           // onClick={e => props.handleMenuClick(e)}
           // defaultSelectedKeys={["1"]}
-          mode="inline"
         >
           <Menu.Item key="1">
-            <Link to="/main_panel/">
+            <NavLink to="/main_panel/main">
               <span>
                 <AppstoreOutlined className="side-menu-options" />
                 <span>Dashboard</span>
               </span>
-            </Link>
+            </NavLink>
           </Menu.Item>
           <Menu.Item key="2">
-            <Link to="/main_panel/researchers">
+            <NavLink to="/main_panel/researchers">
               <span>
                 <UserOutlined className="side-menu-options" />
                 <span>Researchers</span>
               </span>
-            </Link>
+            </NavLink>
           </Menu.Item>
           <Menu.Item key="3">
-            <Link to="/main_panel/submissions">
+            <NavLink to="/main_panel/submissions">
               <span>
                 <FileDoneOutlined className="side-menu-options" />
                 <span>Submissions</span>
               </span>
-            </Link>
+            </NavLink>
           </Menu.Item>
           <Menu.Item key="4">
-            <Link to="/main_panel/rewards">
+            <NavLink to="/main_panel/rewards">
               <span>
                 <TrophyOutlined className="side-menu-options" />
                 <span>Rewards</span>
               </span>
-            </Link>
+            </NavLink>
           </Menu.Item>
           <Menu.Item key="5">
-            <Link to="/main_panel/programs">
+            <NavLink to="/main_panel/programs">
               <span>
                 <ProjectOutlined className="side-menu-options" />
                 <span>Programs</span>
               </span>
-            </Link>
+            </NavLink>
           </Menu.Item>
           <Menu.Item key="6">
-            <Link to="/main_panel/users">
+            <NavLink to="/main_panel/users">
               <span>
                 <IdcardOutlined className="side-menu-options" />
                 <span>Users</span>
               </span>
-            </Link>
+            </NavLink>
           </Menu.Item>
           <Menu.Item key="7" style={{ marginTop: "100px" }}>
-            <Link to="/main_panel/settings">
+            <NavLink to="/main_panel/settings">
               <span>
                 <ToolOutlined className="side-menu-options" />
                 <span>Settings</span>
               </span>
-            </Link>
+            </NavLink>
           </Menu.Item>
           <Menu.Item key="8">
-            <Link to="/main_panel/support">
+            <NavLink to="/main_panel/support">
               <span>
                 <QuestionCircleOutlined className="side-menu-options" />
                 <span>Support</span>
               </span>
-            </Link>
+            </NavLink>
           </Menu.Item>
         </Menu>
       </div>

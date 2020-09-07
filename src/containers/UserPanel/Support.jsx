@@ -1,11 +1,14 @@
 import React from "react";
+import MainPanel from "./MainPanel";
 
 const Support = () => {
   return (
     <>
-      <div className="support-content">
-        <h1>Support SECTION</h1>
-      </div>
+      <MainPanel>
+        <div className="support-content">
+          <h1>Support SECTION</h1>
+        </div>
+      </MainPanel>
     </>
   );
 };

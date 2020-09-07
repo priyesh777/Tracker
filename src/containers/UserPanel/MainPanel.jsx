@@ -1,41 +1,41 @@
-import React, { useState } from "react";
+import React from "react";
 import { Row, Col } from "react-bootstrap";
 import SideBar from "./SideBar";
-import UserPanel from "./Dashboard/Main";
-import Submissions from "./SubmissionTabs/Submissions";
-import Researchers from "./Researchers";
-import Rewards from "./Rewards";
-import Programs from "./ProgramList/Programs";
-import ProgramDetails from "./ProgramList/ProgramDetails";
-import Users from "./Users";
-import Settings from "./Settings";
-import Support from "./Support";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import UserPanel from "./Dashboard/Main";
+// import Submissions from "./SubmissionTabs/Submissions";
+// import Researchers from "./Researchers";
+// import Rewards from "./Rewards";
+// import Programs from "./ProgramList/Programs";
+// import ProgramDetails from "./ProgramList/ProgramDetails";
+// import Users from "./Users";
+// import Settings from "./Settings";
+// import Support from "./Support";
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-const MainPanel = () => {
-  const [activeMenu, setActiveMenu] = useState("1");
-  const [openCard, setOpenCard] = useState(false);
+function MainPanel(props) {
+  // const [activeMenu, setActiveMenu] = useState("1");
+  // const [openCard, setOpenCard] = useState(false);
 
-  const handleMenuClick = e => {
-    setActiveMenu(e.key);
-  };
+  // const handleMenuClick = e => {
+  //   setActiveMenu(e.key);
+  // };
 
-  const handleOpenCard = () => {
-    setActiveMenu("0");
-    setOpenCard(true);
-  };
+  // const handleOpenCard = () => {
+  //   setActiveMenu("0");
+  //   setOpenCard(true);
+  // };
 
-  const handleCloseCard = () => {
-    setOpenCard(false);
-    setActiveMenu("5");
-  };
+  // const handleCloseCard = () => {
+  //   setOpenCard(false);
+  //   setActiveMenu("5");
+  // };
 
   return (
     <>
       <div className="container-fluid">
         <Row sm={2} md={2}>
           <Col lg={3} style={{ padding: "0px" }}>
-            <SideBar handleMenuClick={handleMenuClick} />
+            <SideBar />
           </Col>
 
           <Col lg={9} style={{ background: "#f7f7f7" }}>
@@ -52,26 +52,15 @@ const MainPanel = () => {
             {activeMenu === "0" && openCard && (
               <ProgramDetails handleCloseCard={handleCloseCard} />
             )} */}
-            <Router>
-              <Switch>
-                <Route exact path="/main_panel/" component={UserPanel} />
-                <Route path="/main_panel/researchers" component={Researchers} />
-                <Route path="/main_panel/submissions" component={Submissions} />
-                <Route path="/main_panel/rewards" component={Rewards} />
-                <Route path="/main_panel/programs" component={Programs} />
-                <Route
-                  path="/main_panel/programs/:id"
-                  component={ProgramDetails}
-                />
-                <Route path="/main_panel/users" component={Users} />
-                <Route path="/main_panel/settings" component={Settings} />
-                <Route path="/main_panel/support" component={Support} />
-              </Switch>
-            </Router>
+
+            {props.children}
+            <div className="random">
+              <h1>HELLOOO LAYOUT</h1>
+            </div>
           </Col>
         </Row>
       </div>
     </>
   );
-};
+}
 export default MainPanel;

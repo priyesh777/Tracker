@@ -3,6 +3,7 @@ import { Card, Table, Avatar } from "antd";
 import { Row, Col } from "react-bootstrap";
 import { Line } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
+import MainPanel from "./MainPanel";
 
 const Rewards = () => {
   // Graph-Data
@@ -121,69 +122,71 @@ const Rewards = () => {
 
   return (
     <>
-      <Col span={9}>
-        <Row>
-          <div className="rewards-overview">
-            <div className="content-header">Overview</div>
-            <div className="bounty">
-              <Card hoverable className="reward" style={{ width: "70%" }}>
-                <p className="instruction">Rewards</p>
-                <p className="card-number-data">18</p>
-              </Card>
+      <MainPanel>
+        <Col span={9}>
+          <Row>
+            <div className="rewards-overview">
+              <div className="content-header">Overview</div>
+              <div className="bounty">
+                <Card hoverable className="reward" style={{ width: "70%" }}>
+                  <p className="instruction">Rewards</p>
+                  <p className="card-number-data">18</p>
+                </Card>
 
-              <Card
-                hoverable
-                className="highest-reward"
-                style={{ width: "70%", marginLeft: "1%" }}
-              >
-                <p className="instruction">Highest reward</p>
-                <p className="card-number-data">$14550</p>
-              </Card>
+                <Card
+                  hoverable
+                  className="highest-reward"
+                  style={{ width: "70%", marginLeft: "1%" }}
+                >
+                  <p className="instruction">Highest reward</p>
+                  <p className="card-number-data">$14550</p>
+                </Card>
 
-              <Card
-                hoverable
-                className="average-reward"
-                style={{ width: "70%", marginLeft: "1%" }}
-              >
-                <p className="instruction">Average Reward</p>
-                <p className="card-number-data">$400</p>
-              </Card>
+                <Card
+                  hoverable
+                  className="average-reward"
+                  style={{ width: "70%", marginLeft: "1%" }}
+                >
+                  <p className="instruction">Average Reward</p>
+                  <p className="card-number-data">$400</p>
+                </Card>
 
-              <Card
-                hoverable
-                className="total-reward"
-                style={{ width: "70%", marginLeft: "1%" }}
-              >
-                <p className="instruction">Total Reward</p>
-                <p className="card-number-data">$25330</p>
+                <Card
+                  hoverable
+                  className="total-reward"
+                  style={{ width: "70%", marginLeft: "1%" }}
+                >
+                  <p className="instruction">Total Reward</p>
+                  <p className="card-number-data">$25330</p>
+                </Card>
+              </div>
+            </div>
+          </Row>
+          <Row>
+            <div className="graph-chart">
+              <p className="content-header">Rewards</p>
+              <Card hoverable style={{ width: "75%", marginTop: "2%" }}>
+                <MDBContainer>
+                  <Line data={chart.dataLine} options={{ responsive: true }} />
+                </MDBContainer>
               </Card>
             </div>
-          </div>
-        </Row>
-        <Row>
-          <div className="graph-chart">
-            <p className="content-header">Rewards</p>
-            <Card hoverable style={{ width: "75%", marginTop: "2%" }}>
-              <MDBContainer>
-                <Line data={chart.dataLine} options={{ responsive: true }} />
-              </MDBContainer>
-            </Card>
-          </div>
-        </Row>
-        <Row>
-          <div className="rewards-history">
-            <div className="content-header">Rewards History</div>
-            <div className="table">
-              <Table
-                columns={columns}
-                size="small"
-                dataSource={data}
-                bordered="true"
-              />
+          </Row>
+          <Row>
+            <div className="rewards-history">
+              <div className="content-header">Rewards History</div>
+              <div className="table">
+                <Table
+                  columns={columns}
+                  size="small"
+                  dataSource={data}
+                  bordered="true"
+                />
+              </div>
             </div>
-          </div>
-        </Row>
-      </Col>
+          </Row>
+        </Col>
+      </MainPanel>
     </>
   );
 };

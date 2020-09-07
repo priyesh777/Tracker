@@ -1,11 +1,14 @@
 import React from "react";
+import MainPanel from "./MainPanel";
 
 const Settings = () => {
   return (
     <>
-      <div className="settings-content">
-        <h1>Settings SECTION</h1>
-      </div>
+      <MainPanel>
+        <div className="settings-content">
+          <h1>Settings SECTION</h1>
+        </div>
+      </MainPanel>
     </>
   );
 };
