@@ -166,11 +166,6 @@ const Review = props => {
                         type="number"
                         placeholder="Min"
                         className="input-amount"
-                        value={
-                          props.rewardData &&
-                          props.rewardData.severity === "High" &&
-                          props.rewardData.min_amount
-                        }
                         disabled
                       />
                       <Input

@@ -19,7 +19,7 @@ import SignUp3 from "./containers/CompanyProfile/SignUp3";
 import SignUp4 from "./containers/CompanyProfile/SignUp4";
 import Program from "./containers/LaunchProgram/Program";
 import Terms from "./containers/LaunchProgram/Terms";
-import MainPanel from "./containers/UserPanel/MainPanel";
+import UserRoute from "./containers/UserPanel/index";
 import UserLogin from "./containers/User_Profile/UserLogin";
 import UserRegister from "./containers/User_Profile/UserRegister";
 import Programs from "./containers/UserPanel/ProgramList/Programs";
@@ -49,7 +49,9 @@ const App = () => {
 
           <Route path="/all_program" component={Programs} />
           <Route path="/terms" component={Terms} />
-          <Route path="/main_panel" component={MainPanel} />
+
+          <Route path="/main_panel" component={UserRoute} />
+
           <Route path="/user_login" component={UserLogin} />
           <Route path="/user_register" component={UserRegister} />
 

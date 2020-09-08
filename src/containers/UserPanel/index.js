@@ -8,12 +8,21 @@ import ProgramDetails from "./ProgramList/ProgramDetails";
 import Users from "./Users";
 import Settings from "./Settings";
 import Support from "./Support";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 
 const UserRoute = props => {
+  console.log("reached index:");
   return (
     <Router>
       <Switch>
+        <Route exact path="/main_panel">
+          <Redirect to="/main_panel/main" />
+        </Route>
         <Route exact path="/main_panel/main" component={UserPanel} />
         <Route exact path="/main_panel/researchers" component={Researchers} />
         <Route exact path="/main_panel/submissions" component={Submissions} />

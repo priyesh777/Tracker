@@ -79,7 +79,7 @@ const Researchers = () => {
       points: 50
     }
   ];
-
+  console.log("reached researchers");
   return (
     <>
       <MainPanel>

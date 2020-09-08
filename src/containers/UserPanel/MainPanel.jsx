@@ -39,7 +39,17 @@ function MainPanel(props) {
           </Col>
 
           <Col lg={9} style={{ background: "#f7f7f7" }}>
-            {/* {activeMenu === "1" && <UserPanel />}
+            {props.children}
+          </Col>
+        </Row>
+      </div>
+    </>
+  );
+}
+export default MainPanel;
+
+{
+  /* {activeMenu === "1" && <UserPanel />}
             {activeMenu === "2" && <Researchers />}
             {activeMenu === "3" && <Submissions />}
             {activeMenu === "4" && <Rewards />}
@@ -51,16 +61,5 @@ function MainPanel(props) {
             {activeMenu === "8" && <Support />}
             {activeMenu === "0" && openCard && (
               <ProgramDetails handleCloseCard={handleCloseCard} />
-            )} */}
-
-            {props.children}
-            <div className="random">
-              <h1>HELLOOO LAYOUT</h1>
-            </div>
-          </Col>
-        </Row>
-      </div>
-    </>
-  );
+            )} */
 }
-export default MainPanel;

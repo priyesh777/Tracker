@@ -64,6 +64,7 @@ const Program = () => {
 
   const handleReward = info => {
     setRewardData(info);
+    console.log("REWARD DATA::", rewardData);
   };
   //----------------------------------------//
 
