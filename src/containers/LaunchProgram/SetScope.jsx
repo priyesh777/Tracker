@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { Modal, Radio, Input } from "antd";
 import { Table, Button } from "react-bootstrap";
 import BackArrow from "../../images/arrow-left.svg";
 
 const SetScope = props => {
-  const history = useHistory();
-
   const [tempTarget, setTempTarget] = useState({});
   const [targetList, setTargetList] = useState([]);
 
@@ -19,8 +16,8 @@ const SetScope = props => {
   const handleModal = () => {
     targetList.push(tempTarget);
     setTargetList(targetList);
+    props.handleScope(targetList);
     setShowModal(false);
-    console.log("targetlist values :::", targetList);
   };
 
   const closeModal = () => {
@@ -30,7 +27,6 @@ const SetScope = props => {
   const handleChange = e => {
     const { name, value } = e.target;
     setTempTarget({ ...tempTarget, [name]: value });
-    console.log("handled changeeee data::", tempTarget);
   };
 
   return (
@@ -42,9 +38,7 @@ const SetScope = props => {
         >
           <Button
             className="cps-form-backButton"
-            onClick={() => {
-              history.push("/register_step4");
-            }}
+            onClick={() => props.handleTab(1)}
             style={{ background: "#ffffff" }}
           >
             <img src={BackArrow} alt="back-arrow-left" /> Back
@@ -124,7 +118,7 @@ const SetScope = props => {
             </thead>
             {targetList.map(data => (
               <tbody>
-                {data.scope && data.scope === true && (
+                {data.scope && (
                   <tr>
                     <td style={{ fontFamily: "Karla" }}>{data.name}</td>
                     <td style={{ fontFamily: "Karla" }}>{data.type}</td>
@@ -147,7 +141,7 @@ const SetScope = props => {
             </thead>
             {targetList.map(data => (
               <tbody>
-                {data.scope && data.scope === false && (
+                {!data.scope && (
                   <tr>
                     <td style={{ fontFamily: "Karla" }}>{data.name}</td>
                     <td style={{ fontFamily: "Karla" }}>{data.type}</td>
@@ -164,7 +158,7 @@ const SetScope = props => {
           <Button
             className="program-continue"
             style={{ float: "right" }}
-            onClick={() => history.push("###")}
+            onClick={() => props.handleTab(3)}
           >
             Continue
           </Button>

@@ -1,11 +1,9 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import BackArrow from "../../images/arrow-left.svg";
-import { useHistory } from "react-router-dom";
 import { Button } from "antd";
-const Terms = props => {
-  const history = useHistory();
 
+const Terms = props => {
   return (
     <>
       <div className="agreement-details" style={{ marginTop: "20px" }}>
@@ -15,9 +13,7 @@ const Terms = props => {
         >
           <Button
             className="cps-form-backButton"
-            onClick={() => {
-              history.push("/register_step4");
-            }}
+            onClick={() => props.handleTab(2)}
           >
             <img src={BackArrow} alt="back-arrow-left" /> Back
           </Button>
@@ -58,7 +54,7 @@ const Terms = props => {
           <Button
             className="program-continue"
             style={{ float: "right" }}
-            onClick={() => history.push("###")}
+            onClick={() => props.handleTab(4)}
           >
             Continue
           </Button>

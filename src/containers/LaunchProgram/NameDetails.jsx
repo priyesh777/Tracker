@@ -39,7 +39,7 @@ const NameDetails = props => {
   };
 
   const handleUpload = info => {
-    props.handleImage(info.file.originFileObj);
+    props.handleImage(info.file);
     if (info.file.status === "uploading") {
       setLoading(true);
       return;
@@ -71,9 +71,8 @@ const NameDetails = props => {
         >
           <Button
             className="cps-form-backButton"
-            onClick={() => {
-              history.push("/register_step4");
-            }}
+            onClick={() => history.push("/register_step4")}
+            style={{ background: "#ffffff" }}
           >
             <img src={BackArrow} alt="back-arrow-left" /> Back
           </Button>
@@ -132,7 +131,7 @@ const NameDetails = props => {
           <Button
             className="program-continue"
             style={{ float: "right" }}
-            onClick={() => history.push("###")}
+            onClick={() => props.handleTab(2)}
           >
             Continue
           </Button>

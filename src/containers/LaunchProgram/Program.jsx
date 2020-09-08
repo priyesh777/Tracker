@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import Terms from "./Terms";
 import SetScope from "./SetScope";
-import BackArrow from "../../images/arrow-left.svg";
-import { Button } from "antd";
-import { Tab, Tabs, Row } from "react-bootstrap";
+import { Tab, Tabs, Row, Fade } from "react-bootstrap";
 import Rewards from "./Rewards";
 import Review from "./Review";
 import NameDetails from "./NameDetails";
 
 const Program = () => {
-  const history = useHistory();
+  const [tabKey, setTabKey] = useState(1);
+
+  const handleTab = key => {
+    setTabKey(key);
+  };
 
   //------State for "NAME & DETAILS"-----------//
   const [nameData, setNameData] = useState({
@@ -22,7 +23,6 @@ const Program = () => {
 
   const handleNameDetails = info => {
     setNameData(info);
-    console.log("Name details ::", nameData);
   };
 
   const handleImage = info => {
@@ -35,7 +35,6 @@ const Program = () => {
 
   const handleScope = info => {
     setScopeData(info);
-    console.log("Scope data ::", info);
   };
   //----------------------------------------//
 
@@ -65,7 +64,6 @@ const Program = () => {
 
   const handleReward = info => {
     setRewardData(info);
-    console.log("reward data ::::", rewardData);
   };
   //----------------------------------------//
 
@@ -73,25 +71,44 @@ const Program = () => {
     <Row>
       <div className="program-container">
         <div className="tabs-list">
-          <Tabs defaultActiveKey="1" id="uncontrolled-tab-example">
+          <Tabs
+            activeKey={tabKey}
+            onSelect={e => setTabKey(e)}
+            transition={Fade}
+          >
             <Tab eventKey={1} title="Name & Details">
               <NameDetails
                 nameData={nameData}
                 handleNameDetails={handleNameDetails}
                 handleImage={handleImage}
+                handleTab={handleTab}
               />
             </Tab>
             <Tab eventKey={2} title="Set Scope">
-              <SetScope scopeData={scopeData} handleScope={handleScope} />
+              <SetScope
+                scopeData={scopeData}
+                handleScope={handleScope}
+                handleTab={handleTab}
+              />
             </Tab>
             <Tab eventKey={3} title="Terms and Conditions">
-              <Terms />
+              <Terms handleTab={handleTab} />
             </Tab>
             <Tab eventKey={4} title="Rewards">
-              <Rewards rewardData={rewardData} handleReward={handleReward} />
+              <Rewards
+                rewardData={rewardData}
+                handleReward={handleReward}
+                handleTab={handleTab}
+              />
             </Tab>
             <Tab eventKey={5} title="Review & Submit">
-              <Review programLogo={programLogo} />
+              <Review
+                nameData={nameData}
+                programLogo={programLogo}
+                scopeData={scopeData}
+                rewardData={rewardData}
+                handleTab={handleTab}
+              />
             </Tab>
           </Tabs>
         </div>

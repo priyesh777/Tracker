@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import BackArrow from "../../images/arrow-left.svg";
 import { Radio, Input, Button } from "antd";
 import { Card, Table } from "react-bootstrap";
 
 const Rewards = props => {
-  const history = useHistory();
-
   const [radioState, setRadioState] = useState(true);
 
   const handleRadio = e => {
@@ -37,9 +34,7 @@ const Rewards = props => {
         >
           <Button
             className="cps-form-backButton"
-            onClick={() => {
-              history.push("/register_step4");
-            }}
+            onClick={() => props.handleTab(3)}
           >
             <img src={BackArrow} alt="back-arrow-left" /> Back
           </Button>
@@ -198,7 +193,7 @@ const Rewards = props => {
           <Button
             className="program-continue"
             style={{ float: "right" }}
-            onClick={() => history.push("###")}
+            onClick={() => props.handleTab(5)}
           >
             Continue
           </Button>
