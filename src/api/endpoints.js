@@ -17,9 +17,14 @@ export const CompanySignUpLink = `${url}account/setup/`;
 export const CompanyProfileLink = `${url}account/details/`;
 export const InvitationLink = `${url}account/many_users_invite/`;
 
-//........//
+//...........//
 
-//Programs ::
+//LAUNCH - PROGRAM SETUP :::
+export const LaunchProgramLink = `${url}app/add_program/`;
+
+//..........//
+
+//Dashboard - Programs ::
 export const AllProgramsLink = `${url}app/programs/`;
 
 //........//

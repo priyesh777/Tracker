@@ -14,9 +14,9 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+import SubmissionForm from "./SubmissionTabs/SubmissionForm";
 
 const UserRoute = props => {
-  console.log("reached index:");
   return (
     <Router>
       <Switch>
@@ -25,8 +25,15 @@ const UserRoute = props => {
         </Route>
         <Route exact path="/main_panel/main" component={UserPanel} />
         <Route exact path="/main_panel/researchers" component={Researchers} />
-        <Route exact path="/main_panel/submissions" component={Submissions} />
         <Route exact path="/main_panel/rewards" component={Rewards} />
+
+        <Route exact path="/main_panel/submissions" component={Submissions} />
+        <Route
+          exact
+          path="/main_panel/submissions_form"
+          component={SubmissionForm}
+        />
+
         <Route exact path="/main_panel/programs" component={Programs} />
         <Route
           exact

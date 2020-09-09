@@ -3,11 +3,10 @@ import { Button, Input, Upload, message } from "antd";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import { Container, Row, Form } from "react-bootstrap";
 import BackArrow from "../../images/arrow-left.svg";
-// import PhotoUpload from "../../images/pic_upload.png";
+import { toast } from "react-toastify";
 import { Link, useHistory } from "react-router-dom";
 import { AuthPostApi } from "../../api/callapi";
 import { CompanyProfileLink } from "../../api/endpoints";
-import { toast } from "react-toastify";
 
 const SignUp2 = () => {
   const history = useHistory();
@@ -60,7 +59,6 @@ const SignUp2 = () => {
     if (info.file.status === "done") {
       setLoading(false);
       setUploaded(true);
-      // let tempImage = info.file.originFileObj;
       message.success("file uploaded");
     } else if (info.file.status === "error") {
       setLoading(false);

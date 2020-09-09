@@ -23,7 +23,6 @@ import UserRoute from "./containers/UserPanel/index";
 import UserLogin from "./containers/User_Profile/UserLogin";
 import UserRegister from "./containers/User_Profile/UserRegister";
 import Programs from "./containers/UserPanel/ProgramList/Programs";
-import SubmissionForm from "./containers/UserPanel/SubmissionTabs/SubmissionForm";
 import NameDetails from "./containers/LaunchProgram/NameDetails";
 import SetScope from "./containers/LaunchProgram/SetScope";
 import Rewards from "./containers/UserPanel/Rewards";
@@ -54,8 +53,6 @@ const App = () => {
 
           <Route path="/user_login" component={UserLogin} />
           <Route path="/user_register" component={UserRegister} />
-
-          <Route path="/submission_form" component={SubmissionForm} />
         </Switch>
       </Router>
     </>

@@ -2,13 +2,33 @@ import React from "react";
 import BackArrow from "../../images/arrow-left.svg";
 import { Input, Radio, Button } from "antd";
 import { Card, Table } from "react-bootstrap";
+import { toast } from "react-toastify";
+import { AuthPostApi } from "../../api/callapi";
+import { LaunchProgramLink } from "../../api/endpoints";
 
 const Review = props => {
-  const handleSubmit = () => {
+  const handleSubmit = async e => {
+    e.preventDefault();
     console.log("clicked handle submit:");
-  };
 
-  const rewardData = props.rewardData;
+    var form_values = new FormData();
+
+    for (var key in props.nameData) {
+      form_values.append(key, props.nameData[key]);
+    }
+    form_values.append("Appended logo", props.programLogo);
+
+    for (var k in props.scopeData) {
+      form_values.append(k, props.scopeData[k]);
+    }
+
+    var response = await AuthPostApi(LaunchProgramLink, form_values);
+    if (response.status === 201) {
+      toast.success("Program Launched");
+    } else {
+      console.log("error in process::");
+    }
+  };
 
   return (
     <>
@@ -124,114 +144,36 @@ const Review = props => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className="row-head">Critical</td>
-                  <td>
-                    <div
-                      className="reward-amt"
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-evenly"
-                      }}
-                    >
-                      <Input
-                        id="Critical"
-                        type="number"
-                        placeholder="Min"
-                        className="input-amount"
-                        disabled
-                      />
-                      <Input
-                        id="Critical"
-                        type="number"
-                        placeholder="Max"
-                        className="input-amount"
-                        disabled
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="row-head">High</td>
-                  <td>
-                    <div
-                      className="reward-amt"
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-evenly"
-                      }}
-                    >
-                      <Input
-                        id="High"
-                        type="number"
-                        placeholder="Min"
-                        className="input-amount"
-                        disabled
-                      />
-                      <Input
-                        id="High"
-                        type="number"
-                        placeholder="Max"
-                        className="input-amount"
-                        disabled
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="row-head">Medium</td>
-                  <td>
-                    <div
-                      className="reward-amt"
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-evenly"
-                      }}
-                    >
-                      <Input
-                        id="Medium"
-                        type="number"
-                        placeholder="Min"
-                        className="input-amount"
-                        disabled
-                      />
-                      <Input
-                        id="Medium"
-                        type="number"
-                        placeholder="Max"
-                        className="input-amount"
-                        disabled
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="row-head">Low</td>
-                  <td>
-                    <div
-                      className="reward-amt"
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-evenly"
-                      }}
-                    >
-                      <Input
-                        id="Low"
-                        type="number"
-                        placeholder="Min"
-                        className="input-amount"
-                        disabled
-                      />
-                      <Input
-                        id="Low"
-                        type="number"
-                        placeholder="Max"
-                        className="input-amount"
-                        disabled
-                      />
-                    </div>
-                  </td>
-                </tr>
+                {props.rewardData &&
+                  props.rewardData.map(each => (
+                    <tr>
+                      <td className="row-head">{each.severity}</td>
+                      <td>
+                        <div
+                          className="reward-amt"
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-evenly"
+                          }}
+                        >
+                          <Input
+                            className="input-amount"
+                            type="number"
+                            placeholder="Min"
+                            value={each.min_amount}
+                            disabled
+                          />
+                          <Input
+                            className="input-amount"
+                            type="number"
+                            placeholder="Max"
+                            value={each.max_amount}
+                            disabled
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </Table>
           </div>

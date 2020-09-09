@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import { Input, Card, Avatar } from "antd";
@@ -13,42 +13,7 @@ const Programs = props => {
   const { Search } = Input;
   const { Meta } = Card;
 
-  // const cardData = [
-  //   {
-  //     title: "Program One",
-  //     date: "21-03-2019",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor",
-  //     reward: "$100-$200",
-  //     id: "2001"
-  //   },
-  //   {
-  //     title: "Program Two",
-  //     date: "21-03-2019",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor",
-  //     reward: "$100-$200",
-  //     id: "2002"
-  //   },
-  //   {
-  //     title: "Program Three",
-  //     date: "21-03-2019",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor",
-  //     reward: "$100-$200",
-  //     id: "2003"
-  //   },
-  //   {
-  //     title: "Program four",
-  //     date: "21-03-2019",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor",
-  //     reward: "$100-$200",
-  //     id: "2004"
-  //   }
-  // ];
-  const [page, setPage] = useState(AllProgramsLink);
-  const [cardData, setPrograms] = useState([
+  const cardData = [
     {
       title: "Program One",
       date: "21-03-2019",
@@ -81,22 +46,23 @@ const Programs = props => {
       reward: "$100-$200",
       id: "2004"
     }
-  ]);
+  ];
+  // const [page, setPage] = useState(AllProgramsLink);
 
   useEffect(() => {
-    console.log("Getting..");
     async function init() {
-      const response = await GetApi(page);
-      console.log(response);
+      const response = await GetApi(AllProgramsLink);
+      console.log("get Api Program-response :::", response);
       if (response.status === 200) {
-        setPrograms(response.data.results);
+        alert("Fetch Successful .....### ");
+        // setPrograms(response.data.results);
         // setPage(response.data.next)
       } else {
-        alert("fetch error!!");
+        alert("Error!!");
       }
     }
     init();
-  }, [page]);
+  }, []);
 
   // const handleCard = e => {
   //   console.log("clicked card item ::", e);
