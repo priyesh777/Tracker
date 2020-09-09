@@ -15,10 +15,12 @@ const Program = () => {
 
   //------State for "NAME & DETAILS"-----------//
   const [nameData, setNameData] = useState({
-    program_name: "",
-    tagline: "",
-    description: ""
+    name: "",
+    tag_line: "",
+    description: "",
+    accept_tc: true
   });
+
   const [programLogo, setProgramLogo] = useState();
 
   const handleNameDetails = info => {
@@ -39,28 +41,7 @@ const Program = () => {
   //----------------------------------------//
 
   //--------State for "REWARDS"------//
-  const [rewardData, setRewardData] = useState([
-    {
-      severity: "Critical",
-      min_amount: "",
-      max_amount: ""
-    },
-    {
-      severity: "High",
-      min_amount: "",
-      max_amount: ""
-    },
-    {
-      severity: "Medium",
-      min_amount: "",
-      max_amount: ""
-    },
-    {
-      severity: "Low",
-      min_amount: "",
-      max_amount: ""
-    }
-  ]);
+  const [rewardData, setRewardData] = useState([]);
 
   const handleReward = info => {
     setRewardData(info);
@@ -96,11 +77,7 @@ const Program = () => {
               <Terms handleTab={handleTab} />
             </Tab>
             <Tab eventKey={4} title="Rewards">
-              <Rewards
-                rewardData={rewardData}
-                handleReward={handleReward}
-                handleTab={handleTab}
-              />
+              <Rewards handleReward={handleReward} handleTab={handleTab} />
             </Tab>
             <Tab eventKey={5} title="Review & Submit">
               <Review

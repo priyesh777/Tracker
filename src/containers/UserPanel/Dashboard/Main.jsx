@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, List, Avatar } from "antd";
 import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
 import { Row, Col, Tabs, Tab } from "react-bootstrap";
 import BugGraph from "./BugGraph";
 import MainPanel from "../MainPanel";
+// import { GetApi } from "../../../api/callapi";
+// import { AllProgramsLink } from "../../../api/endpoints";
 
 const UserPanel = props => {
   const { Meta } = Card;

@@ -584,7 +584,11 @@ code {
 }
 
 .name-details .add-program-details {
-  width: 400px;
+  width: 80%;
+  height: 200px;
+}
+.name-details .add-program-details .quill {
+  height: 110px;
 }
 
 .Rewards .instruction-header {

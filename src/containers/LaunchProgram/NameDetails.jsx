@@ -39,7 +39,7 @@ const NameDetails = props => {
   };
 
   const handleUpload = info => {
-    props.handleImage(info.file);
+    props.handleImage(info.file.originFileObj);
     if (info.file.status === "uploading") {
       setLoading(true);
       return;
@@ -81,17 +81,17 @@ const NameDetails = props => {
           <div className="input-form">
             <p className="input-instruction">Write the name of your program</p>
             <Input
-              name="program_name"
+              name="name"
               className="Form-input"
-              type="name"
+              type="text"
               placeholder="Eg. vulnerability spot"
               onChange={e => handleChange(e)}
             />
             <p className="input-instruction">Add a Tagline</p>
             <Input
-              name="tagline"
+              name="tag_line"
               className="Form-input"
-              type="name"
+              type="text"
               placeholder="Eg. Securing out cloud services"
               onChange={e => handleChange(e)}
             />

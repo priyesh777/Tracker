@@ -4,25 +4,35 @@ import { Input, Radio, Button } from "antd";
 import { Card, Table } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { AuthPostApi } from "../../api/callapi";
-import { LaunchProgramLink } from "../../api/endpoints";
+import { LaunchProgramLink, ProgramLogoLink } from "../../api/endpoints";
 
 const Review = props => {
+  console.log("Scope values ::", props.scopeData);
+  console.log("Reward values ::", props.rewardData);
+  console.log("name values ::", props.nameData);
+
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log("clicked handle submit:");
 
-    var form_values = new FormData();
+    //Patching the uploaded  image below ...//
 
-    for (var key in props.nameData) {
-      form_values.append(key, props.nameData[key]);
-    }
-    form_values.append("Appended logo", props.programLogo);
+    const logoPatch = props.programLogo;
+    var logo = new FormData();
 
-    for (var k in props.scopeData) {
-      form_values.append(k, props.scopeData[k]);
-    }
+    logo.append("appended program icon", logoPatch);
 
-    var response = await AuthPostApi(LaunchProgramLink, form_values);
+    var ImageResponse = await AuthPostApi(ProgramLogoLink, logo);
+    console.log("Image response :::", ImageResponse);
+    //.................................//
+
+    //....submission of all the input values below ....//
+
+    const data = props.nameData;
+    data["program_target"] = props.scopeData;
+    data["program_reward"] = props.rewardData;
+
+    console.log("Total Appended value :::::##", data);
+    var response = await AuthPostApi(LaunchProgramLink, data);
     if (response.status === 201) {
       toast.success("Program Launched");
     } else {

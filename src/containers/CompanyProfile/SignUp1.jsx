@@ -87,7 +87,7 @@ const SignUp1 = () => {
                 Please enter the following details to continue
               </p>
               <div className="input-form">
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} style={{ marginTop: "1%" }}>
                   <Input
                     name="username"
                     type="text"

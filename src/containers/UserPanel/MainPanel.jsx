@@ -5,10 +5,6 @@ import SideBar from "./SideBar";
 function MainPanel(props) {
   // const [openCard, setOpenCard] = useState(false);
 
-  // const handleMenuClick = e => {
-  //   setActiveMenu(e.key);
-  // };
-
   // const handleOpenCard = () => {
   //   setActiveMenu("0");
   //   setOpenCard(true);

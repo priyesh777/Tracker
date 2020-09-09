@@ -21,6 +21,7 @@ export const InvitationLink = `${url}account/many_users_invite/`;
 
 //LAUNCH - PROGRAM SETUP :::
 export const LaunchProgramLink = `${url}app/add_program/`;
+export const ProgramLogoLink = `${url}app/add_program_logo/`;
 
 //..........//
 

@@ -5,6 +5,28 @@ import { Card, Table } from "react-bootstrap";
 
 const Rewards = props => {
   const [radioState, setRadioState] = useState(true);
+  const [tableData] = useState([
+    {
+      severity: "Critical",
+      min_amount: "",
+      max_amount: ""
+    },
+    {
+      severity: "High",
+      min_amount: "",
+      max_amount: ""
+    },
+    {
+      severity: "Medium",
+      min_amount: "",
+      max_amount: ""
+    },
+    {
+      severity: "Low",
+      min_amount: "",
+      max_amount: ""
+    }
+  ]);
 
   const handleRadio = e => {
     setRadioState(e.target.value);
@@ -12,7 +34,7 @@ const Rewards = props => {
 
   const handleChange = e => {
     const { name, value, id } = e.target;
-    const list = props.rewardData;
+    const list = tableData;
     for (var i in list) {
       if (list[i]["severity"] === id) {
         if (name === "max_amount") {
@@ -24,7 +46,7 @@ const Rewards = props => {
     }
     props.handleReward(list);
   };
-
+  console.log("radio state ::", tableData);
   return (
     <>
       <div className="Rewards" style={{ marginTop: "20px" }}>
