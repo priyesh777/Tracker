@@ -59,7 +59,10 @@ const SignUp1 = () => {
 
           <div className="signUp-form-wrapper">
             <div className="support-button-section">
-              <Button className="cps-form-backButton">
+              <Button
+                className="cps-form-backButton"
+                onClick={() => history.push("/")}
+              >
                 <img src={BackArrow} alt="back-arrow-left" /> Back
               </Button>
               <p>

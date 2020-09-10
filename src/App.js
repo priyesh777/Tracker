@@ -19,10 +19,11 @@ import SignUp3 from "./containers/CompanyProfile/SignUp3";
 import SignUp4 from "./containers/CompanyProfile/SignUp4";
 import Program from "./containers/LaunchProgram/Program";
 import Terms from "./containers/LaunchProgram/Terms";
+//Nested route for dashboard
 import UserRoute from "./containers/UserPanel/index";
+//....//
 import UserLogin from "./containers/User_Profile/UserLogin";
 import UserRegister from "./containers/User_Profile/UserRegister";
-import Programs from "./containers/UserPanel/ProgramList/Programs";
 import NameDetails from "./containers/LaunchProgram/NameDetails";
 import SetScope from "./containers/LaunchProgram/SetScope";
 import Rewards from "./containers/UserPanel/Rewards";
@@ -34,7 +35,8 @@ const App = () => {
       <ToastContainer />
       <Router>
         <Switch>
-          <Route exact path="/" component={SignUp1} />
+          <Route exact path="/" component={UserLogin} />
+          <Route path="/register_step1" component={SignUp1} />
           <Route path="/register_step2" component={SignUp2} />
           <PrivateRoute path="/register_step3" component={SignUp3} />
           <Route path="/register_step4" component={SignUp4} />
@@ -46,13 +48,9 @@ const App = () => {
           <Route path="/program_details/rewards" component={Rewards} />
           <Route path="/program_details/review" component={Review} />
 
-          <Route path="/all_program" component={Programs} />
-          <Route path="/terms" component={Terms} />
-
           <Route path="/main_panel" component={UserRoute} />
 
-          <Route path="/user_login" component={UserLogin} />
-          <Route path="/user_register" component={UserRegister} />
+          <Route path="/invite_register" component={UserRegister} />
         </Switch>
       </Router>
     </>

@@ -112,6 +112,16 @@ const UserLogin = () => {
                     Log in
                   </Button>
                 </Form>
+                <p className="instruction">
+                  New to BugNas ?{" "}
+                  <a
+                    className="link-words"
+                    href="##"
+                    onClick={() => history.push("/register_step1")}
+                  >
+                    Create a new account
+                  </a>{" "}
+                </p>
               </div>
             </div>
           </div>
