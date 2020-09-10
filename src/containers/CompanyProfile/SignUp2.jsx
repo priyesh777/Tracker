@@ -11,6 +11,7 @@ import { CompanyProfileLink } from "../../api/endpoints";
 const SignUp2 = () => {
   const history = useHistory();
 
+  const [validate, setValidate] = useState(false);
   const [loading, setLoading] = useState(false);
   const [uploaded, setUploaded] = useState(false);
   const [img, setImg] = useState();
@@ -67,29 +68,36 @@ const SignUp2 = () => {
   };
   //-----------------------------------------//
 
-  const handleInput = e => {
+  const handleChange = e => {
     const { name, value } = e.target;
     setCompanyData({ ...companyData, [name]: value });
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log("companyData state:::", companyData);
-    console.log("Image handled::", img);
+    setValidate(true);
 
-    var form_values = new FormData();
+    if (
+      companyData.company_name !== "" &&
+      companyData.company_type !== "" &&
+      companyData.website !== "" &&
+      companyData.phone !== "" &&
+      companyData.representative_name !== ""
+    ) {
+      var form_values = new FormData();
 
-    for (var key in companyData) {
-      form_values.append(key, companyData[key]);
-    }
-    form_values.append("Appended logo", img);
+      for (var key in companyData) {
+        form_values.append(key, companyData[key]);
+      }
+      form_values.append("Appended logo", img);
 
-    var response = await AuthPostApi(CompanyProfileLink, form_values);
-    if (response.status === 201) {
-      history.push("/register_step3");
-      toast.success("Profile Setup Completed");
-    } else {
-      console.log("error in process::");
+      var response = await AuthPostApi(CompanyProfileLink, form_values);
+      if (response.status === 201) {
+        history.push("/register_step3");
+        toast.success("Profile Setup Completed");
+      } else {
+        console.log("error in process::");
+      }
     }
   };
 
@@ -101,7 +109,7 @@ const SignUp2 = () => {
             <Button
               className="cps-form-backButton"
               onClick={() => {
-                history.push("/");
+                history.push("/register_step1");
               }}
             >
               <img src={BackArrow} alt="back-arrow-left" /> Back
@@ -131,47 +139,71 @@ const SignUp2 = () => {
 
           <div className="form-content">
             <div className="input-fields">
-              <Form onSubmit={handleSubmit}>
-                <Input
+              <Form noValidate validated={validate} onSubmit={handleSubmit}>
+                <Form.Control
                   name="company_name"
-                  className="input-box"
                   type="text"
+                  className="Form-input"
+                  onChange={handleChange}
                   placeholder="Company Name"
-                  onChange={handleInput}
+                  aria-describedby="inputGroupPrepend"
+                  required
                 />
-                <br />
-                <Input
+                <Form.Control.Feedback type="invalid">
+                  Enter your company name !
+                </Form.Control.Feedback>
+
+                <Form.Control
                   name="company_type"
-                  className="input-box"
                   type="text"
+                  className="Form-input"
+                  onChange={handleChange}
                   placeholder="Company Type"
-                  onChange={handleInput}
+                  aria-describedby="inputGroupPrepend"
+                  required
                 />
-                <br />
-                <Input
+                <Form.Control.Feedback type="invalid">
+                  Your company type !
+                </Form.Control.Feedback>
+
+                <Form.Control
                   name="website"
-                  className="input-box"
                   type="text"
+                  className="Form-input"
+                  onChange={handleChange}
                   placeholder="Company Website"
-                  onChange={handleInput}
+                  aria-describedby="inputGroupPrepend"
+                  required
                 />
-                <br />
-                <Input
+                <Form.Control.Feedback type="invalid">
+                  Your Company's Website
+                </Form.Control.Feedback>
+
+                <Form.Control
                   name="phone"
-                  className="input-box"
                   type="number"
-                  placeholder="Company Phone Number"
-                  onChange={handleInput}
+                  className="Form-input"
+                  onChange={handleChange}
+                  placeholder="Company Type"
+                  aria-describedby="inputGroupPrepend"
+                  required
                 />
-                <br />
-                <Input
+                <Form.Control.Feedback type="invalid">
+                  Company's Phone Number !
+                </Form.Control.Feedback>
+
+                <Form.Control
                   name="representative_name"
-                  className="input-box"
                   type="text"
-                  placeholder="Your full Name"
-                  onChange={handleInput}
+                  className="Form-input"
+                  onChange={handleChange}
+                  placeholder="Representative Name"
+                  aria-describedby="inputGroupPrepend"
+                  required
                 />
-                <br />
+                <Form.Control.Feedback type="invalid">
+                  Company's representative Name !
+                </Form.Control.Feedback>
 
                 <p className="instruction-2">
                   By signing up, you agree to{" "}

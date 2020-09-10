@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input, Button } from "antd";
+import { Button } from "antd";
 import { Link, useHistory } from "react-router-dom";
 import { Row, Form } from "react-bootstrap";
 import { PostApi } from "../../api/callapi";
@@ -8,36 +8,38 @@ import { toast } from "react-toastify";
 
 const UserLogin = () => {
   const history = useHistory();
+  const [validate, setValidate] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
     password: ""
   });
 
-  const handleInput = e => {
+  const handleChange = e => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async e => {
-    console.log("form:::", formData);
-
     e.preventDefault();
-    var form_values = new FormData();
+    setValidate(true);
 
-    for (var key in formData) {
-      form_values.append(key, formData[key]);
-    }
+    if (formData.username !== "" && formData.password !== "") {
+      var form_values = new FormData();
 
-    var response = await PostApi(UserLoginLink, form_values);
-    // console.log(response)
-    var data = response.data;
-    if (response.status === 200) {
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("data", data);
-      history.push("/main_panel");
-      toast.success("Logged in successfully");
-    } else {
-      console.log("error in process::");
+      for (var key in formData) {
+        form_values.append(key, formData[key]);
+      }
+
+      var response = await PostApi(UserLoginLink, form_values);
+      var data = response.data;
+      if (response.status === 200) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("data", data);
+        history.push("/main_panel");
+        toast.success("Logged in successfully");
+      } else {
+        console.log("error in process::");
+      }
     }
   };
 
@@ -82,23 +84,33 @@ const UserLogin = () => {
               </div>
 
               <div className="input-form">
-                <Form onSubmit={handleSubmit}>
-                  <Input
+                <Form noValidate validated={validate} onSubmit={handleSubmit}>
+                  <Form.Control
                     name="username"
                     type="text"
-                    placeholder="UserName"
                     className="Form-input"
-                    onChange={handleInput}
+                    onChange={handleChange}
+                    placeholder="Username"
+                    aria-describedby="inputGroupPrepend"
+                    required
                   />
+                  <Form.Control.Feedback type="invalid">
+                    Please choose a username.
+                  </Form.Control.Feedback>
                   <br />
-
-                  <Input
+                  <Form.Control
                     name="password"
                     type="password"
-                    placeholder="Password"
                     className="Form-input"
-                    onChange={handleInput}
+                    onChange={handleChange}
+                    placeholder="Password"
+                    aria-describedby="inputGroupPrepend"
+                    required
                   />
+                  <Form.Control.Feedback type="invalid">
+                    And enter a strong password
+                  </Form.Control.Feedback>
+
                   <p className="instruction">
                     <a className="link-words" href="###">
                       Forgot Password?

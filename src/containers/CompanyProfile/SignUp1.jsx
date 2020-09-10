@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 
 const SignUp1 = () => {
   const history = useHistory();
+  const [validate, setValidate] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -16,23 +17,29 @@ const SignUp1 = () => {
     type: "Admin"
   });
 
-  const handleInput = e => {
+  const handleChange = e => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
-
-    var response = await PostApi(CompanySignUpLink, formData);
-    var data = response.data;
-    if (response.status === 200) {
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("data", data);
-      history.push("/register_step2");
-      toast.success("Signed Up successfully.");
-    } else {
-      console.log("error in process::");
+    setValidate(true);
+    if (
+      formData.username !== "" &&
+      formData.email !== "" &&
+      formData.password !== ""
+    ) {
+      var response = await PostApi(CompanySignUpLink, formData);
+      var data = response.data;
+      if (response.status === 200) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("data", data);
+        history.push("/register_step2");
+        toast.success("Signed Up successfully.");
+      } else {
+        console.log("error in process::");
+      }
     }
   };
 
@@ -90,30 +97,51 @@ const SignUp1 = () => {
                 Please enter the following details to continue
               </p>
               <div className="input-form">
-                <Form onSubmit={handleSubmit} style={{ marginTop: "1%" }}>
-                  <Input
+                <Form
+                  noValidate
+                  validated={validate}
+                  onSubmit={handleSubmit}
+                  style={{ marginTop: "1%" }}
+                >
+                  <Form.Control
                     name="username"
                     type="text"
-                    placeholder="UserName"
                     className="Form-input"
-                    onChange={handleInput}
+                    onChange={handleChange}
+                    placeholder="Username"
+                    aria-describedby="inputGroupPrepend"
+                    required
                   />
-                  <br />
-                  <Input
+                  <Form.Control.Feedback type="invalid">
+                    Please choose a username.
+                  </Form.Control.Feedback>
+
+                  <Form.Control
                     name="email"
-                    type="email"
-                    placeholder="Email Address"
+                    type="text"
                     className="Form-input"
-                    onChange={handleInput}
+                    onChange={handleChange}
+                    placeholder="Email"
+                    aria-describedby="inputGroupPrepend"
+                    required
                   />
-                  <br />
-                  <Input
+                  <Form.Control.Feedback type="invalid">
+                    Please enter your email
+                  </Form.Control.Feedback>
+
+                  <Form.Control
                     name="password"
                     type="password"
-                    placeholder="Password"
                     className="Form-input"
-                    onChange={handleInput}
+                    onChange={handleChange}
+                    placeholder="Password"
+                    aria-describedby="inputGroupPrepend"
+                    required
                   />
+                  <Form.Control.Feedback type="invalid">
+                    And enter a strong password
+                  </Form.Control.Feedback>
+
                   <p className="instruction">
                     By signing up, you agree to{" "}
                     <a className="link-words" href="###">

@@ -70,6 +70,7 @@ code {
   color: rgba(0, 0, 0, 0.6);
   font-family: Karla;
   font-weight: bold;
+  margin-top: 0px;
 }
 
 .Form-1-div .link-words {
@@ -87,7 +88,7 @@ code {
   background: #f3f3f3;
   border: 2px solid #c4c4c4;
   border-radius: 5px;
-  margin-bottom: 20px !important;
+  margin-bottom: 2% !important;
 }
 
 .form-header {
@@ -186,6 +187,7 @@ code {
   color: rgba(0, 0, 0, 0.6);
   font-family: Karla;
   font-weight: bold;
+  margin-top: 5%;
   margin-bottom: "10px";
 }
 
@@ -199,6 +201,10 @@ code {
   border: 2px solid #c4c4c4;
   border-radius: 5px;
   margin-bottom: 20px !important;
+}
+
+.Form-2-div .form-control {
+  margin-top: 6%;
 }
 
 .Form-2-div .sign-up-button {
