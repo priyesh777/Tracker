@@ -31,14 +31,15 @@ const UserLogin = () => {
       }
 
       var response = await PostApi(UserLoginLink, form_values);
+      console.log("Response of the API :", response.data.response);
       var data = response.data;
-      if (response.status === 200) {
+      if (response.status === 200 && response.data.response !== "Error") {
         localStorage.setItem("token", data.token);
         localStorage.setItem("data", data);
         history.push("/main_panel");
         toast.success("Logged in successfully");
       } else {
-        console.log("error in process::");
+        toast.error("Invalid Credentials");
       }
     }
   };
@@ -124,7 +125,7 @@ const UserLogin = () => {
                     Log in
                   </Button>
                 </Form>
-                <p className="instruction">
+                <p className="instruction" style={{ marginTop: "2%" }}>
                   New to BugNas ?{" "}
                   <a
                     className="link-words"

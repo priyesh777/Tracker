@@ -40,7 +40,12 @@ const SignUp4 = () => {
             </div>
 
             <div className="footer-button">
-              <Button className="white-button">Do this Later</Button>
+              <Button
+                className="white-button"
+                onClick={() => history.push("/main_panel")}
+              >
+                Do this Later
+              </Button>
               <Button
                 className="Purple-button"
                 onClick={() => history.push("/program_details")}

@@ -89,7 +89,12 @@ const SignUp3 = () => {
           </div>
 
           <div className="footer-button">
-            <Button className="white-button">Do this Later</Button>
+            <Button
+              className="white-button"
+              onClick={() => history.push("/register_step4")}
+            >
+              Do this Later
+            </Button>
             <Button className="Purple-button" onClick={handleInvite}>
               Invite
             </Button>

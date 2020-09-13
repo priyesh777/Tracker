@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input, Button } from "antd";
+import { Button } from "antd";
 import BackArrow from "../../images/arrow-left.svg";
 import { Link, useHistory } from "react-router-dom";
 import { Row, Form } from "react-bootstrap";
