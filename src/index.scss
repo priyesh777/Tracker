@@ -723,19 +723,30 @@ code {
 
 .side-menu-section .side-menu-options {
   font-size: 16px;
-  color: #a69ea9;
+
   font-family: Karla;
   font-weight: bold;
 }
-.side-menu-section .ant-menu-item-selected {
-  color: #ad77c0;
+
+.side-menu-section .menu-list a:hover {
+  background-color: #ad77c0 !important;
+}
+.side-menu-section .menu-list a:active {
+  background-color: #ad77c0 !important;
+}
+.side-menu-section .menu-list .side-menu-link:active {
+  background-color: #ad77c0 !important;
+}
+
+.side-menu-section .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background: #ad77c0;
 }
 .side-menu-section .ant-menu-inline .ant-menu-item::after {
-  border-right: 3px solid #ad77c0;
+  border-right: 0px;
 }
 
 .side-menu-section .menu-list {
-  margin-top: 2%;
+  margin-top: 4%;
 }
 .side-menu-section .profile-dropdown .user-name {
   display: flex;

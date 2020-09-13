@@ -31,11 +31,12 @@ const UserLogin = () => {
       }
 
       var response = await PostApi(UserLoginLink, form_values);
-      console.log("Response of the API :", response.data.response);
-      var data = response.data;
+
+      var user_type = response.data;
+      console.log("Response of the API :", user_type.type);
       if (response.status === 200 && response.data.response !== "Error") {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("data", data);
+        localStorage.setItem("token", user_type.token);
+        localStorage.setItem("user_type", user_type.type);
         history.push("/main_panel");
         toast.success("Logged in successfully");
       } else {

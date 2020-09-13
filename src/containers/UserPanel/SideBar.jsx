@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   AppstoreOutlined,
   UserOutlined,
@@ -17,6 +17,17 @@ import { NavLink } from "react-router-dom";
 const SideBar = props => {
   const handleProfileEdit = () => {
     console.log("handle profile edit clicked");
+  };
+
+  const [type, setType] = useState("");
+
+  useEffect(() => {
+    userTypeCheck();
+  }, []);
+
+  const userTypeCheck = () => {
+    let localData = localStorage.getItem("user_type" || "");
+    setType(localData);
   };
 
   const menu = (
@@ -57,23 +68,27 @@ const SideBar = props => {
           // defaultSelectedKeys={["1"]}
         >
           <Menu.Item key="1">
-            <NavLink to="/main_panel/main">
+            <NavLink to="/main_panel/main" className="side-menu-link">
               <span>
                 <AppstoreOutlined className="side-menu-options" />
                 <span>Dashboard</span>
               </span>
             </NavLink>
           </Menu.Item>
-          <Menu.Item key="2">
-            <NavLink to="/main_panel/researchers">
-              <span>
-                <UserOutlined className="side-menu-options" />
-                <span>Researchers</span>
-              </span>
-            </NavLink>
-          </Menu.Item>
+
+          {type === "Admin" && (
+            <Menu.Item key="2">
+              <NavLink to="/main_panel/researchers" className="side-menu-link">
+                <span>
+                  <UserOutlined className="side-menu-options" />
+                  <span>Researchers</span>
+                </span>
+              </NavLink>
+            </Menu.Item>
+          )}
+
           <Menu.Item key="3">
-            <NavLink to="/main_panel/submissions">
+            <NavLink to="/main_panel/submissions" className="side-menu-link">
               <span>
                 <FileDoneOutlined className="side-menu-options" />
                 <span>Submissions</span>
@@ -81,7 +96,7 @@ const SideBar = props => {
             </NavLink>
           </Menu.Item>
           <Menu.Item key="4">
-            <NavLink to="/main_panel/rewards">
+            <NavLink to="/main_panel/rewards" className="side-menu-options">
               <span>
                 <TrophyOutlined className="side-menu-options" />
                 <span>Rewards</span>
@@ -89,23 +104,27 @@ const SideBar = props => {
             </NavLink>
           </Menu.Item>
           <Menu.Item key="5">
-            <NavLink to="/main_panel/programs">
+            <NavLink to="/main_panel/programs" className="side-menu-options">
               <span>
                 <ProjectOutlined className="side-menu-options" />
                 <span>Programs</span>
               </span>
             </NavLink>
           </Menu.Item>
-          <Menu.Item key="6">
-            <NavLink to="/main_panel/users">
-              <span>
-                <IdcardOutlined className="side-menu-options" />
-                <span>Users</span>
-              </span>
-            </NavLink>
-          </Menu.Item>
+
+          {type === "Admin" && (
+            <Menu.Item key="6">
+              <NavLink to="/main_panel/users" className="side-menu-options">
+                <span>
+                  <IdcardOutlined className="side-menu-options" />
+                  <span>Users</span>
+                </span>
+              </NavLink>
+            </Menu.Item>
+          )}
+
           <Menu.Item key="7" style={{ marginTop: "100px" }}>
-            <NavLink to="/main_panel/settings">
+            <NavLink to="/main_panel/settings" className="side-menu-options">
               <span>
                 <ToolOutlined className="side-menu-options" />
                 <span>Settings</span>
@@ -113,7 +132,7 @@ const SideBar = props => {
             </NavLink>
           </Menu.Item>
           <Menu.Item key="8">
-            <NavLink to="/main_panel/support">
+            <NavLink to="/main_panel/support" className="side-menu-options">
               <span>
                 <QuestionCircleOutlined className="side-menu-options" />
                 <span>Support</span>

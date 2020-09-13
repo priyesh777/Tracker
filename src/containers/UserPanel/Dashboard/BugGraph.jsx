@@ -4,8 +4,6 @@ import { Line } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
 
 const BugGraph = props => {
-  console.log("Tab clicked response ::", props.tabKey);
-
   // Graph-Data
   const [chart] = useState({
     bugs_found: {

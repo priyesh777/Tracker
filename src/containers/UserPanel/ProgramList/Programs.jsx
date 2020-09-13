@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import { Input, Card, Avatar } from "antd";
@@ -12,6 +12,8 @@ const Programs = props => {
 
   const { Search } = Input;
   const { Meta } = Card;
+
+  const [programList, setProgramList] = useState([]);
 
   const cardData = [
     {
@@ -47,22 +49,23 @@ const Programs = props => {
       id: "2004"
     }
   ];
-  // const [page, setPage] = useState(AllProgramsLink);
 
   useEffect(() => {
-    async function init() {
-      const response = await GetApi(AllProgramsLink);
-      console.log("get Api Program-response :::", response);
-      if (response.status === 200) {
-        alert("Fetch Successful .....### ");
-        // setPrograms(response.data.results);
-        // setPage(response.data.next)
-      } else {
-        alert("Error!!");
-      }
-    }
     init();
   }, []);
+
+  const init = async e => {
+    const response = await GetApi(AllProgramsLink);
+
+    if (response.status === 200) {
+      let responseData = response.data.results;
+      alert("Fetch Successful .....### ");
+      setProgramList(responseData);
+    } else {
+      alert("Error .. !!");
+    }
+  };
+  console.log("programs local state ::", programList);
 
   // const handleCard = e => {
   //   console.log("clicked card item ::", e);

@@ -56,7 +56,6 @@ const UserPanel = props => {
       ratings: 2
     }
   ];
-  console.log("reached Main JS ");
   return (
     <>
       <MainPanel>
