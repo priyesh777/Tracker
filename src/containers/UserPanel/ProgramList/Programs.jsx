@@ -6,6 +6,8 @@ import { Row, Button, Col } from "react-bootstrap";
 import { GetApi } from "../../../api/callapi";
 import { AllProgramsLink } from "../../../api/endpoints";
 import MainPanel from "../MainPanel";
+import { toast } from "react-toastify";
+import moment from "moment";
 
 const Programs = props => {
   const history = useHistory();
@@ -14,41 +16,6 @@ const Programs = props => {
   const { Meta } = Card;
 
   const [programList, setProgramList] = useState([]);
-
-  const cardData = [
-    {
-      title: "Program One",
-      date: "21-03-2019",
-      description:
-        "Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor",
-      reward: "$100-$200",
-      id: "2001"
-    },
-    {
-      title: "Program Two",
-      date: "21-03-2019",
-      description:
-        "Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor",
-      reward: "$100-$200",
-      id: "2002"
-    },
-    {
-      title: "Program Three",
-      date: "21-03-2019",
-      description:
-        "Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor",
-      reward: "$100-$200",
-      id: "2003"
-    },
-    {
-      title: "Program four",
-      date: "21-03-2019",
-      description:
-        "Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor",
-      reward: "$100-$200",
-      id: "2004"
-    }
-  ];
 
   useEffect(() => {
     init();
@@ -59,10 +26,9 @@ const Programs = props => {
 
     if (response.status === 200) {
       let responseData = response.data.results;
-      alert("Fetch Successful .....### ");
       setProgramList(responseData);
     } else {
-      alert("Error .. !!");
+      toast.error("Sorry couldn't load programs now");
     }
   };
   console.log("programs local state ::", programList);
@@ -94,17 +60,20 @@ const Programs = props => {
 
               <div className="card-list">
                 <Row gutter={16}>
-                  {cardData.map(data => (
+                  {programList.map((data, index) => (
                     <Card
                       hoverable
                       className="card-box"
                       onClick={props.handleOpenCard}
+                      id={`program-${index}`}
                     >
                       <div className="title-description">
                         <Meta
                           avatar={<Avatar src={data.logo} />}
                           title={data.name}
-                          description={data.created_at}
+                          description={moment(data.created_at).format(
+                            "YYYY-MM-DD"
+                          )}
                         />
                         <Meta
                           style={{ marginTop: "10px", fontFamily: "Karla" }}
