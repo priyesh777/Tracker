@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { Input, Card, Avatar } from "antd";
 import { Row, Button, Col } from "react-bootstrap";
@@ -8,9 +8,10 @@ import { AllProgramsLink } from "../../../api/endpoints";
 import MainPanel from "../MainPanel";
 import { toast } from "react-toastify";
 import moment from "moment";
+import { CheckCircleFilled, BugFilled } from "@ant-design/icons";
 
 const Programs = props => {
-  const history = useHistory();
+  // const history = useHistory();
 
   const { Search } = Input;
   const { Meta } = Card;
@@ -70,7 +71,20 @@ const Programs = props => {
                       <div className="title-description">
                         <Meta
                           avatar={<Avatar src={data.logo} />}
-                          title={data.name}
+                          title={
+                            <>
+                              <span>{data.name}</span>
+                              <span style={{ marginLeft: "10px" }}>
+                                {data.to_nas ? (
+                                  <CheckCircleFilled
+                                    style={{ color: "green" }}
+                                  />
+                                ) : (
+                                  <BugFilled style={{ color: "#ad77c0" }} />
+                                )}
+                              </span>
+                            </>
+                          }
                           description={moment(data.created_at).format(
                             "YYYY-MM-DD"
                           )}
@@ -94,12 +108,11 @@ const Programs = props => {
               </div>
 
               <div className="footer-button">
-                <Button
-                  className="Purple-button"
-                  onClick={() => history.push("/program_details")}
-                >
-                  Launch a new Program
-                </Button>
+                <Link to="/program_details">
+                  <Button className="Purple-button">
+                    Launch a new Program
+                  </Button>
+                </Link>
               </div>
             </div>
           </Col>

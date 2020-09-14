@@ -11,7 +11,7 @@ import {
   CaretDownOutlined,
   FormOutlined
 } from "@ant-design/icons";
-import { Menu, Dropdown, Avatar } from "antd";
+import { Menu, Dropdown, Avatar, Button } from "antd";
 import { NavLink } from "react-router-dom";
 
 const SideBar = props => {
@@ -40,6 +40,11 @@ const SideBar = props => {
       </Menu.Item>
     </Menu>
   );
+
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.href = "/";
+  };
 
   return (
     <div className="side-menu-section">
@@ -139,6 +144,21 @@ const SideBar = props => {
               </span>
             </NavLink>
           </Menu.Item>
+          {/* <Menu.Item key="9" style={{ marginTop: "80px", marginLeft: "14px" }}>
+            <span>
+              <UserSwitchOutlined className="side-menu-options" />
+              <span>LogOut</span>
+            </span>
+          </Menu.Item> */}
+          <div className="footer-button">
+            <Button
+              style={{ width: "80px", marginTop: "24px", marginLeft: "40px" }}
+              className="Purple-button"
+              onClick={handleLogout}
+            >
+              LogOut
+            </Button>
+          </div>
         </Menu>
       </div>
     </div>

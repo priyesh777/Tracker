@@ -723,7 +723,6 @@ code {
 
 .side-menu-section .side-menu-options {
   font-size: 16px;
-
   font-family: Karla;
   font-weight: bold;
 }
@@ -732,7 +731,7 @@ code {
   background-color: #ad77c0 !important;
 }
 .side-menu-section .menu-list a:active {
-  background-color: #ad77c0 !important;
+  border-right: 8px solid #ad77c0;
 }
 .side-menu-section .menu-list .side-menu-link:active {
   background-color: #ad77c0 !important;

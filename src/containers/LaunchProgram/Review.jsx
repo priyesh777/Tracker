@@ -3,7 +3,7 @@ import BackArrow from "../../images/arrow-left.svg";
 import { Input, Radio, Button } from "antd";
 import { Card, Table } from "react-bootstrap";
 import { toast } from "react-toastify";
-import { AuthPostApi } from "../../api/callapi";
+import { AuthPostApi, PatchApi } from "../../api/callapi";
 import { LaunchProgramLink, ProgramLogoLink } from "../../api/endpoints";
 
 const Review = props => {
@@ -19,10 +19,8 @@ const Review = props => {
     const logoPatch = props.programLogo;
     var logo = new FormData();
 
-    logo.append("appended program icon", logoPatch);
+    logo.append("logo", logoPatch);
 
-    var ImageResponse = await AuthPostApi(ProgramLogoLink, logo);
-    console.log("Image response :::", ImageResponse);
     //.................................//
 
     //....submission of all the input values below ....//
@@ -32,8 +30,15 @@ const Review = props => {
     data["program_reward"] = props.rewardData;
 
     console.log("Total Appended value :::::##", data);
+
     var response = await AuthPostApi(LaunchProgramLink, data);
+
     if (response.status === 201) {
+      let program_id = response.data.id;
+      console.log("logo-id ::", program_id);
+      const url = ProgramLogoLink + program_id;
+      var ImageResponse = await PatchApi(url, logo);
+      console.log("image uploaded :", ImageResponse);
       toast.success("Program Launched");
     } else {
       console.log("error in process::");

@@ -5,7 +5,7 @@ import { Card, Table } from "react-bootstrap";
 
 const Rewards = props => {
   const [radioState, setRadioState] = useState(true);
-  const [tableData] = useState([
+  const [tableData, setTableData] = useState([
     {
       severity: "Critical",
       min_amount: "",
@@ -206,7 +206,11 @@ const Rewards = props => {
                 </tbody>
               </Table>
             </div>
-          ) : null}
+          ) : (
+            () => {
+              setTableData("");
+            }
+          )}
         </Card>
         <div
           className="footer-button"
