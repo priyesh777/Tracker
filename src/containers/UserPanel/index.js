@@ -4,6 +4,7 @@ import Submissions from "./SubmissionTabs/Submissions";
 import Researchers from "./Researchers";
 import Rewards from "./Rewards";
 import Programs from "./ProgramList/Programs";
+import LaunchProgram from "./ProgramList/LaunchProgram/Program";
 import ProgramDetails from "./ProgramList/ProgramDetails";
 import Users from "./Users";
 import Settings from "./Settings";
@@ -40,6 +41,12 @@ const UserRoute = props => {
           path="/main_panel/programs/:id"
           component={ProgramDetails}
         />
+        <Route
+          exact
+          path="/main_panel/launch_program"
+          component={LaunchProgram}
+        />
+
         <Route exact path="/main_panel/users" component={Users} />
         <Route exact path="/main_panel/settings" component={Settings} />
         <Route exact path="/main_panel/support" component={Support} />

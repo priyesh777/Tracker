@@ -1,11 +1,11 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import BackArrow from "../../images/arrow-left.svg";
+import BackArrow from "../../../../images/arrow-left.svg";
 import { Input, Radio, Button } from "antd";
 import { Card, Table } from "react-bootstrap";
 import { toast } from "react-toastify";
-import { AuthPostApi, PatchApi } from "../../api/callapi";
-import { LaunchProgramLink, ProgramLogoLink } from "../../api/endpoints";
+import { AuthPostApi, PatchApi } from "../../../../api/callapi";
+import { LaunchProgramLink, ProgramLogoLink } from "../../../../api/endpoints";
 
 const Review = props => {
   const history = useHistory();
@@ -39,7 +39,7 @@ const Review = props => {
       var ImageResponse = await PatchApi(url, logo);
       console.log("image uploaded :", ImageResponse);
       toast.success("Program Launched");
-      history.push("/main_panel");
+      history.push("/main_panel/programs");
     } else {
       console.log("error in process::");
     }

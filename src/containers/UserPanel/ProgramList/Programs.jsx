@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { Input, Card, Avatar } from "antd";
 import { Row, Button, Col } from "react-bootstrap";
@@ -11,7 +11,7 @@ import moment from "moment";
 import { CheckCircleFilled, BugFilled } from "@ant-design/icons";
 
 const Programs = props => {
-  // const history = useHistory();
+  const history = useHistory();
 
   const { Search } = Input;
   const { Meta } = Card;
@@ -34,9 +34,10 @@ const Programs = props => {
   };
   console.log("programs local state ::", programList);
 
-  // const handleCard = e => {
-  //   console.log("clicked card item ::", e);
-  // };
+  const handleCard = id => {
+    console.log("card id::", id);
+    history.push(`/main_panel/programs/${id}`);
+  };
 
   return (
     <>
@@ -65,7 +66,7 @@ const Programs = props => {
                     <Card
                       hoverable
                       className="card-box"
-                      onClick={props.handleOpenCard}
+                      onClick={() => handleCard(data.id)}
                       id={`program-${index}`}
                     >
                       <div className="title-description">
@@ -100,7 +101,13 @@ const Programs = props => {
                         style={{ marginTop: "10px" }}
                       >
                         <p className="instruction">Bounty Per Reward</p>
-                        <p className="card-number-data">{data.bounty}</p>
+                        <p className="card-number-data">
+                          {data.point_only ? (
+                            <p className="points">Points Only</p>
+                          ) : (
+                            <p className="reward">{data.bounty}</p>
+                          )}
+                        </p>
                       </div>
                     </Card>
                   ))}
@@ -108,7 +115,7 @@ const Programs = props => {
               </div>
 
               <div className="footer-button">
-                <Link to="/program_details">
+                <Link to="/main_panel/launch_program">
                   <Button className="Purple-button">
                     Launch a new Program
                   </Button>

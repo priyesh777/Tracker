@@ -727,19 +727,20 @@ code {
   font-weight: bold;
 }
 
-.side-menu-section .menu-list a:hover {
-  background-color: #ad77c0 !important;
-}
+// .side-menu-section .menu-list a:hover {
+//   border-right: 6px solid #ad77c0 !important;
+// }
 .side-menu-section .menu-list a:active {
-  border-right: 8px solid #ad77c0;
+  background: #ad77c0;
 }
 .side-menu-section .menu-list .side-menu-link:active {
-  background-color: #ad77c0 !important;
+  border-right: 6px solid #ad77c0 !important;
 }
 
 .side-menu-section .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
-  background: #ad77c0;
+  border-right: 6px solid #ad77c0;
 }
+
 .side-menu-section .ant-menu-inline .ant-menu-item::after {
   border-right: 0px;
 }
@@ -808,10 +809,9 @@ code {
 }
 
 .programs-content .ant-card-body {
-  padding: 7%;
   border: 2px solid #e6e6e6;
   border-radius: 5px;
-  height: 200px;
+  height: 100%;
 }
 
 .programs-content .card-list .card-box {
@@ -1092,13 +1092,13 @@ code {
   background: #ffffff;
   border: 2px solid #e6e6e6;
 }
-.all-submissions .card-box .reward {
+.reward {
   font-family: Karla;
   font-weight: bold;
   font-size: 20px;
   color: #ad77c0;
 }
-.all-submissions .card-box .points {
+.points {
   font-family: Karla;
   font-weight: bold;
   font-size: 20px;

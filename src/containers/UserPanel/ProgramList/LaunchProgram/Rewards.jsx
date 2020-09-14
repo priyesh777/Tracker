@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import BackArrow from "../../images/arrow-left.svg";
+import BackArrow from "../../../../images/arrow-left.svg";
 import { Radio, Input, Button } from "antd";
 import { Card, Table } from "react-bootstrap";
 
