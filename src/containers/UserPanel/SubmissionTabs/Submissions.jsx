@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Tabs, Tab } from "react-bootstrap";
-import AllSubmissions from "./AllSubmissions";
+import SubmissionData from "./SubmissionData";
 import SubmissionDetail from "./SubmissionDetails";
 import MainPanel from "../MainPanel";
+import { GetApi } from "../../../api/callapi";
+import { SubmissionLink } from "../../../api/endpoints";
+import { toast } from "react-toastify";
 
 const Submissions = () => {
   const [subDetails, setSubDetails] = useState(false);
+  const [submissionInfo, setSubmissionInfo] = useState([]);
 
   const openSubmission = () => {
     setSubDetails(true);
@@ -15,30 +19,71 @@ const Submissions = () => {
     setSubDetails(false);
   };
 
+  const [Url, setUrl] = useState(SubmissionLink);
+
+  useEffect(() => {
+    init();
+  }, [Url]);
+
+  const init = async e => {
+    const response = await GetApi(Url);
+    if (response.status === 200) {
+      let responseData = response.data;
+      setSubmissionInfo(responseData.results);
+    } else {
+      toast.error("Sorry couldn't load Program-details right now");
+    }
+  };
+
+  const handleTab = e => {
+    setUrl(SubmissionLink + "?status=" + e);
+  };
+
   return (
     <>
       <MainPanel>
         <Row>
           <div className="submissions-content">
             {!subDetails && (
-              <Tabs defaultActiveKey="active-tab" id="uncontrolled-tab-example">
-                <Tab eventKey="active-tab" title="All">
-                  <AllSubmissions
+              <Tabs
+                defaultActiveKey=""
+                id="uncontrolled-tab-example"
+                onSelect={e => handleTab(e)}
+              >
+                <Tab eventKey="" title="All">
+                  <SubmissionData
                     subDetails={subDetails}
                     openSubmission={openSubmission}
+                    submissionInfo={submissionInfo}
                   />
                 </Tab>
-                <Tab eventKey="to-review" title="To review">
-                  <h1>Review-tab</h1>
+                <Tab eventKey="New" title="To review">
+                  <SubmissionData
+                    subDetails={subDetails}
+                    openSubmission={openSubmission}
+                    submissionInfo={submissionInfo}
+                  />
                 </Tab>
-                <Tab eventKey="to-fix" title="To Fix">
-                  <h1>To-fix tab</h1>
+                <Tab eventKey="ToFix" title="To Fix">
+                  <SubmissionData
+                    subDetails={subDetails}
+                    openSubmission={openSubmission}
+                    submissionInfo={submissionInfo}
+                  />
                 </Tab>
-                <Tab eventKey="fixed-bugs" title="Fixed Bugs">
-                  <h1>Fixed Bugs Tab</h1>
+                <Tab eventKey="Fixed" title="Fixed Bugs">
+                  <SubmissionData
+                    subDetails={subDetails}
+                    openSubmission={openSubmission}
+                    submissionInfo={submissionInfo}
+                  />
                 </Tab>
-                <Tab eventKey="invalid-bugs" title="Invalid Bugs">
-                  <h1>Invalid Bugs Tab</h1>
+                <Tab eventKey="Invalid" title="Invalid Bugs">
+                  <SubmissionData
+                    subDetails={subDetails}
+                    openSubmission={openSubmission}
+                    submissionInfo={submissionInfo}
+                  />
                 </Tab>
               </Tabs>
             )}

@@ -29,7 +29,7 @@ const SignUp3 = () => {
 
     var response = await AuthPostApi(InvitationLink, data);
     console.log("latest response::", response);
-    if (response.status === 201) {
+    if (response.status === 200) {
       history.push("/register_step4");
       toast.success("Invitation has been sent");
     } else {

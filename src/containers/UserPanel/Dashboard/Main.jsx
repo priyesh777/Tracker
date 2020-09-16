@@ -1,16 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, List, Avatar } from "antd";
 import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
 import { Row, Col, Tabs, Tab } from "react-bootstrap";
 import BugGraph from "./BugGraph";
 import MainPanel from "../MainPanel";
-// import { GetApi } from "../../../api/callapi";
-// import { AllProgramsLink } from "../../../api/endpoints";
+import { toast } from "react-toastify";
+import { GetApi } from "../../../api/callapi";
+import { PerformanceStatLink, BugGraphLink } from "../../../api/endpoints";
 
 const UserPanel = props => {
   const { Meta } = Card;
 
   const [tabKey, setTabKey] = useState("valid_bugs");
+
+  const [performanceStat, setPerformanceStat] = useState({});
+  const [bugGraph, setBugGraph] = useState([]);
+
+  useEffect(() => {
+    init();
+  }, []);
+
+  const init = async e => {
+    const responseOne = await GetApi(PerformanceStatLink);
+    const responseTwo = await GetApi(BugGraphLink);
+
+    if (responseOne.status === 200) {
+      let responseData = responseOne.data;
+      let responseGraph = responseTwo.data;
+      setPerformanceStat(responseData);
+      setBugGraph(responseGraph);
+    } else {
+      toast.error("Sorry couldn't load rewards information");
+    }
+  };
+  console.log("BugGraph state :::", bugGraph);
 
   const cardData = [
     {
@@ -73,7 +96,9 @@ const UserPanel = props => {
                         style={{ width: "100%", marginLeft: "7%" }}
                       >
                         <p className="instruction">Bugs-Found</p>
-                        <p className="card-number-data">18</p>
+                        <p className="card-number-data">
+                          {performanceStat.valid_report}
+                        </p>
                       </Card>
                     </Col>
                     <Col span={2}>
@@ -83,7 +108,9 @@ const UserPanel = props => {
                         style={{ width: "102%" }}
                       >
                         <p className="instruction">Invalid-Bugs</p>
-                        <p className="card-number-data">24</p>
+                        <p className="card-number-data">
+                          {performanceStat.invalid_report}
+                        </p>
                       </Card>
                     </Col>
                     <Col span={2}>
@@ -93,7 +120,9 @@ const UserPanel = props => {
                         style={{ width: "102%" }}
                       >
                         <p className="instruction">Bugs-Solved</p>
-                        <p className="card-number-data">23</p>
+                        <p className="card-number-data">
+                          {performanceStat.fixed_report}
+                        </p>
                       </Card>
                     </Col>
                     <Col span={2}>
@@ -103,7 +132,9 @@ const UserPanel = props => {
                         style={{ width: "113%" }}
                       >
                         <p className="instruction">Bugs-Unsolved</p>
-                        <p className="card-number-data">12</p>
+                        <p className="card-number-data">
+                          {performanceStat.to_fix_report}
+                        </p>
                       </Card>
                     </Col>
                     <Col span={2}>
@@ -113,7 +144,9 @@ const UserPanel = props => {
                         style={{ width: "100%" }}
                       >
                         <p className="instruction">Rewarded</p>
-                        <p className="card-number-data">23</p>
+                        <p className="card-number-data">
+                          {performanceStat.total_report}
+                        </p>
                       </Card>
                     </Col>
                   </Row>

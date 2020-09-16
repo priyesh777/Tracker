@@ -27,5 +27,28 @@ export const ProgramLogoLink = `${url}app/add_program_logo/`;
 
 //Dashboard - Programs ::
 export const AllProgramsLink = `${url}app/programs/`;
+export const ProgramDetailLink = `${url}app/program/`;
+export const PointsFilterLink = `${url}app/programs?point_only=true/`;
+//........//
 
+//Dashboard - Rewards ::
+export const RewardStatLink = `${url}app/reward_stat/`;
+export const RewardTableLink = `${url}app/reward/`;
+//........//
+
+//Dashboard - dashboard-component ::
+export const PerformanceStatLink = `${url}app/report_stat/`;
+export const BugGraphLink = `${url}app/monthly_report_stat/`;
+//........//
+
+//Dashboard - Submission ::
+export const SubmissionLink = `${url}app/all_report/`;
+//........//
+
+//Dashboard - Researchers ::
+export const ResearchersLink = `${url}account/researchers/`;
+//........//
+
+//Dashboard - Users ::
+export const UsersLink = `${url}account/user/`;
 //........//

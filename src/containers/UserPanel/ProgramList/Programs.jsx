@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-
 import { Input, Card, Avatar } from "antd";
 import { Row, Button, Col } from "react-bootstrap";
 import { GetApi } from "../../../api/callapi";
-import { AllProgramsLink } from "../../../api/endpoints";
+import { AllProgramsLink, PointsFilterLink } from "../../../api/endpoints";
 import MainPanel from "../MainPanel";
 import { toast } from "react-toastify";
 import moment from "moment";
@@ -16,14 +15,15 @@ const Programs = props => {
   const { Search } = Input;
   const { Meta } = Card;
 
+  const [urlBox, setUrlBox] = useState(AllProgramsLink);
   const [programList, setProgramList] = useState([]);
 
   useEffect(() => {
     init();
-  }, []);
+  }, [urlBox]);
 
   const init = async e => {
-    const response = await GetApi(AllProgramsLink);
+    const response = await GetApi(urlBox);
 
     if (response.status === 200) {
       let responseData = response.data.results;
@@ -32,10 +32,18 @@ const Programs = props => {
       toast.error("Sorry couldn't load programs now");
     }
   };
-  console.log("programs local state ::", programList);
+
+  console.log("Points filter response ::", programList);
+
+  const handlePoints = () => {
+    setUrlBox(PointsFilterLink);
+  };
+
+  const handleAllPrograms = () => {
+    setUrlBox(AllProgramsLink);
+  };
 
   const handleCard = id => {
-    console.log("card id::", id);
     history.push(`/main_panel/programs/${id}`);
   };
 
@@ -48,8 +56,15 @@ const Programs = props => {
               <div className="content-header">Available programs</div>
               <div className="filter-programs">
                 <div className="button-group">
-                  <Button className="filter-buttons">Points</Button>
-                  <Button className="filter-buttons">Rewards</Button>
+                  <Button
+                    className="filter-buttons"
+                    onClick={handleAllPrograms}
+                  >
+                    All programs
+                  </Button>
+                  <Button className="filter-buttons" onClick={handlePoints}>
+                    Points
+                  </Button>
                   <Button className="filter-buttons">Bounty</Button>
                 </div>
                 <div className="search-box" style={{ marginRight: "2%" }}>

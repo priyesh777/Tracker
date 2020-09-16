@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Avatar, Table } from "antd";
 import { Row, Col } from "react-bootstrap";
 import MainPanel from "./MainPanel";
+import { GetApi } from "../../api/callapi";
+import { ResearchersLink } from "../../api/endpoints";
+import { toast } from "react-toastify";
 
 const Researchers = () => {
   const { Meta } = Card;
@@ -21,17 +24,36 @@ const Researchers = () => {
     }
   ];
 
+  const [Researcher, setResearcher] = useState([]);
+
+  useEffect(() => {
+    init();
+  }, []);
+
+  const init = async e => {
+    const response = await GetApi(ResearchersLink);
+
+    if (response.status === 200) {
+      let responseData = response.data.results;
+      setResearcher(responseData);
+    } else {
+      toast.error("Sorry couldn't load programs now");
+    }
+  };
+
+  console.log("Researcher local state from API ::", Researcher);
+
   const columns = [
     {
-      title: <text className="table-title"> Rank</text>,
-      dataIndex: "rank",
-      key: "rank",
+      title: <span className="table-title">Rank</span>,
+      dataIndex: "id",
+      key: "id",
       render: number => <p className="table-names">{number}</p>
     },
     {
-      title: <text className="table-title"> Researcher</text>,
-      dataIndex: "name",
-      key: "name",
+      title: <span className="table-title"> Researcher</span>,
+      dataIndex: "username",
+      key: "username",
       render: text => (
         <p className="table-names">
           <Avatar src="random.png" style={{ marginRight: "5%" }} />
@@ -40,46 +62,13 @@ const Researchers = () => {
       )
     },
     {
-      title: <text className="table-title"> Points</text>,
+      title: <span className="table-title"> Points</span>,
       dataIndex: "points",
       key: "points",
       render: number => <p className="table-names">{number} Pts</p>
     }
   ];
 
-  const data = [
-    {
-      key: "1",
-      name: "John Brown",
-      rank: 1,
-      points: 10
-    },
-    {
-      key: "2",
-      name: "Jim kennedy",
-      rank: 2,
-      points: 12
-    },
-    {
-      key: "3",
-      name: "Joe mckenly",
-      rank: 3,
-      points: 15
-    },
-    {
-      key: "4",
-      name: "Jack Black",
-      rank: 4,
-      points: 40
-    },
-    {
-      key: "5",
-      name: "Simmone Smith",
-      rank: 5,
-      points: 50
-    }
-  ];
-  console.log("reached researchers");
   return (
     <>
       <MainPanel>
@@ -117,8 +106,9 @@ const Researchers = () => {
                   <Table
                     columns={columns}
                     size="small"
-                    dataSource={data}
+                    dataSource={Researcher}
                     bordered="true"
+                    pagination={false}
                   />
                 </div>
               </div>

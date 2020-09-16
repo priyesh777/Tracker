@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Card, Avatar } from "antd";
 import { SafetyCertificateOutlined } from "@ant-design/icons";
 import { Row, Button, Col } from "react-bootstrap";
 import MainPanel from "./MainPanel";
+import { GetApi } from "../../api/callapi";
+import { UsersLink } from "../../api/endpoints";
+import { toast } from "react-toastify";
 
 const Users = () => {
   const history = useHistory();
@@ -28,6 +31,24 @@ const Users = () => {
     }
   ];
 
+  const [User, setUser] = useState([]);
+
+  useEffect(() => {
+    init();
+  }, []);
+
+  const init = async e => {
+    const response = await GetApi(UsersLink);
+
+    if (response.status === 200) {
+      let responseData = response.data.results;
+      setUser(responseData);
+      console.log("User local state from API ::", responseData);
+    } else {
+      toast.error("Sorry couldn't load programs now");
+    }
+  };
+
   const handleCard = () => {
     console.log("clicked user-card ::");
   };
@@ -42,22 +63,27 @@ const Users = () => {
 
               <div className="card-list">
                 <Row gutter={16}>
-                  {cardData.map(data => (
+                  {User.map((data, index) => (
                     <Card
                       hoverable
                       className="card-box"
                       onClick={e => handleCard(e)}
+                      key={`userCard-${index}`}
                     >
                       <div className="title-description">
                         <Meta
-                          avatar={<Avatar src="random.png" />}
-                          title={data.user_name}
+                          avatar={<Avatar src={data.photo} />}
+                          title={
+                            <span>
+                              {data.first_name} {data.last_name}
+                            </span>
+                          }
                           description={
                             <p style={{ color: "#9834bb" }}>
                               <SafetyCertificateOutlined
                                 style={{ color: "#9834bb" }}
                               />{" "}
-                              {data.authority}
+                              {data.type}
                             </p>
                           }
                         />

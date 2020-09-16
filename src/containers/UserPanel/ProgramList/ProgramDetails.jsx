@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import thumbnail from "../../../images/pic_upload.png";
 import { Button, Card, Input } from "antd";
 import { Row, Col, Table } from "react-bootstrap";
 import BackArrow from "../../../images/arrow-left.svg";
 import MainPanel from "../MainPanel";
+import { GetApi } from "../../../api/callapi";
+import { ProgramDetailLink } from "../../../api/endpoints";
+import { toast } from "react-toastify";
 
 const ProgramDetails = props => {
   const { Meta } = Card;
@@ -16,18 +19,28 @@ const ProgramDetails = props => {
     { name: "Radio", type: "other" }
   ];
 
-  const [programData] = useState({
-    title: "Program one",
-    description:
-      "Facilis unde sit nam ut labore et maiores eum. Dolorem quisquam atque",
-    details:
-      "ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem i",
-    rules:
-      " ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium"
-  });
+  const [programDetail, setProgramDetail] = useState({});
 
-  const handleCard = () => {
-    console.log("clicke me ::::");
+  const cardId = props.match.params.id;
+
+  const url = ProgramDetailLink + cardId;
+
+  useEffect(() => {
+    init();
+  }, []);
+
+  const init = async e => {
+    const response = await GetApi(url);
+    if (response.status === 200) {
+      let responseData = response.data;
+      setProgramDetail(responseData);
+    } else {
+      toast.error("Sorry couldn't load Program-details right now");
+    }
+  };
+
+  const handleEditProgram = () => {
+    console.log("handle Edit program  ::::");
   };
 
   return (
@@ -54,11 +67,14 @@ const ProgramDetails = props => {
                         style={{ height: "120px" }}
                       />
                     }
-                    title={<p className="card-title">{programData.title}</p>}
+                    title={<p className="card-title">{programDetail.name}</p>}
                     description={
                       <>
-                        <p>{programData.description}</p>
-                        <Button className="edit-button" onClick={handleCard}>
+                        <p>{programDetail.tag_line}</p>
+                        <Button
+                          className="edit-button"
+                          onClick={handleEditProgram}
+                        >
                           Edit Program
                         </Button>
                       </>
@@ -76,21 +92,7 @@ const ProgramDetails = props => {
                       title={<p className="card-title">Program Details</p>}
                       description={
                         <>
-                          <p>
-                            ed ut perspiciatis unde omnis iste natus error sit
-                            voluptatem accusantium doloremque laudantium, totam
-                            rem aperiam, eaque ipsa quae ab illo inventore
-                            veritatis et quasi architecto beatae vitae dicta
-                            sunt explicabo. Nemo enim ipsam voluptatem quia
-                            voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur magni dolores eos qui ratione
-                            voluptatem sequi nesciunt. Neque porro quisquam est,
-                            qui dolorem i ed ut perspiciatis unde omnis iste
-                            natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab
-                            illo inventore veritatis et quasi architecto beatae
-                            vitae dicta sunt explicabo. Nemo enim ipsam
-                          </p>
+                          <p>{programDetail.description}</p>
                         </>
                       }
                     />
@@ -126,26 +128,16 @@ const ProgramDetails = props => {
                           }}
                         >
                           <Input
+                            className="reward-input"
                             type="number"
                             placeholder="Min"
-                            style={{
-                              background: "#f3f3f3",
-                              border: " 2px solid #c4c4c4",
-                              borderRadius: "5px",
-                              marginRight: "10px",
-                              width: "150px"
-                            }}
+                            disabled
                           />
                           <Input
+                            className="reward-input"
                             type="number"
                             placeholder="Max"
-                            style={{
-                              background: "#f3f3f3",
-                              border: " 2px solid #c4c4c4",
-                              borderRadius: "5px",
-                              marginRight: "10px",
-                              width: "150px"
-                            }}
+                            disabled
                           />
                         </div>
                       </td>
@@ -161,26 +153,16 @@ const ProgramDetails = props => {
                           }}
                         >
                           <Input
+                            className="reward-input"
                             type="number"
                             placeholder="Min"
-                            style={{
-                              background: "#f3f3f3",
-                              border: " 2px solid #c4c4c4",
-                              borderRadius: "5px",
-                              marginRight: "10px",
-                              width: "150px"
-                            }}
+                            disabled
                           />
                           <Input
+                            className="reward-input"
                             type="number"
                             placeholder="Max"
-                            style={{
-                              background: "#f3f3f3",
-                              border: " 2px solid #c4c4c4",
-                              borderRadius: "5px",
-                              marginRight: "10px",
-                              width: "150px"
-                            }}
+                            disabled
                           />
                         </div>
                       </td>
@@ -196,26 +178,16 @@ const ProgramDetails = props => {
                           }}
                         >
                           <Input
+                            className="reward-input"
                             type="number"
                             placeholder="Min"
-                            style={{
-                              background: "#f3f3f3",
-                              border: " 2px solid #c4c4c4",
-                              borderRadius: "5px",
-                              marginRight: "10px",
-                              width: "150px"
-                            }}
+                            disabled
                           />
                           <Input
+                            className="reward-input"
                             type="number"
                             placeholder="Max"
-                            style={{
-                              background: "#f3f3f3",
-                              border: " 2px solid #c4c4c4",
-                              borderRadius: "5px",
-                              marginRight: "10px",
-                              width: "150px"
-                            }}
+                            disabled
                           />
                         </div>
                       </td>
@@ -231,26 +203,16 @@ const ProgramDetails = props => {
                           }}
                         >
                           <Input
+                            className="reward-input"
                             type="number"
                             placeholder="Min"
-                            style={{
-                              background: "#f3f3f3",
-                              border: " 2px solid #c4c4c4",
-                              borderRadius: "5px",
-                              marginRight: "10px",
-                              width: "150px"
-                            }}
+                            disabled
                           />
                           <Input
+                            className="reward-input"
                             type="number"
                             placeholder="Max"
-                            style={{
-                              background: "#f3f3f3",
-                              border: " 2px solid #c4c4c4",
-                              borderRadius: "5px",
-                              marginRight: "10px",
-                              width: "150px"
-                            }}
+                            disabled
                           />
                         </div>
                       </td>
@@ -346,14 +308,6 @@ const ProgramDetails = props => {
                             rem aperiam, eaque ipsa quae ab illo inventore
                             veritatis et quasi architecto beatae vitae dicta
                             sunt explicabo. Nemo enim ipsam voluptatem quia
-                            voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur magni dolores eos qui ratione
-                            voluptatem sequi nesciunt. Neque porro quisquam est,
-                            qui dolorem i ed ut perspiciatis unde omnis iste
-                            natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab
-                            illo inventore veritatis et quasi architecto beatae
-                            vitae dicta sunt explicabo. Nemo enim ipsam
                           </p>
                         </>
                       }
