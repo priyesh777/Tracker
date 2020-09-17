@@ -86,12 +86,12 @@ const Programs = props => {
                     >
                       <div className="title-description">
                         <Meta
-                          avatar={<Avatar src={data.logo} />}
+                          avatar={<Avatar src={data && data.logo} />}
                           title={
                             <>
-                              <span>{data.name}</span>
+                              <span>{data && data.name}</span>
                               <span style={{ marginLeft: "10px" }}>
-                                {data.to_nas ? (
+                                {data && data.to_nas ? (
                                   <CheckCircleFilled
                                     style={{ color: "green" }}
                                   />
@@ -101,13 +101,13 @@ const Programs = props => {
                               </span>
                             </>
                           }
-                          description={moment(data.created_at).format(
+                          description={moment(data && data.created_at).format(
                             "YYYY-MM-DD"
                           )}
                         />
                         <Meta
                           style={{ marginTop: "10px", fontFamily: "Karla" }}
-                          description={data.tag_line}
+                          description={data && data.tag_line}
                         />
                       </div>
 
@@ -120,7 +120,7 @@ const Programs = props => {
                           {data.point_only ? (
                             <p className="points">Points Only</p>
                           ) : (
-                            <p className="reward">{data.bounty}</p>
+                            <p className="reward">{data && data.bounty}</p>
                           )}
                         </p>
                       </div>

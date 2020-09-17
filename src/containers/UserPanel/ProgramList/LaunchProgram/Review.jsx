@@ -9,9 +9,6 @@ import { LaunchProgramLink, ProgramLogoLink } from "../../../../api/endpoints";
 
 const Review = props => {
   const history = useHistory();
-  console.log("Scope values ::", props.scopeData);
-  console.log("Reward values ::", props.rewardData);
-  console.log("name values ::", props.nameData);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -27,6 +24,7 @@ const Review = props => {
     const data = props.nameData;
     data["program_target"] = props.scopeData;
     data["program_reward"] = props.rewardData;
+    data["points_only"] = props.points;
 
     console.log("Total Appended value :::::##", data);
 

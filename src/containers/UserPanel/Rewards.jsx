@@ -69,9 +69,9 @@ const Rewards = () => {
       title: <text className="table-title"> Researchers</text>,
       dataIndex: "researcher_name",
       key: "researcher_name",
-      render: name => (
+      render: (name, row) => (
         <p className="table-names">
-          <Avatar src="random.png" style={{ marginRight: "5%" }} />
+          <Avatar src={row.photo} style={{ marginRight: "5%" }} />
           {name}
         </p>
       )
@@ -80,7 +80,7 @@ const Rewards = () => {
       title: <text className="table-title"> Rewarded For</text>,
       dataIndex: "title",
       key: "title",
-      render: text => <p className="table-names">{text}</p>
+      render: text => <p className="table-names">{text.slice(0, 18)}..</p>
     },
     {
       title: <text className="table-title"> Status</text>,
@@ -105,7 +105,6 @@ const Rewards = () => {
       )
     }
   ];
-
   //----------------------------------//
 
   return (

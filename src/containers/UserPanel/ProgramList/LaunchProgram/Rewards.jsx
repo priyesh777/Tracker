@@ -28,9 +28,14 @@ const Rewards = props => {
     }
   ]);
 
+  const [pointsOnly, setPointsOnly] = useState();
+
   const handleRadio = e => {
     setRadioState(e.target.value);
+    setPointsOnly(!e.target.value);
+    props.handlePoint(pointsOnly);
   };
+  console.log("Points only ::", pointsOnly);
 
   const handleChange = e => {
     const { name, value, id } = e.target;
@@ -47,6 +52,7 @@ const Rewards = props => {
     props.handleReward(list);
   };
   console.log("radio state ::", tableData);
+
   return (
     <>
       <div className="Rewards" style={{ marginTop: "20px" }}>

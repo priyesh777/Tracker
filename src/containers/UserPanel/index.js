@@ -6,7 +6,8 @@ import Rewards from "./Rewards";
 import Programs from "./ProgramList/Programs";
 import LaunchProgram from "./ProgramList/LaunchProgram/Program";
 import ProgramDetails from "./ProgramList/ProgramDetails";
-import Users from "./Users";
+import Users from "./UserSection/Users";
+import NewAdmin from "./UserSection/NewAdmin";
 import Settings from "./Settings";
 import Support from "./Support";
 import {
@@ -31,7 +32,7 @@ const UserRoute = props => {
         <Route exact path="/main_panel/submissions" component={Submissions} />
         <Route
           exact
-          path="/main_panel/submissions_form"
+          path="/main_panel/submission_form"
           component={SubmissionForm}
         />
 
@@ -48,6 +49,8 @@ const UserRoute = props => {
         />
 
         <Route exact path="/main_panel/users" component={Users} />
+        <Route exact path="/main_panel/new_admin" component={NewAdmin} />
+
         <Route exact path="/main_panel/settings" component={Settings} />
         <Route exact path="/main_panel/support" component={Support} />
       </Switch>

@@ -3,33 +3,15 @@ import { useHistory } from "react-router-dom";
 import { Card, Avatar } from "antd";
 import { SafetyCertificateOutlined } from "@ant-design/icons";
 import { Row, Button, Col } from "react-bootstrap";
-import MainPanel from "./MainPanel";
-import { GetApi } from "../../api/callapi";
-import { UsersLink } from "../../api/endpoints";
+import MainPanel from "../MainPanel";
+import { GetApi } from "../../../api/callapi";
+import { UsersLink } from "../../../api/endpoints";
 import { toast } from "react-toastify";
 
 const Users = () => {
   const history = useHistory();
 
   const { Meta } = Card;
-
-  const cardData = [
-    {
-      user_name: "John doe",
-      authority: "reporter",
-      reports_review: 12
-    },
-    {
-      user_name: "Maggie Doyne",
-      authority: "Administrator",
-      reports_review: 24
-    },
-    {
-      user_name: "Jack Black",
-      authority: "reporter",
-      reports_review: 48
-    }
-  ];
 
   const [User, setUser] = useState([]);
 
@@ -43,14 +25,9 @@ const Users = () => {
     if (response.status === 200) {
       let responseData = response.data.results;
       setUser(responseData);
-      console.log("User local state from API ::", responseData);
     } else {
       toast.error("Sorry couldn't load programs now");
     }
-  };
-
-  const handleCard = () => {
-    console.log("clicked user-card ::");
   };
 
   return (
@@ -67,7 +44,6 @@ const Users = () => {
                     <Card
                       hoverable
                       className="card-box"
-                      onClick={e => handleCard(e)}
                       key={`userCard-${index}`}
                     >
                       <div className="title-description">
@@ -95,7 +71,7 @@ const Users = () => {
                       >
                         <p className="instruction">Reports Reviewed</p>
                         <p className="card-number-data">
-                          {data.reports_review}
+                          {data.resolved_report}
                         </p>
                       </div>
                     </Card>
@@ -106,7 +82,7 @@ const Users = () => {
               <div className="footer-button">
                 <Button
                   className="Purple-button"
-                  onClick={() => history.push("###")}
+                  onClick={() => history.push("/main_panel/new_admin")}
                 >
                   Add a new Admin
                 </Button>

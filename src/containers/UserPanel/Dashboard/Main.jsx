@@ -6,7 +6,9 @@ import BugGraph from "./BugGraph";
 import MainPanel from "../MainPanel";
 import { toast } from "react-toastify";
 import { GetApi } from "../../../api/callapi";
-import { PerformanceStatLink, BugGraphLink } from "../../../api/endpoints";
+import { PerformanceStatLink, AllProgramsLink } from "../../../api/endpoints";
+import { CheckCircleFilled, BugFilled } from "@ant-design/icons";
+import moment from "moment";
 
 const UserPanel = props => {
   const { Meta } = Card;
@@ -14,7 +16,7 @@ const UserPanel = props => {
   const [tabKey, setTabKey] = useState("valid_bugs");
 
   const [performanceStat, setPerformanceStat] = useState({});
-  const [bugGraph, setBugGraph] = useState([]);
+  const [cardInfo, setCardInfo] = useState([]);
 
   useEffect(() => {
     init();
@@ -22,36 +24,17 @@ const UserPanel = props => {
 
   const init = async e => {
     const responseOne = await GetApi(PerformanceStatLink);
-    const responseTwo = await GetApi(BugGraphLink);
+    const responseTwo = await GetApi(AllProgramsLink);
 
     if (responseOne.status === 200) {
       let responseData = responseOne.data;
-      let responseGraph = responseTwo.data;
+      let responseCard = responseTwo.data.results;
       setPerformanceStat(responseData);
-      setBugGraph(responseGraph);
+      setCardInfo(responseCard);
     } else {
       toast.error("Sorry couldn't load rewards information");
     }
   };
-  console.log("BugGraph state :::", bugGraph);
-
-  const cardData = [
-    {
-      researcher: "John Doe",
-      location: "lalitpur",
-      rewards: "rewards per vulnerability"
-    },
-    {
-      researcher: "Maggie Doyne",
-      location: "kathmandu",
-      rewards: "rewards per vulnerability"
-    },
-    {
-      researcher: "James Doyne",
-      location: "Bhaktapur",
-      rewards: "rewards per vulnerability"
-    }
-  ];
 
   const nameList = [
     {
@@ -184,29 +167,48 @@ const UserPanel = props => {
               <div className="available-programs" style={{ width: "100%" }}>
                 <div className="content-header">Available programs</div>
                 <div className="card-list" style={{ width: "100%" }}>
-                  {cardData.map((data, index) => (
+                  {cardInfo.map((data, index) => (
                     <Card
                       hoverable
                       className="card-box"
                       actions={[
-                        <p className="reward">$23</p>,
-                        <p className="points">10 Pts</p>
+                        <p className="reward">
+                          ${data && data.point_only ? "" : data.bounty}
+                        </p>,
+                        <p className="points">
+                          {data && data.point_only ? "Pts only" : ""}
+                        </p>
                       ]}
                       key={`programCard-${index}`}
                     >
                       <div className="title-description">
                         <Meta
                           avatar={<Avatar src="random.png" />}
-                          title={data.researcher}
-                          description={<p>{data.location}</p>}
+                          title={
+                            <>
+                              <span>{data && data.name}</span>
+                              <span style={{ marginLeft: "10px" }}>
+                                {data && data.to_nas ? (
+                                  <CheckCircleFilled
+                                    style={{ color: "green" }}
+                                  />
+                                ) : (
+                                  <BugFilled style={{ color: "#ad77c0" }} />
+                                )}
+                              </span>
+                            </>
+                          }
+                          description={moment(data && data.created_at).format(
+                            "YYYY-MM-DD"
+                          )}
                         />
-                        <Meta
+                        {/* <Meta
                           description={
                             <>
                               <p>{data.rewards}</p>
                             </>
                           }
-                        />
+                        /> */}
                       </div>
                     </Card>
                   ))}

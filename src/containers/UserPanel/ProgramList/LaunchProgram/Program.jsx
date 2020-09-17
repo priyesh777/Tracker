@@ -43,10 +43,15 @@ const Program = () => {
 
   //--------State for "REWARDS"------//
   const [rewardData, setRewardData] = useState([]);
+  const [points, setPoints] = useState();
 
   const handleReward = info => {
     setRewardData(info);
     console.log("REWARD DATA::", rewardData);
+  };
+
+  const handlePoint = info => {
+    setPoints(info);
   };
   //----------------------------------------//
 
@@ -82,7 +87,11 @@ const Program = () => {
                 <Terms handleTab={handleTab} />
               </Tab>
               <Tab eventKey={4} title="Rewards">
-                <Rewards handleReward={handleReward} handleTab={handleTab} />
+                <Rewards
+                  handleReward={handleReward}
+                  handleTab={handleTab}
+                  handlePoint={handlePoint}
+                />
               </Tab>
               <Tab eventKey={5} title="Review & Submit">
                 <Review
@@ -90,6 +99,7 @@ const Program = () => {
                   programLogo={programLogo}
                   scopeData={scopeData}
                   rewardData={rewardData}
+                  points={points}
                   handleTab={handleTab}
                 />
               </Tab>

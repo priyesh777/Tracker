@@ -3,28 +3,16 @@ import { Card, Avatar, Table } from "antd";
 import { Row, Col } from "react-bootstrap";
 import MainPanel from "./MainPanel";
 import { GetApi } from "../../api/callapi";
-import { ResearchersLink } from "../../api/endpoints";
+import { ResearchersLink, AllProgramsLink } from "../../api/endpoints";
 import { toast } from "react-toastify";
+import { CheckCircleFilled, BugFilled } from "@ant-design/icons";
+import moment from "moment";
 
 const Researchers = () => {
   const { Meta } = Card;
 
-  const cardData = [
-    {
-      researcher: "John Doe",
-      location: "lalitpur"
-    },
-    {
-      researcher: "Maggie Doyne",
-      location: "kathmandu"
-    },
-    {
-      researcher: "James Doyne",
-      location: "Bhaktapur"
-    }
-  ];
-
   const [Researcher, setResearcher] = useState([]);
+  const [cardInfo, setCardInfo] = useState([]);
 
   useEffect(() => {
     init();
@@ -32,10 +20,14 @@ const Researchers = () => {
 
   const init = async e => {
     const response = await GetApi(ResearchersLink);
+    const responseTwo = await GetApi(AllProgramsLink);
 
     if (response.status === 200) {
       let responseData = response.data.results;
+      let responseCard = responseTwo.data.results;
+
       setResearcher(responseData);
+      setCardInfo(responseCard);
     } else {
       toast.error("Sorry couldn't load programs now");
     }
@@ -46,17 +38,16 @@ const Researchers = () => {
   const columns = [
     {
       title: <span className="table-title">Rank</span>,
-      dataIndex: "id",
-      key: "id",
-      render: number => <p className="table-names">{number}</p>
+      dataIndex: "rank",
+      key: "rank",
+      render: number => <p className="table-names"> number</p>
     },
     {
       title: <span className="table-title"> Researcher</span>,
       dataIndex: "username",
-      key: "username",
-      render: text => (
+      render: (text, row) => (
         <p className="table-names">
-          <Avatar src="random.png" style={{ marginRight: "5%" }} />
+          <Avatar src={row.photo} style={{ marginRight: "20px" }} />
           {text}
         </p>
       )
@@ -79,20 +70,39 @@ const Researchers = () => {
 
               <div className="card-list">
                 <Row gutter={16}>
-                  {cardData.map(data => (
+                  {cardInfo.map(data => (
                     <Card
                       hoverable
                       className="card-box"
                       actions={[
-                        <p className="reward">$23</p>,
-                        <p className="points">10 Pts</p>
+                        <p className="reward">
+                          ${data && data.point_only ? "" : data.bounty}
+                        </p>,
+                        <p className="points">
+                          {data && data.point_only ? "Pts only" : ""}
+                        </p>
                       ]}
                     >
                       <div className="title-description">
                         <Meta
                           avatar={<Avatar src="random.png" />}
-                          title={data.researcher}
-                          description={<p>{data.location}</p>}
+                          title={
+                            <>
+                              <span>{data && data.name}</span>
+                              <span style={{ marginLeft: "10px" }}>
+                                {data && data.to_nas ? (
+                                  <CheckCircleFilled
+                                    style={{ color: "green" }}
+                                  />
+                                ) : (
+                                  <BugFilled style={{ color: "#ad77c0" }} />
+                                )}
+                              </span>
+                            </>
+                          }
+                          description={moment(data && data.created_at).format(
+                            "YYYY-MM-DD"
+                          )}
                         />
                       </div>
                     </Card>

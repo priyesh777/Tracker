@@ -34,7 +34,7 @@ const SignUp1 = () => {
       var data = response.data;
       if (response.status === 200) {
         localStorage.setItem("token", data.token);
-        localStorage.setItem("data", data);
+        localStorage.setItem("user_type", "Admin");
         history.push("/register_step2");
         toast.success("Signed Up successfully.");
       } else {

@@ -129,11 +129,11 @@ const SubmissionCard = () => {
           </div>
         </Card>
       </div>
-      <div className="footer-button" style={{ width: "100%" }}>
+      <div className="footer-button" style={{ width: "100%", margin: "0px" }}>
         <Button
           className="program-continue"
           onClick={handleSubmission}
-          style={{ float: "right" }}
+          style={{ float: "right", marginBottom: "20px" }}
         >
           Submit
         </Button>
