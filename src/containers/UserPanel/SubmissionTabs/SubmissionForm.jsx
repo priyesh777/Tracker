@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import thumbnail from "../../../images/pic_upload.png";
 import { Button, Card } from "antd";
 import { Row, Col } from "react-bootstrap";
@@ -9,19 +10,14 @@ import MainPanel from "../MainPanel";
 
 const SubmissionForm = props => {
   const { Meta } = Card;
+  const history = useHistory();
 
-  const [tabKey, setTabKey] = useState("submission_form");
-
-  console.log("Submisssion form tabkey ::", tabKey);
+  // const [tabKey, setTabKey] = useState("submission_form");
 
   const [programData] = useState({
     title: "Program one",
     description:
-      "Facilis unde sit nam ut labore et maiores eum. Dolorem quisquam atque",
-    details:
-      "ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem i",
-    rules:
-      " ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium"
+      "Facilis unde sit nam ut labore et maiores eum. Dolorem quisquam atque"
   });
 
   return (
@@ -32,7 +28,7 @@ const SubmissionForm = props => {
             <div className="back-button">
               <Button
                 className="user-back-button"
-                onClick={props.closeSubmission}
+                onClick={() => history.push("/main_panel/programs")}
               >
                 <img src={BackArrow} alt="back-arrow-left" /> Back
               </Button>

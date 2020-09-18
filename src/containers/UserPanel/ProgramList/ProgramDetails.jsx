@@ -8,6 +8,7 @@ import MainPanel from "../MainPanel";
 import { GetApi } from "../../../api/callapi";
 import { ProgramDetailLink } from "../../../api/endpoints";
 import { toast } from "react-toastify";
+import Editor from "../../components/Editor";
 
 const ProgramDetails = props => {
   const { Meta } = Card;
@@ -15,9 +16,14 @@ const ProgramDetails = props => {
   const reportSubmit = localStorage.getItem("user_type");
 
   const [programDetail, setProgramDetail] = useState({});
+  const [editMode, setEditMode] = useState(false);
+
+  const [editedData, setEditedData] = useState({
+    tag_line: "",
+    description: ""
+  });
 
   const cardId = props.match.params.id;
-
   const url = ProgramDetailLink + cardId;
 
   useEffect(() => {
@@ -34,9 +40,30 @@ const ProgramDetails = props => {
     }
   };
 
-  const handleEditProgram = () => {
-    console.log("handle Edit program  ::::");
+  const handleSubmitReport = () => {
+    history.push("/main_panel/submission_form");
   };
+
+  const handleEditProgram = () => {
+    setEditMode(true);
+  };
+
+  const handleEditData = () => {
+    console.log("handled the latest edited data");
+  };
+
+  const handleCancelEdit = () => {
+    setEditMode(false);
+  };
+
+  const handleEditChange = e => {
+    const { name, value } = e.target;
+    const info = editedData;
+    info[name] = value;
+    setEditedData(info);
+  };
+
+  console.log("Edited data ::", editedData);
 
   return (
     <>
@@ -65,14 +92,59 @@ const ProgramDetails = props => {
                     title={<p className="card-title">{programDetail.name}</p>}
                     description={
                       <>
-                        <p>{programDetail.tag_line}</p>
+                        {editMode ? (
+                          <Input
+                            style={{ width: "90%" }}
+                            name="tag_line"
+                            className="input-box"
+                            type="text"
+                            placeholder="Enter Tagline"
+                            onChange={e => handleEditChange(e)}
+                          />
+                        ) : (
+                          <p>{programDetail.tag_line}</p>
+                        )}
 
-                        <Button
-                          className="edit-button"
-                          onClick={handleEditProgram}
-                        >
-                          Edit Program
-                        </Button>
+                        {reportSubmit && reportSubmit === "Researcher" ? (
+                          <Button
+                            className="edit-button"
+                            onClick={handleSubmitReport}
+                          >
+                            Submit Report
+                          </Button>
+                        ) : (
+                          <>
+                            {editMode ? (
+                              <div style={{ marginTop: "20px" }}>
+                                <Button
+                                  className="edit-button"
+                                  onClick={handleEditData}
+                                  style={{
+                                    background: "#ad77c0",
+                                    color: "#ffffff"
+                                  }}
+                                >
+                                  Confirm
+                                </Button>
+
+                                <Button
+                                  className="edit-button"
+                                  onClick={handleCancelEdit}
+                                  style={{ marginLeft: "20px" }}
+                                >
+                                  Cancel
+                                </Button>
+                              </div>
+                            ) : (
+                              <Button
+                                className="edit-button"
+                                onClick={handleEditProgram}
+                              >
+                                Edit Program
+                              </Button>
+                            )}
+                          </>
+                        )}
                       </>
                     }
                   />
@@ -88,7 +160,15 @@ const ProgramDetails = props => {
                       title={<p className="card-title">Program Details</p>}
                       description={
                         <>
-                          <p>{programDetail.description}</p>
+                          {editMode ? (
+                            <Editor
+                              name="description"
+                              value={programDetail.description}
+                              onChange={e => handleEditChange(e)}
+                            />
+                          ) : (
+                            <p>{programDetail.description}</p>
+                          )}
                         </>
                       }
                     />

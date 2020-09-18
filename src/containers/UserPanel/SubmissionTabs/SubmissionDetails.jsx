@@ -221,7 +221,7 @@ const SubmissionDetail = props => {
                           }
                           description={
                             <>
-                              <Tag color="#f50">Not approved</Tag>
+                              <Tag color="magenta">Not approved</Tag>
                             </>
                           }
                         />
