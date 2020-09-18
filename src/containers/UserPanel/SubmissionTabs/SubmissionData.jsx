@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Card, Avatar, Tag } from "antd";
 import { Row } from "react-bootstrap";
 import moment from "moment";
@@ -6,8 +7,13 @@ import { CheckCircleFilled, BugFilled } from "@ant-design/icons";
 
 const SubmissionData = props => {
   const { Meta } = Card;
+  const history = useHistory();
 
   const cardData = props.submissionInfo;
+
+  const handleCard = id => {
+    history.push(`/main_panel/submissions/${id}`);
+  };
 
   return (
     <>
@@ -17,7 +23,7 @@ const SubmissionData = props => {
             <Card
               hoverable
               className="card-box"
-              onClick={props.openSubmission}
+              onClick={() => handleCard(data && data.id)}
               actions={[
                 <p className="reward">${data && data.reward}</p>,
                 <p className="points">{data && data.points} Pts</p>

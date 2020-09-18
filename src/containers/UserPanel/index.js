@@ -1,6 +1,7 @@
 import React from "react";
 import UserPanel from "./Dashboard/Main";
 import Submissions from "./SubmissionTabs/Submissions";
+import SubmissionDetails from "./SubmissionTabs/SubmissionDetails";
 import Researchers from "./Researchers";
 import Rewards from "./Rewards";
 import Programs from "./ProgramList/Programs";
@@ -30,6 +31,11 @@ const UserRoute = props => {
         <Route exact path="/main_panel/rewards" component={Rewards} />
 
         <Route exact path="/main_panel/submissions" component={Submissions} />
+        <Route
+          exact
+          path="/main_panel/submissions/:id"
+          component={SubmissionDetails}
+        />
         <Route
           exact
           path="/main_panel/submission_form"

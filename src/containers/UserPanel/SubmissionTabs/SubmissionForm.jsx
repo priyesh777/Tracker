@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import thumbnail from "../../../images/pic_upload.png";
 import { Button, Card } from "antd";
-import { Row, Col, Tabs, Tab } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import BackArrow from "../../../images/arrow-left.svg";
-import ProgramInfo from "./ProgramInfo";
+// import ProgramInfo from "./ProgramInfo";
 import SubmissionCard from "./SubmissionCard";
 import MainPanel from "../MainPanel";
 
@@ -59,7 +59,8 @@ const SubmissionForm = props => {
               </Card>
             </div>
 
-            <div className="details-form-tab" style={{ marginTop: "3%" }}>
+            <SubmissionCard />
+            {/* <div className="details-form-tab" style={{ marginTop: "3%" }}>
               <Tabs
                 defaultActiveKey="submission_form"
                 id="uncontrolled-tab-example"
@@ -68,11 +69,9 @@ const SubmissionForm = props => {
                 <Tab eventKey="program_info" title="Program Details">
                   <ProgramInfo />
                 </Tab>
-                <Tab eventKey="submission_form" title="Submission Form">
-                  <SubmissionCard />
-                </Tab>
+                <Tab eventKey="submission_form" title="Submission Form"></Tab>
               </Tabs>
-            </div>
+            </div> */}
           </Col>
 
           <Col md={6}>

@@ -81,7 +81,7 @@ const Programs = props => {
                     <Card
                       hoverable
                       className="card-box"
-                      onClick={() => handleCard(data.id)}
+                      onClick={() => handleCard(data && data.id)}
                       id={`program-${index}`}
                     >
                       <div className="title-description">

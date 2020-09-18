@@ -12,12 +12,7 @@ import { toast } from "react-toastify";
 const ProgramDetails = props => {
   const { Meta } = Card;
   const history = useHistory();
-
-  const TableData = [
-    { name: "Active", type: "website" },
-    { name: "Radio", type: "website" },
-    { name: "Radio", type: "other" }
-  ];
+  const reportSubmit = localStorage.getItem("user_type");
 
   const [programDetail, setProgramDetail] = useState({});
 
@@ -71,6 +66,7 @@ const ProgramDetails = props => {
                     description={
                       <>
                         <p>{programDetail.tag_line}</p>
+
                         <Button
                           className="edit-button"
                           onClick={handleEditProgram}
@@ -117,106 +113,38 @@ const ProgramDetails = props => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className="table-topic">Critical</td>
-                      <td>
-                        <div
-                          className="reward-amt"
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-evenly"
-                          }}
-                        >
-                          <Input
-                            className="reward-input"
-                            type="number"
-                            placeholder="Min"
-                            disabled
-                          />
-                          <Input
-                            className="reward-input"
-                            type="number"
-                            placeholder="Max"
-                            disabled
-                          />
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="table-topic">High</td>
-                      <td>
-                        <div
-                          className="reward-amt"
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-evenly"
-                          }}
-                        >
-                          <Input
-                            className="reward-input"
-                            type="number"
-                            placeholder="Min"
-                            disabled
-                          />
-                          <Input
-                            className="reward-input"
-                            type="number"
-                            placeholder="Max"
-                            disabled
-                          />
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="table-topic">Medium</td>
-                      <td>
-                        <div
-                          className="reward-amt"
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-evenly"
-                          }}
-                        >
-                          <Input
-                            className="reward-input"
-                            type="number"
-                            placeholder="Min"
-                            disabled
-                          />
-                          <Input
-                            className="reward-input"
-                            type="number"
-                            placeholder="Max"
-                            disabled
-                          />
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="table-topic">Low</td>
-                      <td>
-                        <div
-                          className="reward-amt"
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-evenly"
-                          }}
-                        >
-                          <Input
-                            className="reward-input"
-                            type="number"
-                            placeholder="Min"
-                            disabled
-                          />
-                          <Input
-                            className="reward-input"
-                            type="number"
-                            placeholder="Max"
-                            disabled
-                          />
-                        </div>
-                      </td>
-                    </tr>
+                    {programDetail.program_reward &&
+                      programDetail.program_reward.map((each, index) => (
+                        <>
+                          <tr key={`rewardTable-${index}`}>
+                            <td className="table-topic">{each.severity}</td>
+                            <td>
+                              <div
+                                className="reward-amt"
+                                style={{
+                                  display: "flex",
+                                  justifyContent: "space-evenly"
+                                }}
+                              >
+                                <Input
+                                  className="reward-input"
+                                  type="number"
+                                  placeholder="Min"
+                                  value={each.min_amount}
+                                  disabled
+                                />
+                                <Input
+                                  className="reward-input"
+                                  type="number"
+                                  placeholder="Max"
+                                  value={each.max_amount}
+                                  disabled
+                                />
+                              </div>
+                            </td>
+                          </tr>
+                        </>
+                      ))}
                   </tbody>
                 </Table>
               </div>
@@ -247,14 +175,17 @@ const ProgramDetails = props => {
                       </th>
                     </tr>
                   </thead>
-                  {TableData.map(data => (
-                    <tbody>
-                      <tr>
-                        <td style={{ fontFamily: "Karla" }}>{data.name}</td>
-                        <td style={{ fontFamily: "Karla" }}>{data.type}</td>
-                      </tr>
-                    </tbody>
-                  ))}
+                  {programDetail.program_target &&
+                    programDetail.program_target.map((data, i) => (
+                      <tbody>
+                        {data.scope && (
+                          <tr key={`inScope-${i}`}>
+                            <td style={{ fontFamily: "Karla" }}>{data.name}</td>
+                            <td style={{ fontFamily: "Karla" }}>{data.type}</td>
+                          </tr>
+                        )}
+                      </tbody>
+                    ))}
                 </Table>
               </div>
 
@@ -284,14 +215,17 @@ const ProgramDetails = props => {
                       </th>
                     </tr>
                   </thead>
-                  {TableData.map(data => (
-                    <tbody>
-                      <tr>
-                        <td style={{ fontFamily: "Karla" }}>{data.name}</td>
-                        <td style={{ fontFamily: "Karla" }}>{data.type}</td>
-                      </tr>
-                    </tbody>
-                  ))}
+                  {programDetail.program_type &&
+                    programDetail.program_type.map((data, i) => (
+                      <tbody>
+                        {!data.scope && (
+                          <tr key={`outScope-${i}`}>
+                            <td style={{ fontFamily: "Karla" }}>{data.name}</td>
+                            <td style={{ fontFamily: "Karla" }}>{data.type}</td>
+                          </tr>
+                        )}
+                      </tbody>
+                    ))}
                 </Table>
               </div>
 

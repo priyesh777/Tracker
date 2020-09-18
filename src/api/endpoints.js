@@ -43,6 +43,7 @@ export const BugGraphLink = `${url}app/monthly_report_stat/`;
 
 //Dashboard - Submission ::
 export const SubmissionLink = `${url}app/all_report/`;
+export const SubmissionDetailLink = `${url}app/report/`;
 //........//
 
 //Dashboard - Researchers ::

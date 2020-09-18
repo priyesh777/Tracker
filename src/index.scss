@@ -862,6 +862,7 @@ code {
 
 .program-name-card {
   margin-top: 3%;
+  width: 100%;
 }
 .program-name-card .card-title {
   color: #000000;
@@ -949,11 +950,12 @@ code {
   font-size: 16px;
 }
 .range-table .strip-table .reward-input {
-  background: #f3f3f3;
+  background: #ffffff;
   border: 2px solid #c4c4c4;
   border-radius: 5px;
   margin-right: 10px;
   width: 150px;
+  font-weight: bold;
 }
 
 .reward-range {
@@ -1207,7 +1209,7 @@ code {
 }
 
 .comment-section {
-  margin-top: 12%;
+  margin-top: 5%;
   width: 90%;
 }
 
@@ -1561,11 +1563,11 @@ code {
 }
 
 //Submission-Card
-.program-details-card .title-description .select-box .select-authority {
+.select-box .select-authority {
   width: 150px;
   height: 32px;
   background: #ffffff;
-  border: 2px solid #e6e6e6;
+  border: 2px solid #c4c4c4;
   box-sizing: border-box;
   border-radius: 5px;
   font-family: Karla;
