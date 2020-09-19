@@ -20,6 +20,7 @@ export const InvitationLink = `${url}account/many_users_invite/`;
 //...........//
 
 //LAUNCH - PROGRAM SETUP :::
+export const ProfileLinkEdit = `${url}account/edit_profile/`;
 export const LaunchProgramLink = `${url}app/add_program/`;
 export const ProgramLogoLink = `${url}app/add_program_logo/`;
 
@@ -29,6 +30,8 @@ export const ProgramLogoLink = `${url}app/add_program_logo/`;
 export const AllProgramsLink = `${url}app/programs/`;
 export const ProgramDetailLink = `${url}app/program/`;
 export const PointsFilterLink = `${url}app/programs?point_only=true/`;
+export const ProgramDetailEdit = `${url}app/program/`;
+export const TargetDeleteLink = `${url}app/program/target/`;
 //........//
 
 //Dashboard - Rewards ::
@@ -44,6 +47,10 @@ export const BugGraphLink = `${url}app/monthly_report_stat/`;
 //Dashboard - Submission ::
 export const SubmissionLink = `${url}app/all_report/`;
 export const SubmissionDetailLink = `${url}app/report/`;
+export const SubmissionApprove = `${url}app/report_reply/`;
+export const SubmissionForm = `${url}app/report/`;
+export const MultipleFileUpload = `${url}app/file/`;
+
 //........//
 
 //Dashboard - Researchers ::

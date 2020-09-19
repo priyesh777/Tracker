@@ -42,8 +42,18 @@ export const PatchApi = (url, data) => {
       return response;
     })
     .catch(error => {
-      // console.log(error.response)
+      return error.response;
+    });
+};
 
+export const DeleteApi = (url, data) => {
+  const token = localStorage.getItem("token");
+  const headers = { Authorization: "Token " + token };
+  return Axios.delete(url, data, { headers })
+    .then(response => {
+      return response;
+    })
+    .catch(error => {
       return error.response;
     });
 };

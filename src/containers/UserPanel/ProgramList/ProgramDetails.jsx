@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import thumbnail from "../../../images/pic_upload.png";
-import { Button, Card, Input } from "antd";
-import { Row, Col, Table } from "react-bootstrap";
 import BackArrow from "../../../images/arrow-left.svg";
+import thumbnail from "../../../images/pic_upload.png";
+import { Button, Card, Input, Popconfirm, message } from "antd";
+import { Row, Col, Table } from "react-bootstrap";
 import MainPanel from "../MainPanel";
-import { GetApi } from "../../../api/callapi";
-import { ProgramDetailLink } from "../../../api/endpoints";
+import { GetApi, DeleteApi, PatchApi } from "../../../api/callapi";
+import {
+  ProgramDetailLink,
+  TargetDeleteLink,
+  ProgramDetailEdit
+} from "../../../api/endpoints";
 import { toast } from "react-toastify";
 import Editor from "../../components/Editor";
 
@@ -40,30 +44,53 @@ const ProgramDetails = props => {
     }
   };
 
-  const handleSubmitReport = () => {
-    history.push("/main_panel/submission_form");
+  const handleSubmitReport = id => {
+    history.push(`/main_panel/submission_form/${id}`);
   };
 
   const handleEditProgram = () => {
     setEditMode(true);
   };
 
-  const handleEditData = () => {
-    console.log("handled the latest edited data");
+  //Patching the Edited data below ...//
+  var EditPatch = new FormData();
+  EditPatch.append("EditPatch", editedData);
+  //.................................//
+
+  const handleConfirmEdit = async e => {
+    const url = ProgramDetailEdit + cardId;
+    console.log("Url check :::%%", url);
+    const response = await PatchApi(url, EditPatch);
+    if (response.status === 200) {
+      let responseData = response.data;
+      console.log("edited detail response ######::", responseData);
+      window.location.reload(true);
+    } else {
+      // message.error("target-delete failed");
+    }
   };
 
   const handleCancelEdit = () => {
     setEditMode(false);
   };
 
-  const handleEditChange = e => {
+  const handleTargetDelete = async e => {
+    console.log("event from delete:", e);
+    const response = await DeleteApi(TargetDeleteLink);
+    if (response.status === 200) {
+      let responseData = response.data;
+      console.log("delete response ::", responseData);
+    } else {
+      // message.error("target-delete failed");
+    }
+  };
+
+  const handleEdit = e => {
     const { name, value } = e.target;
     const info = editedData;
     info[name] = value;
     setEditedData(info);
   };
-
-  console.log("Edited data ::", editedData);
 
   return (
     <>
@@ -99,7 +126,7 @@ const ProgramDetails = props => {
                             className="input-box"
                             type="text"
                             placeholder="Enter Tagline"
-                            onChange={e => handleEditChange(e)}
+                            onChange={e => handleEdit(e)}
                           />
                         ) : (
                           <p>{programDetail.tag_line}</p>
@@ -108,7 +135,8 @@ const ProgramDetails = props => {
                         {reportSubmit && reportSubmit === "Researcher" ? (
                           <Button
                             className="edit-button"
-                            onClick={handleSubmitReport}
+                            onClick={() => handleSubmitReport(cardId)}
+                            style={{ width: "130px" }}
                           >
                             Submit Report
                           </Button>
@@ -118,7 +146,7 @@ const ProgramDetails = props => {
                               <div style={{ marginTop: "20px" }}>
                                 <Button
                                   className="edit-button"
-                                  onClick={handleEditData}
+                                  onClick={handleConfirmEdit}
                                   style={{
                                     background: "#ad77c0",
                                     color: "#ffffff"
@@ -164,7 +192,7 @@ const ProgramDetails = props => {
                             <Editor
                               name="description"
                               value={programDetail.description}
-                              onChange={e => handleEditChange(e)}
+                              onChange={e => handleEdit(e)}
                             />
                           ) : (
                             <p>{programDetail.description}</p>
@@ -262,6 +290,18 @@ const ProgramDetails = props => {
                           <tr key={`inScope-${i}`}>
                             <td style={{ fontFamily: "Karla" }}>{data.name}</td>
                             <td style={{ fontFamily: "Karla" }}>{data.type}</td>
+                            {editMode ? (
+                              <Popconfirm
+                                title="Are you sure delete this task?"
+                                onConfirm={e => handleTargetDelete(e)}
+                                okText="Yes"
+                                cancelText="No"
+                              >
+                                <Button danger style={{ marginTop: "10px" }}>
+                                  Delete
+                                </Button>
+                              </Popconfirm>
+                            ) : null}
                           </tr>
                         )}
                       </tbody>

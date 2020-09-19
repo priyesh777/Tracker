@@ -18,14 +18,18 @@ import BackArrow from "../../../images/arrow-left.svg";
 import RightArrow from "../../../images/arrow-right.svg";
 import moment from "moment";
 import MainPanel from "../MainPanel";
-import { GetApi } from "../../../api/callapi";
-import { SubmissionDetailLink } from "../../../api/endpoints";
+import { GetApi, PatchApi } from "../../../api/callapi";
+import {
+  SubmissionDetailLink,
+  SubmissionApprove
+} from "../../../api/endpoints";
 import { toast } from "react-toastify";
 import { CheckCircleFilled, BugFilled } from "@ant-design/icons";
 
 const SubmissionDetail = props => {
   const { Meta } = Card;
   const history = useHistory();
+  const userCheck = localStorage.getItem("user_type");
 
   const comments = [
     {
@@ -43,6 +47,11 @@ const SubmissionDetail = props => {
   const [reportState, setReportState] = useState(false);
 
   const [submissionDetail, setSubmissionDetail] = useState({});
+  const [amount, setAmount] = useState({
+    status: "",
+    type: "bounty",
+    reward: ""
+  });
 
   const cardId = props.match.params.id;
 
@@ -71,6 +80,32 @@ const SubmissionDetail = props => {
 
   const handleDisapprove = () => {
     setApproved(true);
+  };
+
+  const handleEdit = e => {
+    const { name, value } = e.target;
+    const info = amount;
+    info[name] = value;
+    setAmount(info);
+    console.log("Amount state :::#", amount);
+  };
+
+  //Patching the Edited data below ...//
+  var EditPatch = new FormData();
+  EditPatch.append("EditPatch", amount);
+  //.................................//
+
+  const handleAmountSubmit = async e => {
+    const url = SubmissionApprove + cardId;
+    console.log("Url check :::## ::", url);
+    const response = await PatchApi(url, EditPatch);
+    if (response.status === 200) {
+      let responseData = response.data;
+      console.log("report Approve response ######::", responseData);
+      window.location.reload(true);
+    } else {
+      // message.error("target-delete failed");
+    }
   };
 
   return (
@@ -133,113 +168,131 @@ const SubmissionDetail = props => {
               </Card>
             </div>
 
-            <div className="approve-button">
-              {approved ? (
-                <div className="approve-card" style={{ width: "100%" }}>
-                  {reportState ? (
-                    <>
-                      <Card style={{ height: "200px" }}>
-                        <Form>
-                          <p
-                            style={{ fontWeight: "bold", fontFamily: "Karla" }}
-                          >
-                            Reward the report
-                          </p>
-                          <p
-                            style={{
-                              display: "flex",
-                              justifyContent: "space-between"
-                            }}
-                          >
-                            <div className="select-box">
-                              <select className="select-authority" name="type">
-                                <option value="">-- Select --</option>
-                                <option value="bounty" className="option">
-                                  Bounty
-                                </option>
-                                <option value="points" className="option">
-                                  Points
-                                </option>
-                              </select>
-                            </div>
-
-                            <div style={{ marginLeft: "10px" }}>
-                              <Input
-                                style={{ width: "60%" }}
-                                name="report_amount"
-                                className="input-box"
-                                type="number"
-                                placeholder="Enter your amount"
-                              />
-                              <Button
-                                type="submit"
-                                className="Purple-button"
-                                style={{ marginLeft: "10px", width: "80px" }}
-                              >
-                                Submit
-                              </Button>
-                            </div>
-                          </p>
-                          <p
-                            style={{ fontWeight: "bold", fontFamily: "Karla" }}
-                          >
-                            Change the Bug Status
-                            <div
-                              className="select-box"
-                              style={{ marginTop: "10px" }}
-                            >
-                              <select className="select-authority" name="type">
-                                <option value="">-- Select --</option>
-                                <option value="bounty" className="option">
-                                  Approved
-                                </option>
-                                <option value="to_fix" className="option">
-                                  To Fix
-                                </option>
-                                <option value="resolved" className="option">
-                                  Resolved
-                                </option>
-                              </select>
-                            </div>
-                          </p>
-                        </Form>
-                      </Card>
-                    </>
-                  ) : (
-                    <>
-                      <Card style={{ height: "120px" }}>
-                        <Meta
-                          title={
+            {userCheck === "Admin" ? (
+              <div className="approve-button">
+                {approved ? (
+                  <div className="approve-card" style={{ width: "100%" }}>
+                    {reportState ? (
+                      <>
+                        <Card style={{ height: "200px" }}>
+                          <Form>
                             <p
                               style={{
                                 fontWeight: "bold",
                                 fontFamily: "Karla"
                               }}
                             >
-                              BugNas Verification Status
+                              Reward the report
                             </p>
-                          }
-                          description={
-                            <>
-                              <Tag color="magenta">Not approved</Tag>
-                            </>
-                          }
-                        />
-                      </Card>
-                    </>
-                  )}
-                </div>
-              ) : (
-                <>
-                  <Button className="Purple-button" onClick={handleApprove}>
-                    Approve Bug Report
-                  </Button>
-                  <Button className="white-button" onClick={handleDisapprove}>
-                    Disapprove Bug Report
-                  </Button>
-                </>
-              )}
-            </div>
+                            <p
+                              style={{
+                                display: "flex",
+                                justifyContent: "space-between"
+                              }}
+                            >
+                              <div className="select-box">
+                                <select
+                                  className="select-authority"
+                                  name="type"
+                                  onChange={e => handleEdit(e)}
+                                >
+                                  <option value="">-- Select --</option>
+                                  <option value="bounty" className="option">
+                                    Bounty
+                                  </option>
+                                  <option value="points" className="option">
+                                    Points
+                                  </option>
+                                </select>
+                              </div>
+
+                              <div style={{ marginLeft: "10px" }}>
+                                <Input
+                                  style={{ width: "60%" }}
+                                  name="reward"
+                                  className="input-box"
+                                  type="number"
+                                  placeholder="Enter your amount"
+                                  onChange={e => handleEdit(e)}
+                                />
+                                <Button
+                                  type="submit"
+                                  className="Purple-button"
+                                  style={{ marginLeft: "10px", width: "80px" }}
+                                  onClick={handleAmountSubmit}
+                                >
+                                  Submit
+                                </Button>
+                              </div>
+                            </p>
+                            <p
+                              style={{
+                                fontWeight: "bold",
+                                fontFamily: "Karla"
+                              }}
+                            >
+                              Change the Bug Status
+                              <div
+                                className="select-box"
+                                style={{ marginTop: "10px" }}
+                              >
+                                <select
+                                  className="select-authority"
+                                  name="status"
+                                  onChange={e => handleEdit(e)}
+                                >
+                                  <option value="">-- Select --</option>
+                                  <option value="bounty" className="option">
+                                    Approved
+                                  </option>
+                                  <option value="to_fix" className="option">
+                                    To Fix
+                                  </option>
+                                  <option value="resolved" className="option">
+                                    Resolved
+                                  </option>
+                                </select>
+                              </div>
+                            </p>
+                          </Form>
+                        </Card>
+                      </>
+                    ) : (
+                      <>
+                        <Card style={{ height: "120px" }}>
+                          <Meta
+                            title={
+                              <p
+                                style={{
+                                  fontWeight: "bold",
+                                  fontFamily: "Karla"
+                                }}
+                              >
+                                BugNas Verification Status
+                              </p>
+                            }
+                            description={
+                              <>
+                                <Tag color="magenta">Not approved</Tag>
+                              </>
+                            }
+                          />
+                        </Card>
+                      </>
+                    )}
+                  </div>
+                ) : (
+                  <>
+                    <Button className="Purple-button" onClick={handleApprove}>
+                      Approve Bug Report
+                    </Button>
+                    <Button className="white-button" onClick={handleDisapprove}>
+                      Disapprove Bug Report
+                    </Button>
+                  </>
+                )}
+              </div>
+            ) : null}
 
             <div className="program-name-card">
               <Card hoverable>

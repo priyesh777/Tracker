@@ -32,7 +32,7 @@ const SignUp1 = () => {
     ) {
       var response = await PostApi(CompanySignUpLink, formData);
       var data = response.data;
-      if (response.status === 200) {
+      if (response.status === 200 && response.data.token) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user_type", "Admin");
         history.push("/register_step2");

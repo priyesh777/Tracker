@@ -1,4 +1,5 @@
 import React from "react";
+import ViewProfile from "./ViewProfile";
 import UserPanel from "./Dashboard/Main";
 import Submissions from "./SubmissionTabs/Submissions";
 import SubmissionDetails from "./SubmissionTabs/SubmissionDetails";
@@ -26,6 +27,8 @@ const UserRoute = props => {
         <Route exact path="/main_panel">
           <Redirect to="/main_panel/main" />
         </Route>
+        <Route exact path="/main_panel/view_profile" component={ViewProfile} />
+
         <Route exact path="/main_panel/main" component={UserPanel} />
         <Route exact path="/main_panel/researchers" component={Researchers} />
         <Route exact path="/main_panel/rewards" component={Rewards} />
@@ -38,7 +41,7 @@ const UserRoute = props => {
         />
         <Route
           exact
-          path="/main_panel/submission_form"
+          path="/main_panel/submission_form/:id"
           component={SubmissionForm}
         />
 

@@ -16,7 +16,6 @@ const Review = props => {
     //Patching the uploaded  image below ...//
     const logoPatch = props.programLogo;
     var logo = new FormData();
-
     logo.append("logo", logoPatch);
     //.................................//
 

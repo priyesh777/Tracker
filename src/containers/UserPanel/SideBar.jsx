@@ -8,17 +8,13 @@ import {
   ProjectOutlined,
   ToolOutlined,
   QuestionCircleOutlined,
-  CaretDownOutlined,
-  FormOutlined
+  CaretDownOutlined
 } from "@ant-design/icons";
 import { Menu, Dropdown, Avatar, Button } from "antd";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 const SideBar = props => {
-  const handleProfileEdit = () => {
-    console.log("handle profile edit clicked");
-  };
-
+  const history = useHistory();
   const [type, setType] = useState("");
 
   useEffect(() => {
@@ -30,21 +26,22 @@ const SideBar = props => {
     setType(localData);
   };
 
-  const menu = (
-    <Menu onClick={handleProfileEdit}>
-      <Menu.Item key="1" icon={<UserOutlined />}>
-        View profile
-      </Menu.Item>
-      <Menu.Item key="2" icon={<FormOutlined />}>
-        Edit profile
-      </Menu.Item>
-    </Menu>
-  );
-
   const handleLogout = () => {
     localStorage.clear();
     window.location.href = "/";
   };
+
+  const handleProfileEdit = () => {
+    history.push("/main_panel/view_profile");
+  };
+
+  const menu = (
+    <Menu onClick={handleProfileEdit}>
+      <Menu.Item key="1" icon={<UserOutlined />}>
+        <strong>View profile</strong>
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <div className="side-menu-section">
