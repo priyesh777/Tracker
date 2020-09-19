@@ -1,24 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import thumbnail from "../../../images/pic_upload.png";
-import { Button, Card } from "antd";
+import { Button, Card, message } from "antd";
 import { Row, Col } from "react-bootstrap";
 import BackArrow from "../../../images/arrow-left.svg";
 // import ProgramInfo from "./ProgramInfo";
 import SubmissionCard from "./SubmissionCard";
 import MainPanel from "../MainPanel";
+import { GetApi } from "../../../api/callapi";
+import { ProgramDetailLink } from "../../../api/endpoints";
 
 const SubmissionForm = props => {
   const { Meta } = Card;
   const history = useHistory();
+  const cardId = props.match.params.id;
 
+  const url = ProgramDetailLink + cardId;
   // const [tabKey, setTabKey] = useState("submission_form");
 
-  const [programData] = useState({
-    title: "Program one",
-    description:
-      "Facilis unde sit nam ut labore et maiores eum. Dolorem quisquam atque"
+  const [programDetail, setProgramDetail] = useState({
+    name: "",
+    description: ""
   });
+
+  useEffect(() => {
+    init();
+  }, []);
+
+  const init = async e => {
+    const response = await GetApi(url);
+    if (response.status === 200) {
+      let responseData = response.data;
+      setProgramDetail(responseData);
+    } else {
+      message.error("Sorry couldn't load Program-details right now");
+    }
+  };
+  console.log("Program namess :::", programDetail);
 
   return (
     <>
@@ -28,7 +46,7 @@ const SubmissionForm = props => {
             <div className="back-button">
               <Button
                 className="user-back-button"
-                onClick={() => history.push("/main_panel/programs")}
+                onClick={() => history.push(`/main_panel/programs/${cardId}`)}
               >
                 <img src={BackArrow} alt="back-arrow-left" /> Back
               </Button>
@@ -44,10 +62,20 @@ const SubmissionForm = props => {
                         style={{ height: "100px" }}
                       />
                     }
-                    title={<p className="card-title">{programData.title}</p>}
+                    title={
+                      <p className="card-title">
+                        {programDetail && programDetail.name}
+                      </p>
+                    }
                     description={
                       <>
-                        <p>{programData.description}</p>
+                        <p>
+                          {programDetail &&
+                            programDetail.description.replace(
+                              /(<([^>]+)>)/gi,
+                              ""
+                            )}
+                        </p>
                       </>
                     }
                   />
@@ -55,7 +83,7 @@ const SubmissionForm = props => {
               </Card>
             </div>
 
-            <SubmissionCard />
+            <SubmissionCard cardId={cardId} />
             {/* <div className="details-form-tab" style={{ marginTop: "3%" }}>
               <Tabs
                 defaultActiveKey="submission_form"

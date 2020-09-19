@@ -48,7 +48,7 @@ export const BugGraphLink = `${url}app/monthly_report_stat/`;
 export const SubmissionLink = `${url}app/all_report/`;
 export const SubmissionDetailLink = `${url}app/report/`;
 export const SubmissionApprove = `${url}app/report_reply/`;
-export const SubmissionForm = `${url}app/report/`;
+export const SubmissionFormLink = `${url}app/report/`;
 export const MultipleFileUpload = `${url}app/file/`;
 
 //........//

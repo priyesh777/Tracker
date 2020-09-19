@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "antd";
+import { Button, message } from "antd";
 import BackArrow from "../../images/arrow-left.svg";
 import { Link, useHistory } from "react-router-dom";
 import { Row, Form } from "react-bootstrap";
@@ -38,7 +38,7 @@ const SignUp1 = () => {
         history.push("/register_step2");
         toast.success("Signed Up successfully.");
       } else {
-        console.log("error in process::");
+        message.error(response.data.email);
       }
     }
   };

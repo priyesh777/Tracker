@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button, Card, Input, Upload, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import Editor from "../../components/Editor";
 import { GetApi, PostApi } from "../../../api/callapi";
-import { SubmissionForm } from "../../../api/endpoints";
+import { ProgramDetailLink, SubmissionFormLink } from "../../../api/endpoints";
 
 const SubmissionCard = props => {
   //---For Uploading file -------------------//
@@ -41,16 +41,16 @@ const SubmissionCard = props => {
   };
 
   const handleSubmission = async e => {
-    const url = SubmissionForm;
+    const url = SubmissionFormLink;
     console.log("Url check :::%%", url);
     const response = await PostApi(url);
 
     if (response.status === 200) {
       let responseData = response.data;
       console.log("Response from report submission:::", responseData);
-      message.success("Report Submitted");
+      message.success("Report submitted succesfully");
     } else {
-      message.error("Report Submission Failed");
+      message.error("Report-submission Failed");
     }
   };
 
@@ -128,12 +128,12 @@ const SubmissionCard = props => {
             <Editor name="description" onChange={e => handleChange(e)} />
           </div>
 
-          <div className="title-description" style={{ marginTop: "4%" }}>
+          {/* <div className="title-description" style={{ marginTop: "4%" }}>
             <p className="card-title" style={{ marginBottom: "1%" }}>
               Impact by that Vulnerability
             </p>
             <Editor name="vulnerability_details" />
-          </div>
+          </div> */}
 
           <div className="title-description" style={{ marginTop: "4%" }}>
             <p className="card-title">Attach a file</p>
