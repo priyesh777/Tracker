@@ -129,6 +129,20 @@ const ViewProfile = () => {
                     )}
 
                     <br />
+                    <p className="instruction">Middle Name</p>
+                    {editMode ? (
+                      <Input
+                        name="last_name"
+                        className="Form-input"
+                        type="text"
+                        placeholder="Enter your middle-name"
+                        onChange={e => handleChange(e)}
+                      />
+                    ) : (
+                      <p className="name">Joe</p>
+                    )}
+
+                    <br />
                     <p className="instruction">Last Name</p>
                     {editMode ? (
                       <Input
@@ -139,7 +153,7 @@ const ViewProfile = () => {
                         onChange={e => handleChange(e)}
                       />
                     ) : (
-                      <p className="name">Joe</p>
+                      <p className="name">Smith</p>
                     )}
                   </div>
                 </Col>

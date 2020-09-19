@@ -19,7 +19,15 @@ const ProgramDetails = props => {
   const history = useHistory();
   const reportSubmit = localStorage.getItem("user_type");
 
-  const [programDetail, setProgramDetail] = useState({});
+  const [programDetail, setProgramDetail] = useState({
+    name: "",
+    tag_line: "",
+    description: "",
+    program_reward: [],
+    program_target: [],
+    program_type: []
+  });
+
   const [editMode, setEditMode] = useState(false);
 
   const [editedData, setEditedData] = useState({
@@ -52,21 +60,23 @@ const ProgramDetails = props => {
     setEditMode(true);
   };
 
-  //Patching the Edited data below ...//
-  var EditPatch = new FormData();
-  EditPatch.append("EditPatch", editedData);
-  //.................................//
-
   const handleConfirmEdit = async e => {
+    //Patching the Edited data below ...//
+    var EditPatch = new FormData();
+    for (var key in editedData) {
+      EditPatch.append(key, editedData[key]);
+    }
+    //.................................//
+
     const url = ProgramDetailEdit + cardId;
-    console.log("Url check :::%%", url);
     const response = await PatchApi(url, EditPatch);
     if (response.status === 200) {
       let responseData = response.data;
       console.log("edited detail response ######::", responseData);
-      window.location.reload(true);
+      message.success("Saved the changes");
+      history.push("/main_panel/programs");
     } else {
-      // message.error("target-delete failed");
+      message.error("Failed to save changes");
     }
   };
 
@@ -75,13 +85,14 @@ const ProgramDetails = props => {
   };
 
   const handleTargetDelete = async e => {
-    console.log("event from delete:", e);
-    const response = await DeleteApi(TargetDeleteLink);
+    console.log("Target ID to delete:", e);
+    const deleteUrl = TargetDeleteLink + e;
+    const response = await DeleteApi(deleteUrl);
     if (response.status === 200) {
       let responseData = response.data;
       console.log("delete response ::", responseData);
     } else {
-      // message.error("target-delete failed");
+      message.error("target-delete failed");
     }
   };
 
@@ -195,7 +206,13 @@ const ProgramDetails = props => {
                               onChange={e => handleEdit(e)}
                             />
                           ) : (
-                            <p>{programDetail.description}</p>
+                            <p>
+                              {programDetail &&
+                                programDetail.description.replace(
+                                  /(<([^>]+)>)/gi,
+                                  ""
+                                )}
+                            </p>
                           )}
                         </>
                       }
@@ -224,7 +241,7 @@ const ProgramDetails = props => {
                     {programDetail.program_reward &&
                       programDetail.program_reward.map((each, index) => (
                         <>
-                          <tr key={`rewardTable-${index}`}>
+                          <tr>
                             <td className="table-topic">{each.severity}</td>
                             <td>
                               <div
@@ -233,6 +250,7 @@ const ProgramDetails = props => {
                                   display: "flex",
                                   justifyContent: "space-evenly"
                                 }}
+                                key={`rewardTable-${index}`}
                               >
                                 <Input
                                   className="reward-input"
@@ -291,16 +309,18 @@ const ProgramDetails = props => {
                             <td style={{ fontFamily: "Karla" }}>{data.name}</td>
                             <td style={{ fontFamily: "Karla" }}>{data.type}</td>
                             {editMode ? (
-                              <Popconfirm
-                                title="Are you sure delete this task?"
-                                onConfirm={e => handleTargetDelete(e)}
-                                okText="Yes"
-                                cancelText="No"
-                              >
-                                <Button danger style={{ marginTop: "10px" }}>
-                                  Delete
-                                </Button>
-                              </Popconfirm>
+                              <>
+                                <Popconfirm
+                                  title="Are you sure delete this task?"
+                                  onConfirm={() => handleTargetDelete(data.id)}
+                                  okText="Yes"
+                                  cancelText="No"
+                                >
+                                  <Button danger style={{ marginTop: "10px" }}>
+                                    Delete
+                                  </Button>
+                                </Popconfirm>
+                              </>
                             ) : null}
                           </tr>
                         )}
