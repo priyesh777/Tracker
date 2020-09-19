@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button,  Upload, message } from "antd";
+import { Button, Upload, message } from "antd";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import { Container, Row, Form } from "react-bootstrap";
 import BackArrow from "../../images/arrow-left.svg";
