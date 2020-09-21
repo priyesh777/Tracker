@@ -304,7 +304,7 @@ const ProgramDetails = props => {
                   {programDetail.program_target &&
                     programDetail.program_target.map((data, i) => (
                       <tbody>
-                        {data.scope && (
+                        {data && data.scope === true && (
                           <tr key={`inScope-${i}`}>
                             <td style={{ fontFamily: "Karla" }}>{data.name}</td>
                             <td style={{ fontFamily: "Karla" }}>{data.type}</td>
@@ -355,10 +355,10 @@ const ProgramDetails = props => {
                       </th>
                     </tr>
                   </thead>
-                  {programDetail.program_type &&
-                    programDetail.program_type.map((data, i) => (
+                  {programDetail.program_target &&
+                    programDetail.program_target.map((data, i) => (
                       <tbody>
-                        {!data.scope && (
+                        {data && data.scope === false && (
                           <tr key={`outScope-${i}`}>
                             <td style={{ fontFamily: "Karla" }}>{data.name}</td>
                             <td style={{ fontFamily: "Karla" }}>{data.type}</td>

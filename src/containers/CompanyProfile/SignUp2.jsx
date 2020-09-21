@@ -184,7 +184,7 @@ const SignUp2 = () => {
                   type="number"
                   className="Form-input"
                   onChange={handleChange}
-                  placeholder="Company Type"
+                  placeholder="Company Number"
                   aria-describedby="inputGroupPrepend"
                   required
                 />

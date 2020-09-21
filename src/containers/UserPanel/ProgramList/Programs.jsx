@@ -15,6 +15,8 @@ const Programs = props => {
   const { Search } = Input;
   const { Meta } = Card;
 
+  const user_check = localStorage.getItem("user_type" || "");
+
   const [urlBox, setUrlBox] = useState(AllProgramsLink);
   const [programList, setProgramList] = useState([]);
 
@@ -129,13 +131,15 @@ const Programs = props => {
                 </Row>
               </div>
 
-              <div className="footer-button">
-                <Link to="/main_panel/launch_program">
-                  <Button className="Purple-button">
-                    Launch a new Program
-                  </Button>
-                </Link>
-              </div>
+              {user_check === "Researcher" ? null : (
+                <div className="footer-button">
+                  <Link to="/main_panel/launch_program">
+                    <Button className="Purple-button">
+                      Launch a new Program
+                    </Button>
+                  </Link>
+                </div>
+              )}
             </div>
           </Col>
         </Row>
