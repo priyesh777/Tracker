@@ -78,7 +78,7 @@ const UserPanel = props => {
                         className="reward"
                         style={{ width: "100%", marginLeft: "7%" }}
                       >
-                        <p className="instruction">Bugs-Found</p>
+                        <p className="instruction">Bugs</p>
                         <p className="card-number-data">
                           {performanceStat.valid_report}
                         </p>

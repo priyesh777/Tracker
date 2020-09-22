@@ -50,6 +50,7 @@ export const SubmissionDetailLink = `${url}app/report/`;
 export const SubmissionApprove = `${url}app/report_reply/`;
 export const SubmissionFormLink = `${url}app/report/`;
 export const MultipleFileUpload = `${url}app/file/`;
+export const CommentLink = `${url}app/comment/`;
 
 //........//
 

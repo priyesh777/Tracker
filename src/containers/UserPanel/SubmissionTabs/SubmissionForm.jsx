@@ -36,7 +36,6 @@ const SubmissionForm = props => {
       message.error("Sorry couldn't load Program-details right now");
     }
   };
-  console.log("Program namess :::", programDetail);
 
   return (
     <>

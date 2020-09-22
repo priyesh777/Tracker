@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { Button, Card, Input, Upload, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import Editor from "../../components/Editor";
-import { GetApi, PostApi } from "../../../api/callapi";
-import { ProgramDetailLink, SubmissionFormLink } from "../../../api/endpoints";
+import { AuthPostApi } from "../../../api/callapi";
+import { SubmissionFormLink, MultipleFileUpload } from "../../../api/endpoints";
 
 const SubmissionCard = props => {
   //---For Uploading file -------------------//
@@ -14,23 +14,29 @@ const SubmissionCard = props => {
     }, 0);
   };
 
-  // const [pictures, setPictures] = useState({});
+  const [pictures, setPictures] = useState([]);
 
   const handleUpload = info => {
+    console.log("pictures upload::", info);
+    setPictures(info.fileList);
     if (info.file.status === "done") {
       message.success("file uploaded");
     } else if (info.file.status === "error") {
       message.error("file upload failed");
     }
   };
+
   //--------------------------------------------------------------//
 
   const [report, setReport] = useState({
     title: "",
     description: "",
+    vulnerability_type: "",
+    issue_type: "",
     target: "",
     url: "",
-    severity: ""
+    severity: "",
+    program: props.cardId
   });
 
   const handleChange = e => {
@@ -41,13 +47,18 @@ const SubmissionCard = props => {
   };
 
   const handleSubmission = async e => {
-    const url = SubmissionFormLink;
-    console.log("Url check :::%%", url);
-    const response = await PostApi(url);
+    var images = new FormData();
 
-    if (response.status === 200) {
-      let responseData = response.data;
-      console.log("Response from report submission:::", responseData);
+    images.append("image", pictures);
+
+    const url = SubmissionFormLink;
+    const response = await AuthPostApi(url, report);
+
+    if (response.status === 201) {
+      const response_id = response.data.id;
+      images.append("report_id", response_id);
+      const image_post = await AuthPostApi(MultipleFileUpload, images);
+      console.log("got the response::", image_post);
       message.success("Report submitted succesfully");
     } else {
       message.error("Report-submission Failed");
@@ -67,6 +78,19 @@ const SubmissionCard = props => {
               className="input-box"
               type="text"
               placeholder="A clear title explaining vurnerability"
+              onChange={e => handleChange(e)}
+            />
+          </div>
+
+          <div className="title-description" style={{ marginTop: "4%" }}>
+            <p className="card-title" style={{ marginBottom: "1%" }}>
+              Vulnerability Type
+            </p>
+            <Input
+              name="vulnerability_type"
+              className="input-box"
+              type="text"
+              placeholder="Type of vulnerability"
               onChange={e => handleChange(e)}
             />
           </div>
@@ -106,6 +130,30 @@ const SubmissionCard = props => {
               placeholder="Mention the target"
               onChange={e => handleChange(e)}
             />
+          </div>
+
+          <div className="title-description" style={{ marginTop: "4%" }}>
+            <p className="card-title" style={{ marginBottom: "1%" }}>
+              Issue Type
+            </p>
+            <div className="select-box" style={{ marginRight: "5%" }}>
+              <select
+                className="select-authority"
+                name="issue_type"
+                onChange={e => handleChange(e)}
+              >
+                <option value="">-- Select --</option>
+                <option value="General" className="option">
+                  General
+                </option>
+                <option value="Software" className="option">
+                  Software
+                </option>
+                <option value="Security" className="option">
+                  Security
+                </option>
+              </select>
+            </div>
           </div>
 
           <div className="title-description" style={{ marginTop: "4%" }}>
