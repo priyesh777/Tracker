@@ -42,7 +42,7 @@ const SubmissionForm = props => {
     <>
       <MainPanel>
         <Row>
-          <Col md={6} style={{ paddingLeft: "3%" }}>
+          <Col md={9} style={{ paddingLeft: "3%" }}>
             <div className="back-button">
               <Button
                 className="user-back-button"
@@ -98,7 +98,7 @@ const SubmissionForm = props => {
             </div> */}
           </Col>
 
-          <Col md={6}>
+          {/* <Col md={6}>
             <div className="submission-reward">
               <div className="content-header">Reward range vulnerability</div>
               <div className="bounty">
@@ -120,7 +120,7 @@ const SubmissionForm = props => {
                 </Card>
               </div>
             </div>
-          </Col>
+          </Col> */}
         </Row>
       </MainPanel>
     </>

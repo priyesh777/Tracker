@@ -480,35 +480,35 @@ const SubmissionDetail = props => {
                 ))}
             </div>
 
-            <div className="comment-section">
+            {/* <div className="comment-section">
               <div className="header">Recent Comments</div>
               <Card className="comment-card">
-                {comments.map(data => (
-                  <>
-                    <Comment
-                      className="each-comment"
-                      // actions={actions}
-                      author={
-                        <a href="##" className="author">
-                          {data.author}
-                        </a>
-                      }
-                      avatar={
-                        <Avatar
-                          src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                          alt="user-pic"
-                        />
-                      }
-                      content={<p>{data.content}</p>}
-                      datetime={
-                        <Tooltip title={moment().format("YYYY-MM-DD HH:mm:ss")}>
-                          <span>{moment().fromNow()}</span>
-                        </Tooltip>
-                      }
-                    />
-                    <Divider />
-                  </>
-                ))}
+                {submissionDetail &&
+                  submissionDetail.report_comment.map(data => (
+                    <>
+                      <Comment
+                        className="each-comment"
+                        // actions={actions}
+                        author={
+                          <a href="##" className="author">
+                            {data && data.name}
+                          </a>
+                        }
+                        avatar={
+                          <Avatar src={data && data.img} alt="user-pic" />
+                        }
+                        content={<p>{data && data.comment}</p>}
+                        datetime={
+                          <Tooltip
+                            title={moment().format("YYYY-MM-DD HH:mm:ss")}
+                          >
+                            <span>{moment(data && data.created_at)}</span>
+                          </Tooltip>
+                        }
+                      />
+                      <Divider />
+                    </>
+                  ))}
               </Card>
               <Card className="comment-card">
                 <Input
@@ -520,7 +520,7 @@ const SubmissionDetail = props => {
                   <img src={RightArrow} alt="arrow-right" />
                 </Button>
               </Card>
-            </div>
+            </div> */}
           </Col>
         </Row>
       </MainPanel>

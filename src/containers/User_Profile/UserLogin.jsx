@@ -89,15 +89,15 @@ const UserLogin = () => {
                 <Form noValidate validated={validate} onSubmit={handleSubmit}>
                   <Form.Control
                     name="username"
-                    type="text"
+                    type="email"
                     className="Form-input"
                     onChange={handleChange}
-                    placeholder="Username"
+                    placeholder="Your Email"
                     aria-describedby="inputGroupPrepend"
                     required
                   />
                   <Form.Control.Feedback type="invalid">
-                    Please choose a username.
+                    Please enter a valid email
                   </Form.Control.Feedback>
                   <br />
                   <Form.Control
@@ -110,7 +110,7 @@ const UserLogin = () => {
                     required
                   />
                   <Form.Control.Feedback type="invalid">
-                    And enter a strong password
+                    Enter a valid password
                   </Form.Control.Feedback>
 
                   <p className="instruction">
