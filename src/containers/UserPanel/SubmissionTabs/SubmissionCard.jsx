@@ -25,7 +25,7 @@ const SubmissionCard = props => {
       message.error("file upload failed");
     }
   };
-
+// fileList[0].originFileObj
   //--------------------------------------------------------------//
 
   const [report, setReport] = useState({
@@ -49,14 +49,24 @@ const SubmissionCard = props => {
   const handleSubmission = async e => {
     var images = new FormData();
 
-    images.append("image", pictures);
+
+    // images.append("image", pictures);
 
     const url = SubmissionFormLink;
     const response = await AuthPostApi(url, report);
 
     if (response.status === 201) {
       const response_id = response.data.id;
+      console.log(pictures[0].originFileObj)
+      let l = []
+      for (let i = 0; i < pictures.length; i++) {
+        let a = pictures[i].originFileObj
+        images.append("image", a);
+
+      }
+
       images.append("report_id", response_id);
+      // images.append("image", l[1]);
       const image_post = await AuthPostApi(MultipleFileUpload, images);
       console.log("got the response::", image_post);
       message.success("Report submitted succesfully");
