@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Button, Card, Input, Upload, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
@@ -7,6 +8,7 @@ import { AuthPostApi } from "../../../api/callapi";
 import { SubmissionFormLink, MultipleFileUpload } from "../../../api/endpoints";
 
 const SubmissionCard = props => {
+  const history = useHistory();
   //---For Uploading file -------------------//
   const dummyRequest = ({ file, onSuccess }) => {
     setTimeout(() => {
@@ -25,7 +27,7 @@ const SubmissionCard = props => {
       message.error("file upload failed");
     }
   };
-// fileList[0].originFileObj
+  // fileList[0].originFileObj
   //--------------------------------------------------------------//
 
   const [report, setReport] = useState({
@@ -49,27 +51,23 @@ const SubmissionCard = props => {
   const handleSubmission = async e => {
     var images = new FormData();
 
-
-    // images.append("image", pictures);
-
     const url = SubmissionFormLink;
     const response = await AuthPostApi(url, report);
 
     if (response.status === 201) {
       const response_id = response.data.id;
-      console.log(pictures[0].originFileObj)
-      let l = []
+      console.log("after submit image ::::", pictures[0].originFileObj);
+
       for (let i = 0; i < pictures.length; i++) {
-        let a = pictures[i].originFileObj
-        images.append("image", a);
-
+        let image_one = pictures[i].originFileObj;
+        images.append("image", image_one);
       }
-
       images.append("report_id", response_id);
-      // images.append("image", l[1]);
+
       const image_post = await AuthPostApi(MultipleFileUpload, images);
-      console.log("got the response::", image_post);
+      console.log("got response after posting image::", image_post);
       message.success("Report submitted succesfully");
+      history.push(`/main_panel/programs/${props.cardId}`);
     } else {
       message.error("Report-submission Failed");
     }

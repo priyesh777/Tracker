@@ -10,20 +10,38 @@ import {
   QuestionCircleOutlined,
   CaretDownOutlined
 } from "@ant-design/icons";
-import { Menu, Dropdown, Avatar, Button } from "antd";
+import { Menu, Dropdown, Avatar, Button, message } from "antd";
 import { NavLink, useHistory } from "react-router-dom";
+import { GetApi } from "../../api/callapi";
+import { UserProfileLink } from "../../api/endpoints";
 
 const SideBar = props => {
   const history = useHistory();
+  const UserID = localStorage.getItem("user_id" || "");
+
   const [type, setType] = useState("");
+  const [userName, setUserName] = useState({});
 
   useEffect(() => {
     userTypeCheck();
+    userDetail();
   }, []);
 
   const userTypeCheck = () => {
     let localData = localStorage.getItem("user_type" || "");
     setType(localData);
+  };
+
+  const profile_url = UserProfileLink + UserID;
+
+  const userDetail = async e => {
+    let response = await GetApi(profile_url);
+    if (response.status === 200) {
+      let responseData = response.data;
+      setUserName(responseData);
+    } else {
+      message.error("Sorry couldn't load user info right now");
+    }
   };
 
   const handleLogout = () => {
@@ -51,12 +69,9 @@ const SideBar = props => {
       <div className="profile-dropdown">
         <Dropdown overlay={menu}>
           <div className="user-name">
-            <Avatar
-              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-              alt="Han Solo"
-            />
+            <Avatar src={userName && userName.photo} alt="Han Solo" />
             <p className="dropdown-button" style={{ marginLeft: "10px" }}>
-              Jane Doe
+              {userName && userName.first_name} {userName && userName.last_name}
             </p>
             <CaretDownOutlined style={{ marginLeft: "20%", marginTop: "2%" }} />
           </div>

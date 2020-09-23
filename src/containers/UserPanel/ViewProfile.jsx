@@ -5,17 +5,30 @@ import { Row, Col } from "react-bootstrap";
 import { Button, Card, Avatar, Input, message, Upload } from "antd";
 import { useHistory } from "react-router-dom";
 import { UserOutlined, LoadingOutlined, PlusOutlined } from "@ant-design/icons";
-import { GetApi } from "../../api/callapi";
+import { GetApi, PatchApi } from "../../api/callapi";
 import { UserProfileLink } from "../../api/endpoints";
+import { toast } from "react-toastify";
 
 const ViewProfile = () => {
   const history = useHistory();
+  const UserID = localStorage.getItem("user_id" || "");
 
   const [editMode, setEditMode] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const [uploaded, setUploaded] = useState(false);
   const [img, setImg] = useState();
+  const [profileInfo, setProfileInfo] = useState({
+    first_name: "",
+    middle_name: "",
+    last_name: "",
+    photo: ""
+  });
+  const [userInfo, setUserInfo] = useState({
+    first_name: "",
+    middle_name: "",
+    last_name: ""
+  });
 
   //------------- For upload-image------//
   const dummyRequest = ({ file, onSuccess }) => {
@@ -65,11 +78,15 @@ const ViewProfile = () => {
     init();
   }, []);
 
+  const profile_url = UserProfileLink + UserID;
+
   const init = async e => {
-    const response = await GetApi(UserProfileLink);
+    const response = await GetApi(profile_url);
 
     if (response.status === 200) {
-      let responseData = response.data.results;
+      let responseData = response.data;
+      setProfileInfo(responseData);
+      console.log("User info here ::::", userInfo);
     } else {
       message.error("Sorry couldn't load profile info right now");
     }
@@ -83,12 +100,24 @@ const ViewProfile = () => {
     setEditMode(false);
   };
 
-  const handleSaveEdit = () => {
-    console.log("clicked save");
+  const handleSave = async e => {
+    var profileData = new FormData();
+    for (var key in userInfo) {
+      profileData.append(key, userInfo[key]);
+    }
+    profileData.append("photo", img);
+
+    const edit_response = await PatchApi(profile_url, profileData);
+    if (edit_response.status === 200) {
+      console.log("Edit profile response :::", edit_response.data);
+      toast.success("Profile Edited");
+      window.location.reload(true);
+    }
   };
 
-  const handleChange = () => {
-    console.log("reached handle change");
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setUserInfo({ ...userInfo, [name]: value });
   };
 
   return (
@@ -122,6 +151,7 @@ const ViewProfile = () => {
                     </Upload>
                   ) : (
                     <Avatar
+                      src={profileInfo && profileInfo.photo}
                       shape="cicle"
                       size={180}
                       icon={<UserOutlined />}
@@ -143,7 +173,9 @@ const ViewProfile = () => {
                         onChange={e => handleChange(e)}
                       />
                     ) : (
-                      <p className="name">Janet</p>
+                      <p className="name">
+                        {profileInfo && profileInfo.first_name}
+                      </p>
                     )}
 
                     <p className="instruction" style={{ marginBottom: "0px" }}>
@@ -151,14 +183,16 @@ const ViewProfile = () => {
                     </p>
                     {editMode ? (
                       <Input
-                        name="last_name"
+                        name="middle_name"
                         className="Form-input"
                         type="text"
                         placeholder="Enter your middle-name"
                         onChange={e => handleChange(e)}
                       />
                     ) : (
-                      <p className="name">Joe</p>
+                      <p className="name">
+                        {profileInfo && profileInfo.middle_name}
+                      </p>
                     )}
 
                     <p className="instruction" style={{ marginBottom: "0px" }}>
@@ -173,7 +207,9 @@ const ViewProfile = () => {
                         onChange={e => handleChange(e)}
                       />
                     ) : (
-                      <p className="name">Smith</p>
+                      <p className="name">
+                        {profileInfo && profileInfo.last_name}
+                      </p>
                     )}
                   </div>
                 </Col>
@@ -187,7 +223,7 @@ const ViewProfile = () => {
                 <>
                   <Button
                     className="program-continue"
-                    onClick={handleSaveEdit}
+                    onClick={handleSave}
                     style={{ float: "left" }}
                   >
                     Save Changes
