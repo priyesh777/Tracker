@@ -16,14 +16,12 @@ export const UserRegisterLink = `${url}account/register`;
 export const CompanySignUpLink = `${url}account/setup/`;
 export const CompanyProfileLink = `${url}account/details/`;
 export const InvitationLink = `${url}account/many_users_invite/`;
-
 //...........//
 
 //LAUNCH - PROGRAM SETUP :::
 export const ProfileLinkEdit = `${url}account/edit_profile/`;
 export const LaunchProgramLink = `${url}app/add_program/`;
 export const ProgramLogoLink = `${url}app/add_program_logo/`;
-
 //..........//
 
 //Dashboard - Programs ::
@@ -51,7 +49,6 @@ export const SubmissionApprove = `${url}app/report_reply/`;
 export const SubmissionFormLink = `${url}app/report/`;
 export const MultipleFileUpload = `${url}app/file/`;
 export const CommentLink = `${url}app/comment/`;
-
 //........//
 
 //Dashboard - Researchers ::
@@ -61,3 +58,7 @@ export const ResearchersLink = `${url}account/researchers/`;
 //Dashboard - Users ::
 export const UsersLink = `${url}account/user/`;
 //........//
+
+//Edit - User_Profile :::
+export const UserProfileLink = `${url}account/edit_profile/`;
+//.........//

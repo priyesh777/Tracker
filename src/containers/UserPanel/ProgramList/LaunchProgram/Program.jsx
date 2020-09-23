@@ -60,7 +60,7 @@ const Program = () => {
       <Row>
         <div
           className="program-container"
-          style={{ marginLeft: "5%", border: "0px" }}
+          style={{ marginLeft: "2%", border: "0px" }}
         >
           <div className="tabs-list">
             <Tabs

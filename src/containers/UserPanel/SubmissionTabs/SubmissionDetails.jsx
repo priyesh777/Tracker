@@ -1,27 +1,15 @@
 import React, { useState, useEffect } from "react";
 import thumbnail from "../../../images/pic_upload.png";
 import { useHistory } from "react-router-dom";
-import {
-  Button,
-  Card,
-  Avatar,
-  Comment,
-  Input,
-  Divider,
-  Tag,
-  Form,
-  message
-} from "antd";
+import { Button, Card, Avatar, Input, Tag, Form } from "antd";
 import { Row, Col } from "react-bootstrap";
 import BackArrow from "../../../images/arrow-left.svg";
-import RightArrow from "../../../images/arrow-right.svg";
 import moment from "moment";
 import MainPanel from "../MainPanel";
-import { GetApi, PatchApi, AuthPostApi } from "../../../api/callapi";
+import { GetApi, PatchApi } from "../../../api/callapi";
 import {
   SubmissionDetailLink,
-  SubmissionApprove,
-  CommentLink
+  SubmissionApprove
 } from "../../../api/endpoints";
 import { toast } from "react-toastify";
 import { CheckCircleFilled, BugFilled } from "@ant-design/icons";
@@ -51,11 +39,6 @@ const SubmissionDetail = props => {
     report_assign: [],
     report_attachment: [],
     report_comment: []
-  });
-
-  const [commentData, setCommentData] = useState({
-    comment: "",
-    report_id: cardId
   });
 
   const [amount, setAmount] = useState({
@@ -113,23 +96,6 @@ const SubmissionDetail = props => {
       window.location.reload(true);
     } else {
       // message.error("target-delete failed");
-    }
-  };
-
-  const handleComment = e => {
-    const { name, value } = e.target;
-    const info = commentData;
-    info[name] = value;
-    setCommentData(info);
-  };
-
-  const postComment = async e => {
-    const comment_response = await AuthPostApi(CommentLink, commentData);
-    if (comment_response.status === 201) {
-      let response_data = comment_response.data;
-      message.success("Comment posted");
-    } else {
-      message.error("Failed to post Comment");
     }
   };
 
@@ -510,57 +476,6 @@ const SubmissionDetail = props => {
             </div>
 
             <CommentSection cardId={cardId} />
-            {/* 
-            <div className="comment-section">
-              <div className="header">Recent Comments</div>
-              <Card className="comment-card">
-                {submissionDetail &&
-                submissionDetail.report_comment.length === 0 ? (
-                  <div>
-                    <p className="instruction">
-                      {" "}
-                      No comments. Be the first one to post.
-                    </p>
-                  </div>
-                ) : (
-                  <>
-                    {submissionDetail.report_comment.map(data => (
-                      <>
-                        <Comment
-                          className="each-comment"
-                          // actions={actions}
-                          author={
-                            <a href="##" className="author">
-                              {data && data.name}
-                            </a>
-                          }
-                          avatar={
-                            <Avatar src={data && data.img} alt="user-pic" />
-                          }
-                          content={<p>{data && data.comment}</p>}
-                          datetime={moment(
-                            submissionDetail && submissionDetail.created_at
-                          ).format(" MMMM Do YYYY, h:mm:ss a")}
-                        />
-                        <Divider />
-                      </>
-                    ))}
-                  </>
-                )}
-              </Card>
-              <Card className="comment-card">
-                <Input
-                  type="text"
-                  name="comment"
-                  className="comment-input"
-                  placeholder="Write a comment"
-                  onChange={e => handleComment(e)}
-                />
-                <Button className="Purple-button" onClick={postComment}>
-                  <img src={RightArrow} alt="arrow-right" />
-                </Button>
-              </Card>
-            </div> */}
           </Col>
         </Row>
       </MainPanel>

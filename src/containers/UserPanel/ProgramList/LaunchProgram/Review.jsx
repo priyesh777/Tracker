@@ -9,6 +9,7 @@ import { LaunchProgramLink, ProgramLogoLink } from "../../../../api/endpoints";
 
 const Review = props => {
   const history = useHistory();
+  console.log("Uploaded image ::", props.programLogo);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -24,8 +25,6 @@ const Review = props => {
     data["program_target"] = props.scopeData;
     data["program_reward"] = props.rewardData;
     data["points_only"] = props.points;
-
-    console.log("Total Appended value :::::##", data);
 
     var response = await AuthPostApi(LaunchProgramLink, data);
 

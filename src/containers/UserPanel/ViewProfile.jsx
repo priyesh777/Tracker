@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BackArrow from "../../images/arrow-left.svg";
 import MainPanel from "./MainPanel";
 import { Row, Col } from "react-bootstrap";
 import { Button, Card, Avatar, Input, message, Upload } from "antd";
 import { useHistory } from "react-router-dom";
 import { UserOutlined, LoadingOutlined, PlusOutlined } from "@ant-design/icons";
+import { GetApi } from "../../api/callapi";
+import { UserProfileLink } from "../../api/endpoints";
 
 const ViewProfile = () => {
   const history = useHistory();
@@ -58,6 +60,20 @@ const ViewProfile = () => {
     }
   };
   //-----------------------------------------//
+
+  useEffect(() => {
+    init();
+  }, []);
+
+  const init = async e => {
+    const response = await GetApi(UserProfileLink);
+
+    if (response.status === 200) {
+      let responseData = response.data.results;
+    } else {
+      message.error("Sorry couldn't load profile info right now");
+    }
+  };
 
   const handleEdit = () => {
     setEditMode(true);
@@ -115,7 +131,9 @@ const ViewProfile = () => {
                 </Col>
                 <Col>
                   <div className="input-fields">
-                    <p className="instruction">First Name</p>
+                    <p className="instruction" style={{ marginBottom: "0px" }}>
+                      First Name
+                    </p>
                     {editMode ? (
                       <Input
                         name="first_name"
@@ -128,8 +146,9 @@ const ViewProfile = () => {
                       <p className="name">Janet</p>
                     )}
 
-                    <br />
-                    <p className="instruction">Middle Name</p>
+                    <p className="instruction" style={{ marginBottom: "0px" }}>
+                      Middle Name
+                    </p>
                     {editMode ? (
                       <Input
                         name="last_name"
@@ -142,8 +161,9 @@ const ViewProfile = () => {
                       <p className="name">Joe</p>
                     )}
 
-                    <br />
-                    <p className="instruction">Last Name</p>
+                    <p className="instruction" style={{ marginBottom: "0px" }}>
+                      Last Name
+                    </p>
                     {editMode ? (
                       <Input
                         name="last_name"

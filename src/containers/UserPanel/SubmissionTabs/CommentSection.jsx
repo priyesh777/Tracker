@@ -43,8 +43,8 @@ const CommentSection = props => {
 
   const postComment = async e => {
     const comment_response = await AuthPostApi(CommentLink, commentData);
+
     if (comment_response.status === 201) {
-      let response_data = comment_response.data;
       setCommentData(null);
       message.success("Comment posted");
       setPosted(true);
@@ -97,7 +97,7 @@ const CommentSection = props => {
             placeholder="Write a comment"
             onChange={e => handleComment(e)}
           />
-          <Button className="Purple-button" onClick={postComment}>
+          <Button className="Purple-button" type="submit" onClick={postComment}>
             <img src={RightArrow} alt="arrow-right" />
           </Button>
         </Card>
