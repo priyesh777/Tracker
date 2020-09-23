@@ -19,6 +19,7 @@ const Program = () => {
     name: "",
     tag_line: "",
     description: "",
+    point_only: "",
     accept_tc: true
   });
 
@@ -43,15 +44,14 @@ const Program = () => {
 
   //--------State for "REWARDS"------//
   const [rewardData, setRewardData] = useState([]);
-  const [points, setPoints] = useState();
 
   const handleReward = info => {
     setRewardData(info);
-    console.log("REWARD DATA::", rewardData);
   };
 
   const handlePoint = info => {
-    setPoints(info);
+    setNameData({ ...nameData, point_only: info });
+    console.log("Called handlePoint function", info);
   };
   //----------------------------------------//
 
@@ -99,7 +99,6 @@ const Program = () => {
                   programLogo={programLogo}
                   scopeData={scopeData}
                   rewardData={rewardData}
-                  points={points}
                   handleTab={handleTab}
                 />
               </Tab>

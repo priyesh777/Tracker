@@ -9,7 +9,7 @@ import { LaunchProgramLink, ProgramLogoLink } from "../../../../api/endpoints";
 
 const Review = props => {
   const history = useHistory();
-  console.log("Uploaded image ::", props.programLogo);
+  // console.log("Uploaded image ::", props.programLogo);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -24,7 +24,6 @@ const Review = props => {
     const data = props.nameData;
     data["program_target"] = props.scopeData;
     data["program_reward"] = props.rewardData;
-    data["points_only"] = props.points;
 
     var response = await AuthPostApi(LaunchProgramLink, data);
 
@@ -40,6 +39,8 @@ const Review = props => {
       console.log("error in process::");
     }
   };
+
+  console.log("All DATA HERE :::", props.nameData);
 
   return (
     <>

@@ -28,14 +28,11 @@ const Rewards = props => {
     }
   ]);
 
-  const [pointsOnly, setPointsOnly] = useState();
-
   const handleRadio = e => {
     setRadioState(e.target.value);
-    setPointsOnly(!e.target.value);
-    props.handlePoint(pointsOnly);
+    props.handlePoint(e.target.value);
   };
-  console.log("Points only ::", pointsOnly);
+  console.log("Point only ::", radioState);
 
   const handleChange = e => {
     const { name, value, id } = e.target;
@@ -70,16 +67,21 @@ const Rewards = props => {
         <Card style={{ width: "850px" }} body>
           <p className="instruction-header">Reward Type</p>
           <div className="radio-buttons">
-            <Radio.Group onChange={handleRadio} value={radioState}>
-              <Radio className="radio-option" value={true}>
+            <Radio.Group onChange={handleRadio}>
+              <Radio className="radio-option" value={false}>
                 Bounty
               </Radio>
-              <Radio className="radio-option" value={false}>
+              <Radio className="radio-option" value={true}>
                 Points
               </Radio>
             </Radio.Group>
           </div>
+
           {radioState ? (
+            () => {
+              setTableData([""]);
+            }
+          ) : (
             <div className="reward-table">
               <Table striped bordered hover>
                 <thead>
@@ -212,10 +214,6 @@ const Rewards = props => {
                 </tbody>
               </Table>
             </div>
-          ) : (
-            () => {
-              setTableData([""]);
-            }
           )}
         </Card>
         <div
