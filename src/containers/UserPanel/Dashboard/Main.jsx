@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { Card, List, Avatar } from "antd";
 import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
 import { Row, Col, Tabs, Tab } from "react-bootstrap";
@@ -12,6 +13,7 @@ import moment from "moment";
 
 const UserPanel = props => {
   const { Meta } = Card;
+  const history = useHistory();
 
   const [tabKey, setTabKey] = useState("valid_bugs");
 
@@ -167,55 +169,59 @@ const UserPanel = props => {
               <div className="available-programs" style={{ width: "100%" }}>
                 <div className="content-header">Available programs</div>
                 <div className="card-list" style={{ width: "100%" }}>
-                  {cardInfo.map((data, index) => (
-                    <Card
-                      hoverable
-                      className="card-box"
-                      actions={[
-                        <p className="reward">
-                          ${data && data.point_only ? "" : data.bounty}
-                        </p>,
-                        <p className="points">
-                          {data && data.point_only ? "Pts only" : ""}
-                        </p>
-                      ]}
-                      key={`programCard-${index}`}
-                    >
-                      <div className="title-description">
-                        <Meta
-                          avatar={<Avatar src="random.png" />}
-                          title={
-                            <>
-                              <span>{data && data.name}</span>
-                              <span style={{ marginLeft: "10px" }}>
-                                {data && data.to_nas ? (
-                                  <CheckCircleFilled
-                                    style={{ color: "green" }}
-                                  />
-                                ) : (
-                                  <BugFilled style={{ color: "#ad77c0" }} />
-                                )}
-                              </span>
-                            </>
-                          }
-                          description={moment(data && data.created_at).format(
-                            "YYYY-MM-DD"
-                          )}
-                        />
-                        {/* <Meta
+                  <Row>
+                    {cardInfo.map((data, index) => (
+                      <Card
+                        onClick={() => history.push("/main_panel/programs")}
+                        hoverable
+                        className="card-box"
+                        actions={[
+                          <p className="reward">
+                            ${data && data.point_only ? "" : data.bounty}
+                          </p>,
+                          <p className="points">
+                            {data && data.point_only ? "Pts only" : ""}
+                          </p>
+                        ]}
+                        key={`programCard-${index}`}
+                      >
+                        <div className="title-description">
+                          <Meta
+                            avatar={<Avatar src="random.png" />}
+                            title={
+                              <>
+                                <span>{data && data.name}</span>
+                                <span style={{ marginLeft: "10px" }}>
+                                  {data && data.to_nas ? (
+                                    <CheckCircleFilled
+                                      style={{ color: "green" }}
+                                    />
+                                  ) : (
+                                    <BugFilled style={{ color: "#ad77c0" }} />
+                                  )}
+                                </span>
+                              </>
+                            }
+                            description={moment(data && data.created_at).format(
+                              "YYYY-MM-DD"
+                            )}
+                          />
+                          {/* <Meta
                           description={
                             <>
                               <p>{data.rewards}</p>
                             </>
                           }
                         /> */}
-                      </div>
-                    </Card>
-                  ))}
+                        </div>
+                      </Card>
+                    ))}
+                  </Row>
                 </div>
               </div>
             </Row>
           </Col>
+
           <Col lg={4}>
             <div className="researchers-card" style={{ marginTop: "6%" }}>
               <div className="content-header">Researchers</div>

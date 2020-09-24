@@ -17,7 +17,10 @@ const SubmissionData = props => {
 
   return (
     <>
-      <div className="all-submissions" style={{ width: "100%" }}>
+      <div
+        className="all-submissions"
+        style={{ width: "100%", marginBottom: "20px" }}
+      >
         <Row>
           {cardData.map((data, index) => (
             <Card

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import thumbnail from "../../../images/pic_upload.png";
 import { useHistory } from "react-router-dom";
-import { Button, Card, Avatar, Input, Tag, Form } from "antd";
+import { Button, Card, Avatar, Input, Tag, Form, message } from "antd";
 import { Row, Col } from "react-bootstrap";
 import BackArrow from "../../../images/arrow-left.svg";
 import moment from "moment";
@@ -43,8 +43,15 @@ const SubmissionDetail = props => {
 
   const [amount, setAmount] = useState({
     status: "",
-    type: "bounty",
     reward: ""
+  });
+
+  const [invalidState] = useState({
+    status: "invalid"
+  });
+
+  const [validState] = useState({
+    status: "fixed"
   });
 
   const url = SubmissionDetailLink + cardId;
@@ -65,13 +72,29 @@ const SubmissionDetail = props => {
 
   console.log("submissionDetail :::", submissionDetail);
 
-  const handleApprove = () => {
+  const handleApprove = async e => {
     setApproved(true);
     setReportState(true);
+    const url = SubmissionApprove + cardId;
+    const response = await PatchApi(url, validState);
+    if (response.status === 200) {
+      let responseData = response.data;
+      console.log("Response of disapprove::", responseData);
+    } else {
+      message.error("failed to approve");
+    }
   };
 
-  const handleDisapprove = () => {
+  const handleDisapprove = async e => {
     setApproved(true);
+    const url = SubmissionApprove + cardId;
+    const response = await PatchApi(url, invalidState);
+    if (response.status === 200) {
+      let responseData = response.data;
+      console.log("Response of disapprove::", responseData);
+    } else {
+      message.error("failed to disapprove");
+    }
   };
 
   const handleEdit = e => {
@@ -88,14 +111,14 @@ const SubmissionDetail = props => {
 
   const handleAmountSubmit = async e => {
     const url = SubmissionApprove + cardId;
-    console.log("Url check :::## ::", url);
     const response = await PatchApi(url, EditPatch);
     if (response.status === 200) {
       let responseData = response.data;
       console.log("report Approve response ######::", responseData);
-      window.location.reload(true);
+      message.success("Submitted the approval");
+      history.push("/main_panel/submissions");
     } else {
-      // message.error("target-delete failed");
+      message.error("Failed to submit reward");
     }
   };
 
@@ -181,7 +204,7 @@ const SubmissionDetail = props => {
                                 justifyContent: "space-between"
                               }}
                             >
-                              <div className="select-box">
+                              {/* <div className="select-box">
                                 <select
                                   className="select-authority"
                                   name="type"
@@ -195,9 +218,9 @@ const SubmissionDetail = props => {
                                     Points
                                   </option>
                                 </select>
-                              </div>
+                              </div> */}
 
-                              <div style={{ marginLeft: "10px" }}>
+                              <div>
                                 <Input
                                   style={{ width: "60%" }}
                                   name="reward"
@@ -236,9 +259,9 @@ const SubmissionDetail = props => {
                                   <option value="bounty" className="option">
                                     Approved
                                   </option>
-                                  <option value="to_fix" className="option">
+                                  {/* <option value="to_fix" className="option">
                                     To Fix
-                                  </option>
+                                  </option> */}
                                   <option value="resolved" className="option">
                                     Resolved
                                   </option>
@@ -452,27 +475,41 @@ const SubmissionDetail = props => {
 
             <div className="recent-activity">
               <div className="header">Recent Activity</div>
-              {submissionDetail.report_assign &&
-                submissionDetail.report_assign.map(data => (
-                  <>
-                    <Card hoverable className="activity-card">
-                      <Meta
-                        avatar={<Avatar src={data && data.assign_by_image} />}
-                        title={
-                          <p className="card-title">
-                            {data && data.assign_by_name}
-                          </p>
-                        }
-                        description={
-                          <span style={{ fontWeight: "bold" }}>
-                            Report assigned by {data && data.assigned_by} to{" "}
-                            {data && data.assigned_to}
-                          </span>
-                        }
-                      />
-                    </Card>
-                  </>
-                ))}
+              {submissionDetail &&
+              submissionDetail.report_assign.length === 0 ? (
+                <div>
+                  <p className="instruction" style={{ fontWeight: "bold" }}>
+                    {" "}
+                    ( No recent activity )
+                  </p>
+                </div>
+              ) : (
+                <>
+                  {submissionDetail.report_assign &&
+                    submissionDetail.report_assign.map(data => (
+                      <>
+                        <Card hoverable className="activity-card">
+                          <Meta
+                            avatar={
+                              <Avatar src={data && data.assign_by_image} />
+                            }
+                            title={
+                              <p className="card-title">
+                                {data && data.assign_by_name}
+                              </p>
+                            }
+                            description={
+                              <span style={{ fontWeight: "bold" }}>
+                                Report assigned by {data && data.assigned_by} to{" "}
+                                {data && data.assigned_to}
+                              </span>
+                            }
+                          />
+                        </Card>
+                      </>
+                    ))}
+                </>
+              )}
             </div>
 
             <CommentSection cardId={cardId} />
