@@ -65,6 +65,10 @@ const UserLogin = () => {
                   You’ll have a wide array of programs to <br />
                   choose from
                 </p>
+                <p>
+                  [NOTE: authentication and other DATA are absent due to API
+                  disability]
+                </p>
               </div>
             </div>
           </Col>
