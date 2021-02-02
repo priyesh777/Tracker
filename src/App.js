@@ -73,6 +73,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
     />
   );
 };
+
 export const isLogin = () => {
   if (localStorage.getItem("token") != null) {
     return true;

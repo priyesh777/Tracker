@@ -45,10 +45,10 @@ const Researchers = () => {
     {
       title: <span className="table-title"> Researcher</span>,
       dataIndex: "username",
-      render: (text, row) => (
+      render: (username, row) => (
         <p className="table-names">
           <Avatar src={row.photo} style={{ marginRight: "20px" }} />
-          {text}
+          {username}
         </p>
       )
     },

@@ -30,19 +30,19 @@ const UserLogin = () => {
         form_values.append(key, formData[key]);
       }
 
-      var response = await PostApi(UserLoginLink, form_values);
+      // var response = await PostApi(UserLoginLink, form_values);
 
-      var userType = response.data;
+      // var userType = response.data;
 
-      if (response.status === 200 && response.data.response !== "Error") {
-        localStorage.setItem("token", userType.token);
-        localStorage.setItem("user_type", userType.type);
-        localStorage.setItem("user_id", userType.pk);
-        history.push("/main_panel");
-        toast.success("Logged in successfully");
-      } else {
-        toast.error(response.data.error_message);
-      }
+      history.push("/main_panel");
+      toast.success("Logged in successfully");
+      // if (response.status === 200 && response.data.response !== "Error") {
+      //   localStorage.setItem("token", userType.token);
+      //   localStorage.setItem("user_type", userType.type);
+      //   localStorage.setItem("user_id", userType.pk);
+      // } else {
+      //   toast.error(response.data.error_message);
+      // }
     }
   };
 
