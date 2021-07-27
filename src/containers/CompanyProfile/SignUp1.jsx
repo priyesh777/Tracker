@@ -30,16 +30,16 @@ const SignUp1 = () => {
       formData.email !== "" &&
       formData.password !== ""
     ) {
-      var response = await PostApi(CompanySignUpLink, formData);
-      var data = response.data;
-      if (response.status === 200 && response.data.token) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user_type", "Admin");
-        history.push("/register_step2");
-        toast.success("Signed Up successfully.");
-      } else {
-        message.error(response.data.email);
-      }
+      history.push("/register_step2");
+      toast.success("Signed Up successfully.");
+      // var response = await PostApi(CompanySignUpLink, formData);
+      // var data = response.data;
+      // if (response.status === 200 && response.data.token) {
+      //   localStorage.setItem("token", data.token);
+      //   localStorage.setItem("user_type", "Admin");
+      // } else {
+      //   message.error(response.data.email);
+      // }
     }
   };
 
