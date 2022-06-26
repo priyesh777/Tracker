@@ -8,15 +8,15 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 /* ------- */
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Redirect
 } from "react-router-dom";
-import SignUp1 from "./containers/CompanyProfile/SignUp1";
-import SignUp2 from "./containers/CompanyProfile/SignUp2";
-import SignUp3 from "./containers/CompanyProfile/SignUp3";
-import SignUp4 from "./containers/CompanyProfile/SignUp4";
+import SignUp1 from "./containers/LoginSection/SignUp1";
+import SignUp2 from "./containers/LoginSection/SignUp2";
+import SignUp3 from "./containers/LoginSection/SignUp3";
+import SignUp4 from "./containers/LoginSection/SignUp4";
 import Program from "./containers/LaunchProgram/Program";
 import Terms from "./containers/LaunchProgram/Terms";
 //Nested route for dashboard
@@ -30,56 +30,56 @@ import Rewards from "./containers/UserPanel/Rewards";
 import Review from "./containers/LaunchProgram/Review";
 
 const App = () => {
-  return (
-    <>
-      <ToastContainer />
-      <Router>
-        <Switch>
-          <Route exact path="/" component={UserLogin} />
-          <Route path="/register_step1" component={SignUp1} />
-          <Route path="/register_step2" component={SignUp2} />
-          <PrivateRoute path="/register_step3" component={SignUp3} />
-          <Route path="/register_step4" component={SignUp4} />
+    return (
+        <>
+            <ToastContainer />
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={UserLogin} />
+                    <Route path="/register_step1" component={SignUp1} />
+                    <Route path="/register_step2" component={SignUp2} />
+                    <PrivateRoute path="/register_step3" component={SignUp3} />
+                    <Route path="/register_step4" component={SignUp4} />
 
-          <Route path="/program_details" component={Program} />
-          <Route path="/program_details/name_details" component={NameDetails} />
-          <Route path="/program_details/set_scope" component={SetScope} />
-          <Route path="/program_details/terms" component={Terms} />
-          <Route path="/program_details/rewards" component={Rewards} />
-          <Route path="/program_details/review" component={Review} />
+                    <Route path="/program_details" component={Program} />
+                    <Route path="/program_details/name_details" component={NameDetails} />
+                    <Route path="/program_details/set_scope" component={SetScope} />
+                    <Route path="/program_details/terms" component={Terms} />
+                    <Route path="/program_details/rewards" component={Rewards} />
+                    <Route path="/program_details/review" component={Review} />
 
-          <Route path="/main_panel" component={UserRoute} />
+                    <Route path="/main_panel" component={UserRoute} />
 
-          <Route path="/invite_register" component={UserRegister} />
-        </Switch>
-      </Router>
-    </>
-  );
+                    <Route path="/invite_register" component={UserRegister} />
+                </Switch>
+            </Router>
+        </>
+    );
 };
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        isLogin() ? (
-          <>
-            <Component {...props} />
-          </>
-        ) : (
-          <Redirect to="/login" />
-        )
-      }
-    />
-  );
+    return (
+        <Route
+            {...rest}
+            render={props =>
+                isLogin() ? (
+                    <>
+                        <Component {...props} />
+                    </>
+                ) : (
+                    <Redirect to="/login" />
+                )
+            }
+        />
+    );
 };
 
 export const isLogin = () => {
-  if (localStorage.getItem("token") != null) {
-    return true;
-  } else {
-    return false;
-  }
+    if (localStorage.getItem("token") != null) {
+        return true;
+    } else {
+        return false;
+    }
 };
 
 export default App;

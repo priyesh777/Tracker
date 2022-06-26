@@ -6,7 +6,7 @@ import BackArrow from "../../images/arrow-left.svg";
 import { toast } from "react-toastify";
 import { Link, useHistory } from "react-router-dom";
 import { AuthPostApi } from "../../api/callapi";
-import { CompanyProfileLink } from "../../api/endpoints";
+import { LoginSectionLink } from "../../api/endpoints";
 
 const SignUp2 = () => {
   const history = useHistory();
@@ -91,7 +91,7 @@ const SignUp2 = () => {
       }
       form_values.append("Appended logo", img);
 
-      var response = await AuthPostApi(CompanyProfileLink, form_values);
+      var response = await AuthPostApi(LoginSectionLink, form_values);
       if (response.status === 201) {
         history.push("/register_step3");
         toast.success("Profile Setup Completed");

@@ -108,7 +108,7 @@ const ViewProfile = () => {
     profileData.append("photo", img);
 
     const edit_response = await PatchApi(profile_url, profileData);
-    if (edit_response.status === 200) {
+    if (edit_response?.status === 200) {
       console.log("Edit profile response :::", edit_response.data);
       toast.success("Profile Edited");
       window.location.reload(true);
